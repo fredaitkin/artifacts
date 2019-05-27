@@ -19,13 +19,13 @@ class CreatePlayersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('team');
-            $table->string('city');
-            $table->string('state');
-            $table->string('country')->nullable()
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('country')->nullable();
             $table->date('birthdate')->nullable();
-            $table->integer('draft_year');
-            $table->integer('draft_round');
-            $table->integer('draft_position');
+            $table->integer('draft_year')->nullable();
+            $table->integer('draft_round')->nullable();
+            $table->integer('draft_position')->nullable();
             $table->timestamps();       
         });
     }
