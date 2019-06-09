@@ -1,6 +1,6 @@
 <?php
 
-namespace Artifacts;
+namespace Artifacts\Player;
 
 use Illuminate\Database\Eloquent\Model;
 

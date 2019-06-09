@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-
+use Artifacts\Player\Player;
 
 class PlayerController extends Controller
 {
@@ -54,9 +54,10 @@ class PlayerController extends Controller
 	    ]);
 
         if ( isset($request->id)){
+          //  $player = \DB::table('players')::findOrFail($request->id);
             $player = \Artifacts\Player::findOrFail($request->id);
         } else {
-            $player = new \Artifacts\Player;
+            $player = new Player();
         }
 
 	    $player->first_name       = $request->first_name;
@@ -92,7 +93,7 @@ class PlayerController extends Controller
      */
     public function edit($id)
     {
-        $player = \Artifacts\Player::find($id);
+        $player = Player::find($id);
         return view('player', [ 'first_name' => 'Edit Player', 'player' => $player, 'artists' => $artists, 'citys' => $this->citys ]);
     }
 
@@ -131,7 +132,7 @@ class PlayerController extends Controller
      */
     public function destroy($id)
     {
-	    \Artifacts\Player::findOrFail($id)->delete();
+	    Player::findOrFail($id)->delete();
 	    return redirect('/players');
     }
 
