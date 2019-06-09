@@ -66,9 +66,9 @@ class PlayerController extends Controller
         $player->state          = $request->state;
         $player->country        = $request->country;
         $player->birthdate      = $request->birthdate;        
-        $player->draft_year     = $request->draft_year;
-        $player->draft_round    = $request->draft_round ?? 0;
-        $player->draft_position = $request->draft_position;
+        $player->draft_year     = $request->draft_year ?? 9999;
+        $player->draft_round    = $request->draft_round ?? 9999;
+        $player->draft_position = $request->draft_position ?? 9999;
 	    $player->save();
 
 	    return redirect('/players');

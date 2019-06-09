@@ -100,7 +100,8 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $players->links() }}
+                {{ $players->appends(\Request::except('page'))->render() }}
+
             </div>
         </div>
 
