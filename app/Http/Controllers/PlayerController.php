@@ -7,6 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Artifacts\Player\Player;
+use Kyslik\ColumnSortable\Sortable;
 
 class PlayerController extends Controller
 {
@@ -24,8 +25,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $players = \DB::table('players')
-            ->paginate(10);
+        $players = Player::sortable()->paginate(10);
         return view('players', ['players' => $players]);
     }
 
@@ -54,22 +54,21 @@ class PlayerController extends Controller
 	    ]);
 
         if ( isset($request->id)){
-          //  $player = \DB::table('players')::findOrFail($request->id);
-            $player = \Artifacts\Player::findOrFail($request->id);
+            $player = Player::findOrFail($request->id);
         } else {
             $player = new Player();
         }
 
-	    $player->first_name       = $request->first_name;
-	    $player->last_name       = $request->last_name;
-	    $player->team        = $request->team;
-        $player->city   = $request->city;
-        $player->state    = $request->state;
-        $player->country       = $request->country;
-        $player->birthdate    = $request->birthdate;        
-	    $player->draft_year   = $request->draft_year;
+        $player->first_name     = $request->first_name;
+        $player->last_name      = $request->last_name;
+        $player->team           = $request->team;
+        $player->city           = $request->city;
+        $player->state          = $request->state;
+        $player->country        = $request->country;
+        $player->birthdate      = $request->birthdate;        
+        $player->draft_year     = $request->draft_year;
         $player->draft_round    = $request->draft_round ?? 0;
-        $player->draft_position    = $request->draft_position;
+        $player->draft_position = $request->draft_position;
 	    $player->save();
 
 	    return redirect('/players');
@@ -94,7 +93,7 @@ class PlayerController extends Controller
     public function edit($id)
     {
         $player = Player::find($id);
-        return view('player', [ 'first_name' => 'Edit Player', 'player' => $player, 'artists' => $artists, 'citys' => $this->citys ]);
+        return view('player', ['title' => 'Edit Player', 'player' => $player]);
     }
 
 
@@ -109,14 +108,18 @@ class PlayerController extends Controller
         $q = $request->q;
         $players = [];
         if ($q != "") {
-                $players = \DB::table('players')
-                ->select('players.*', 'artist')
-                ->where ( 'first_name', 'LIKE', '%' . $q . '%' )
-                ->orWhere ( 'last_name', 'LIKE', '%' . $q . '%' )
+            $players = \DB::table('players')
+                ->select('players.*')
+                ->where('team', 'LIKE', '%' . $q . '%')
+                ->orWhere('city', 'LIKE', '%' . $q . '%')
+                ->orWhere('state', 'LIKE', '%' . $q . '%')
+                ->orWhere('country', 'LIKE', '%' . $q . '%')
+                ->orWhere('draft_year', 'LIKE', '%' . $q . '%')
+                ->orWhere('draft_round', 'LIKE', '%' . $q . '%')
                 ->paginate(10)
                 ->appends(['q' => $q])
                 ->setPath('');
-        }
+            }
         if (count ( $players ) > 0) {
             return view('players', ['players' => $players]);
         } else {

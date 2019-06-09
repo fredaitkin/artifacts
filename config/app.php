@@ -154,7 +154,12 @@ return [
         Artifacts\Providers\AuthServiceProvider::class,
         // Artifacts\Providers\BroadcastServiceProvider::class,
         Artifacts\Providers\EventServiceProvider::class,
-        Artifacts\Providers\RouteServiceProvider::class,
+        Artifacts\Providers\RouteServiceProvider::class,  
+
+        /*
+        * Third Party Service Providers...
+        */
+        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
 
     ],
 

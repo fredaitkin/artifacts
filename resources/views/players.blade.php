@@ -26,7 +26,7 @@
                         <input type="text" class="form-control" name="q"
                             placeholder="Search players"> <span class="input-group-btn">
                             <button type="submit" class="btn btn-default">
-                                <span class="glyphicon glyphicon-search"></span>
+                                <span class="glyphicon glyphicon-search">Search</span>
                             </button>
                         </span>
                     </div>
@@ -37,17 +37,19 @@
                 <table class="table table-striped artifacts-table">
 
                     <thead>
+                        <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Team</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Country</th>
+                        <th scope='col'>@sortablelink('team')</th>
+                        <th scope='col'>@sortablelink('city')</th>
+                        <th scope='col'>@sortablelink('state')</th>
+                        <th scope='col'>@sortablelink('country')</th>
                         <th>Birthdate</th>
-                        <th>Draft Year</th>
-                        <th>Draft Round</th>
-                        <th>Draft Position</th>
+                        <th scope='col'>@sortablelink('draft_year', 'Draft Year')</th>
+                        <th scope='col'>@sortablelink('draft_round', 'Draft Round')</th>
+                        <th scope='col'>@sortablelink('draft_position', 'Draft Position')</th>
                         <th>&nbsp;</th>
+                    </tr>
                     </thead>
 
                     <tbody>
