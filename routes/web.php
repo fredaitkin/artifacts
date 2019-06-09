@@ -18,7 +18,7 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-//Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
 	Route::get('/players', 'PlayerController@index');
 
@@ -32,8 +32,8 @@ Route::get('/', function () {
 
 	Route::delete('/player/{id}', 'PlayerController@destroy');
 
-//});
+});
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
