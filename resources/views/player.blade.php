@@ -95,6 +95,14 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="debut_year" class="col-sm-3 control-label">Debut Year</label>
+
+                <div class="col-sm-3">
+                    <input type="text" name="debut_year" id="player->debut_year" class="form-control" @if( ! empty($player->debut_year)) value="{{$player->debut_year}}" @endif>
+                </div>
+            </div>
+
             <!-- Add player Button -->
             <div class="form-group">
                 @if( ! empty($player->id))

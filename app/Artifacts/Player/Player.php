@@ -22,6 +22,7 @@ class Player extends Model
 		'birthdate',
 		'draft_year',
 		'draft_round',
-		'draft_position'
+		'draft_position',
+		'debut_year'
 	];
 }

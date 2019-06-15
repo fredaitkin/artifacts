@@ -29,6 +29,11 @@
                                 <span class="glyphicon glyphicon-search">Search</span>
                             </button>
                         </span>
+                        @if (Route::has('login'))
+                            @auth
+                                <a href="{{ url('/player') }}" class="btn btn-xs btn-info pull-right">Add</a>
+                            @endauth
+                        @endif
                     </div>
                 </form>
             </div>
@@ -48,6 +53,7 @@
                         <th scope='col'>@sortablelink('draft_year', 'Draft Year')</th>
                         <th scope='col'>@sortablelink('draft_round', 'Draft Round')</th>
                         <th scope='col'>@sortablelink('draft_position', 'Draft Position')</th>
+                        <th scope='col'>@sortablelink('debut_year', 'Debut Year')</th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -84,7 +90,10 @@
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->draft_position }}</div>
-                                </td>                                                                
+                                </td>
+                                <td class="table-text">
+                                    <div>{{ $player->debut_year }}</div>
+                                </td>                                                                  
                                 <td>
                                     {{ csrf_field() }}
                                     <a href="/player/{{ $player->id }}">edit</a>

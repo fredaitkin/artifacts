@@ -69,6 +69,7 @@ class PlayerController extends Controller
         $player->draft_year     = $request->draft_year ?? 9999;
         $player->draft_round    = $request->draft_round ?? 9999;
         $player->draft_position = $request->draft_position ?? 9999;
+        $player->debut_year     = $request->debut_year ?? 9999;
 	    $player->save();
 
 	    return redirect('/players');
@@ -118,6 +119,7 @@ class PlayerController extends Controller
                 ->orWhere('country', 'LIKE', '%' . $q . '%')
                 ->orWhere('draft_year', 'LIKE', '%' . $q . '%')
                 ->orWhere('draft_round', 'LIKE', '%' . $q . '%')
+                ->orWhere('debut_year', 'LIKE', '%' . $q . '%')
                 ->paginate(10)
                 ->appends(['q' => $q])
                 ->setPath('');
