@@ -38,13 +38,13 @@
 
                     <thead>
                         <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th scope='col'>@sortablelink('first_name', 'First Name')</th>
+                        <th scope='col'>@sortablelink('last_name', 'Last Name')</th>
                         <th scope='col'>@sortablelink('team')</th>
                         <th scope='col'>@sortablelink('city')</th>
                         <th scope='col'>@sortablelink('state')</th>
                         <th scope='col'>@sortablelink('country')</th>
-                        <th>Birthdate</th>
+                        <th scope='col'>@sortablelink('birthdate')</th>
                         <th scope='col'>@sortablelink('draft_year', 'Draft Year')</th>
                         <th scope='col'>@sortablelink('draft_round', 'Draft Round')</th>
                         <th scope='col'>@sortablelink('draft_position', 'Draft Position')</th>

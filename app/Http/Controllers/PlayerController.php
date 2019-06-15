@@ -25,7 +25,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $players = Player::sortable()->paginate(10);
+        $players = Player::sortable()->paginate(20);
         return view('players', ['players' => $players]);
     }
 
@@ -112,6 +112,8 @@ class PlayerController extends Controller
                 ->select('players.*')
                 ->where('team', 'LIKE', '%' . $q . '%')
                 ->orWhere('city', 'LIKE', '%' . $q . '%')
+                ->orWhere('first_name', 'LIKE', '%' . $q . '%')
+                ->orWhere('last_name', 'LIKE', '%' . $q . '%')
                 ->orWhere('state', 'LIKE', '%' . $q . '%')
                 ->orWhere('country', 'LIKE', '%' . $q . '%')
                 ->orWhere('draft_year', 'LIKE', '%' . $q . '%')

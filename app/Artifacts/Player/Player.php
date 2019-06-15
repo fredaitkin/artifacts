@@ -13,10 +13,13 @@ class Player extends Model
     protected $table = 'players';
 
 	public $sortable = [
+		'first_name',
+		'last_name',
 		'team',
 		'city',
 		'state',
 		'country',
+		'birthdate',
 		'draft_year',
 		'draft_round',
 		'draft_position'
