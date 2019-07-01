@@ -50,10 +50,10 @@
                         <th scope='col'>@sortablelink('state')</th>
                         <th scope='col'>@sortablelink('country')</th>
                         <th scope='col'>@sortablelink('birthdate')</th>
-                        <th scope='col'>@sortablelink('draft_year', 'Draft Year')</th>
-                        <th scope='col'>@sortablelink('draft_round', 'Draft Round')</th>
-                        <th scope='col'>@sortablelink('draft_position', 'Draft Position')</th>
-                        <th scope='col'>@sortablelink('debut_year', 'Debut Year')</th>
+                        <th scope='col'>@sortablelink('draftYear', 'Draft Year')</th>
+                        <th scope='col'>@sortablelink('draftRound', 'Draft Round')</th>
+                        <th scope='col'>@sortablelink('draftPosition', 'Draft Position')</th>
+                        <th scope='col'>@sortablelink('debutYear', 'Debut Year')</th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
