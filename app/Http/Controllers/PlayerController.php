@@ -120,7 +120,7 @@ class PlayerController extends Controller
                 ->orWhere('draft_year', 'LIKE', '%' . $q . '%')
                 ->orWhere('draft_round', 'LIKE', '%' . $q . '%')
                 ->orWhere('debut_year', 'LIKE', '%' . $q . '%')
-                ->paginate(10)
+                ->paginate(15)
                 ->appends(['q' => $q])
                 ->setPath('');
             }
