@@ -24,7 +24,7 @@ class CreatePlayersTable extends Migration
             $table->string('country')->nullable();
             $table->date('birthdate')->nullable();
             $table->integer('draft_year')->nullable();
-            $table->integer('draft_round')->nullable();
+            $table->string('draft_round')->nullable();
             $table->integer('draft_position')->nullable();
             $table->timestamps();       
         });

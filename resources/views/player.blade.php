@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label for="player" class="col-sm-3 control-label">First Name</label>
 
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <input type="text" name="first_name" id="player->first_name" class="form-control" @if( ! empty($player->first_name)) value="{{$player->first_name}}" @endif>
                 </div>
             </div>
@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label for="last_name" class="col-sm-3 control-label">Last Name</label>
 
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <input type="text" name="last_name" id="player->last_name" class="form-control" @if( ! empty($player->last_name)) value="{{$player->last_name}}" @endif>
                 </div>
             </div>

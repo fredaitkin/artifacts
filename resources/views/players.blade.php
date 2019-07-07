@@ -98,13 +98,6 @@
                                     {{ csrf_field() }}
                                     <a href="/player/{{ $player->id }}">edit</a>
                                 </td>
-                                <td>
-                                    <form action="/player/{{ $player->id }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                         <a href="javascript:;" onclick="parentNode.submit();">delete</a>
-                                    </form>
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>

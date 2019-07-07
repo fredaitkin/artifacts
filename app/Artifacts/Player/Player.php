@@ -31,7 +31,7 @@ class Player extends Model
     }
 
 	public function draftRoundSortable($query, $direction) {
-		return $query->orderByRaw('ISNULL(draft_round), draft_round ' . $direction);
+		return $query->orderByRaw('ISNULL(draft_round), draft_round+0 ' . $direction);
     }
 
 	public function draftPositionSortable($query, $direction) {
