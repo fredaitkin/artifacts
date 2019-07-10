@@ -25,7 +25,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $players = Player::sortable()->paginate(10);
+        $players = Player::sortable()->paginate(500);
         return view('players', ['players' => $players]);
     }
 
