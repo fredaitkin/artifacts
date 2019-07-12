@@ -143,4 +143,14 @@ class PlayerController extends Controller
 	    return redirect('/players');
     }
 
+    public function getStateCount()
+    {
+        return DB::table('players')
+            ->select('state', DB::raw('count(*) as total'))
+            ->whereNotNull('state')
+            ->groupBy('state')
+            ->orderBy('total', 'DESC')
+            ->get();
+    }
+
 }
