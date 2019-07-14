@@ -28,11 +28,11 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 @auth
-                    <a class="navbar-brand" href="{{ url('/songs') }}">
-                        {{ __('Songs') }}
+                    <a class="navbar-brand" href="{{ url('/players') }}">
+                        {{ __('Players') }}
                     </a>
-                    <a class="navbar-brand" href="{{ url('/artists') }}">
-                         {{ __('Artists') }}
+                    <a class="navbar-brand" href="{{ url('/demographics') }}">
+                         {{ __('Demographics') }}
                     </a>
                 @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

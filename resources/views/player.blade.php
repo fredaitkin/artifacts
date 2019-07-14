@@ -4,7 +4,7 @@
 
     <!-- Bootstrap Boilerplate... -->
 
-    <div class="panel-body mysound-submit-form-div">
+    <div class="panel-body artifacts-submit-form-div">
 
         <h2 class="col-sm-3">{{$title}}</h2>
 

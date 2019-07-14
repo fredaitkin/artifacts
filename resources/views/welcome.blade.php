@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>My Sounds</title>
+        <title>Artifacts</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -21,7 +21,7 @@
                 margin: 0;
             }
             body {
-                background: url({{ asset('img/nightswimming.jpg') }});
+                background: url({{ asset('img/Statistics.png') }});
                 background-size: cover;
             }
 
@@ -75,11 +75,8 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
-                        <a href="{{ url('/songs') }}">Songs</a>
-                        <a href="{{ url('/artists') }}">Artists</a>
-                        @if ( Auth::user()->id == 1)
-                            <a href="{{ url('/utilities') }}">Utilities</a>
-                        @endif
+                        <a href="{{ url('/players') }}">Players</a>
+                        <a href="{{ url('/demographics') }}">Demographics</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
@@ -89,7 +86,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Music
+                    Artifacts
                 </div>
             </div>
         </div>
