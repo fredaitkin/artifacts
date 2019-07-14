@@ -5,7 +5,7 @@ namespace Artifacts\Helper;
 class Helper
 {
 
-    public static function GetApi($url)
+    public static function GetApi($url) {
         $client = new \GuzzleHttp\Client();
         $request = $client->get($url);
         $response = $request->getBody();

@@ -21,6 +21,9 @@ class DemographicsController extends Controller
         $url = url('') . '/api/player/state';
         $data = json_decode(file_get_contents($url));
 
+        // TODO update application server and try guzzle client
+        // $data = Helper::GetAPI($url);
+
         $rows = array();
         foreach($data as $state) {
             $rows[] = array($state->state, $state->total);
