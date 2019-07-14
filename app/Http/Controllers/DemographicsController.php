@@ -4,13 +4,12 @@ namespace Artifacts\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Khill\Lavacharts\Lavacharts;
+use Artifacts\Helper\Helper;
 
 class DemographicsController extends Controller
 {
     /**
      * Display demographics page.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -18,14 +17,21 @@ class DemographicsController extends Controller
         $lava = new Lavacharts;
 
         $popularity = $lava->DataTable();
-        $data = array(array('California', 80), array('Texas',70), array('Georgia',70));
+
+        $url = url('') . '/api/player/state';
+        $data = json_decode(file_get_contents($url));
+
+        $rows = array();
+        foreach($data as $state) {
+            $rows[] = array($state->state, $state->total);
+        }
 
         $popularity->addStringColumn('State')
                    ->addNumberColumn('Popularity')
-                   ->addRows($data);
+                   ->addRows($rows);
 
         $lava->PieChart('Popularity', $popularity);
-
+        return view('demographics', compact('lava'));
     }
 
     /**
