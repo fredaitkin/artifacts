@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'My Sounds'),
+    'name' => env('APP_NAME', 'Artifacts'),
 
     /*
     |--------------------------------------------------------------------------
@@ -160,6 +160,7 @@ return [
         * Third Party Service Providers...
         */
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
 
     ],
 
@@ -209,6 +210,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
 
     ],
 

@@ -10,7 +10,8 @@
         "james-heinrich/getid3": "^1.9",
         "kyslik/column-sortable": "^5.8",
         "laravel/framework": "5.6.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "khill/lavacharts" : "3.1.*"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

@@ -32,12 +32,10 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::delete('/player/{id}', 'PlayerController@destroy');
 
+	Route::get('/demographics', 'DemographicsController@index');
+
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/demographics', function () {
-	return view('demographics');
-});

@@ -71,13 +71,6 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    @auth
-                                        @if ( Auth::user()->id == 1)
-                                            <a class="dropdown-item" href="{{ url('/utilities') }}">
-                                                 {{ __('Utilities') }}
-                                            </a>
-                                        @endif
-                                    @endauth
                                 </div>
                             </li>
                         @endguest
