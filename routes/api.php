@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'artifacts.auth'], function() {
 	Route::get('player/state', 'PlayerController@getStateCount');
+	Route::get('player/country', 'PlayerController@getCountryCount');
 });

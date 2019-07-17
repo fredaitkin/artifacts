@@ -15,7 +15,6 @@ class DemographicsController extends Controller
     {
 
         $lava = new Lavacharts;
-
         $popularity = $lava->DataTable();
 
         $url = url('') . '/api/player/state';
@@ -23,6 +22,8 @@ class DemographicsController extends Controller
 
         // TODO update application server and try guzzle client
         // $data = Helper::GetAPI($url);
+
+        //https://github.com/kevinkhill/lavacharts/issues/123
 
         $rows = array();
         foreach($data as $state) {
@@ -34,12 +35,29 @@ class DemographicsController extends Controller
                    ->addRows($rows);
 
         $lava->PieChart('Popularity', $popularity);
+
+        $population = $lava->DataTable();
+
+        $url = url('') . '/api/player/country';
+        $data = json_decode(file_get_contents($url));
+
+        $rows = array();
+        foreach($data as $country) {
+            $rows[] = array($country->country, $country->total);
+        }
+
+        $population->addStringColumn('Country')
+                   ->addNumberColumn('Population')
+                   ->addRows($rows);
+
+        $lava->PieChart('Population', $population);
+
         return view('demographics', compact('lava'));
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     *, compact('lava')
      * @return \Illuminate\Http\Response
      */
     public function create()

@@ -153,4 +153,13 @@ class PlayerController extends Controller
             ->get();
     }
 
+  public function getCountryCount()
+    {
+        return DB::table('players')
+            ->select('country', DB::raw('count(*) as total'))
+            ->groupBy('country')
+            ->orderBy('total', 'DESC')
+            ->get();
+    }
+
 }
