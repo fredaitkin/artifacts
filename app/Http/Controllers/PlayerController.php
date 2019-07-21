@@ -148,17 +148,41 @@ class PlayerController extends Controller
         return DB::table('players')
             ->select('state', DB::raw('count(*) as total'))
             ->whereNotNull('state')
+            ->where('country', '=', 'US')
             ->groupBy('state')
             ->orderBy('total', 'DESC')
             ->get();
     }
 
-  public function getCountryCount()
+    public function getCountryCount()
     {
         return DB::table('players')
             ->select('country', DB::raw('count(*) as total'))
             ->groupBy('country')
             ->orderBy('total', 'DESC')
+            ->get();
+    }
+
+    public function getPlayerCount()
+    {
+        return DB::table('players')
+            ->select(DB::raw('count(*) as total'))
+            ->get();
+    }
+
+    public function getUSPlayerCount()
+    {
+        return DB::table('players')
+            ->select(DB::raw('count(*) as total'))
+            ->where('country', '=', 'US')
+            ->get();
+    }
+
+    public function getNonUSPlayerCount()
+    {
+        return DB::table('players')
+            ->select(DB::raw('count(*) as total'))
+            ->where('country', '<>', 'US')
             ->get();
     }
 
