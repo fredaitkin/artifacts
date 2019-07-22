@@ -44,7 +44,7 @@ class DemographicsController extends Controller
         $population = $lava->DataTable();
 
         $data = json_decode(file_get_contents(url('') . '/api/player/country'));
-        $data = array_slice($data, 0, 6);
+        $data = array_slice($data, 0, 5);
 
         $total = json_decode(file_get_contents(url('') . '/api/player'));
         $total = $total[0]->total;
