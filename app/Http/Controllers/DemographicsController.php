@@ -3,6 +3,7 @@
 namespace Artifacts\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Khill\Lavacharts\Lavacharts;
 use Artifacts\Helper\Helper;
 
@@ -17,12 +18,14 @@ class DemographicsController extends Controller
         $lava = new Lavacharts;
         $popularity = $lava->DataTable();
 
-        $data = json_decode(file_get_contents(url('') . '/api/player/state'));
-        // TODO update application server and try guzzle client
-        // $data = Helper::GetAPI($url);
+        $request = Request::create('/api/player/state', 'GET');
+        $response = Route::dispatch($request);
+        $data = json_decode($response->getContent());
 
         //https://github.com/kevinkhill/lavacharts/issues/123
-        $total = json_decode(file_get_contents(url('') . '/api/player/us'));
+        $request = Request::create('/api/player/us', 'GET');
+        $response = Route::dispatch($request);
+        $total = json_decode($response->getContent());
         $total = $total[0]->total;
 
         $rows = array();
@@ -43,10 +46,13 @@ class DemographicsController extends Controller
 
         $population = $lava->DataTable();
 
-        $data = json_decode(file_get_contents(url('') . '/api/player/country'));
-        $data = array_slice($data, 0, 5);
+        $request = Request::create('/api/player/country', 'GET');
+        $response = Route::dispatch($request);
+        $data = json_decode($response->getContent());
 
-        $total = json_decode(file_get_contents(url('') . '/api/player'));
+        $request = Request::create('/api/player', 'GET');
+        $response = Route::dispatch($request);
+        $total = json_decode($response->getContent());
         $total = $total[0]->total;
 
         $rows = array();
