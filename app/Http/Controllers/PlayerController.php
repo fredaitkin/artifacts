@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Artifacts\Player\Player;
 use Kyslik\ColumnSortable\Sortable;
+use Intervention\Image\ImageManagerStatic as Image;
+use Storage;
 
 class PlayerController extends Controller
 {
@@ -48,11 +50,24 @@ class PlayerController extends Controller
     public function store(Request $request)
     {
 	    $validator = $request->validate([
-	        'first_name' => 'required|max:255',
-	        'last_name' => 'required|max:255',
-	        'team' => 'required|string'
+	        'first_name'   => 'required|max:255',
+	        'last_name'    => 'required|max:255',
+	        'team'         => 'required|string'
 	    ]);
 
+        if ($request->hasFile('photo')) {
+            $image      = $request->file('photo');
+            $file_name   = time() . '.' . $request->first_name . '_' . $request->last_name . '.' . $image->extension();
+
+            $img = Image::make($image->getRealPath());
+            $img->resize(120, 120, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $img->stream();
+
+            Storage::disk('public')->put('images/smalls' . '/' . $file_name, $img);
+        }
         if ( isset($request->id)){
             $player = Player::findOrFail($request->id);
         } else {
@@ -70,6 +85,12 @@ class PlayerController extends Controller
         $player->draft_round    = $request->draft_round;
         $player->draft_position = $request->draft_position;
         $player->debut_year     = $request->debut_year;
+        $player->previous_teams = $request->previous_teams;
+
+        if(isset($file_name)):
+            $player->photo = $file_name;
+        endif;
+
 	    $player->save();
 
 	    return redirect('/players');
