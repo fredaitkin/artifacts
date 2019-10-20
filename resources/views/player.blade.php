@@ -19,12 +19,11 @@
             <!-- player photo -->
             <div class="col-sm-6 form-group">
                 <div class="col-sm-3">
-                    <img src="{{ asset('storage/images/smalls/'.$player->photo) }}" alt="something">
+                    <img src="{{ asset('storage/images/smalls/'.$player->photo) }}" alt="player_photo">
                 </div>
             </div>
              @endif
-
-            <div class="col-sm-6 float-left">
+ <div class="col-lg-6 float-left">
                 <!-- player Name -->
                 <div class="form-group">
                     <label for="player" class="col-sm-3 control-label">First Name</label>
@@ -73,8 +72,7 @@
                         <input type="text" name="country" id="player->country" class="form-control" @if( ! empty($player->country)) value="{{$player->country}}" @endif>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6 float-right">
+
                 <div class="form-group">
                     <label for="birthdate" class="col-sm-3 control-label">Birth Date</label>
 
@@ -82,7 +80,8 @@
                         <input type="text" name="birthdate" id="player->birthdate" class="form-control" @if( ! empty($player->birthdate)) value="{{$player->birthdate}}" @endif>
                     </div>
                 </div>
-
+            </div>
+            <div class="col-lg-6 float-right">
                 <div class="form-group">
                     <label for="draft_year" class="col-sm-3 control-label">Draft Year</label>
 
@@ -118,23 +117,21 @@
                 <div class="form-group">
                     <label for="photo" class="col-sm-3 control-label">Photo</label>
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                         <input type="file" name="photo" id="player->photo" class="form-control">
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-9">
                 <div class="form-group">
                     <label for="previous_teams" class="col-sm-3 control-label">Previous Teams</label>
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                         <input type="text" name="previous_teams" id="player->previous_teams" class="form-control" @if( ! empty($player->previous_teams)) value="{{$player->previous_teams}}" @endif>
                     </div>
                 </div>
             </div>
 
             <!-- Add player Button -->
-            <div class="form-group">
+            <div class="col-lg-6">
                 @if( ! empty($player->id))
                     <div class="col-sm-offset-3 col-sm-6">
                         <input type="hidden" name="id" id="player-id" value="{{$player->id}}">

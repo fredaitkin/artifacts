@@ -112,10 +112,14 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $player = Player::find($id);
-        return view('player', ['title' => 'Edit Player', 'player' => $player]);
+        if(isset($request->view)):
+            return view('player_view', ['player' => $player]);
+        else:
+            return view('player', ['title' => 'Edit Player', 'player' => $player]);
+        endif;
     }
 
 

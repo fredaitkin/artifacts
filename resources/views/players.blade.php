@@ -55,6 +55,7 @@
                         <th scope='col'>@sortablelink('draftPosition', 'Draft Position')</th>
                         <th scope='col'>@sortablelink('debutYear', 'Debut Year')</th>
                         <th>&nbsp;</th>
+                        <th>&nbsp;</th>
                     </tr>
                     </thead>
 
@@ -93,6 +94,10 @@
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->debut_year }}</div>
+                                </td>
+                                <td>
+                                    {{ csrf_field() }}
+                                    <a href="/player/{{ $player->id }}?view=true">view</a>
                                 </td>                                                                  
                                 <td>
                                     {{ csrf_field() }}
