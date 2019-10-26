@@ -37,6 +37,16 @@ class Player extends Model
         return Carbon::parse($value)->format('d/m/Y');
     }
 
+	/**
+     * Set formatted birth date.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function setBirthDateAttribute($value) {
+        return Carbon::parse($value)->format('Y-m-d');
+    }
+
 	public function draftYearSortable($query, $direction) {
 		return $query->orderByRaw('ISNULL(draft_year), draft_year ' . $direction);
     }
