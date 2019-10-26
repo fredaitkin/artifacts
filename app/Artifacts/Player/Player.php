@@ -4,6 +4,7 @@ namespace Artifacts\Player;
 
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+use Carbon\Carbon;
 
 class Player extends Model
 {
@@ -25,6 +26,16 @@ class Player extends Model
 		'draft_position',
 		'debut_year'
 	];
+
+	/**
+     * Get formatted birth date.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getBirthDateAttribute($value) {
+        return Carbon::parse($value)->format('d/m/Y');
+    }
 
 	public function draftYearSortable($query, $direction) {
 		return $query->orderByRaw('ISNULL(draft_year), draft_year ' . $direction);
