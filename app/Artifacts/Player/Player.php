@@ -34,7 +34,7 @@ class Player extends Model
      * @return string
      */
     public function getBirthDateAttribute($value) {
-        return Carbon::parse($value)->format('d/m/Y');
+        return Carbon::parse($value)->format('d-m-Y');
     }
 
 	/**
@@ -44,7 +44,7 @@ class Player extends Model
      * @return string
      */
     public function setBirthDateAttribute($value) {
-        return Carbon::parse($value)->format('Y-m-d');
+        return Carbon::parse($value)->format('d-m-Y');
     }
 
 	public function draftYearSortable($query, $direction) {
