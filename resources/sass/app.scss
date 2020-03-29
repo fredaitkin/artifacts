@@ -1,14 +1,37 @@
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+:root {
+  --font-family-sans-serif: Helvetica, Arial, sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body {
+  margin-left: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+.navbar-brand {
+  font-size: 14px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.artifacts-table {
+  width: 90%;
+  margin-left: 15px;
+}
+
+.artifacts-submit-form-div {
+	background-color: black;
+	color: white;
+	padding: 20px;
 }

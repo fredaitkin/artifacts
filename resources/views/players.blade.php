@@ -15,7 +15,7 @@
         @endif
 
         <div class="col-sm-3">
-            <h3>Current Players</h3>
+            <h5>Current Players</h5>
         </div>
 
         <div class="panel panel-default">
