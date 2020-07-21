@@ -38,7 +38,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-		return view('player', ['title' => 'Add Player']);
+        return view('player', ['title' => 'Add Player']);
     }
 
     /**
@@ -49,11 +49,11 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-	    $validator = $request->validate([
-	        'first_name'   => 'required|max:255',
-	        'last_name'    => 'required|max:255',
-	        'team'         => 'required|string'
-	    ]);
+        $validator = $request->validate([
+            'first_name'   => 'required|max:255',
+            'last_name'    => 'required|max:255',
+            'team'         => 'required|string'
+        ]);
 
         if ($request->hasFile('photo')) {
             $image      = $request->file('photo');
@@ -91,9 +91,9 @@ class PlayerController extends Controller
             $player->photo = $file_name;
         endif;
 
-	    $player->save();
+        $player->save();
 
-	    return redirect('/players');
+        return redirect('/players');
     }
 
     /**
@@ -115,10 +115,13 @@ class PlayerController extends Controller
     public function edit(Request $request, $id)
     {
         $player = Player::find($id);
+        $teams = config('teams');
+        $teams[''] = 'Please Select';
+        ksort($teams);
         if(isset($request->view)):
             return view('player_view', ['player' => $player]);
         else:
-            return view('player', ['title' => 'Edit Player', 'player' => $player]);
+            return view('player', ['title' => 'Edit Player', 'player' => $player, 'teams' => $teams]);
         endif;
     }
 
@@ -164,8 +167,8 @@ class PlayerController extends Controller
      */
     public function destroy($id)
     {
-	    Player::findOrFail($id)->delete();
-	    return redirect('/players');
+        Player::findOrFail($id)->delete();
+        return redirect('/players');
     }
 
     public function getStateCount()

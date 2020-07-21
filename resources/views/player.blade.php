@@ -45,7 +45,14 @@
                 <label for="team" class="col-sm-3 control-label">Team</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="team" id="player->team" class="form-control" @if( ! empty($player->team)) value="{{$player->team}}" @endif>
+
+                    <select class="form-control" name="team">
+
+                        @foreach($teams as $key => $team)
+                            <option value="{{$key}}" @if(!empty($player->team) && ($player->team == $key)) selected @endif>{{$team}}</option>
+                        @endforeach
+                    </select>
+
                 </div>
             </div>
 
