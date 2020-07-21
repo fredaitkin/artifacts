@@ -2,8 +2,6 @@
 
 @section('content')
 
-    <!-- Bootstrap Boilerplate... -->
-
     <div class="panel-body artifacts-submit-form-div">
 
         <h2 class="col-sm-3">{{$player->first_name}} {{$player->last_name}}</h2>
@@ -17,7 +15,7 @@
  
             <div>
                 <div>
-                    {{$player->team}}
+                    {{$player->team_display}}
                 </div>
                 <div>
                     {{$player->city}},         

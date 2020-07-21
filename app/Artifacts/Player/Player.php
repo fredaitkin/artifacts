@@ -63,4 +63,14 @@ class Player extends Model
 		return $query->orderByRaw('ISNULL(debut_year), debut_year ' . $direction);
     }
 
+    /**
+     * Get the team display name from abbreviation
+     *
+     * @return string
+     */
+    public function getTeamDisplayAttribute()
+    {
+        return config('teams')[$this->team];
+    }
+
 }

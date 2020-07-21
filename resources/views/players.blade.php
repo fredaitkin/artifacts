@@ -69,7 +69,7 @@
                                     <div>{{ $player->last_name }}</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>{{ $player->team }}</div>
+                                    <div>{{ $player->team_display }}</div>
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->city }}</div>
