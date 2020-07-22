@@ -137,8 +137,7 @@ class PlayerController extends Controller
         $q = $request->q;
         $players = [];
         if ($q != "") {
-            $players = \DB::table('players')
-                ->select('players.*')
+          $players = Player::select('players.*')
                 ->where('team', 'LIKE', '%' . $q . '%')
                 ->orWhere('city', 'LIKE', '%' . $q . '%')
                 ->orWhere('first_name', 'LIKE', '%' . $q . '%')
