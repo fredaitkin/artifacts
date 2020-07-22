@@ -2,8 +2,8 @@
 
 return [
 
-    'AD'    => 'Arizona Diamondbacks',
     'AB'    => 'Atlanta Braves',
+    'AD'    => 'Arizona Diamondbacks',
     'BO'    => 'Baltimore Orioles',
     'BRS'   => 'Boston Red Sox',
     'CC'    => 'Chicago Cubs',
@@ -14,8 +14,8 @@ return [
     'DT'    => 'Detroit Tigers',
     'HA'    => 'Houston Astros',
     'KCR'   => 'Kansas City Royals',
-    'LAA'   => 'Los Angeles Angels',
     'LAD'   => 'LA Dodgers',
+    'LAA'   => 'Los Angeles Angels',
     'MM'    => 'Miami Marlins',
     'MB'    => 'Milwaukee Brewers',
     'MT'    => 'Minnesota Twins',

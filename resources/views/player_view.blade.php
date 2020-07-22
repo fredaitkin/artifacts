@@ -41,7 +41,9 @@
                 </div>
 
                 <div class="mt-2">
-                    Previous teams: {{$player->previous_teams_display}}
+                    @if(!empty($player->previous_teams))
+                        Previous teams: {{$player->previous_teams_display}}
+                    @endif
                 </div>
             </div>
         </form>
