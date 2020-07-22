@@ -13,7 +13,7 @@
                 </div>
             @endif
  
-            <div class="mt-4">
+            <div class="mt-4 font-weight-bold">
 
                 <h4>{{$player->team_display}}</h4>
 
