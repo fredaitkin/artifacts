@@ -80,10 +80,13 @@ class Player extends Model
      */
     public function getPreviousTeamsDisplayAttribute()
     {
-        // TODO handle multiple teams
         $teams = '';
         if (!empty($this->previous_teams)):
-            $teams = config('teams')[$this->previous_teams];
+            $data = explode(',', $this->previous_teams);
+            foreach($data as $key => $value):
+              $data[$key] = config('teams')[$value];
+            endforeach;
+            $teams = implode(', ', $data);
         endif;
         return $teams;
     }
