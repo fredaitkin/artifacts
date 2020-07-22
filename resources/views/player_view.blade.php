@@ -2,47 +2,46 @@
 
 @section('content')
 
-    <div class="panel-body artifacts-submit-form-div">
+    <div class="panel-body row content team-div {{$player->team}}-div">
 
         <h2 class="col-sm-3">{{$player->first_name}} {{$player->last_name}}</h2>
 
         <form>
             @if(!empty($player->photo))
                 <div>
-                    <img src="{{ asset('storage/images/smalls/'.$player->photo) }}" alt="player_photo">
+                    <img class="w-75 img-thumbnail" src="{{asset('storage/images/smalls/'.$player->photo)}}" alt="player_photo">
                 </div>
             @endif
  
-            <div>
-                <div>
-                    {{$player->team_display}}
+            <div class="mt-4">
+
+                <h4>{{$player->team_display}}</h4>
+
+                <div class="mt-2">
+                    @if(!empty($player->draft_year))
+                        Drafted: {{$player->draft_year}}</br>
+                    @endif 
+                    @if(!empty($player->draft_round))
+                        Round: {{$player->draft_round}}</br>
+                    @endif
+                    @if(!empty($player->draft_position))
+                        Position: {{$player->draft_position}}</br>
+                    @endif
+                    Debuted: {{$player->debut_year}}
                 </div>
-                <div>
-                    {{$player->city}},         
+
+                <div class="mt-2">
+                    Origin: {{$player->city}},         
                     @if(!empty($player->state)) 
                         {{$player->state}},  
                     @endif 
-                    {{$player->country}}
+                    {{$player->country}}</br>
+                    Age: {{$player->age}}</br>
+                    Birthdate: {{$player->birthdate}}
                 </div>
-                <div>
-                    {{$player->birthdate}}
-                </div>
-                <div>
-                    @if(!empty($player->draft_year))
-                        Drafted in {{$player->draft_year}}
-                    @endif 
-                    @if(!empty($player->draft_round))
-                        , round {{$player->draft_round}}
-                    @endif
-                    @if(!empty($player->draft_position))
-                        , position {{$player->draft_position}}
-                    @endif
-                </div>
-                <div>
-                    Debuted in {{$player->debut_year}}
-                </div>
-                <div>
-                    {{$player->previous_teams}}
+
+                <div class="mt-2">
+                    Previous teams: {{$player->previous_teams_display}}
                 </div>
             </div>
         </form>

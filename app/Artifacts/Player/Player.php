@@ -73,4 +73,28 @@ class Player extends Model
         return config('teams')[$this->team];
     }
 
+    /**
+     * Get the previous team/s display name/s from abbreviations
+     *
+     * @return string
+     */
+    public function getPreviousTeamsDisplayAttribute()
+    {
+        // TODO handle multiple teams
+        $teams = '';
+        if (!empty($this->previous_teams)):
+            $teams = config('teams')[$this->previous_teams];
+        endif;
+        return $teams;
+    }
+
+    /**
+     * Get player age from birthdate
+     *
+     * @return string
+     */
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->birthdate)->age;
+    }
 }

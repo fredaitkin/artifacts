@@ -10913,3 +10913,17 @@ body {
   padding: 20px;
 }
 
+.team-div {
+  color: white;
+  padding: 20px;
+  height: 600px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: grey;
+  margin-left: 10em;
+  margin-right: 30em;
+}
+
+.LAD-div {
+  background-color: blue;
+}
