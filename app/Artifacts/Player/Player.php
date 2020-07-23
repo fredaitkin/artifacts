@@ -108,7 +108,7 @@ class Player extends Model
      */
     public function getRegularPhotoAttribute()
     {
-        $photos = unserialize($this->photo);
+        $photos = @unserialize($this->photo);
         return $photos['regular'] ?? '';
     }
 
@@ -119,7 +119,7 @@ class Player extends Model
      */
     public function getSmallPhotoAttribute()
     {
-        $photos = unserialize($this->photo);
+        $photos = @unserialize($this->photo);
         return $photos['small'] ?? '';
     }
 }
