@@ -55,10 +55,12 @@ class PlayerController extends Controller
             'team'         => 'required|string'
         ]);
 
-        if ($request->hasFile('photo')) {
-            $image      = $request->file('photo');
-            $file_name   = time() . '.' . $request->first_name . '_' . $request->last_name . '.' . $image->extension();
+        if ($request->hasFile('photo')):
 
+            $image      = $request->file('photo');
+            $file_name  = time() . '.' . $request->first_name . '_' . $request->last_name . '.' . $image->extension();
+
+            // Reduced size photo
             $img = Image::make($image->getRealPath());
             $img->resize(120, 120, function ($constraint) {
                 $constraint->aspectRatio();
@@ -67,12 +69,19 @@ class PlayerController extends Controller
             $img->stream();
 
             Storage::disk('public')->put('images/smalls' . '/' . $file_name, $img);
-        }
-        if ( isset($request->id)){
+
+            // Regular phot
+            $img = Image::make($image->getRealPath());
+            $img->stream();
+            Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
+
+        endif;
+
+        if (isset($request->id)):
             $player = Player::findOrFail($request->id);
-        } else {
+        else:
             $player = new Player();
-        }
+        endif;
 
         $player->first_name     = $request->first_name;
         $player->last_name      = $request->last_name;
@@ -87,8 +96,9 @@ class PlayerController extends Controller
         $player->debut_year     = $request->debut_year;
         $player->previous_teams = $request->previous_teams;
 
-        if(isset($file_name)):
-            $player->photo = $file_name;
+        if (isset($file_name)):
+            // Duplication caused by legacy photo processing
+            $player->photo = serialize(['regular' => $file_name, 'small' => $file_name]);
         endif;
 
         $player->save();
