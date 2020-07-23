@@ -2,24 +2,19 @@
 
 @section('content')
 
-    <!-- Bootstrap Boilerplate... -->
-
     <div class="panel-body artifacts-submit-form-div">
 
         <h2 class="col-sm-3">{{$title}}</h2>
 
         @include('common.errors')
 
-
-        <!-- New player Form -->
         <form action="/player" enctype="multipart/form-data" method="POST" class="form-horizontal">
             {{ csrf_field() }}
 
             @if(!empty($player->photo))
-            <!-- player photo -->
             <div class="col-sm-6 form-group">
                 <div class="col-sm-3">
-                    <img src="{{ asset('storage/images/smalls/'.$player->photo) }}" alt="player_photo">
+                    <img src="{{ asset('storage/images/smalls/'.$player->small_photo) }}" alt="player_photo">
                 </div>
             </div>
              @endif
@@ -134,7 +129,6 @@
                 </div>
             </div>
 
-            <!-- Add player Button -->
             <div class="col-lg-6">
                 @if( ! empty($player->id))
                     <div class="col-sm-offset-3 col-sm-6">

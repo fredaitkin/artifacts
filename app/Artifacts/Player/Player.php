@@ -100,4 +100,26 @@ class Player extends Model
     {
         return Carbon::parse($this->birthdate)->age;
     }
+
+    /**
+     * Get regular photo
+     *
+     * @return string
+     */
+    public function getRegularPhotoAttribute()
+    {
+        $photos = unserialize($this->photo);
+        return $photos['regular'] ?? '';
+    }
+
+    /**
+     * Get small photo
+     *
+     * @return string
+     */
+    public function getSmallPhotoAttribute()
+    {
+        $photos = unserialize($this->photo);
+        return $photos['small'] ?? '';
+    }
 }
