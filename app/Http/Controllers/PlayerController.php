@@ -38,7 +38,10 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        return view('player', ['title' => 'Add Player']);
+        $teams = config('teams');
+        $teams[''] = 'Please Select';
+        ksort($teams);
+        return view('player', ['title' => 'Add Player', 'teams' => $teams]);
     }
 
     /**
@@ -131,7 +134,7 @@ class PlayerController extends Controller
         if(isset($request->view)):
             return view('player_view', ['player' => $player]);
         else:
-            return view('player', ['title' => 'Edit Player', 'player' => $player, 'teams' => $teams]);
+            return view('player', ['title' => '', 'player' => $player, 'teams' => $teams]);
         endif;
     }
 
