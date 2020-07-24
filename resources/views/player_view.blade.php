@@ -9,7 +9,7 @@
         <form>
             @if(!empty($player->photo))
                 <div>
-                    <img class="w-75 img-thumbnail" src="{{asset('storage/images/regular/'.$player->regular_photo)}}" alt="player_photo">
+                    <img class="img-thumbnail" src="{{asset('storage/images/regular/'.$player->regular_photo)}}" alt="player_photo">
                 </div>
             @endif
  
@@ -40,7 +40,7 @@
                     Birthdate: {{$player->birthdate}}
                 </div>
 
-                <div class="mt-2">
+                <div class="mt-2 previous-teams-div">
                     @if(!empty($player->previous_teams))
                         Previous teams: {{$player->previous_teams_display}}
                     @endif
