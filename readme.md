@@ -1,4 +1,4 @@
-## Music Laravel
+## Artifacts
 
-A music application built on Lavarel 
-Displays songs and artists
+An application built on Lavarel 
+Currently displays baseball statistics and demographics
