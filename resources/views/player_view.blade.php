@@ -37,7 +37,7 @@
                     @endif 
                     {{$player->country}}</br>
                     Age: {{$player->age}}</br>
-                    Birthdate: {{$player->birthdate}}
+                    Birthdate: {{$player->birth_date_display}}
                 </div>
 
                 <div class="mt-2 previous-teams-div">
