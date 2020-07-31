@@ -69,7 +69,13 @@
             <div class="form-group">
                 <label for="country" class="col-sm-3 control-label">Country</label>
                 <div class="col-sm-4">
-                    <input type="text" name="country" id="player->country" class="form-control" @if(!empty($player->country)) value="{{$player->country}}" @endif>
+
+                    <select class="form-control" name="country">
+                        @foreach($countries as $country)
+                            <option value="{{$country}}" @if(!empty($player->country) && ($player->country == $country)) selected @endif>{{$country}}</option>
+                        @endforeach
+                    </select>
+
                 </div>
             </div>
 
