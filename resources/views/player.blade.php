@@ -23,7 +23,7 @@
                 <label for="player" class="col-sm-3 control-label">First Name</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="first_name" id="player->first_name" class="form-control" @if(!empty($player->first_name)) value="{{$player->first_name}}" @endif>
+                    <input type="text" name="first_name" id="first_name" class="form-control" @if(!empty($player->first_name)) value="{{$player->first_name}}" @endif>
                 </div>
 
             </div>
@@ -149,4 +149,8 @@
         </form>
 
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/player.js') }}"></script>
 @endsection
