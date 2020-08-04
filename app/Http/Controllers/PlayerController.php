@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+
 use Artifacts\Player\Player;
+use Artifacts\Rules\IsTeam;
+
 use Kyslik\ColumnSortable\Sortable;
 use Intervention\Image\ImageManagerStatic as Image;
 use Storage;
@@ -53,9 +56,10 @@ class PlayerController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'first_name'   => 'required|max:255',
-            'last_name'    => 'required|max:255',
-            'team'         => 'required|string'
+            'first_name'        a=> 'required|max:255',
+            'last_name'         => 'required|max:255',
+            'team'              => 'required|string',
+            'previous_teams'    => new IsTeam,
         ]);
 
         if ($request->hasFile('photo')):
