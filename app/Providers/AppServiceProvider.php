@@ -22,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Population service
+        $this->app->bind(
+            'Artifacts\Interfaces\PopulationServiceInterface',
+            'Artifacts\Services\PopulationService'
+        );
     }
 }
