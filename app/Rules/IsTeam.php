@@ -44,6 +44,6 @@ class IsTeam implements Rule
      */
     public function message()
     {
-        return 'This is not a valid team/s.';
+        return 'The previous teams must be in ' . implode(', ', array_keys(config('teams')));
     }
 }
