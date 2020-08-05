@@ -41,9 +41,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        $teams = config('teams');
-        $teams[''] = 'Please Select';
-        ksort($teams);
+        $teams = ['' => 'Please Select'] + config('teams');
         return view('player', ['title' => 'Add Player', 'teams' => $teams, 'countries' => config('countries')]);
     }
 
@@ -56,7 +54,7 @@ class PlayerController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'first_name'        a=> 'required|max:255',
+            'first_name'        => 'required|max:255',
             'last_name'         => 'required|max:255',
             'team'              => 'required|string',
             'previous_teams'    => new IsTeam,
@@ -132,9 +130,7 @@ class PlayerController extends Controller
     public function edit(Request $request, $id)
     {
         $player = Player::find($id);
-        $teams = config('teams');
-        $teams[''] = 'Please Select';
-        ksort($teams);
+        $teams = ['' => 'Please Select'] + config('teams');
         if(isset($request->view)):
             return view('player_view', ['player' => $player]);
         else:
