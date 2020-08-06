@@ -2,20 +2,20 @@
 
 @section('content')
 
-    <!-- Bootstrap Boilerplate... -->
-
     <div class="panel-body artifacts-submit-form-div">
 
         <h2 class="col-sm-3">Demographics</h2>
-    
-      <div id="pop1-div" style="width:399px;margin:1em"></div>
-        <?= $lava->render('PieChart', 'Popularity', 'pop1-div') ?>
 
-      <div id="pop2-div" style="width:399px;margin:1em"></div>
-        <?= $lava->render('PieChart', 'ComparativePopularity', 'pop2-div') ?>
+        <div class="row">
+            <div id="pop1-div" class="col"></div>
+                <?= $lava->render('PieChart', 'Popularity', 'pop1-div') ?>
 
-      <div id="pop3-div" style="width:399px;margin:1em"></div>
-        <?= $lava->render('PieChart', 'Population', 'pop3-div') ?>
+            <div id="pop2-div" class="col"></div>
+                <?= $lava->render('PieChart', 'ComparativePopularity', 'pop2-div') ?>
+
+            <div id="pop3-div" class="col"></div>
+                <?= $lava->render('PieChart', 'Population', 'pop3-div') ?>
+        </div>
 
       @include('common.errors')
 
