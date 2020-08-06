@@ -53,7 +53,6 @@ class DemographicsController extends Controller
 
         $lava->PieChart('Popularity', $popularity, ['title' => 'Players by State', 'height' => 350, 'width' => 400]);
 
-        // TODO suppress percentages and display inline and add api call
         // Players by State by Population
         $comparative_popularity = $lava->DataTable();
 
@@ -63,7 +62,7 @@ class DemographicsController extends Controller
 
         usort($state_data, array('Artifacts\Http\Controllers\DemographicsController', 'pop_compare'));
 
-        $data = array_slice($state_data, 0, 10);
+        $data = $state_data;
         $rows = array();
         foreach($data as $state) {
             $rows[] = array($state->state, $state->comparative);
@@ -73,7 +72,16 @@ class DemographicsController extends Controller
                    ->addNumberColumn('ComparativePopularity')
                    ->addRows($rows);
 
-        $lava->PieChart('ComparativePopularity', $comparative_popularity, ['title' => 'Top Ten State Producers', 'height' => 350, 'width' => 400]);
+        $lava->PieChart(
+            'ComparativePopularity',
+            $comparative_popularity,
+            [
+                'title'         => 'Top State Producers',
+                'height'        => 350,
+                'width'         => 500,
+                'pieSliceText'  => 'none'
+            ]
+        );
 
         // Players by nonUS Country
         $population = $lava->DataTable();
