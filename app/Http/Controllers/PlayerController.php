@@ -42,7 +42,13 @@ class PlayerController extends Controller
     public function create()
     {
         $teams = ['' => 'Please Select'] + config('teams');
-        return view('player', ['title' => 'Add Player', 'teams' => $teams, 'countries' => config('countries')]);
+        $states = ['' => 'Please Select'] + config('states');
+        return view('player', [
+            'title'     => 'Add Player',
+            'teams'     => $teams,
+            'states'    => $states,
+            'countries' => config('countries')
+        ]);
     }
 
     /**
@@ -112,16 +118,6 @@ class PlayerController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -131,13 +127,19 @@ class PlayerController extends Controller
     {
         $player = Player::find($id);
         $teams = ['' => 'Please Select'] + config('teams');
+        $states = ['' => 'Please Select'] + config('states');
         if(isset($request->view)):
             return view('player_view', ['player' => $player]);
         else:
-            return view('player', ['title' => '', 'player' => $player, 'teams' => $teams, 'countries' => config('countries')]);
+            return view('player', [
+                'title'     => '',
+                'player'    => $player,
+                'teams'     => $teams,
+                'states'    => $states,
+                'countries' => config('countries')
+            ]);
         endif;
     }
-
 
     /**
      * Search for player.

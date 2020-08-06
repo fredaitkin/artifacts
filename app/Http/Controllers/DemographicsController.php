@@ -53,11 +53,12 @@ class DemographicsController extends Controller
 
         $lava->PieChart('Popularity', $popularity, ['title' => 'Players by State', 'height' => 350, 'width' => 400]);
 
+        // TODO PieChart does not make sense, use BarChart?
         // Players by State by Population
         $comparative_popularity = $lava->DataTable();
-
+        $states = config('states');
         foreach($state_data as $state):
-            $state->comparative = round($state->total / $us_population_statistics['state_populations'][$state->state]['population'] * 100, 6);
+            $state->comparative = round($state->total / $us_population_statistics['state_populations'][$states[$state->state]]['population'] * 100, 6);
         endforeach;
 
         usort($state_data, array('Artifacts\Http\Controllers\DemographicsController', 'pop_compare'));

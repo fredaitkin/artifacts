@@ -62,7 +62,13 @@
                 <label for="state" class="col-sm-3 control-label">State</label>
 
                 <div class="col-sm-4">
-                    <input type="text" name="state" id="player->state" class="form-control" @if(!empty($player->state)) value="{{$player->state}}" @endif>
+
+                    <select class="form-control" name="state">
+                        @foreach($states as $key => $state)
+                            <option value="{{$key}}" @if(!empty($player->state) && ($player->state == $key)) selected @endif>{{$state}}</option>
+                        @endforeach
+                    </select>
+
                 </div>
             </div>
 
