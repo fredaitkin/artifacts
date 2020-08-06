@@ -12,7 +12,10 @@
         <?= $lava->render('PieChart', 'Popularity', 'pop1-div') ?>
 
       <div id="pop2-div" style="width:399px;margin:1em"></div>
-        <?= $lava->render('PieChart', 'Population', 'pop2-div') ?>
+        <?= $lava->render('PieChart', 'ComparativePopularity', 'pop2-div') ?>
+
+      <div id="pop3-div" style="width:399px;margin:1em"></div>
+        <?= $lava->render('PieChart', 'Population', 'pop3-div') ?>
 
       @include('common.errors')
 

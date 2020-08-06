@@ -5,31 +5,40 @@ namespace Artifacts\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Khill\Lavacharts\Lavacharts;
-use Artifacts\Helper\Helper;
+use Artifacts\Interfaces\PopulationServiceInterface;
 
 class DemographicsController extends Controller
 {
+    private $populationService;
+
+    public function __construct(PopulationServiceInterface $populationService)
+    {
+        $this->populationService = $populationService;
+    }
+
     /**
      * Display demographics page.
      */
     public function index()
     {
+        $us_population_statistics = $this->populationService->getUSStatistics();
 
         $lava = new Lavacharts;
+
+        // Players by State
         $popularity = $lava->DataTable();
 
         $request = Request::create('/api/player/state', 'GET');
         $response = Route::dispatch($request);
-        $data = json_decode($response->getContent());
+        $state_data = json_decode($response->getContent());
 
-        //https://github.com/kevinkhill/lavacharts/issues/123
         $request = Request::create('/api/player/us', 'GET');
         $response = Route::dispatch($request);
         $total = json_decode($response->getContent());
         $total = $total[0]->total;
 
         $rows = array();
-        $data = array_slice($data, 0, 5);
+        $data = array_slice($state_data, 0, 5);
 
         $other = $total;
         foreach($data as $state) {
@@ -44,6 +53,29 @@ class DemographicsController extends Controller
 
         $lava->PieChart('Popularity', $popularity, ['title' => 'Players by State', 'height' => 350, 'width' => 400]);
 
+        // TODO suppress percentages and display inline and add api call
+        // Players by State by Population
+        $comparative_popularity = $lava->DataTable();
+
+        foreach($state_data as $state):
+            $state->comparative = round($state->total / $us_population_statistics['state_populations'][$state->state]['population'] * 100, 6);
+        endforeach;
+
+        usort($state_data, array('Artifacts\Http\Controllers\DemographicsController', 'pop_compare'));
+
+        $data = array_slice($state_data, 0, 10);
+        $rows = array();
+        foreach($data as $state) {
+            $rows[] = array($state->state, $state->comparative);
+        }
+
+        $comparative_popularity->addStringColumn('State')
+                   ->addNumberColumn('ComparativePopularity')
+                   ->addRows($rows);
+
+        $lava->PieChart('ComparativePopularity', $comparative_popularity, ['title' => 'Top Ten State Producers', 'height' => 350, 'width' => 400]);
+
+        // Players by nonUS Country
         $population = $lava->DataTable();
 
         $request = Request::create('/api/player/country', 'GET');
@@ -77,69 +109,12 @@ class DemographicsController extends Controller
         return view('demographics', compact('lava'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *, compact('lava')
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function pop_compare($a, $b)
     {
-        //
+        if ($a->comparative == $b->comparative) {
+            return 0;
+        }
+        return ($a->comparative > $b->comparative) ? -1 : 1;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
