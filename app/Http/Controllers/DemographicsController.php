@@ -63,7 +63,7 @@ class DemographicsController extends Controller
 
         usort($state_data, array('Artifacts\Http\Controllers\DemographicsController', 'pop_compare'));
 
-        $data = $state_data;
+        $data = array_slice($state_data, 0, 10);
         $rows = array();
         foreach($data as $state) {
             $rows[] = array($state->state, $state->comparative);
@@ -73,14 +73,15 @@ class DemographicsController extends Controller
                    ->addNumberColumn('ComparativePopularity')
                    ->addRows($rows);
 
-        $lava->PieChart(
+        $lava->BarChart(
             'ComparativePopularity',
             $comparative_popularity,
             [
-                'title'         => 'Top State Producers',
-                'height'        => 350,
-                'width'         => 500,
-                'pieSliceText'  => 'none'
+                'title'                 => 'Top Ten State Producers',
+                'height'                => 350,
+                'width'                 => 500,
+                'legend'                => 'none',
+                'enableInteractivity'   => false,
             ]
         );
 

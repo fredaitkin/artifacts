@@ -11,7 +11,7 @@
                 <?= $lava->render('PieChart', 'Popularity', 'pop1-div') ?>
 
             <div id="pop2-div" class="col"></div>
-                <?= $lava->render('PieChart', 'ComparativePopularity', 'pop2-div') ?>
+                <?= $lava->render('BarChart', 'ComparativePopularity', 'pop2-div') ?>
 
             <div id="pop3-div" class="col"></div>
                 <?= $lava->render('PieChart', 'Population', 'pop3-div') ?>
