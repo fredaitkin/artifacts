@@ -89,7 +89,7 @@
                 <label for="birthdate" class="col-sm-3 control-label">Birth Date</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="birthdate" id="player->birthdate" class="form-control" value=@if (old('previous_teams')) {{ old('previous_teams') }} @elseif (!empty($player->previous_teams)) {{$player->previous_teams}} @endif>
+                    <input type="text" name="birthdate" id="player->birthdate" class="form-control" value=@if (old('birthdate')) {{ old('birthdate') }} @elseif (!empty($player->birthdate)) {{$player->birthdate}} @endif>
                 </div>
             </div>
      
@@ -122,6 +122,38 @@
 
                 <div class="col-sm-3">
                     <input type="text" name="debut_year" id="debut_year" class="form-control" value=@if (old('debut_year')) {{ old('debut_year') }} @elseif (!empty($player->debut_year)) {{$player->debut_year}} @endif>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="position" class="col-sm-3 control-label">Position</label>
+
+                <div class="col-sm-3">
+                    <input type="text" name="position" id="position" class="form-control" value=@if (old('position')) {{ old('position') }} @elseif (!empty($player->position)) {{$player->position}} @endif>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="average" class="col-sm-3 control-label">Average</label>
+
+                <div class="col-sm-3">
+                    <input type="text" name="average" id="average" class="form-control" value=@if (old('average')) {{ old('average') }} @elseif (!empty($player->average)) {{$player->average}} @endif>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="home_runs" class="col-sm-3 control-label">Home Runs</label>
+
+                <div class="col-sm-3">
+                    <input type="text" name="home_runs" id="home_runs" class="form-control" value=@if (old('home_runs')) {{ old('home_runs') }} @elseif (!empty($player->home_runs)) {{$player->home_runs}} @endif>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="wins" class="col-sm-3 control-label">Wins</label>
+
+                <div class="col-sm-3">
+                    <input type="text" name="wins" id="wins" class="form-control" value=@if (old('wins')) {{ old('wins') }} @elseif (!empty($player->wins)) {{$player->wins}} @endif>
                 </div>
             </div>
 

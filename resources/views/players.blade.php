@@ -54,6 +54,10 @@
                         <th scope='col'>@sortablelink('draftRound', 'Draft Round')</th>
                         <th scope='col'>@sortablelink('draftPosition', 'Draft Position')</th>
                         <th scope='col'>@sortablelink('debutYear', 'Debut Year')</th>
+                        <th scope='col'>@sortablelink('position', 'Position')</th>
+                        <th scope='col'>@sortablelink('average', 'Avg')</th>
+                        <th scope='col'>@sortablelink('homeRuns', 'HRs')</th>
+                        <th scope='col'>@sortablelink('wins', 'Wins')</th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -94,6 +98,18 @@
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->debut_year }}</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>{{ $player->position }}</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>{{ $player->average }}</div>
+                                </td>
+                                <td class="table-text">
+                                    <div class="text-right">{{ $player->home_runs }}</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>{{ $player->wins }}</div>
                                 </td>
                                 <td>
                                     {{ csrf_field() }}

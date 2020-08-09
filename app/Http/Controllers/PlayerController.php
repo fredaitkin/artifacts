@@ -66,29 +66,15 @@ class PlayerController extends Controller
             'draft_position'    => 'nullable|integer',
             'draft_year'        => 'nullable|integer',
             'debut_year'        => 'nullable|integer',
+            'average'           => 'nullable|numeric',
+            'home_runs'         => 'nullable|integer',
+            'wins'              => 'nullable|integer',
             'previous_teams'    => new IsTeam,
         ]);
 
         if ($request->hasFile('photo')):
-
             $image      = $request->file('photo');
             $file_name  = time() . '.' . $request->first_name . '_' . $request->last_name . '.' . $image->extension();
-
-            // Reduced size photo
-            $img = Image::make($image->getRealPath());
-            $img->resize(120, 120, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-
-            $img->stream();
-
-            Storage::disk('public')->put('images/smalls' . '/' . $file_name, $img);
-
-            // Regular phot
-            $img = Image::make($image->getRealPath());
-            $img->stream();
-            Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
-
         endif;
 
         if (isset($request->id)):
@@ -108,6 +94,10 @@ class PlayerController extends Controller
         $player->draft_round    = $request->draft_round;
         $player->draft_position = $request->draft_position;
         $player->debut_year     = $request->debut_year;
+        $player->position       = $request->position;
+        $player->average        = $request->average;
+        $player->home_runs      = $request->home_runs;
+        $player->wins           = $request->wins;
         $player->previous_teams = $request->previous_teams;
 
         if (isset($file_name)):
@@ -116,6 +106,24 @@ class PlayerController extends Controller
         endif;
 
         $player->save();
+
+        // Only save photo if save if successful
+        if (isset($file_name)):
+            // Reduced size photo
+            $img = Image::make($image->getRealPath());
+            $img->resize(120, 120, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $img->stream();
+
+            Storage::disk('public')->put('images/smalls' . '/' . $file_name, $img);
+
+            // Regular phot
+            $img = Image::make($image->getRealPath());
+            $img->stream();
+            Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
+        endif;
 
         return redirect('/players');
     }
