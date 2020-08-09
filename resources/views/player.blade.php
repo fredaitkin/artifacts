@@ -23,7 +23,7 @@
                 <label for="player" class="col-sm-3 control-label">First Name</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="first_name" id="first_name" class="form-control" @if(!empty($player->first_name)) value="{{$player->first_name}}" @endif>
+                    <input type="text" name="first_name" id="first_name" class="form-control" value=@if (old('first_name')) {{ old('first_name') }} @elseif (!empty($player->first_name)) {{$player->first_name}} @endif>
                 </div>
 
             </div>
@@ -32,7 +32,7 @@
                 <label for="last_name" class="col-sm-3 control-label">Last Name</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="last_name" id="player->last_name" class="form-control" @if(!empty($player->last_name)) value="{{$player->last_name}}" @endif>
+                    <input type="text" name="last_name" id="last_name" class="form-control" value=@if (old('last_name')) {{ old('last_name') }} @elseif (!empty($player->last_name)) {{$player->last_name}} @endif>
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
                 <label for="city" class="col-sm-3 control-label">City</label>
 
                 <div class="col-sm-4">
-                    <input type="text" name="city" id="player->city" class="form-control" @if(!empty($player->city)) value="{{$player->city}}" @endif>
+                    <input type="text" name="city" id="city" class="form-control" value=@if (old('city')) {{ old('city') }} @elseif (!empty($player->city)) {{$player->city}} @endif>
                 </div>
             </div>
 
@@ -89,7 +89,7 @@
                 <label for="birthdate" class="col-sm-3 control-label">Birth Date</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="birthdate" id="player->birthdate" class="form-control" @if(!empty($player->birthdate)) value="{{$player->birthdate}}" @endif>
+                    <input type="text" name="birthdate" id="player->birthdate" class="form-control" value=@if (old('previous_teams')) {{ old('previous_teams') }} @elseif (!empty($player->previous_teams)) {{$player->previous_teams}} @endif>
                 </div>
             </div>
      
@@ -97,7 +97,7 @@
                 <label for="draft_year" class="col-sm-3 control-label">Draft Year</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="draft_year" id="player->draft_year" class="form-control" @if(!empty($player->draft_year)) value="{{$player->draft_year}}" @endif>
+                    <input type="text" name="draft_year" id="draft_year" class="form-control" value=@if (old('draft_year')) {{ old('draft_year') }} @elseif (!empty($player->draft_year)) {{$player->draft_year}} @endif>
                 </div>
             </div>
 
@@ -105,7 +105,7 @@
                 <label for="draft_round" class="col-sm-3 control-label">Draft Round</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="draft_round" id="player->draft_round" class="form-control" @if(!empty($player->draft_round)) value="{{$player->draft_round}}" @endif>
+                    <input type="text" name="draft_round" id="draft_round" class="form-control" value=@if (old('draft_round')) {{ old('draft_round') }} @elseif (!empty($player->draft_round)) {{$player->draft_round}} @endif>
                 </div>
             </div>
 
@@ -113,7 +113,7 @@
                 <label for="draft_position" class="col-sm-3 control-label">Draft Position</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="draft_position" id="player->draft_position" class="form-control" @if(!empty($player->draft_position)) value="{{$player->draft_position}}" @endif>
+                    <input type="text" name="draft_position" id="draft_position" class="form-control" value=@if (old('draft_position')) {{ old('draft_position') }} @elseif (!empty($player->draft_position)) {{$player->draft_position}} @endif>
                 </div>
             </div>
 
@@ -121,7 +121,7 @@
                 <label for="debut_year" class="col-sm-3 control-label">Debut Year</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="debut_year" id="player->debut_year" class="form-control" @if(!empty($player->debut_year)) value="{{$player->debut_year}}" @endif>
+                    <input type="text" name="debut_year" id="debut_year" class="form-control" value=@if (old('debut_year')) {{ old('debut_year') }} @elseif (!empty($player->debut_year)) {{$player->debut_year}} @endif>
                 </div>
             </div>
 

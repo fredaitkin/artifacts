@@ -55,7 +55,6 @@
                         <th scope='col'>@sortablelink('draftPosition', 'Draft Position')</th>
                         <th scope='col'>@sortablelink('debutYear', 'Debut Year')</th>
                         <th>&nbsp;</th>
-                        <th>&nbsp;</th>
                     </tr>
                     </thead>
 
@@ -63,7 +62,8 @@
                         @foreach ($players as $player)
                             <tr>
                                 <td class="table-text">
-                                    <div>{{ $player->first_name }}</div>
+                                    {{ csrf_field() }}
+                                    <a href="/player/{{ $player->id }}?view=true">{{ $player->first_name }}</a>
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->last_name }}</div>
@@ -95,10 +95,6 @@
                                 <td class="table-text">
                                     <div>{{ $player->debut_year }}</div>
                                 </td>
-                                <td>
-                                    {{ csrf_field() }}
-                                    <a href="/player/{{ $player->id }}?view=true">view</a>
-                                </td>                                                                  
                                 <td>
                                     {{ csrf_field() }}
                                     <a href="/player/{{ $player->id }}">edit</a>

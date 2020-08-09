@@ -63,6 +63,9 @@ class PlayerController extends Controller
             'first_name'        => 'required|max:255',
             'last_name'         => 'required|max:255',
             'team'              => 'required|string',
+            'draft_position'    => 'nullable|integer',
+            'draft_year'        => 'nullable|integer',
+            'debut_year'        => 'nullable|integer',
             'previous_teams'    => new IsTeam,
         ]);
 
