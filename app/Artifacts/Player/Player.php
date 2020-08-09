@@ -52,6 +52,26 @@ class Player extends Model
         return $query->orderByRaw('ISNULL(debut_year), debut_year ' . $direction);
     }
 
+    public function positionSortable($query, $direction) {
+        return $query->orderByRaw('ISNULL(position), position ' . $direction);
+    }
+
+    public function averageSortable($query, $direction) {
+        return $query->orderByRaw('ISNULL(average), average ' . $direction);
+    }
+
+    public function homeRunsSortable($query, $direction) {
+        return $query->orderByRaw('ISNULL(home_runs), home_runs ' . $direction);
+    }
+
+    public function eraSortable($query, $direction) {
+        return $query->orderByRaw('ISNULL(era), era ' . $direction);
+    }
+
+    public function winsSortable($query, $direction) {
+        return $query->orderByRaw('ISNULL(wins), wins ' . $direction);
+    }
+
     /**
      * Get the team display name from abbreviation
      *

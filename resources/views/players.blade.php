@@ -57,6 +57,7 @@
                         <th scope='col'>@sortablelink('position', 'Position')</th>
                         <th scope='col'>@sortablelink('average', 'Avg')</th>
                         <th scope='col'>@sortablelink('homeRuns', 'HRs')</th>
+                        <th scope='col'>@sortablelink('era', 'Era')</th>
                         <th scope='col'>@sortablelink('wins', 'Wins')</th>
                         <th>&nbsp;</th>
                     </tr>
@@ -107,6 +108,9 @@
                                 </td>
                                 <td class="table-text">
                                     <div class="text-right">{{ $player->home_runs }}</div>
+                                </td>
+                                <td class="table-text">
+                                    <div class="text-right">{{ $player->era }}</div>
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->wins }}</div>

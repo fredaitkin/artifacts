@@ -31,6 +31,19 @@
                 </div>
 
                 <div class="mt-2">
+                    @if(!empty($player->position))
+                        Position: {{$player->position}}</br>
+                        @if($player->position == 'P')
+                            ERA: {{$player->era}}</br>
+                            Wins: {{$player->wins}}</br>
+                        @else
+                            AVG: {{$player->average}}</br>
+                            HRs: {{$player->home_runs}}</br>
+                        @endif
+                    @endif
+                </div>
+
+                <div class="mt-2">
                     Origin: {{$player->city}},         
                     @if(!empty($player->state)) 
                         {{$player->state}},  

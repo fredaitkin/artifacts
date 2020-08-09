@@ -68,6 +68,7 @@ class PlayerController extends Controller
             'debut_year'        => 'nullable|integer',
             'average'           => 'nullable|numeric',
             'home_runs'         => 'nullable|integer',
+            'era'               => 'nullable|numeric',
             'wins'              => 'nullable|integer',
             'previous_teams'    => new IsTeam,
         ]);
@@ -97,6 +98,7 @@ class PlayerController extends Controller
         $player->position       = $request->position;
         $player->average        = $request->average;
         $player->home_runs      = $request->home_runs;
+        $player->era            = $request->era;
         $player->wins           = $request->wins;
         $player->previous_teams = $request->previous_teams;
 

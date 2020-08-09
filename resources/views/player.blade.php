@@ -150,6 +150,14 @@
             </div>
 
             <div class="form-group">
+                <label for="era" class="col-sm-3 control-label">ERA</label>
+
+                <div class="col-sm-3">
+                    <input type="text" name="era" id="era" class="form-control" value=@if (old('era')) {{ old('era') }} @elseif (!empty($player->era)) {{$player->era}} @endif>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label for="wins" class="col-sm-3 control-label">Wins</label>
 
                 <div class="col-sm-3">
