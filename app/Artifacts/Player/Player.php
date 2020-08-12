@@ -60,10 +60,17 @@ class Player extends Model
         return $query->orderByRaw('ISNULL(average), average ' . $direction);
     }
 
+    public function atBatsSortable($query, $direction) {
+        return $query->orderByRaw('ISNULL(at_bats), at_bats ' . $direction);
+    }
+
     public function homeRunsSortable($query, $direction) {
         return $query->orderByRaw('ISNULL(home_runs), home_runs ' . $direction);
     }
 
+    public function rbisSortable($query, $direction) {
+        return $query->orderByRaw('ISNULL(rbis), rbis ' . $direction);
+    }
     public function eraSortable($query, $direction) {
         return $query->orderByRaw('ISNULL(era), era ' . $direction);
     }

@@ -67,8 +67,11 @@ class PlayerController extends Controller
             'draft_year'        => 'nullable|integer',
             'debut_year'        => 'nullable|integer',
             'average'           => 'nullable|numeric',
+            'at_bats'           => 'nullable|integer',
             'home_runs'         => 'nullable|integer',
+            'rbis'              => 'nullable|integer',
             'era'               => 'nullable|numeric',
+            'games'             => 'nullable|numeric',
             'wins'              => 'nullable|integer',
             'previous_teams'    => new IsTeam,
         ]);
@@ -97,8 +100,11 @@ class PlayerController extends Controller
         $player->debut_year     = $request->debut_year;
         $player->position       = $request->position;
         $player->average        = $request->average;
+        $player->at_bats        = $request->at_bats;
+        $player->rbis           = $request->rbis;
         $player->home_runs      = $request->home_runs;
         $player->era            = $request->era;
+        $player->games          = $request->games;
         $player->wins           = $request->wins;
         $player->previous_teams = $request->previous_teams;
 

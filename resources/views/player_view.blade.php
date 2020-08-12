@@ -35,10 +35,13 @@
                         Position: {{$player->position}}</br>
                         @if($player->position == 'P')
                             ERA: {{$player->era}}</br>
+                            Games: {{$player->games}}</br>
                             Wins: {{$player->wins}}</br>
                         @else
                             AVG: {{$player->average}}</br>
+                            ABs: {{$player->at_bats}}</br>
                             HRs: {{$player->home_runs}}</br>
+                            RBIs: {{$player->rbis}}</br>
                         @endif
                     @endif
                 </div>

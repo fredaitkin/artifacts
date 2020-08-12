@@ -142,6 +142,14 @@
             </div>
 
             <div class="form-group">
+                <label for="at_bats" class="col-sm-3 control-label">At Bats</label>
+
+                <div class="col-sm-3">
+                    <input type="text" name="at_bats" id="at_bats" class="form-control" value=@if (old('at_bats')) {{ old('at_bats') }} @elseif (!empty($player->at_bats)) {{$player->at_bats}} @endif>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label for="home_runs" class="col-sm-3 control-label">Home Runs</label>
 
                 <div class="col-sm-3">
@@ -150,10 +158,26 @@
             </div>
 
             <div class="form-group">
+                <label for="rbis" class="col-sm-3 control-label">RBIs</label>
+
+                <div class="col-sm-3">
+                    <input type="text" name="rbis" id="rbis" class="form-control" value=@if (old('rbis')) {{ old('rbis') }} @elseif (!empty($player->rbis)) {{$player->rbis}} @endif>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label for="era" class="col-sm-3 control-label">ERA</label>
 
                 <div class="col-sm-3">
                     <input type="text" name="era" id="era" class="form-control" value=@if (old('era')) {{ old('era') }} @elseif (!empty($player->era)) {{$player->era}} @endif>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="games" class="col-sm-3 control-label">Games</label>
+
+                <div class="col-sm-3">
+                    <input type="text" name="games" id="games" class="form-control" value=@if (old('games')) {{ old('games') }} @elseif (!empty($player->games)) {{$player->games}} @endif>
                 </div>
             </div>
 

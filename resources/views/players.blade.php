@@ -49,16 +49,19 @@
                         <th scope='col'>@sortablelink('city')</th>
                         <th scope='col'>@sortablelink('state')</th>
                         <th scope='col'>@sortablelink('country')</th>
-                        <th scope='col'>@sortablelink('birthdate')</th>
-                        <th scope='col'>@sortablelink('draftYear', 'Draft Year')</th>
-                        <th scope='col'>@sortablelink('draftRound', 'Draft Round')</th>
-                        <th scope='col'>@sortablelink('draftPosition', 'Draft Position')</th>
-                        <th scope='col'>@sortablelink('debutYear', 'Debut Year')</th>
+                        <th scope='col'>@sortablelink('birthdate', 'Age')</th>
+                        <th scope='col'>@sortablelink('draftYear', 'Draft Yr')</th>
+                        <th scope='col'>@sortablelink('draftRound', 'Draft Rnd')</th>
+                        <th scope='col'>@sortablelink('draftPosition', 'Draft Pos')</th>
+                        <th scope='col'>@sortablelink('debutYear', 'Debut Yr')</th>
                         <th scope='col'>@sortablelink('position', 'Position')</th>
                         <th scope='col'>@sortablelink('average', 'Avg')</th>
+                        <th scope='col'>@sortablelink('atBats', 'At Bats')</th>
                         <th scope='col'>@sortablelink('homeRuns', 'HRs')</th>
-                        <th scope='col'>@sortablelink('era', 'Era')</th>
-                        <th scope='col'>@sortablelink('wins', 'Wins')</th>
+                        <th scope='col'>@sortablelink('rbis', 'RBIs')</th>
+                        <th scope='col'>@sortablelink('era')</th>
+                        <th scope='col'>@sortablelink('games')</th>
+                        <th scope='col'>@sortablelink('wins')</th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -74,7 +77,7 @@
                                     <div>{{ $player->last_name }}</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>{{ $player->team_display }}</div>
+                                    <div>{{ $player->team }}</div>
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->city }}</div>
@@ -86,7 +89,7 @@
                                     <div>{{ $player->country }}</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>{{ $player->birthdate }}</div>
+                                    <div>{{ $player->age }}</div>
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->draft_year }}</div>
@@ -95,7 +98,7 @@
                                     <div>{{ $player->draft_round }}</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>{{ $player->draft_position }}</div>
+                                    <div class="text-right">{{ $player->draft_position }}</div>
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->debut_year }}</div>
@@ -104,16 +107,25 @@
                                     <div>{{ $player->position }}</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>{{ $player->average }}</div>
+                                    <div>@if ($player->position != 'P') {{ $player->average }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
-                                    <div class="text-right">{{ $player->home_runs }}</div>
+                                    <div class="text-right">@if ($player->position != 'P') {{ $player->at_bats }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
-                                    <div class="text-right">{{ $player->era }}</div>
+                                    <div class="text-right">@if ($player->position != 'P') {{ $player->home_runs }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>{{ $player->wins }}</div>
+                                    <div class="text-right">@if ($player->position != 'P') {{ $player->rbis }} @else -- @endif</div>
+                                </td>
+                                <td class="table-text">
+                                    <div class="text-right">@if ($player->position == 'P') {{ $player->era }} @else -- @endif</div>
+                                </td>
+                                <td class="table-text">
+                                    <div class="text-right">@if ($player->position == 'P') {{ $player->games }} @else -- @endif</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>@if ($player->position == 'P') {{ $player->wins }} @else -- @endif</div>
                                 </td>
                                 <td>
                                     {{ csrf_field() }}
