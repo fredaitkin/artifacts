@@ -27,5 +27,10 @@ class AppServiceProvider extends ServiceProvider
             'Artifacts\Interfaces\PopulationServiceInterface',
             'Artifacts\Services\PopulationService'
         );
+        // Player service
+        $this->app->bind(
+            'Artifacts\Interfaces\PlayerInterface',
+            'Artifacts\Player\Player'
+        );
     }
 }

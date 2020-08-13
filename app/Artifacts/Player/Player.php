@@ -2,11 +2,13 @@
 
 namespace Artifacts\Player;
 
+use Artifacts\Interfaces\PlayerInterface;
+
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 use Carbon\Carbon;
 
-class Player extends Model
+class Player extends Model implements PlayerInterface
 {
 
     use Sortable;
@@ -137,5 +139,46 @@ class Player extends Model
     {
         $photos = @unserialize($this->photo);
         return $photos['small'] ?? '';
+    }
+
+    public function getMostHomeRuns(array $where = null)
+    {
+        $query = Player::select('first_name', 'last_name', 'team', 'home_runs')
+            ->orderBy('home_runs', 'DESC');
+        if (isset($where)):
+            foreach($where as $field => $value):
+                $query->where([$field => $value]);
+            endforeach;
+        endif;
+
+        return $query->first();
+    }
+
+    public function getMostWins(array $where = null)
+    {
+        $query = Player::select('first_name', 'last_name', 'team', 'wins')
+            ->orderBy('wins', 'DESC');
+        if (isset($where)):
+            foreach($where as $field => $value):
+                $query->where([$field => $value]);
+            endforeach;
+        endif;
+
+        return $query->first();
+    }
+
+    public function getBestERA(array $where = null)
+    {
+        $query = Player::select('first_name', 'last_name', 'team', 'era')
+            ->whereNotNull('era')
+            ->where('games', '>', 100)
+            ->orderBy('era', 'ASC');
+        if (isset($where)):
+            foreach($where as $field => $value):
+                $query->where([$field => $value]);
+            endforeach;
+        endif;
+
+        return $query->first();
     }
 }

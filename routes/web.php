@@ -15,24 +15,26 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
-	return view('welcome');
+    return view('welcome');
 });
 
 Route::middleware(['auth'])->group(function () {
 
-	Route::get('/players', 'PlayerController@index');
+    Route::get('/players', 'PlayerController@index');
 
-	Route::any('/players/search', 'PlayerController@search');
+    Route::any('/players/search', 'PlayerController@search');
 
-	Route::get('/player', 'PlayerController@create');
+    Route::get('/player', 'PlayerController@create');
 
-	Route::post('/player', 'PlayerController@store');
+    Route::post('/player', 'PlayerController@store');
 
-	Route::get('/player/{id}', 'PlayerController@edit');
+    Route::get('/player/{id}', 'PlayerController@edit');
 
-	Route::delete('/player/{id}', 'PlayerController@destroy');
+    Route::delete('/player/{id}', 'PlayerController@destroy');
 
-	Route::get('/demographics', 'DemographicsController@index');
+    Route::get('/demographics', 'DemographicsController@index');
+
+    Route::get('/statistics', 'StatisticsController@index');
 
 });
 
