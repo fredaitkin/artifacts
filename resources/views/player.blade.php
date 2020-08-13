@@ -129,7 +129,13 @@
                 <label for="position" class="col-sm-3 control-label">Position</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="position" id="position" class="form-control" value=@if (old('position')) {{ old('position') }} @elseif (!empty($player->position)) {{$player->position}} @endif>
+
+                    <select class="form-control" name="position">
+                        @foreach($positions as $key => $position)
+                            <option value="{{$key}}" @if(!empty($player->position) && ($player->position == $key)) selected @endif>{{$position}}</option>
+                        @endforeach
+                    </select>
+
                 </div>
             </div>
 

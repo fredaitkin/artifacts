@@ -43,11 +43,13 @@ class PlayerController extends Controller
     {
         $teams = ['' => 'Please Select'] + config('teams');
         $states = ['' => 'Please Select'] + config('states');
+        $positions = ['' => 'Please Select'] + config('positions');
         return view('player', [
             'title'     => 'Add Player',
             'teams'     => $teams,
             'states'    => $states,
-            'countries' => config('countries')
+            'countries' => config('countries'),
+            'positions' => $positions,
         ]);
     }
 
@@ -147,6 +149,7 @@ class PlayerController extends Controller
         $player = Player::find($id);
         $teams = ['' => 'Please Select'] + config('teams');
         $states = ['' => 'Please Select'] + config('states');
+        $positions = ['' => 'Please Select'] + config('positions');
         if(isset($request->view)):
             return view('player_view', ['player' => $player]);
         else:
@@ -155,7 +158,8 @@ class PlayerController extends Controller
                 'player'    => $player,
                 'teams'     => $teams,
                 'states'    => $states,
-                'countries' => config('countries')
+                'countries' => config('countries'),
+                'positions' => $positions,
             ]);
         endif;
     }
