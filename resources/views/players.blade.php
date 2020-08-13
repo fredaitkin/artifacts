@@ -83,7 +83,7 @@
                                     <div>{{ $player->city }}</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>{{ $player->state }}</div>
+                                    <div>@if (isset($player->state)) {{ $player->state }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->country }}</div>
@@ -92,13 +92,13 @@
                                     <div>{{ $player->age }}</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>{{ $player->draft_year }}</div>
+                                    <div>@if (isset($player->draft_year)) {{ $player->draft_year }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>{{ $player->draft_round }}</div>
+                                    <div>@if (isset($player->draft_round)) {{ $player->draft_round }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
-                                    <div class="text-right">{{ $player->draft_position }}</div>
+                                    <div>@if (isset($player->draft_position)) {{ $player->draft_position }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->debut_year }}</div>
