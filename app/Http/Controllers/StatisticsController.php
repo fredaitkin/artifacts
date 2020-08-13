@@ -42,6 +42,13 @@ class StatisticsController extends Controller
                 $most_home_runs_by_position[$v] = $this->player->getMostHomeRuns(['position' => $k]);
             endif;
         endforeach;
+        $most_rbis = $this->player->getMostRBIs();
+        $most_rbis_by_position = [];
+        foreach($this->positions as $k => $v):
+            if($k !== 'P'):
+                $most_rbis_by_position[$v] = $this->player->getMostRBIs(['position' => $k]);
+            endif;
+        endforeach;
         $most_wins = $this->player->getMostWins();
         $best_era = $this->player->getBestERA();
         return view(
@@ -49,6 +56,8 @@ class StatisticsController extends Controller
             [
                 'most_home_runs'                => $most_home_runs,
                 'most_home_runs_by_position'    => $most_home_runs_by_position,
+                'most_rbis'                     => $most_rbis,
+                'most_rbis_by_position'         => $most_rbis_by_position,
                 'most_wins'                     => $most_wins,
                 'best_era'                      => $best_era,
             ]

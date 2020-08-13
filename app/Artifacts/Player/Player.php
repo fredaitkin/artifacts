@@ -154,6 +154,19 @@ class Player extends Model implements PlayerInterface
         return $query->first();
     }
 
+    public function getMostRBIs(array $where = null)
+    {
+        $query = Player::select('first_name', 'last_name', 'team', 'rbis')
+            ->orderBy('rbis', 'DESC');
+        if (isset($where)):
+            foreach($where as $field => $value):
+                $query->where([$field => $value]);
+            endforeach;
+        endif;
+
+        return $query->first();
+    }
+
     public function getMostWins(array $where = null)
     {
         $query = Player::select('first_name', 'last_name', 'team', 'wins')

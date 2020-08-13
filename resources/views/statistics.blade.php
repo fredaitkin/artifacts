@@ -24,6 +24,23 @@
         </div>
 
         <div class="ml-5 mt-4">
+            <h5>Most RBIs</h5>
+            {{$most_rbis->first_name}} {{$most_rbis->last_name}} {{config('teams')[$most_rbis->team]}} <strong>{{$most_rbis->rbis}}</strong>
+        </div>
+
+        <div class="ml-5 mt-4 w-50">
+            <h5>Most RBIs by position</h5>
+            @foreach($most_rbis_by_position as $k => $v)
+                 <div class="row">
+                    <div class="col">{{$k}}:</div>
+                    <div class="col">{{$v->first_name}} {{$v->last_name}}</div>
+                    <div class="col">{{config('teams')[$v->team]}}</div>
+                    <div class="col"><strong>{{$v->rbis}}</strong></div>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="ml-5 mt-4">
             <h5>Most wins</h5>
             {{$most_wins->first_name}} {{$most_wins->last_name}} {{config('teams')[$most_wins->team]}} <strong>{{$most_wins->wins}}</strong>
         </div>
