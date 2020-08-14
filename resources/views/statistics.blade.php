@@ -33,7 +33,7 @@
                         <div class="col">{{$k}}:</div>
                         <div class="col">{{$v->first_name}} {{$v->last_name}}</div>
                         <div class="col">{{config('teams')[$v->team]}}</div>
-                        <div class="col-md-1"><strong>{{$v->home_runs}}</strong></div>
+                        <div class="col-md-1"><span class="float-right"><strong>{{$v->home_runs}}</strong></span></div>
                     </div>
                 @endforeach
             </div>
@@ -44,7 +44,7 @@
                         <div class="col">{{$k}}:</div>
                         <div class="col">{{$v->first_name}} {{$v->last_name}}</div>
                         <div class="col">{{config('teams')[$v->team]}}</div>
-                        <div class="col-md-1"><strong>{{$v->rbis}}</strong></div>
+                        <div class="col-md-1"><span class="float-right"><strong>{{$v->rbis}}</strong></span></div>
                     </div>
                 @endforeach
             </div>
@@ -79,7 +79,7 @@
         </div>
     </div>
 
-    <div class="ml-3 mt-5"><small class="text-muted">* Batters with at least 500 at bats</small></div>
+    <div class="ml-3 mt-4"><small class="text-muted">* Batters with at least 500 at bats</small></div>
     <div class="ml-3"><small class="text-muted">** Pitchers who've pitched at least 100 games</small></div>
 
 @endsection
