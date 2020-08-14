@@ -10,6 +10,7 @@ interface PlayerInterface {
 
     public function getMostHomeRuns();
     public function getMostRBIs();
+    public function getBestAverage();
     public function getMostWins();
     public function getBestERA();
 
