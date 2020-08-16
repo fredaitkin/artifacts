@@ -107,25 +107,25 @@
                                     <div>{{ $player->position }}</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>@if ($player->position != 'P') {{ $player->average }} @else -- @endif</div>
+                                    <div>@if (isset($player->average)) {{ $player->average }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
-                                    <div class="text-right">@if ($player->position != 'P') {{ $player->at_bats }} @else -- @endif</div>
+                                    <div class="text-right">@if (isset($player->at_bats)) {{ $player->at_bats }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
-                                    <div class="text-right">@if ($player->position != 'P') {{ $player->home_runs }} @else -- @endif</div>
+                                    <div class="text-right">@if (isset($player->home_runs)) {{ $player->home_runs }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
-                                    <div class="text-right">@if ($player->position != 'P') {{ $player->rbis }} @else -- @endif</div>
+                                    <div class="text-right">@if (isset($player->rbis)) {{ $player->rbis }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
-                                    <div class="text-right">@if ($player->position == 'P') {{ $player->era }} @else -- @endif</div>
+                                    <div class="text-right">@if (isset($player->era)) {{ $player->era }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
-                                    <div class="text-right">@if ($player->position == 'P') {{ $player->games }} @else -- @endif</div>
+                                    <div class="text-right">@if (isset($player->games)) {{ $player->games }} @else -- @endif</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>@if ($player->position == 'P') {{ $player->wins }} @else -- @endif</div>
+                                    <div>@if (isset($player->wins)) {{ $player->wins }} @else -- @endif</div>
                                 </td>
                                 <td>
                                     {{ csrf_field() }}

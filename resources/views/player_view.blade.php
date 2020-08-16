@@ -37,7 +37,8 @@
                             ERA: {{$player->era}}</br>
                             Games: {{$player->games}}</br>
                             Wins: {{$player->wins}}</br>
-                        @else
+                        @endif
+                        @if(!empty($player->average))
                             AVG: {{$player->average}}</br>
                             ABs: {{$player->at_bats}}</br>
                             HRs: {{$player->home_runs}}</br>

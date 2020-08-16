@@ -73,8 +73,13 @@ class Player extends Model implements PlayerInterface
     public function rbisSortable($query, $direction) {
         return $query->orderByRaw('ISNULL(rbis), rbis ' . $direction);
     }
+
     public function eraSortable($query, $direction) {
         return $query->orderByRaw('ISNULL(era), era ' . $direction);
+    }
+
+    public function gamesSortable($query, $direction) {
+        return $query->orderByRaw('ISNULL(games), games ' . $direction);
     }
 
     public function winsSortable($query, $direction) {
