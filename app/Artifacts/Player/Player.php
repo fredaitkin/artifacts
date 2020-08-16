@@ -182,6 +182,34 @@ class Player extends Model implements PlayerInterface
         return $query->first();
     }
 
+    public function getBestHomeRunStrikeRate(array $where = null)
+    {
+        $query = Player::selectRaw('first_name, last_name, team, round(at_bats/home_runs, 2) as strike_rate')
+            ->whereNotNull('at_bats')
+            ->orderBy('strike_rate', 'ASC');
+        if (isset($where)):
+            foreach($where as $field => $value):
+                $query->where([$field => $value]);
+            endforeach;
+        endif;
+
+        return $query->first();
+    }
+
+    public function getBestRBIStrikeRate(array $where = null)
+    {
+        $query = Player::selectRaw('first_name, last_name, team, round(at_bats/rbis, 2) as strike_rate')
+            ->whereNotNull('at_bats')
+            ->orderBy('strike_rate', 'ASC');
+        if (isset($where)):
+            foreach($where as $field => $value):
+                $query->where([$field => $value]);
+            endforeach;
+        endif;
+
+        return $query->first();
+    }
+
     public function getMostWins(array $where = null)
     {
         $query = Player::select('first_name', 'last_name', 'team', 'wins')
@@ -200,6 +228,7 @@ class Player extends Model implements PlayerInterface
         $query = Player::select('first_name', 'last_name', 'team', 'era')
             ->whereNotNull('era')
             ->where('games', '>', 100)
+            ->where('wins', '>', 50)
             ->orderBy('era', 'ASC');
         if (isset($where)):
             foreach($where as $field => $value):
@@ -209,4 +238,19 @@ class Player extends Model implements PlayerInterface
 
         return $query->first();
     }
+
+    public function getBestWinStrikeRate(array $where = null)
+    {
+        $query = Player::selectRaw('first_name, last_name, team, round(games/wins, 2) as strike_rate')
+            ->whereNotNull('games')
+            ->orderBy('strike_rate', 'ASC');
+        if (isset($where)):
+            foreach($where as $field => $value):
+                $query->where([$field => $value]);
+            endforeach;
+        endif;
+
+        return $query->first();
+    }
+
 }
