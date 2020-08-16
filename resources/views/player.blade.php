@@ -154,7 +154,7 @@
                 </div>
             </div>
 
-            <div class="fomr-group row">
+            <div class="form-group row">
                 <div class="col">
                     <label for="home_runs" class="col-sm-8 control-label">Home Runs</label>
 
