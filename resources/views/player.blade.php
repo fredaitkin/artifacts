@@ -43,7 +43,7 @@
 
                         <select class="form-control" name="team">
                             @foreach($teams as $key => $team)
-                                <option value="{{$key}}" @if(!empty($player->team) && ($player->team == $key)) selected @endif>{{$team}}</option>
+                                <option value="{{$key}}"  @if (old('team') && old('team') == $key) selected @elseif (!empty($player->team) && ($player->team == $key)) selected @endif>{{$team}}</option>
                             @endforeach
                         </select>
 
@@ -63,7 +63,7 @@
 
                         <select class="form-control" name="state">
                             @foreach($states as $key => $state)
-                                <option value="{{$key}}" @if(!empty($player->state) && ($player->state == $key)) selected @endif>{{$state}}</option>
+                                <option value="{{$key}}"  @if (old('state') && old('state') == $key) selected @elseif (!empty($player->state) && ($player->state == $key)) selected @endif>{{$state}}</option>
                             @endforeach
                         </select>
 
@@ -78,7 +78,7 @@
 
                         <select class="form-control" name="country">
                             @foreach($countries as $country)
-                                <option value="{{$country}}" @if(!empty($player->country) && ($player->country == $country)) selected @endif>{{$country}}</option>
+                                <option value="{{$country}}"  @if (old('country') && old('country') == $country) selected @elseif (!empty($player->country) && ($player->country == $country)) selected @endif>{{$country}}</option>
                             @endforeach
                         </select>
 
@@ -132,7 +132,7 @@
 
                         <select class="form-control" name="position">
                             @foreach($positions as $key => $position)
-                                <option value="{{$key}}" @if(!empty($player->position) && ($player->position == $key)) selected @endif>{{$position}}</option>
+                                <option value="{{$key}}" @if (old('position') && old('position') == $key) selected @elseif (!empty($player->position) && ($player->position == $key)) selected @endif>{{$position}}</option>
                             @endforeach
                         </select>
 
