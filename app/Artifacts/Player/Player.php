@@ -148,7 +148,7 @@ class Player extends Model implements PlayerInterface
 
     public function getMostHomeRuns(array $where = null)
     {
-        $query = Player::select('first_name', 'last_name', 'team', 'home_runs')
+        $query = Player::select('id', 'first_name', 'last_name', 'team', 'home_runs')
             ->orderBy('home_runs', 'DESC');
         if (isset($where)):
             foreach($where as $field => $value):
@@ -161,7 +161,7 @@ class Player extends Model implements PlayerInterface
 
     public function getMostRBIs(array $where = null)
     {
-        $query = Player::select('first_name', 'last_name', 'team', 'rbis')
+        $query = Player::select('id', 'first_name', 'last_name', 'team', 'rbis')
             ->orderBy('rbis', 'DESC');
         if (isset($where)):
             foreach($where as $field => $value):
@@ -174,7 +174,7 @@ class Player extends Model implements PlayerInterface
 
     public function getBestAverage(array $where = null)
     {
-        $query = Player::select('first_name', 'last_name', 'team', 'average')
+        $query = Player::select('id', 'first_name', 'last_name', 'team', 'average')
             ->whereNotNull('average')
             ->where('at_bats', '>', 500)
             ->orderBy('average', 'DESC');
@@ -189,8 +189,11 @@ class Player extends Model implements PlayerInterface
 
     public function getBestHomeRunStrikeRate(array $where = null)
     {
-        $query = Player::selectRaw('first_name, last_name, team, round(at_bats/home_runs, 2) as strike_rate')
+        $query = Player::selectRaw('id, first_name, last_name, team, round(at_bats/home_runs, 2) as strike_rate')
+            ->whereNotNull('home_runs')
             ->whereNotNull('at_bats')
+            ->where('home_runs', '>', 0)
+            ->where('at_bats', '>', 500)
             ->orderBy('strike_rate', 'ASC');
         if (isset($where)):
             foreach($where as $field => $value):
@@ -203,8 +206,9 @@ class Player extends Model implements PlayerInterface
 
     public function getBestRBIStrikeRate(array $where = null)
     {
-        $query = Player::selectRaw('first_name, last_name, team, round(at_bats/rbis, 2) as strike_rate')
+        $query = Player::selectRaw('id, first_name, last_name, team, round(at_bats/rbis, 2) as strike_rate')
             ->whereNotNull('at_bats')
+            ->where('at_bats', '>', 500)
             ->orderBy('strike_rate', 'ASC');
         if (isset($where)):
             foreach($where as $field => $value):
@@ -217,7 +221,7 @@ class Player extends Model implements PlayerInterface
 
     public function getMostWins(array $where = null)
     {
-        $query = Player::select('first_name', 'last_name', 'team', 'wins')
+        $query = Player::select('id', 'first_name', 'last_name', 'team', 'wins')
             ->orderBy('wins', 'DESC');
         if (isset($where)):
             foreach($where as $field => $value):
@@ -230,7 +234,7 @@ class Player extends Model implements PlayerInterface
 
     public function getBestERA(array $where = null)
     {
-        $query = Player::select('first_name', 'last_name', 'team', 'era')
+        $query = Player::select('id', 'first_name', 'last_name', 'team', 'era')
             ->whereNotNull('era')
             ->where('games', '>', 100)
             ->where('wins', '>', 50)
@@ -246,8 +250,9 @@ class Player extends Model implements PlayerInterface
 
     public function getBestWinStrikeRate(array $where = null)
     {
-        $query = Player::selectRaw('first_name, last_name, team, round(games/wins, 2) as strike_rate')
+        $query = Player::selectRaw('id, first_name, last_name, team, round(games/wins, 2) as strike_rate')
             ->whereNotNull('games')
+            ->where('wins', '>', 0)
             ->orderBy('strike_rate', 'ASC');
         if (isset($where)):
             foreach($where as $field => $value):
