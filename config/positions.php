@@ -11,5 +11,6 @@ return [
     'RF'    => 'Right Field',
     'CF'    => 'Center Field',
     'LF'    => 'Left Field',
+    'OF'    => 'Out Field',
 
 ];
