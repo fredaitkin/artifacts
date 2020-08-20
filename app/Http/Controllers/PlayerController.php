@@ -75,6 +75,8 @@ class PlayerController extends Controller
             'era'               => 'nullable|numeric',
             'games'             => 'nullable|numeric',
             'wins'              => 'nullable|integer',
+            'losses'            => 'nullable|integer',
+            'saves'             => 'nullable|integer',
             'previous_teams'    => new IsTeam,
         ]);
 
@@ -108,6 +110,8 @@ class PlayerController extends Controller
         $player->era            = $request->era;
         $player->games          = $request->games;
         $player->wins           = $request->wins;
+        $player->losses         = $request->losses;
+        $player->saves          = $request->saves;
         $player->previous_teams = $request->previous_teams;
 
         if (isset($file_name)):

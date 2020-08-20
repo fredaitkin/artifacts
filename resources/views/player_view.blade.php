@@ -37,6 +37,8 @@
                             ERA: {{$player->era}}</br>
                             Games: {{$player->games}}</br>
                             Wins: {{$player->wins}}</br>
+                            Losses: {{$player->losses}}</br>
+                            Saves: {{$player->saves}}</br>
                         @endif
                         @if(!empty($player->average))
                             AVG: {{$player->average}}</br>

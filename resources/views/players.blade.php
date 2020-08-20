@@ -43,7 +43,6 @@
 
                     <thead>
                         <tr>
-                        <th scope='col'>@sortablelink('first_name', 'First Name')</th>
                         <th scope='col'>@sortablelink('last_name', 'Last Name')</th>
                         <th scope='col'>@sortablelink('team')</th>
                         <th scope='col'>@sortablelink('city')</th>
@@ -62,6 +61,8 @@
                         <th scope='col'>@sortablelink('era')</th>
                         <th scope='col'>@sortablelink('games')</th>
                         <th scope='col'>@sortablelink('wins')</th>
+                        <th scope='col'>@sortablelink('losses')</th>
+                        <th scope='col'>@sortablelink('saves')</th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -71,10 +72,7 @@
                             <tr>
                                 <td class="table-text">
                                     {{ csrf_field() }}
-                                    <a href="/player/{{ $player->id }}?view=true">{{ $player->first_name }}</a>
-                                </td>
-                                <td class="table-text">
-                                    <div>{{ $player->last_name }}</div>
+                                    <a href="/player/{{ $player->id }}?view=true">{{ $player->last_name }}</a>
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->team }}</div>
@@ -126,6 +124,12 @@
                                 </td>
                                 <td class="table-text">
                                     <div>@if (isset($player->wins)) {{ $player->wins }} @else -- @endif</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>@if (isset($player->losses)) {{ $player->losses }} @else -- @endif</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>@if (isset($player->saves)) {{ $player->saves }} @else -- @endif</div>
                                 </td>
                                 <td>
                                     {{ csrf_field() }}

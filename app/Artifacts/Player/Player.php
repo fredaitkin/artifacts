@@ -26,7 +26,17 @@ class Player extends Model implements PlayerInterface
         'draft_year',
         'draft_round',
         'draft_position',
-        'debut_year'
+        'debut_year',
+        'position',
+        'average',
+        'at_bats',
+        'home_runs',
+        'rbis',
+        'era',
+        'games',
+        'wins',
+        'losses',
+        'saves',
     ];
 
     /**

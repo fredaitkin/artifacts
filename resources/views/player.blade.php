@@ -194,15 +194,29 @@
                     </div>
                 </div>
                 <div class="col">
-                    <label for="previous_teams" class="col-sm-10 control-label">Previous Teams</label>
+                    <label for="losses" class="col-sm-8 control-label">Losses</label>
 
-                    <div class="col-sm-10">
-                        <input type="text" name="previous_teams" id="player->previous_teams" class="form-control" value=@if (old('previous_teams')) {{ old('previous_teams') }} @elseif (!empty($player->previous_teams)) {{$player->previous_teams}} @endif>
+                    <div class="col-sm-8">
+                        <input type="text" name="losses" id="player->losses" class="form-control" value=@if (old('losses')) {{ old('losses') }} @elseif (!empty($player->losses)) {{$player->losses}} @endif>
                     </div>
                 </div>
             </div>
 
-            <div class="form-group w-25 row">
+            <div class="form-group row">
+                <div class="col">
+                    <label for="saves" class="col-sm-8 control-label">Saves</label>
+
+                    <div class="col-sm-8">
+                        <input type="text" name="saves" id="player->saves" class="form-control" value=@if (old('saves')) {{ old('saves') }} @elseif (!empty($player->saves)) {{$player->saves}} @endif>
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="previous_teams" class="col-sm-12 control-label">Previous Teams</label>
+
+                    <div class="col-sm-12">
+                        <input type="text" name="previous_teams" id="player->previous_teams" class="form-control" value=@if (old('previous_teams')) {{ old('previous_teams') }} @elseif (!empty($player->previous_teams)) {{$player->previous_teams}} @endif>
+                    </div>
+                </div>
                 <div class="col">
                     <label for="photo" class="col-sm-12 control-label">Photo</label>
 
