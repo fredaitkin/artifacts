@@ -48,6 +48,9 @@ class Player extends Model implements PlayerInterface
        return Carbon::parse($this->birthdate)->format('d/m/Y');
     }
 
+    /**
+    * Sort null draft years to the bottom
+    */
     public function draftYearSortable($query, $direction) {
         return $query->orderByRaw('ISNULL(draft_year), draft_year ' . $direction);
     }
@@ -94,6 +97,14 @@ class Player extends Model implements PlayerInterface
 
     public function winsSortable($query, $direction) {
         return $query->orderByRaw('ISNULL(wins), wins ' . $direction);
+    }
+
+    public function lossesSortable($query, $direction) {
+        return $query->orderByRaw('ISNULL(losses), losses ' . $direction);
+    }
+
+    public function savesSortable($query, $direction) {
+        return $query->orderByRaw('ISNULL(saves), saves ' . $direction);
     }
 
     /**
