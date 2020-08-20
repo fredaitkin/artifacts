@@ -48,6 +48,13 @@ class Player extends Model implements PlayerInterface
        return Carbon::parse($this->birthdate)->format('d/m/Y');
     }
 
+   /**
+    * Sort on first and last name
+    */
+    public function lastNameSortable($query, $direction) {
+        return $query->orderBy('last_name', $direction)->orderBy('first_name', 'ASC');
+    }
+
     /**
     * Sort null draft years to the bottom
     */

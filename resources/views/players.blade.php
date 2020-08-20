@@ -43,7 +43,7 @@
 
                     <thead>
                         <tr>
-                        <th scope='col'>@sortablelink('last_name', 'Last Name')</th>
+                        <th scope='col'>@sortablelink('last_name', 'Name')</th>
                         <th scope='col'>@sortablelink('team')</th>
                         <th scope='col'>@sortablelink('city')</th>
                         <th scope='col'>@sortablelink('state')</th>
@@ -72,7 +72,7 @@
                             <tr>
                                 <td class="table-text">
                                     {{ csrf_field() }}
-                                    <a href="/player/{{ $player->id }}?view=true">{{ $player->last_name }}</a>
+                                    <a href="/player/{{ $player->id }}?view=true">{{ $player->last_name }},{{ substr($player->first_name, 0, 1) }}</a>
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $player->team }}</div>
