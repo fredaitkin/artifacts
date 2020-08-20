@@ -3,6 +3,7 @@
 return [
     'US',
     'Aruba',
+    'Australia',
     'Brazil',
     'Canada',
     'Colombia',
