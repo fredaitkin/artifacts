@@ -43,7 +43,7 @@
                 <h6><strong>Most Home Runs by Position</strong></h6>
                 @foreach($most_home_runs_by_position as $k => $v)
                      <div class="row">
-                        <div class="col">{{$k}}:</div>
+                        <div class="col-sm-3">{{$k}}:</div>
                         <div class="col"><a href="/player/{{$v->id}}?view=true">{{$v->first_name}} {{$v->last_name}}</a></div>
                         <div class="col">{{config('teams')[$v->team]}}</div>
                         <div class="col-md-1"><span class="float-right"><strong>{{$v->home_runs}}</strong></span></div>
@@ -54,7 +54,7 @@
                 <h6><strong>Most RBIs by Position</strong></h6>
                 @foreach($most_rbis_by_position as $k => $v)
                     <div class="row">
-                        <div class="col">{{$k}}:</div>
+                        <div class="col-sm-3">{{$k}}:</div>
                         <div class="col"><a href="/player/{{$v->id}}?view=true">{{$v->first_name}} {{$v->last_name}}</a></div>
                         <div class="col">{{config('teams')[$v->team]}}</div>
                         <div class="col-md-1"><span class="float-right"><strong>{{$v->rbis}}</strong></span></div>
@@ -65,7 +65,7 @@
                 <h6><strong>Best Average by Position</strong></h6>
                 @foreach($best_average_by_position as $k => $v)
                     <div class="row">
-                        <div class="col">{{$k}}:</div>
+                        <div class="col-sm-3">{{$k}}:</div>
                         <div class="col"><a href="/player/{{$v->id}}?view=true">{{$v->first_name}} {{$v->last_name}}</a></div>
                         <div class="col">{{config('teams')[$v->team]}}</div>
                         <div class="col-md-1"><strong>{{$v->average}}</strong></div>
