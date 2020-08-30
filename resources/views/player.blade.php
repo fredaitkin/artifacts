@@ -53,7 +53,7 @@
                     <label for="city" class="col-sm-8 control-label">City</label>
 
                     <div class="col-sm-8">
-                        <input type="text" name="city" id="city" class="form-control" value=@if (old('city')) {{ old('city') }} @elseif (!empty($player->city)) {{$player->city}} @endif>
+                        <input type="text" name="city" class="form-control" value="@if (old('city')) {{ old('city') }} @elseif (!empty($player->city)) {{$player->city}} @endif">
                     </div>
                 </div>
                 <div class="col">
