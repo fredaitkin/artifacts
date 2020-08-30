@@ -47,7 +47,7 @@ class StatisticsController extends Controller
         $best_average_by_position = [];
 
         foreach($this->positions as $k => $v):
-            if($k !== 'P'):
+            if(!in_array($k, ['P', 'OF', 'DH'])):
                 $most_hrs_by_position[$v] = $this->player->getMostHomeRuns(['position' => $k]);
                 $most_rbis_by_position[$v] = $this->player->getMostRBIs(['position' => $k]);
                 $best_average_by_position[$v] = $this->player->getBestAverage(['position' => $k]);

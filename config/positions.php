@@ -12,5 +12,6 @@ return [
     'CF'    => 'Center Field',
     'LF'    => 'Left Field',
     'OF'    => 'Out Field',
+    'DH'    => 'Designated Hitter',
 
 ];
