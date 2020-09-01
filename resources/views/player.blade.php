@@ -30,7 +30,7 @@
                     <label for="last_name" class="col-sm-10 control-label">Last Name</label>
 
                     <div class="col-sm-12">
-                        <input type="text" name="last_name" id="last_name" class="form-control" value=@if (old('last_name')) {{ old('last_name') }} @elseif (!empty($player->last_name)) {{$player->last_name}} @endif>
+                        <input type="text" name="last_name" id="last_name" class="form-control" value="@if (old('last_name')) {{ old('last_name') }} @elseif (!empty($player->last_name)) {{$player->last_name}} @endif">
                     </div>
                 </div>
             </div>
