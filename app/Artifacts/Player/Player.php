@@ -115,6 +115,30 @@ class Player extends Model implements PlayerInterface
     }
 
     /**
+     * Get the state from abbreviations
+     *
+     * @return string
+     */
+    public function getStateDisplayAttribute()
+    {
+        $state = '';
+        if (!empty($this->state)):
+              $state = config('states')[$this->state];
+        endif;
+        return $state;
+    }
+
+    /**
+     * Get the position from abbreviations
+     *
+     * @return string
+     */
+    public function getPositionDisplayAttribute()
+    {
+        return config('positions')[$this->position];
+    }
+
+    /**
      * Get the team display name from abbreviation
      *
      * @return string
