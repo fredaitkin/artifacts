@@ -39,9 +39,10 @@ class BackupDatabase extends Command
         parent::__construct();
         
         $this->process = new Process(sprintf(
-            config('database.connections.mysql.dump.dump_binary_path') . 'mysqldump -u%s -p%s %s > %s',
+            'mysqldump -u%s -p%s --port=%s %s --column-statistics=0 > %s',
             config('database.connections.mysql.username'),
             config('database.connections.mysql.password'),
+            config('database.connections.mysql.port'),
             config('database.connections.mysql.database'),
             storage_path('backups/artifacts.sql')
         ));
