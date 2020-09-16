@@ -3,6 +3,9 @@
 namespace Artifacts\Console\Commands;
 
 use Illuminate\Console\Command;
+use Log;
+
+use Artifacts\Player\Player;
 
 class UpdatePlayers extends Command
 {
@@ -43,13 +46,15 @@ class UpdatePlayers extends Command
         $player = 'href="/player/';
 
         $offset = 0;
-        while (($pos = strpos($players_html, $player, $offset)) !== FALSE) {
+        // while (($pos = strpos($players_html, $player, $offset)) !== FALSE):
+        for($i = 0; $i < 1000; $i++):
+            $pos = strpos($players_html, $player, $offset);
             $endpos = strpos($players_html, ' ', $pos);
             $player_url = substr($players_html, $pos + 6, $endpos - $pos - 7);
             $this->updatePlayer($player_url);
-            exit;
             $offset = $pos + 1;
-        }
+        // endwhile;
+        endfor;
 
     }
 
@@ -61,15 +66,63 @@ class UpdatePlayers extends Command
      */
     public function updatePlayer($url)
     {
-        $player_html = file_get_contents('https://www.mlb.com' . $url);
+        Log::info("");
+        Log::info($url);
 
-        $mlb_career_stats = '{"header":"MLB Career Stats"';
+        // /player/fernando-abad-472551
+        $player_name = explode('/', $url);
+        $player_name = explode('-', $player_name[2]);
 
-        $pos = strpos($player_html, $mlb_career_stats);
-        $endpos = strpos($player_html, '}', $pos);
-        $stats = substr($player_html, $pos, $endpos - $pos + 1);
-        $stats = json_decode($stats);
-        echo $stats->whip;
+        if (count($player_name) > 2):
+
+            // This will not currently work with some nicknamed players eg. /player/r-j-alaniz-595798
+            // It does work with /player/jackie-bradley-jr-598265
+            Log::info(ucwords($player_name[0]));
+            Log::info(ucwords($player_name[1]));
+
+            $player = Player::select('*')->where('first_name', $player_name[0])->where('last_name', $player_name[1])->get();
+            $count = count($player);
+
+            if ($count === 0):
+                Log::info('Player does not exist');
+            endif;
+
+            if ($count > 1):
+                Log::info('Multiple players with same name');
+            endif;
+
+            if ($count === 1):
+                $player = $player[0];
+
+                $player_html = file_get_contents('https://www.mlb.com' . $url);
+
+                $mlb_career_stats = '{"header":"MLB Career Stats"';
+                // {"header":"MLB Career Stats","wins":8,"losses":29,"era":"3.67","gamesPlayed":384,"gamesStarted":6,"saves":2,"inningsPitched":"330.2","strikeOuts":280,"whip":"1.29"}
+                // {"header":"MLB Career Stats","atBats":1181,"runs":238,"hits":333,"homeRuns":78,"rbi":187,"stolenBases":59,"avg":".282","obp":".370","ops":".907"}
+                $pos = strpos($player_html, $mlb_career_stats);
+                $endpos = strpos($player_html, '}', $pos);
+                $stats = substr($player_html, $pos, $endpos - $pos + 1);
+                $stats = json_decode($stats);
+
+                if (isset ($stats->atBats)):
+                    Log::info('Batter');
+                    Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . ($stats->atBats - $player->at_bats));
+                    Log::info('HRs ' . $stats->homeRuns . ' ' . $player->home_runs . ' ' . ($stats->homeRuns - $player->home_runs));
+                    Log::info('RBIs ' . $stats->rbi . ' ' . $player->rbis . ' ' . ($stats->rbi - $player->rbis));
+                    Log::info('AVG ' . $stats->avg . ' ' . $player->average . ' ' . ($stats->avg - $player->average));
+                endif;
+
+                if (isset ($stats->wins)):
+                    Log::info('Pitcher');
+                    Log::info('Wins ' . $stats->wins . ' ' . $player->wins . ' ' . ($stats->wins - $player->wins));
+                    Log::info('Losses ' . $stats->losses . ' ' . $player->losses . ' ' . ($stats->losses - $player->losses));
+                    Log::info('ERA ' . $stats->era . ' ' . $player->era . ' ' . ($stats->era - $player->era));
+                    Log::info('Games ' . $stats->gamesPlayed . ' ' . $player->games . ' ' . ($stats->gamesPlayed - $player->games));
+                    Log::info('Saves ' . $stats->saves . ' ' . $player->saves . ' ' . ($stats->saves - $player->saves));
+                endif;
+            endif;
+        endif;
+
     }
 
 }
