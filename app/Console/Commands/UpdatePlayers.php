@@ -40,21 +40,25 @@ class UpdatePlayers extends Command
      */
     public function handle()
     {
-        // TODO CREATE BACKUP FIRST
+        // Backup DB in case there is an issue with the update players process
+        //$this->call('db:backup');
+
+        // Get mlb links for all players
         $players_html = file_get_contents('https://www.mlb.com/players');
 
         $player = 'href="/player/';
 
         $offset = 0;
-        // while (($pos = strpos($players_html, $player, $offset)) !== FALSE):
-        for($i = 0; $i < 1000; $i++):
+        while (($pos = strpos($players_html, $player, $offset)) !== FALSE):
+        // for($i = 0; $i < 4; $i++):
             $pos = strpos($players_html, $player, $offset);
             $endpos = strpos($players_html, ' ', $pos);
+            // Strip off href tag from string, and therefore tweak end position, to be left with /player/fernando-abad-472551
             $player_url = substr($players_html, $pos + 6, $endpos - $pos - 7);
             $this->updatePlayer($player_url);
             $offset = $pos + 1;
-        // endwhile;
-        endfor;
+        endwhile;
+        // endfor;
 
     }
 
@@ -69,13 +73,13 @@ class UpdatePlayers extends Command
         Log::info("");
         Log::info($url);
 
-        // /player/fernando-abad-472551
         $player_name = explode('/', $url);
         $player_name = explode('-', $player_name[2]);
 
-        if (count($player_name) > 2):
+        if(count($player_name) > 2):
 
-            // This will not currently work with some nicknamed players eg. /player/r-j-alaniz-595798
+            // This will not currently work with some nicknamed players or non standard name 
+            // eg. /player/r-j-alaniz-595798 /player/ji-man-choi-596847  /player/travis-d-arnaud-51859 /player/brett-de-geus-676969 /player/chad-de-la-guerra-664750 
             // It does work with /player/jackie-bradley-jr-598265
             Log::info(ucwords($player_name[0]));
             Log::info(ucwords($player_name[1]));
@@ -83,42 +87,63 @@ class UpdatePlayers extends Command
             $player = Player::select('*')->where('first_name', $player_name[0])->where('last_name', $player_name[1])->get();
             $count = count($player);
 
-            if ($count === 0):
+            if($count === 0):
+                // TODO add add player functionaity?
+                // <meta name="teamName" content="Cincinnati Reds">
+                // <div class="player-bio">
                 Log::info('Player does not exist');
             endif;
 
-            if ($count > 1):
+            if($count > 1):
                 Log::info('Multiple players with same name');
             endif;
 
-            if ($count === 1):
+            if($count === 1):
                 $player = $player[0];
 
-                $player_html = file_get_contents('https://www.mlb.com' . $url);
+                $player_html = @file_get_contents('https://www.mlb.com' . $url);
 
-                $mlb_career_stats = '{"header":"MLB Career Stats"';
-                // {"header":"MLB Career Stats","wins":8,"losses":29,"era":"3.67","gamesPlayed":384,"gamesStarted":6,"saves":2,"inningsPitched":"330.2","strikeOuts":280,"whip":"1.29"}
-                // {"header":"MLB Career Stats","atBats":1181,"runs":238,"hits":333,"homeRuns":78,"rbi":187,"stolenBases":59,"avg":".282","obp":".370","ops":".907"}
-                $pos = strpos($player_html, $mlb_career_stats);
-                $endpos = strpos($player_html, '}', $pos);
-                $stats = substr($player_html, $pos, $endpos - $pos + 1);
-                $stats = json_decode($stats);
+                if($player_html):
 
-                if (isset ($stats->atBats)):
-                    Log::info('Batter');
-                    Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . ($stats->atBats - $player->at_bats));
-                    Log::info('HRs ' . $stats->homeRuns . ' ' . $player->home_runs . ' ' . ($stats->homeRuns - $player->home_runs));
-                    Log::info('RBIs ' . $stats->rbi . ' ' . $player->rbis . ' ' . ($stats->rbi - $player->rbis));
-                    Log::info('AVG ' . $stats->avg . ' ' . $player->average . ' ' . ($stats->avg - $player->average));
-                endif;
+                    $mlb_career_stats = '{"header":"MLB Career Stats"';
+                    // {"header":"MLB Career Stats","wins":8,"losses":29,"era":"3.67","gamesPlayed":384,"gamesStarted":6,"saves":2,"inningsPitched":"330.2","strikeOuts":280,"whip":"1.29"}
+                    // {"header":"MLB Career Stats","atBats":1181,"runs":238,"hits":333,"homeRuns":78,"rbi":187,"stolenBases":59,"avg":".282","obp":".370","ops":".907"}
+                    // TODO These tags appear multiple times, and multiples times for players who pitch and bat eg Brian Dozier and only one set of stat is currently returned
+                    $pos = strpos($player_html, $mlb_career_stats);
+                    $endpos = strpos($player_html, '}', $pos);
+                    $stats = substr($player_html, $pos, $endpos - $pos + 1);
+                    $stats = json_decode($stats);
 
-                if (isset ($stats->wins)):
-                    Log::info('Pitcher');
-                    Log::info('Wins ' . $stats->wins . ' ' . $player->wins . ' ' . ($stats->wins - $player->wins));
-                    Log::info('Losses ' . $stats->losses . ' ' . $player->losses . ' ' . ($stats->losses - $player->losses));
-                    Log::info('ERA ' . $stats->era . ' ' . $player->era . ' ' . ($stats->era - $player->era));
-                    Log::info('Games ' . $stats->gamesPlayed . ' ' . $player->games . ' ' . ($stats->gamesPlayed - $player->games));
-                    Log::info('Saves ' . $stats->saves . ' ' . $player->saves . ' ' . ($stats->saves - $player->saves));
+                    if(isset($stats->atBats)):
+                        Log::info('Batter');
+                        Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . ($stats->atBats - $player->at_bats));
+                        Log::info('HRs ' . $stats->homeRuns . ' ' . $player->home_runs . ' ' . ($stats->homeRuns - $player->home_runs));
+                        Log::info('RBIs ' . $stats->rbi . ' ' . $player->rbis . ' ' . ($stats->rbi - $player->rbis));
+                        Log::info('AVG ' . $stats->avg . ' ' . $player->average . ' ' . ($stats->avg - $player->average));
+                        $player->at_bats    = $stats->atBats;
+                        $player->home_runs  = $stats->homeRuns;
+                        $player->rbis       = $stats->rbi;
+                        $player->average    = $stats->avg;
+                    endif;
+
+                    if(isset($stats->wins)):
+                        Log::info('Pitcher');
+                        Log::info('Wins ' . $stats->wins . ' ' . $player->wins . ' ' . ($stats->wins - $player->wins));
+                        Log::info('Losses ' . $stats->losses . ' ' . $player->losses . ' ' . ($stats->losses - $player->losses));
+                        Log::info('ERA ' . $stats->era . ' ' . $player->era . ' ' . ($stats->era - $player->era));
+                        Log::info('Games ' . $stats->gamesPlayed . ' ' . $player->games . ' ' . ($stats->gamesPlayed - $player->games));
+                        Log::info('Saves ' . $stats->saves . ' ' . $player->saves . ' ' . ($stats->saves - $player->saves));
+                        $player->wins   = $stats->wins;
+                        $player->losses = $stats->losses;
+                        $player->era    = $stats->era;
+                        $player->games  = $stats->gamesPlayed;
+                        $player->saves  = $stats->saves;
+                    endif;
+
+                    // Update player stats
+                    $player->save();
+                else:
+                    Log::info('Error retrieving player page');
                 endif;
             endif;
         endif;
