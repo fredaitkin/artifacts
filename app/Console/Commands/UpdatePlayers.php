@@ -41,7 +41,7 @@ class UpdatePlayers extends Command
     public function handle()
     {
         // Backup DB in case there is an issue with the update players process
-        //$this->call('db:backup');
+        $this->call('db:backup');
 
         // Get mlb links for all players
         $players_html = file_get_contents('https://www.mlb.com/players');
@@ -50,7 +50,6 @@ class UpdatePlayers extends Command
 
         $offset = 0;
         while (($pos = strpos($players_html, $player, $offset)) !== FALSE):
-        // for($i = 0; $i < 4; $i++):
             $pos = strpos($players_html, $player, $offset);
             $endpos = strpos($players_html, ' ', $pos);
             // Strip off href tag from string, and therefore tweak end position, to be left with /player/fernando-abad-472551
@@ -58,7 +57,6 @@ class UpdatePlayers extends Command
             $this->updatePlayer($player_url);
             $offset = $pos + 1;
         endwhile;
-        // endfor;
 
     }
 
@@ -75,22 +73,29 @@ class UpdatePlayers extends Command
 
         $player_name = explode('/', $url);
         $player_name = explode('-', $player_name[2]);
+        $count = count($player_name);
 
-        if(count($player_name) > 2):
+        if($count > 2):
 
-            // This will not currently work with some nicknamed players or non standard name 
-            // eg. /player/r-j-alaniz-595798 /player/ji-man-choi-596847  /player/travis-d-arnaud-51859 /player/brett-de-geus-676969 /player/chad-de-la-guerra-664750 
-            // It does work with /player/jackie-bradley-jr-598265
+            // The following will not currently work with some nicknamed players or non standard name 
+            // eg. /player/ji-man-choi-596847  /player/travis-d-arnaud-51859 /player/brett-de-geus-676969 /player/chad-de-la-guerra-664750 
+            // It works by default with /player/jackie-bradley-jr-598265
+
             Log::info(ucwords($player_name[0]));
             Log::info(ucwords($player_name[1]));
+
+            // Catch players who are known by initialed nicknames such as JD Martinez or TJ McFarland
+            if($count === 4):
+                if(strlen($player_name[0]) === 1 && strlen($player_name[1]) === 1):
+                    $player_name[0] = $player_name[0] .  $player_name[1];
+                    $player_name[1] = $player_name[2];
+                endif;
+            endif;
 
             $player = Player::select('*')->where('first_name', $player_name[0])->where('last_name', $player_name[1])->get();
             $count = count($player);
 
             if($count === 0):
-                // TODO add add player functionaity?
-                // <meta name="teamName" content="Cincinnati Reds">
-                // <div class="player-bio">
                 Log::info('Player does not exist');
             endif;
 
@@ -105,10 +110,16 @@ class UpdatePlayers extends Command
 
                 if($player_html):
 
-                    $mlb_career_stats = '{"header":"MLB Career Stats"';
+                    // Most NL pitchers will have batting stats, and some batter have pitching stats, but they are no really of interest.
+                    // This will get the important stats in all cases except for players like Shohei Ohtani
+                    if('P' === $player->position):
+                        $mlb_career_stats = '{"header":"MLB Career Stats","wins"';
+                    else:
+                        $mlb_career_stats = '{"header":"MLB Career Stats","atBats"';
+                    endif;
+
                     // {"header":"MLB Career Stats","wins":8,"losses":29,"era":"3.67","gamesPlayed":384,"gamesStarted":6,"saves":2,"inningsPitched":"330.2","strikeOuts":280,"whip":"1.29"}
                     // {"header":"MLB Career Stats","atBats":1181,"runs":238,"hits":333,"homeRuns":78,"rbi":187,"stolenBases":59,"avg":".282","obp":".370","ops":".907"}
-                    // TODO These tags appear multiple times, and multiples times for players who pitch and bat eg Brian Dozier and only one set of stat is currently returned
                     $pos = strpos($player_html, $mlb_career_stats);
                     $endpos = strpos($player_html, '}', $pos);
                     $stats = substr($player_html, $pos, $endpos - $pos + 1);
