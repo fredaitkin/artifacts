@@ -24,6 +24,43 @@ class UpdatePlayers extends Command
     protected $description = 'Scrapes MLB website to get latest player stats and updates the DB';
 
     /**
+    * Map MLB player linked name to player in DB
+    *
+    * @var array
+    */
+    protected $non_standard_names = [
+        '/player/wei-yin-chen-612672'           => null,
+        '/player/shao-ching-chiang-623992'      => null,
+        '/player/ji-man-choi-596847'            => ['Ji-Man', 'Choi'],
+        '/player/shin-soo-choo-425783'          => ['Shin-Soo', 'Choo'],
+        '/player/travis-d-arnaud-51859'         => ['Travis', "d'Arnaud"],
+        '/player/brett-de-geus-676969'          => null,
+        '/player/alex-de-goti-621008'           => null,
+        '/player/adrian-de-horta-641506'        => null,
+        '/player/jasseel-de-la-cruz-665600'     => null,
+        '/player/oscar-de-la-cruz-642601'       => null,
+        '/player/chad-de-la-guerra-664750'      => null,
+        '/player/jose-de-leon-592254'           => null,
+        '/player/enyel-de-los-santos-660853'    => null,
+        '/player/miguel-del-pozo-600887'        => null,
+        '/player/chi-chi-gonzalez-592346'       => null,
+        '/player/chih-wei-hu-629496'            => null,
+        '/player/wei-chieh-huang-658791'        => null,
+        '/player/jung-ho-kang-628356'           => ['Jung Ho', 'Kang'],
+        '/player/kwang-hyun-kim-547942'         => null,
+        '/player/tommy-la-stella-600303'        => ['Tommy', 'La Stella'],
+        '/player/tzu-wei-lin-624407'            => null,
+        '/player/jean-carlos-mejia-650496'      => null,
+        '/player/seth-mejias-brean-623180'      => null,
+        '/player/john-ryan-murphy-571974'       => ['John Ryan', 'Murphy'],
+        '/player/daniel-ponce-de-leon-594965'   => null,
+        '/player/sean-reid-foley-656887'        => null,
+        '/player/hyun-jin-ryu-547943'           => ['Hyun Jin', 'Ryu'],
+        '/player/ka-ai-tom-664789'              => null,
+        '/player/wei-chung-wang-623913'         => ['Wei-Chung', 'Wang'],
+    ];
+
+    /**
      * Create a new command instance.
      *
      * @return void
@@ -63,36 +100,19 @@ class UpdatePlayers extends Command
     /**
      * Update the player
      *
-     * @param string $url
-     * The player url
+     * @param string $link
+     * The player link
      */
-    public function updatePlayer($url)
+    public function updatePlayer($link)
     {
         Log::info("");
-        Log::info($url);
+        Log::info($link);
 
-        $player_name = explode('/', $url);
-        $player_name = explode('-', $player_name[2]);
-        $count = count($player_name);
+        $name = $this->getPlayerName($link);
 
-        if($count > 2):
+        if($name):
 
-            // The following will not currently work with some nicknamed players or non standard name 
-            // eg. /player/ji-man-choi-596847  /player/travis-d-arnaud-51859 /player/brett-de-geus-676969 /player/chad-de-la-guerra-664750 
-            // It works by default with /player/jackie-bradley-jr-598265
-
-            Log::info(ucwords($player_name[0]));
-            Log::info(ucwords($player_name[1]));
-
-            // Catch players who are known by initialed nicknames such as JD Martinez or TJ McFarland
-            if($count === 4):
-                if(strlen($player_name[0]) === 1 && strlen($player_name[1]) === 1):
-                    $player_name[0] = $player_name[0] .  $player_name[1];
-                    $player_name[1] = $player_name[2];
-                endif;
-            endif;
-
-            $player = Player::select('*')->where('first_name', $player_name[0])->where('last_name', $player_name[1])->get();
+            $player = Player::select('*')->where('first_name', $name[0])->where('last_name', $name[1])->get();
             $count = count($player);
 
             if($count === 0):
@@ -106,7 +126,7 @@ class UpdatePlayers extends Command
             if($count === 1):
                 $player = $player[0];
 
-                $player_html = @file_get_contents('https://www.mlb.com' . $url);
+                $player_html = @file_get_contents('https://www.mlb.com' . $link);
 
                 if($player_html):
 
@@ -159,6 +179,48 @@ class UpdatePlayers extends Command
             endif;
         endif;
 
+    }
+
+    /**
+     * Extract first and last name from player link
+     * Typical player link format /player/firstname-lastname-id
+     *
+     * @param string $url Player link
+     * @return array Name
+     */
+    private function getPlayerName(string $link) {
+        $name = null;
+
+        $player_name = explode('/', $link);
+
+        if(count($player_name) > 2):
+            // Extract last portion of link
+            $name = explode('-', $player_name[2]);
+            $count = count($name);
+
+            if($count > 3):
+                // Non standard name
+                $non_standard_name = $this->non_standard_names[$link] ?? null;
+
+                if($non_standard_name):
+                    $name = $non_standard_name;
+                elseif ($count === 4):
+                    // Catch players who are known by initialed nicknames such as JD Martinez or TJ McFarland
+                    if(strlen($name[0]) === 1 && strlen($name[1]) === 1):
+                        $name[0] = $name[0] .  $name[1];
+                        $name[1] = $name[2];
+                    // Catch Irish names such as Ryan O'Hearn
+                    elseif (strlen($name[1]) === 1 && $name[1] === 'o'):
+                        $name[1] = $name[1] . "'" . $name[2];
+                    endif;
+                endif;
+            endif;
+
+            Log::info(ucwords($name[0]));
+            Log::info(ucwords($name[1]));
+        endif;
+
+        return $name;
     }
 
 }
