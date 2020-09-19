@@ -193,7 +193,7 @@ class UpdatePlayers extends Command
 
         $player_name = explode('/', $link);
 
-        if(count($player_name) > 2):
+        if(count($player_name) > 2 && strpos($player_name[2], '-') !== false):
             // Extract last portion of link
             $name = explode('-', $player_name[2]);
             $count = count($name);
@@ -218,6 +218,8 @@ class UpdatePlayers extends Command
 
             Log::info(ucwords($name[0]));
             Log::info(ucwords($name[1]));
+        else:
+            Log::info('Unexcepted link format');
         endif;
 
         return $name;
