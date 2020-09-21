@@ -300,20 +300,19 @@ class UpdatePlayers extends Command
 
                 $file_name  = time() . '.' . $name[0] . '_' . $name[1] . '.' . 'jpeg';
 
-                $_img = Image::make($image_src);
-
-                $img = $_img;
+                // Reduced size photo
+                $img = Image::make($image_src);
                 $img->resize(120, 120, function ($constraint) {
                     $constraint->aspectRatio();
                 });
-
                 $img->stream();
-
                 Storage::disk('public')->put('images/smalls' . '/' . $file_name, $img);
 
-                $img = $_img;
+                // Regular photo
+                $img = Image::make($image_src);
                 $img->stream();
                 Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
+
                 $photo = serialize(['regular' => $file_name, 'small' => $file_name]);
             else:
                 Log::info('Unable to retrieve player photo');
