@@ -39,6 +39,8 @@ class Player extends Model implements PlayerInterface
         'saves',
     ];
 
+    protected $guarded = [];
+
     /**
      * Get formatted birth date.
      *

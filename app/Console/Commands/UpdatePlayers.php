@@ -3,6 +3,8 @@
 namespace Artifacts\Console\Commands;
 
 use Illuminate\Console\Command;
+use Intervention\Image\ImageManagerStatic as Image;
+use Storage;
 use Log;
 
 use Artifacts\Player\Player;
@@ -29,34 +31,34 @@ class UpdatePlayers extends Command
     * @var array
     */
     protected $non_standard_names = [
-        '/player/wei-yin-chen-612672'           => null,
-        '/player/shao-ching-chiang-623992'      => null,
+        '/player/wei-yin-chen-612672'           => ['Wei-Yin', 'Chen'],
+        '/player/shao-ching-chiang-623992'      => ['Shao-Ching', 'Chang'],
         '/player/ji-man-choi-596847'            => ['Ji-Man', 'Choi'],
         '/player/shin-soo-choo-425783'          => ['Shin-Soo', 'Choo'],
         '/player/travis-d-arnaud-51859'         => ['Travis', "d'Arnaud"],
-        '/player/brett-de-geus-676969'          => null,
-        '/player/alex-de-goti-621008'           => null,
-        '/player/adrian-de-horta-641506'        => null,
-        '/player/jasseel-de-la-cruz-665600'     => null,
-        '/player/oscar-de-la-cruz-642601'       => null,
-        '/player/chad-de-la-guerra-664750'      => null,
-        '/player/jose-de-leon-592254'           => null,
-        '/player/enyel-de-los-santos-660853'    => null,
-        '/player/miguel-del-pozo-600887'        => null,
-        '/player/chi-chi-gonzalez-592346'       => null,
-        '/player/chih-wei-hu-629496'            => null,
-        '/player/wei-chieh-huang-658791'        => null,
+        '/player/brett-de-geus-676969'          => ['Brett', 'De Geus'],
+        '/player/alex-de-goti-621008'           => ['Alex', 'De Goti'],
+        '/player/adrian-de-horta-641506'        => ['Adrian', 'De Horta'],
+        '/player/jasseel-de-la-cruz-665600'     => ['Jasseel', 'De La Cruz'],
+        '/player/oscar-de-la-cruz-642601'       => ['Oscar', 'De La Cruz'],
+        '/player/chad-de-la-guerra-664750'      => ['Chad', 'De La Guerra'],
+        '/player/jose-de-leon-592254'           => ['Jose', 'De Leon'],
+        '/player/enyel-de-los-santos-660853'    => ['Enyel', 'De Los Santos'],
+        '/player/miguel-del-pozo-600887'        => ['Miguel', 'Del Pozo'],
+        '/player/chi-chi-gonzalez-592346'       => ['Chi chi', 'Gonzalez'],
+        '/player/chih-wei-hu-629496'            => ['Chih-Wei', 'Hu'],
+        '/player/wei-chieh-huang-658791'        => ['Wei-Chieh', 'Huang'],
         '/player/jung-ho-kang-628356'           => ['Jung Ho', 'Kang'],
-        '/player/kwang-hyun-kim-547942'         => null,
+        '/player/kwang-hyun-kim-547942'         => ['Kwang-Hyun', 'Kim'],
         '/player/tommy-la-stella-600303'        => ['Tommy', 'La Stella'],
-        '/player/tzu-wei-lin-624407'            => null,
-        '/player/jean-carlos-mejia-650496'      => null,
-        '/player/seth-mejias-brean-623180'      => null,
+        '/player/tzu-wei-lin-624407'            => ['Tzu-Wei', 'Lin'],
+        '/player/jean-carlos-mejia-650496'      => ['Jean Carlos', 'Mejia'],
+        '/player/seth-mejias-brean-623180'      => ['Seth', 'Mejias-Brean'],
         '/player/john-ryan-murphy-571974'       => ['John Ryan', 'Murphy'],
-        '/player/daniel-ponce-de-leon-594965'   => null,
-        '/player/sean-reid-foley-656887'        => null,
+        '/player/daniel-ponce-de-leon-594965'   => ['Daniel ', 'Ponce De Leon'],
+        '/player/sean-reid-foley-656887'        => ['Sean', 'Reid-Foley'],
         '/player/hyun-jin-ryu-547943'           => ['Hyun Jin', 'Ryu'],
-        '/player/ka-ai-tom-664789'              => null,
+        '/player/ka-ai-tom-664789'              => ["Ka'ai", 'Tom'],
         '/player/wei-chung-wang-623913'         => ['Wei-Chung', 'Wang'],
     ];
 
@@ -67,6 +69,7 @@ class UpdatePlayers extends Command
      */
     public function __construct()
     {
+
         parent::__construct();
     }
 
@@ -115,20 +118,22 @@ class UpdatePlayers extends Command
             $player = Player::select('*')->where('first_name', $name[0])->where('last_name', $name[1])->get();
             $count = count($player);
 
-            if($count === 0):
-                Log::info('Player does not exist');
-            endif;
+            $player_html = @file_get_contents('https://www.mlb.com' . $link);
 
-            if($count > 1):
-                Log::info('Multiple players with same name');
-            endif;
+            if($player_html):
 
-            if($count === 1):
-                $player = $player[0];
+                if($count === 0):
+                    Log::info('Player does not exist, adding');
+                    $id = $this->getPlayerId($link);
+                    $this->addPlayer($name, $id, $player_html);
+                endif;
 
-                $player_html = @file_get_contents('https://www.mlb.com' . $link);
+                if($count > 1):
+                    Log::info('Multiple players with same name');
+                endif;
 
-                if($player_html):
+                if($count === 1):
+                    $player = $player[0];
 
                     // Most NL pitchers will have batting stats, and some batter have pitching stats, but they are no really of interest.
                     // This will get the important stats in all cases except for players like Shohei Ohtani
@@ -173,10 +178,12 @@ class UpdatePlayers extends Command
 
                     // Update player stats
                     $player->save();
-                else:
-                    Log::info('Error retrieving player page');
                 endif;
+
+            else:
+                Log::info('Error retrieving player page');
             endif;
+
         endif;
 
     }
@@ -225,4 +232,101 @@ class UpdatePlayers extends Command
         return $name;
     }
 
+    /**
+     * Extract player id from player link
+     *
+     * @param string $url Player link
+     * @return mixed Id
+     */
+    private function getPlayerId(string $link) {
+        $id = null;
+
+        $player_name = explode('/', $link);
+
+        if(count($player_name) > 2 && strpos($player_name[2], '-') !== false):
+            // Extract last portion of link
+            $name = explode('-', $player_name[2]);
+            $count = count($name);
+            $id = $name[$count - 1];
+        else:
+            Log::info('Unexcepted link format');
+        endif;
+
+        return $id;
+    }
+
+    /**
+     * Add player
+     *
+     * @param array $name Player first and last name
+     * @param mixed $id MLB player id
+     * @param string $player_html Player page
+     * @return mixed Id
+     */
+    private function addPlayer(array $name, $id, string $player_html) {
+        // Get team
+        $pos = strpos($player_html, 'playerTeamName:');
+        $endpos = strpos($player_html, "',", $pos);
+        $team = substr($player_html, $pos + 17, $endpos - $pos - 17);
+        $team = array_search(trim($team), config('teams'));
+        Log::info('Team ' . $team);
+
+        // Only add if they are in a major league team
+        if($team):
+            // Get birthdate
+            $pos = strpos($player_html, 'Born:');
+            $endpos = strpos($player_html, "in", $pos);
+            $born = substr($player_html, $pos + 12, $endpos - $pos - 12);
+            $born = trim($born);
+            $born = explode('/', $born);
+            $birthdate = null;
+            // Translate 3/27/1990 to 1990-3-27
+            if(count($born) === 3):
+                $birthdate = $born[2] . '-' . $born[0] . '-' . $born[1];
+            endif;
+            Log::info('Birthdate ' . $birthdate);
+
+            // Get position
+            $pos = strpos($player_html, 'player-header--vitals');
+            $pos = strpos($player_html, "<li>", $pos);
+            $endpos = strpos($player_html, "</li>", $pos);
+            $position = substr($player_html, $pos + 4, $endpos - $pos - 4);
+            Log::info('Position ' . $position);
+
+            // Get player photo
+            $photo = null;
+            $image_src = 'https://securea.mlb.com/mlb/images/players/head_shot/' . $id . '.jpg';
+            if (@file_get_contents($image_src)):
+
+                $file_name  = time() . '.' . $name[0] . '_' . $name[1] . '.' . 'jpeg';
+
+                $_img = Image::make($image_src);
+
+                $img = $_img;
+                $img->resize(120, 120, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+
+                $img->stream();
+
+                Storage::disk('public')->put('images/smalls' . '/' . $file_name, $img);
+
+                $img = $_img;
+                $img->stream();
+                Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
+                $photo = serialize(['regular' => $file_name, 'small' => $file_name]);
+            else:
+                Log::info('Unable to retrieve player photo');
+            endif;
+
+            Player::create([
+                'first_name'    => ucfirst($name[0]),
+                'last_name'     => ucfirst($name[1]),
+                'team'          => $team,
+                'birthdate'     => $birthdate,
+                'position'      => $position,
+                'photo'         => $photo,
+            ]);
+        endif;
+    }
 }
