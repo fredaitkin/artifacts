@@ -4,6 +4,7 @@ return [
     'US',
     'Aruba',
     'Australia',
+    'Bahamas',
     'Brazil',
     'Canada',
     'China',
