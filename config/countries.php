@@ -6,6 +6,7 @@ return [
     'Australia',
     'Brazil',
     'Canada',
+    'China',
     'Colombia',
     'Cuba',
     'Curacao',
