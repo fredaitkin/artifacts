@@ -142,14 +142,14 @@
                     <label for="average" class="col-sm-8 control-label">Average</label>
 
                     <div class="col-sm-8">
-                        <input type="text" name="average" id="average" class="form-control" value=@if (old('average')) {{ old('average') }} @elseif (!empty($player->average)) {{$player->average}} @endif>
+                        <input type="text" name="average" id="average" class="form-control" value=@if (old('average')) {{ old('average') }} @elseif (isset($player->average)) {{$player->average}} @endif>
                     </div>
                 </div>
                 <div class="col">
                     <label for="at_bats" class="col-sm-8 control-label">At Bats</label>
 
                     <div class="col-sm-8">
-                        <input type="text" name="at_bats" id="at_bats" class="form-control" value=@if (old('at_bats')) {{ old('at_bats') }} @elseif (!empty($player->at_bats)) {{$player->at_bats}} @endif>
+                        <input type="text" name="at_bats" id="at_bats" class="form-control" value=@if (old('at_bats')) {{ old('at_bats') }} @elseif (isset($player->at_bats)) {{$player->at_bats}} @endif>
                     </div>
                 </div>
             </div>
@@ -159,21 +159,21 @@
                     <label for="home_runs" class="col-sm-8 control-label">Home Runs</label>
 
                     <div class="col-sm-8">
-                        <input type="text" name="home_runs" id="home_runs" class="form-control" value=@if (old('home_runs')) {{ old('home_runs') }} @elseif (!empty($player->home_runs)) {{$player->home_runs}} @endif>
+                        <input type="text" name="home_runs" id="home_runs" class="form-control" value=@if (old('home_runs')) {{ old('home_runs') }} @elseif (isset($player->home_runs)) {{$player->home_runs}} @endif>
                     </div>
                 </div>
                 <div class="col">
                     <label for="rbis" class="col-sm-8 control-label">RBIs</label>
 
                     <div class="col-sm-8">
-                        <input type="text" name="rbis" id="rbis" class="form-control" value=@if (old('rbis')) {{ old('rbis') }} @elseif (!empty($player->rbis)) {{$player->rbis}} @endif>
+                        <input type="text" name="rbis" id="rbis" class="form-control" value=@if (old('rbis')) {{ old('rbis') }} @elseif (isset($player->rbis)) {{$player->rbis}} @endif>
                     </div>
                 </div>
                 <div class="col">
                     <label for="era" class="col-sm-8 control-label">ERA</label>
 
                     <div class="col-sm-8">
-                        <input type="text" name="era" id="era" class="form-control" value=@if (old('era')) {{ old('era') }} @elseif (!empty($player->era)) {{$player->era}} @endif>
+                        <input type="text" name="era" id="era" class="form-control" value=@if (old('era')) {{ old('era') }} @elseif (isset($player->era)) {{$player->era}} @endif>
                     </div>
                 </div>
             </div>
@@ -183,21 +183,21 @@
                     <label for="games" class="col-sm-8 control-label">Games</label>
 
                     <div class="col-sm-8">
-                        <input type="text" name="games" id="games" class="form-control" value=@if (old('games')) {{ old('games') }} @elseif (!empty($player->games)) {{$player->games}} @endif>
+                        <input type="text" name="games" id="games" class="form-control" value=@if (old('games')) {{ old('games') }} @elseif (isset($player->games)) {{$player->games}} @endif>
                     </div>
                 </div>
                 <div class="col">
                     <label for="wins" class="col-sm-8 control-label">Wins</label>
 
                     <div class="col-sm-8">
-                        <input type="text" name="wins" id="wins" class="form-control" value=@if (old('wins')) {{ old('wins') }} @elseif (!empty($player->wins)) {{$player->wins}} @endif>
+                        <input type="text" name="wins" id="wins" class="form-control" value=@if (old('wins')) {{ old('wins') }} @elseif (isset($player->wins)) {{$player->wins}} @endif>
                     </div>
                 </div>
                 <div class="col">
                     <label for="losses" class="col-sm-8 control-label">Losses</label>
 
                     <div class="col-sm-8">
-                        <input type="text" name="losses" id="player->losses" class="form-control" value=@if (old('losses')) {{ old('losses') }} @elseif (!empty($player->losses)) {{$player->losses}} @endif>
+                        <input type="text" name="losses" id="player->losses" class="form-control" value=@if (old('losses')) {{ old('losses') }} @elseif (isset($player->losses)) {{$player->losses}} @endif>
                     </div>
                 </div>
             </div>
@@ -207,7 +207,7 @@
                     <label for="saves" class="col-sm-8 control-label">Saves</label>
 
                     <div class="col-sm-8">
-                        <input type="text" name="saves" id="player->saves" class="form-control" value=@if (old('saves')) {{ old('saves') }} @elseif (!empty($player->saves)) {{$player->saves}} @endif>
+                        <input type="text" name="saves" id="player->saves" class="form-control" value=@if (old('saves')) {{ old('saves') }} @elseif (isset($player->saves)) {{ $player->saves }} @endif>
                     </div>
                 </div>
                 <div class="col">
