@@ -125,8 +125,7 @@ class UpdatePlayers extends Command
 
                 if($count === 0):
                     Log::info('Player does not exist, adding');
-                    $id = $this->getPlayerId($link);
-                    $this->addPlayer($name, $id, $player_html);
+                    $this->addPlayer($link, $name, $player_html);
                 endif;
 
                 if($count > 1):
@@ -153,30 +152,32 @@ class UpdatePlayers extends Command
 
                     if(isset($stats->atBats)):
                         Log::info('Batter');
-                        Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . ($stats->atBats - $player->at_bats));
-                        Log::info('HRs ' . $stats->homeRuns . ' ' . $player->home_runs . ' ' . ($stats->homeRuns - $player->home_runs));
-                        Log::info('RBIs ' . $stats->rbi . ' ' . $player->rbis . ' ' . ($stats->rbi - $player->rbis));
-                        Log::info('AVG ' . $stats->avg . ' ' . $player->average . ' ' . ($stats->avg - $player->average));
-                        $player->at_bats    = $stats->atBats;
-                        $player->home_runs  = $stats->homeRuns;
-                        $player->rbis       = $stats->rbi;
-                        $player->average    = $stats->avg;
+                        Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . (intval($stats->atBats) - $player->at_bats));
+                        Log::info('HRs ' . $stats->homeRuns . ' ' . $player->home_runs . ' ' . (intval($stats->homeRuns) - $player->home_runs));
+                        Log::info('RBIs ' . $stats->rbi . ' ' . $player->rbis . ' ' . (intval($stats->rbi) - $player->rbis));
+                        Log::info('AVG ' . $stats->avg . ' ' . $player->average . ' ' . (floatval($stats->avg) - $player->average));
+                        $player->at_bats    = intval($stats->atBats);
+                        $player->home_runs  = intval($stats->homeRuns);
+                        $player->rbis       = intval($stats->rbi);
+                        $player->average    = floatval($stats->avg);
                     endif;
 
                     if(isset($stats->wins)):
                         Log::info('Pitcher');
-                        Log::info('Wins ' . $stats->wins . ' ' . $player->wins . ' ' . ($stats->wins - $player->wins));
-                        Log::info('Losses ' . $stats->losses . ' ' . $player->losses . ' ' . ($stats->losses - $player->losses));
-                        Log::info('ERA ' . $stats->era . ' ' . $player->era . ' ' . ($stats->era - $player->era));
-                        Log::info('Games ' . $stats->gamesPlayed . ' ' . $player->games . ' ' . ($stats->gamesPlayed - $player->games));
-                        Log::info('Saves ' . $stats->saves . ' ' . $player->saves . ' ' . ($stats->saves - $player->saves));
-                        $player->wins   = $stats->wins;
-                        $player->losses = $stats->losses;
-                        $player->era    = $stats->era;
-                        $player->games  = $stats->gamesPlayed;
-                        $player->saves  = $stats->saves;
+                        Log::info('Wins ' . $stats->wins . ' ' . $player->wins . ' ' . (intval($stats->wins) - $player->wins));
+                        Log::info('Losses ' . $stats->losses . ' ' . $player->losses . ' ' . (intval($stats->losses) - $player->losses));
+                        Log::info('ERA ' . $stats->era . ' ' . $player->era . ' ' . (floatval($stats->era) - $player->era));
+                        Log::info('Games ' . $stats->gamesPlayed . ' ' . $player->games . ' ' . (intval($stats->gamesPlayed) - $player->games));
+                        Log::info('Saves ' . $stats->saves . ' ' . $player->saves . ' ' . (intval($stats->saves) - $player->saves));
+                        $player->wins   = intval($stats->wins);
+                        $player->losses = intval($stats->losses);
+                        $player->era    = floatval($stats->era);
+                        $player->games  = intval($stats->gamesPlayed);
+                        $player->saves  = intval($stats->saves);
                     endif;
 
+                    // Add mlb link for reference and easy access
+                    $player->mlb_link = $link;
                     // Update player stats
                     $player->save();
                 endif;
@@ -259,12 +260,12 @@ class UpdatePlayers extends Command
     /**
      * Add player
      *
+     * @param string $link MLB player link
      * @param array $name Player first and last name
-     * @param mixed $id MLB player id
      * @param string $player_html Player page
      * @return mixed Id
      */
-    private function addPlayer(array $name, $id, string $player_html) {
+    private function addPlayer(string $link, array $name, string $player_html) {
         // Get team
         $pos = strpos($player_html, 'playerTeamName:');
         $endpos = strpos($player_html, "',", $pos);
@@ -296,6 +297,7 @@ class UpdatePlayers extends Command
 
             // Get player photo
             $photo = null;
+            $id = $this->getPlayerId($link);
             $image_src = 'https://securea.mlb.com/mlb/images/players/head_shot/' . $id . '.jpg';
             if (@file_get_contents($image_src)):
 
@@ -326,6 +328,7 @@ class UpdatePlayers extends Command
                 'birthdate'     => $birthdate,
                 'position'      => $position,
                 'photo'         => $photo,
+                'mlb_link'      => $link,
             ]);
         endif;
     }
