@@ -33,6 +33,7 @@
                         <input type="text" name="last_name" id="last_name" class="form-control" value="@if (old('last_name')) {{old('last_name') }}@elseif (!empty($player->last_name)){{$player->last_name}}@endif">
                     </div>
                 </div>
+                                    @if(isset($player->mlb_link1)) <a href="https://www.mlb.com/player/{{ $player->mlb_link1}}">click</a>@endif
             </div>
 
             <div class="form-group row">

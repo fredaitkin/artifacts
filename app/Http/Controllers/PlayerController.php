@@ -154,6 +154,7 @@ class PlayerController extends Controller
         $teams = ['' => 'Please Select'] + config('teams');
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
+        $player->mlb_link1 = explode('/', $player->mlb_link)[2];
         if(isset($request->view)):
             return view('player_view', ['player' => $player]);
         else:

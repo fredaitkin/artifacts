@@ -116,6 +116,8 @@ class UpdatePlayers extends Command
 
         if($name):
 
+            // TODO find player by link
+            // $player = Player::select('*')->where('mlb_link', $link)->get();
             $player = Player::select('*')->where('first_name', $name[0])->where('last_name', $name[1])->get();
             $count = count($player);
 
