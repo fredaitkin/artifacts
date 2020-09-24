@@ -61,6 +61,7 @@ class UpdatePlayers extends Command
         '/player/ka-ai-tom-664789'              => ["Ka'ai", 'Tom'],
         '/player/wei-chung-wang-623913'         => ['Wei-Chung', 'Wang'],
         '/player/luis-alexander-basabe-642772'  => ['Luis Alexander', 'Basabe'],
+        '/player/ke-bryan-hayes-663647'         => ["Ke'Bryan", "Hayes"],
     ];
 
     /**
