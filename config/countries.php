@@ -15,6 +15,7 @@ return [
     'Germany',
     'Honduras',
     'Japan',
+    'Lithuania',
     'Mexico',
     'Netherlands',
     'Nicaragua',
