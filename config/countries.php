@@ -13,6 +13,7 @@ return [
     'Curacao',
     'Dominican Republic',
     'Germany',
+    'Guam',
     'Honduras',
     'Japan',
     'Lithuania',
