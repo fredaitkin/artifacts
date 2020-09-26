@@ -23,6 +23,7 @@ return [
     'Panama',
     'Peru',
     'Puerto Rico',
+    'South Africa',
     'South Korea',
     'Taiwan',
     'Venezuela',
