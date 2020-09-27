@@ -117,26 +117,17 @@ class UpdatePlayers extends Command
 
         if($name):
 
-            // TODO find player by link
-            // $player = Player::select('*')->where('mlb_link', $link)->get();
-            ///player/josh-a-smith-595001  /player/michael-a-taylor-572191
-            $player = Player::select('*')->where('first_name', $name[0])->where('last_name', $name[1])->get();
-            $count = count($player);
+            // TODO test me
+            $player = Player::select('*')->where('mlb_link', $link)->get();
 
             $player_html = @file_get_contents('https://www.mlb.com' . $link);
 
             if($player_html):
 
-                if($count === 0):
+                if(!$player):
                     Log::info('Player does not exist, adding');
                     $this->addPlayer($link, $name, $player_html);
-                endif;
-
-                if($count > 1):
-                    Log::info('Multiple players with same name');
-                endif;
-
-                if($count === 1):
+                else:
                     $player = $player[0];
 
                     // Most NL pitchers will have batting stats, and some batter have pitching stats, but they are no really of interest.
