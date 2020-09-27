@@ -82,6 +82,8 @@ class UpdatePlayers extends Command
      */
     public function handle()
     {
+        // TODO  get from DB now rather than players page ie select mlb_link
+        
         // Backup DB in case there is an issue with the update players process
         $this->call('db:backup');
 
