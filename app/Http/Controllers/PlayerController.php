@@ -179,7 +179,7 @@ class PlayerController extends Controller
     {
         $q = $request->q;
         $players = [];
-        if ($q != "") {
+        if ($q != ""):
           $players = Player::select('players.*')
                 ->where('team', 'LIKE', '%' . $q . '%')
                 ->orWhere('city', 'LIKE', '%' . $q . '%')
@@ -193,12 +193,12 @@ class PlayerController extends Controller
                 ->paginate(15)
                 ->appends(['q' => $q])
                 ->setPath('');
-            }
-        if (count ( $players ) > 0) {
-            return view('players', ['players' => $players]);
-        } else {
-            return view('players', ['players' => $players])->withMessage('No Details found. Try to search again !');
-        }
+        endif;
+        if (count($players) > 0):
+            return view('players', ['players' => $players, 'q' => $q]);
+        else:
+            return view('players', ['players' => $players, 'q' => $q])->withMessage('No players found. Try to search again!');
+        endif;
     }
 
     /**
