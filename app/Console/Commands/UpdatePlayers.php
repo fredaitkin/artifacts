@@ -177,32 +177,50 @@ class UpdatePlayers extends Command
 
                 if(isset($stats->atBats)):
                     Log::info('Batter');
-                    Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . (intval($stats->atBats) - $player->at_bats));
-                    Log::info('HRs ' . $stats->homeRuns . ' ' . $player->home_runs . ' ' . (intval($stats->homeRuns) - $player->home_runs));
-                    Log::info('RBIs ' . $stats->rbi . ' ' . $player->rbis . ' ' . (intval($stats->rbi) - $player->rbis));
-                    Log::info('AVG ' . $stats->avg . ' ' . $player->average . ' ' . (floatval($stats->avg) - $player->average));
-                    $player->at_bats    = intval($stats->atBats);
-                    $player->home_runs  = intval($stats->homeRuns);
-                    $player->rbis       = intval($stats->rbi);
-                    $player->average    = floatval($stats->avg);
+                    Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . (intval($stats->atBats) - intval($player->at_bats)));
+                    Log::info('HRs ' . $stats->homeRuns . ' ' . $player->home_runs . ' ' . (intval($stats->homeRuns) - intval($player->home_runs)));
+                    Log::info('RBIs ' . $stats->rbi . ' ' . $player->rbis . ' ' . (intval($stats->rbi) - intval($player->rbis)));
+                    Log::info('AVG ' . $stats->avg . ' ' . $player->average . ' ' . (floatval($stats->avg) - floatval($player->average)));
+                    Log::info('Hits ' . $stats->hits . ' ' . $player->hits . ' ' . (intval($stats->hits) - intval($player->hits)));
+                    Log::info('Runs ' . $stats->runs . ' ' . $player->runs . ' ' . (intval($stats->runs) - intval($player->runs)));
+                    Log::info('Stolen Bases ' . $stats->stolenBases . ' ' . $player->stolen_bases . ' ' . (intval($stats->stolenBases) - intval($player->stolen_bases)));
+                    Log::info('OBP ' . $stats->obp . ' ' . $player->obp . ' ' . (floatval($stats->obp) - floatval($player->obp)));
+                    Log::info('OPS ' . $stats->ops . ' ' . $player->ops . ' ' . (floatval($stats->ops) - floatval($player->ops)));
+
+                    $player->at_bats        = intval($stats->atBats);
+                    $player->home_runs      = intval($stats->homeRuns);
+                    $player->rbis           = intval($stats->rbi);
+                    $player->average        = floatval($stats->avg);
+                    $player->hits           = intval($stats->hits);
+                    $player->runs           = intval($stats->runs);
+                    $player->stolen_bases   = intval($stats->stolenBases);
+                    $player->obp            = floatval($stats->obp);
+                    $player->ops            = floatval($stats->ops);
                 endif;
 
                 if(isset($stats->wins)):
                     Log::info('Pitcher');
-                    Log::info('Wins ' . $stats->wins . ' ' . $player->wins . ' ' . (intval($stats->wins) - $player->wins));
-                    Log::info('Losses ' . $stats->losses . ' ' . $player->losses . ' ' . (intval($stats->losses) - $player->losses));
-                    Log::info('ERA ' . $stats->era . ' ' . $player->era . ' ' . (floatval($stats->era) - $player->era));
-                    Log::info('Games ' . $stats->gamesPlayed . ' ' . $player->games . ' ' . (intval($stats->gamesPlayed) - $player->games));
-                    Log::info('Saves ' . $stats->saves . ' ' . $player->saves . ' ' . (intval($stats->saves) - $player->saves));
-                    $player->wins   = intval($stats->wins);
-                    $player->losses = intval($stats->losses);
-                    $player->era    = floatval($stats->era);
-                    $player->games  = intval($stats->gamesPlayed);
-                    $player->saves  = intval($stats->saves);
+                    Log::info('Wins ' . $stats->wins . ' ' . $player->wins . ' ' . (intval($stats->wins) - intval($player->wins)));
+                    Log::info('Losses ' . $stats->losses . ' ' . $player->losses . ' ' . (intval($stats->losses) - intval($player->losses)));
+                    Log::info('ERA ' . $stats->era . ' ' . $player->era . ' ' . (floatval($stats->era) - floatval($player->era)));
+                    Log::info('Games ' . $stats->gamesPlayed . ' ' . $player->games . ' ' . (intval($stats->gamesPlayed) - intval($player->games)));
+                    Log::info('Saves ' . $stats->saves . ' ' . $player->saves . ' ' . (intval($stats->saves) - intval($player->saves)));
+                    Log::info('Games Started ' . $stats->gamesStarted . ' ' . $player->games_started . ' ' . (intval($stats->gamesStarted) - intval($player->games_started)));
+                    Log::info('Innings Pitched ' . $stats->inningsPitched . ' ' . $player->innings_pitched . ' ' . (floatval($stats->inningsPitched) - floatval($player->innings_pitched)));
+                    Log::info('Strike Outs ' . $stats->strikeOuts . ' ' . $player->strike_outs . ' ' . (intval($stats->strikeOuts) - intval($player->strike_outs)));
+                    Log::info('WHIP ' . $stats->whip . ' ' . $player->whip . ' ' . (floatval($stats->whip) - floatval($player->whip)));
+
+                    $player->wins               = intval($stats->wins);
+                    $player->losses             = intval($stats->losses);
+                    $player->era                = floatval($stats->era);
+                    $player->games              = intval($stats->gamesPlayed);
+                    $player->saves              = intval($stats->saves);
+                    $player->games_started      = intval($stats->gamesStarted);
+                    $player->innings_pitched    = floatval($stats->inningsPitched);
+                    $player->strike_outs        = intval($stats->strikeOuts);
+                    $player->whip               = floatval($stats->whip);
                 endif;
 
-                // Add mlb link for reference and easy access
-                $player->mlb_link = $link;
                 // Update player stats
                 $player->save();
 
