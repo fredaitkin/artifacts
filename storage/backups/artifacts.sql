@@ -165,7 +165,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,7 +174,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Melissa Aitkin','melissaaitkin@gmail.com',NULL,'$2y$10$44tolvHcUrOOIux3W7U.8OWE7xoovRqOnJ0BB1TQI39r9Qa5YOA5.','Y2XHgf7e6NMN1J9HO3VAdjBPHxulWz85aqgm9HnmIsXtugeQIBYck15IRTC4','2019-05-27 22:01:35','2019-05-27 22:01:35');
+INSERT INTO `users` VALUES (1,'Melissa Aitkin','melissaaitkin@gmail.com',NULL,'$2y$10$44tolvHcUrOOIux3W7U.8OWE7xoovRqOnJ0BB1TQI39r9Qa5YOA5.','Y2XHgf7e6NMN1J9HO3VAdjBPHxulWz85aqgm9HnmIsXtugeQIBYck15IRTC4','2019-05-27 22:01:35','2019-05-27 22:01:35'),(2,'Mel A Junior','x@y.com',NULL,'$2y$10$3R0jPlPZw/i6.nL2DrXLyu8trrfuxrdgMHGeHWRgGtmVbce9ypi6G',NULL,'2020-10-02 18:11:46','2020-10-02 18:11:46');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -187,4 +187,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-27 18:52:21
+-- Dump completed on 2020-10-02 10:43:00

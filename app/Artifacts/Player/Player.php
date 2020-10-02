@@ -305,7 +305,7 @@ class Player extends Model implements PlayerInterface
     public function getBestWinStrikeRate(array $where = null)
     {
         $query = Player::selectRaw('id, first_name, last_name, team, round(games/wins, 2) as strike_rate')
-            ->whereNotNull('games')
+            ->where('games', '>', 100)
             ->where('wins', '>', 0)
             ->orderBy('strike_rate', 'ASC');
         if (isset($where)):

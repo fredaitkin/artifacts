@@ -16,7 +16,8 @@ class UpdatePlayers extends Command
      *
      * @var string
      */
-    protected $signature = 'db:update-players';
+    protected $signature = 'db:update-players
+                            {--all : Retrieve all players from mlb site}';
 
     /**
      * The console command description.
@@ -82,11 +83,38 @@ class UpdatePlayers extends Command
      */
     public function handle()
     {
-        // TODO  get from DB now rather than players page ie select mlb_link
-        
-        // Backup DB in case there is an issue with the update players process
-        $this->call('db:backup');
 
+        $options = $this->options();
+
+        if($options['all']):
+            $this->updatePlayersInSite();
+        else:
+             $this->updatePlayersInDB();
+        endif;
+
+    }
+
+    /**
+     * Update players in DB
+     *
+     * @return mixed
+     */
+    private function updatePlayersInDB()
+    {
+
+        $players = Player::all();
+        foreach($players as $player):
+            $this->updatePlayer($player->mlb_link, $player);
+        endforeach;
+    }
+
+    /**
+     * Update players including any new players on the mlb site
+     *
+     * @return mixed
+     */
+    private function updatePlayersInSite()
+    {
         // Get mlb links for all players
         $players_html = file_get_contents('https://www.mlb.com/players');
 
@@ -94,14 +122,22 @@ class UpdatePlayers extends Command
 
         $offset = 0;
         while (($pos = strpos($players_html, $player, $offset)) !== FALSE):
+
             $pos = strpos($players_html, $player, $offset);
             $endpos = strpos($players_html, ' ', $pos);
             // Strip off href tag from string, and therefore tweak end position, to be left with /player/fernando-abad-472551
-            $player_url = substr($players_html, $pos + 6, $endpos - $pos - 7);
-            $this->updatePlayer($player_url);
+            $player_link = substr($players_html, $pos + 6, $endpos - $pos - 7);
+            $player = Player::select('*')->where('mlb_link', $player_link)->get();
+            $player = $player[0] ?? null;
+
+            if ($player):
+                $this->updatePlayer($player_link, $player);
+            else:
+                $this->addPlayer($link);
+            endif;
+
             $offset = $pos + 1;
         endwhile;
-
     }
 
     /**
@@ -109,75 +145,66 @@ class UpdatePlayers extends Command
      *
      * @param string $link
      * The player link
+     * @param object $player
+     * The player DB object
      */
-    public function updatePlayer($link)
+    public function updatePlayer($link, $player)
     {
         Log::info("");
         Log::info($link);
 
-        $name = $this->getPlayerName($link);
+        if($link):
 
-        if($name):
-
-            // TODO test me
-            $player = Player::select('*')->where('mlb_link', $link)->get();
-
+            // Get player page
             $player_html = @file_get_contents('https://www.mlb.com' . $link);
 
             if($player_html):
 
-                if(!$player):
-                    Log::info('Player does not exist, adding');
-                    $this->addPlayer($link, $name, $player_html);
+                // Most NL pitchers will have batting stats, and some batter have pitching stats, but they are no really of interest.
+                // This will get the important stats in all cases except for players like Shohei Ohtani
+                if('P' === $player->position):
+                    $mlb_career_stats = '{"header":"MLB Career Stats","wins"';
                 else:
-                    $player = $player[0];
-
-                    // Most NL pitchers will have batting stats, and some batter have pitching stats, but they are no really of interest.
-                    // This will get the important stats in all cases except for players like Shohei Ohtani
-                    if('P' === $player->position):
-                        $mlb_career_stats = '{"header":"MLB Career Stats","wins"';
-                    else:
-                        $mlb_career_stats = '{"header":"MLB Career Stats","atBats"';
-                    endif;
-
-                    // {"header":"MLB Career Stats","wins":8,"losses":29,"era":"3.67","gamesPlayed":384,"gamesStarted":6,"saves":2,"inningsPitched":"330.2","strikeOuts":280,"whip":"1.29"}
-                    // {"header":"MLB Career Stats","atBats":1181,"runs":238,"hits":333,"homeRuns":78,"rbi":187,"stolenBases":59,"avg":".282","obp":".370","ops":".907"}
-                    $pos = strpos($player_html, $mlb_career_stats);
-                    $endpos = strpos($player_html, '}', $pos);
-                    $stats = substr($player_html, $pos, $endpos - $pos + 1);
-                    $stats = json_decode($stats);
-
-                    if(isset($stats->atBats)):
-                        Log::info('Batter');
-                        Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . (intval($stats->atBats) - $player->at_bats));
-                        Log::info('HRs ' . $stats->homeRuns . ' ' . $player->home_runs . ' ' . (intval($stats->homeRuns) - $player->home_runs));
-                        Log::info('RBIs ' . $stats->rbi . ' ' . $player->rbis . ' ' . (intval($stats->rbi) - $player->rbis));
-                        Log::info('AVG ' . $stats->avg . ' ' . $player->average . ' ' . (floatval($stats->avg) - $player->average));
-                        $player->at_bats    = intval($stats->atBats);
-                        $player->home_runs  = intval($stats->homeRuns);
-                        $player->rbis       = intval($stats->rbi);
-                        $player->average    = floatval($stats->avg);
-                    endif;
-
-                    if(isset($stats->wins)):
-                        Log::info('Pitcher');
-                        Log::info('Wins ' . $stats->wins . ' ' . $player->wins . ' ' . (intval($stats->wins) - $player->wins));
-                        Log::info('Losses ' . $stats->losses . ' ' . $player->losses . ' ' . (intval($stats->losses) - $player->losses));
-                        Log::info('ERA ' . $stats->era . ' ' . $player->era . ' ' . (floatval($stats->era) - $player->era));
-                        Log::info('Games ' . $stats->gamesPlayed . ' ' . $player->games . ' ' . (intval($stats->gamesPlayed) - $player->games));
-                        Log::info('Saves ' . $stats->saves . ' ' . $player->saves . ' ' . (intval($stats->saves) - $player->saves));
-                        $player->wins   = intval($stats->wins);
-                        $player->losses = intval($stats->losses);
-                        $player->era    = floatval($stats->era);
-                        $player->games  = intval($stats->gamesPlayed);
-                        $player->saves  = intval($stats->saves);
-                    endif;
-
-                    // Add mlb link for reference and easy access
-                    $player->mlb_link = $link;
-                    // Update player stats
-                    $player->save();
+                    $mlb_career_stats = '{"header":"MLB Career Stats","atBats"';
                 endif;
+
+                // {"header":"MLB Career Stats","wins":8,"losses":29,"era":"3.67","gamesPlayed":384,"gamesStarted":6,"saves":2,"inningsPitched":"330.2","strikeOuts":280,"whip":"1.29"}
+                // {"header":"MLB Career Stats","atBats":1181,"runs":238,"hits":333,"homeRuns":78,"rbi":187,"stolenBases":59,"avg":".282","obp":".370","ops":".907"}
+                $pos = strpos($player_html, $mlb_career_stats);
+                $endpos = strpos($player_html, '}', $pos);
+                $stats = substr($player_html, $pos, $endpos - $pos + 1);
+                $stats = json_decode($stats);
+
+                if(isset($stats->atBats)):
+                    Log::info('Batter');
+                    Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . (intval($stats->atBats) - $player->at_bats));
+                    Log::info('HRs ' . $stats->homeRuns . ' ' . $player->home_runs . ' ' . (intval($stats->homeRuns) - $player->home_runs));
+                    Log::info('RBIs ' . $stats->rbi . ' ' . $player->rbis . ' ' . (intval($stats->rbi) - $player->rbis));
+                    Log::info('AVG ' . $stats->avg . ' ' . $player->average . ' ' . (floatval($stats->avg) - $player->average));
+                    $player->at_bats    = intval($stats->atBats);
+                    $player->home_runs  = intval($stats->homeRuns);
+                    $player->rbis       = intval($stats->rbi);
+                    $player->average    = floatval($stats->avg);
+                endif;
+
+                if(isset($stats->wins)):
+                    Log::info('Pitcher');
+                    Log::info('Wins ' . $stats->wins . ' ' . $player->wins . ' ' . (intval($stats->wins) - $player->wins));
+                    Log::info('Losses ' . $stats->losses . ' ' . $player->losses . ' ' . (intval($stats->losses) - $player->losses));
+                    Log::info('ERA ' . $stats->era . ' ' . $player->era . ' ' . (floatval($stats->era) - $player->era));
+                    Log::info('Games ' . $stats->gamesPlayed . ' ' . $player->games . ' ' . (intval($stats->gamesPlayed) - $player->games));
+                    Log::info('Saves ' . $stats->saves . ' ' . $player->saves . ' ' . (intval($stats->saves) - $player->saves));
+                    $player->wins   = intval($stats->wins);
+                    $player->losses = intval($stats->losses);
+                    $player->era    = floatval($stats->era);
+                    $player->games  = intval($stats->gamesPlayed);
+                    $player->saves  = intval($stats->saves);
+                endif;
+
+                // Add mlb link for reference and easy access
+                $player->mlb_link = $link;
+                // Update player stats
+                $player->save();
 
             else:
                 Log::info('Error retrieving player page');
@@ -258,11 +285,16 @@ class UpdatePlayers extends Command
      * Add player
      *
      * @param string $link MLB player link
-     * @param array $name Player first and last name
-     * @param string $player_html Player page
-     * @return mixed Id
      */
-    private function addPlayer(string $link, array $name, string $player_html) {
+    private function addPlayer(string $link) {
+        Log::info('Player does not exist, adding');
+
+        // Get player name from link
+        $name = $this->getPlayerName($link);
+
+        // Get player page
+        $player_html = @file_get_contents('https://www.mlb.com' . $link);
+
         // Get team
         $pos = strpos($player_html, 'playerTeamName:');
         $endpos = strpos($player_html, "',", $pos);
