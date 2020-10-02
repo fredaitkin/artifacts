@@ -139,8 +139,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $players->appends(\Request::except('page'))->render() }}
-
+                @if(!empty($players))
+                    {{ $players->appends(\Request::except('page'))->render() }}
+                @endif
             </div>
         </div>
 
