@@ -17,7 +17,8 @@ class UpdatePlayers extends Command
      * @var string
      */
     protected $signature = 'db:update-players
-                            {--all : Retrieve all players from mlb site}';
+                            {--all : Retrieve all players from mlb site}
+                            {--ids= : Comma separated list of player ids}';
 
     /**
      * The console command description.
@@ -66,6 +67,13 @@ class UpdatePlayers extends Command
     ];
 
     /**
+     * Specific player ids to update.
+     *
+     * @var string
+     */
+    protected $player_ids;
+
+    /**
      * Create a new command instance.
      *
      * @return void
@@ -86,6 +94,10 @@ class UpdatePlayers extends Command
 
         $options = $this->options();
 
+        if(isset($options['ids'])):
+            $this->player_ids = explode(',', $options['ids']);
+        endif;
+
         if($options['all']):
             $this->updatePlayersInSite();
         else:
@@ -102,7 +114,12 @@ class UpdatePlayers extends Command
     private function updatePlayersInDB()
     {
 
-        $players = Player::all();
+        if(isset($this->player_ids)):
+            $players = Player::whereIn('id', $this->player_ids)->get();
+        else:
+            $players = Player::all();
+        endif;
+
         foreach($players as $player):
             $this->updatePlayer($player->mlb_link, $player);
         endforeach;
@@ -168,8 +185,6 @@ class UpdatePlayers extends Command
                     $mlb_career_stats = '{"header":"MLB Career Stats","atBats"';
                 endif;
 
-                // {"header":"MLB Career Stats","wins":8,"losses":29,"era":"3.67","gamesPlayed":384,"gamesStarted":6,"saves":2,"inningsPitched":"330.2","strikeOuts":280,"whip":"1.29"}
-                // {"header":"MLB Career Stats","atBats":1181,"runs":238,"hits":333,"homeRuns":78,"rbi":187,"stolenBases":59,"avg":".282","obp":".370","ops":".907"}
                 $pos = strpos($player_html, $mlb_career_stats);
                 $endpos = strpos($player_html, '}', $pos);
                 $stats = substr($player_html, $pos, $endpos - $pos + 1);
