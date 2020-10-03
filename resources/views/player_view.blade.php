@@ -25,9 +25,9 @@
                 {{$player->age}}</br>
                 Born {{$player->birth_date_display}}</br></br>
                  @if(!empty($player->draft_position && $player->draft_position == 1 ))
-                    Number One Draft Pick!
+                    1st Pick!
                  @elseif(!empty($player->draft_round && $player->draft_round == 1 ))
-                    First Round Draft Pick!
+                    1st Round Pick!
                  @endif
             </div>
         </div>
