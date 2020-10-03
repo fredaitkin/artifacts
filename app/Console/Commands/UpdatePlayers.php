@@ -135,12 +135,12 @@ class UpdatePlayers extends Command
         // Get mlb links for all players
         $players_html = file_get_contents('https://www.mlb.com/players');
 
-        $player = 'href="/player/';
+        $player_href = 'href="/player/';
 
         $offset = 0;
-        while (($pos = strpos($players_html, $player, $offset)) !== FALSE):
+        while (($pos = strpos($players_html, $player_href, $offset)) !== FALSE):
 
-            $pos = strpos($players_html, $player, $offset);
+            $pos = strpos($players_html, $player_href, $offset);
             $endpos = strpos($players_html, ' ', $pos);
             // Strip off href tag from string, and therefore tweak end position, to be left with /player/fernando-abad-472551
             $player_link = substr($players_html, $pos + 6, $endpos - $pos - 7);
@@ -150,7 +150,7 @@ class UpdatePlayers extends Command
             if ($player):
                 $this->updatePlayer($player_link, $player);
             else:
-                $this->addPlayer($link);
+                $this->addPlayer($player_link);
             endif;
 
             $offset = $pos + 1;
@@ -331,6 +331,8 @@ class UpdatePlayers extends Command
      * @param string $link MLB player link
      */
     private function addPlayer(string $link) {
+        Log::info("");
+        Log::info($link);
         Log::info('Player does not exist, adding');
 
         // Get player name from link
@@ -343,8 +345,8 @@ class UpdatePlayers extends Command
         $pos = strpos($player_html, 'playerTeamName:');
         $endpos = strpos($player_html, "',", $pos);
         $team = substr($player_html, $pos + 17, $endpos - $pos - 17);
-        $team = array_search(trim($team), config('teams'));
         Log::info('Team ' . $team);
+        $team = array_search(trim($team), config('teams'));
 
         // Only add if they are in a major league team
         if($team):
