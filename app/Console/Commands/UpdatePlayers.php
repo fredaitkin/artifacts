@@ -193,6 +193,8 @@ class UpdatePlayers extends Command
                     $stats = substr($player_html, $pos, $endpos - $pos + 1);
                     $stats = json_decode($stats);
 
+                    $status = 'rookie';
+
                     if(isset($stats->atBats)):
                         Log::info('Batter');
                         Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . (intval($stats->atBats) - intval($player->at_bats)));
@@ -204,6 +206,8 @@ class UpdatePlayers extends Command
                         Log::info('Stolen Bases ' . $stats->stolenBases . ' ' . $player->stolen_bases . ' ' . (intval($stats->stolenBases) - intval($player->stolen_bases)));
                         Log::info('OBP ' . $stats->obp . ' ' . $player->obp . ' ' . (floatval($stats->obp) - floatval($player->obp)));
                         Log::info('OPS ' . $stats->ops . ' ' . $player->ops . ' ' . (floatval($stats->ops) - floatval($player->ops)));
+
+                        $status                 = 'active';
 
                         $player->at_bats        = intval($stats->atBats);
                         $player->home_runs      = intval($stats->homeRuns);
@@ -228,6 +232,8 @@ class UpdatePlayers extends Command
                         Log::info('Strike Outs ' . $stats->strikeOuts . ' ' . $player->strike_outs . ' ' . (intval($stats->strikeOuts) - intval($player->strike_outs)));
                         Log::info('WHIP ' . $stats->whip . ' ' . $player->whip . ' ' . (floatval($stats->whip) - floatval($player->whip)));
 
+                        $status = 'active';
+
                         $player->wins               = intval($stats->wins);
                         $player->losses             = intval($stats->losses);
                         $player->era                = floatval($stats->era);
@@ -239,6 +245,8 @@ class UpdatePlayers extends Command
                         $player->whip               = floatval($stats->whip);
                     endif;
 
+                    // Update status
+                    $player->status = $status;
                     // Update player stats
                     $player->save();
 
