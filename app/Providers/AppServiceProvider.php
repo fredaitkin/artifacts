@@ -24,13 +24,18 @@ class AppServiceProvider extends ServiceProvider
     {
         // Population service
         $this->app->bind(
-            'Artifacts\Interfaces\PopulationServiceInterface',
+            'Artifacts\Services\PopulationServiceInterface',
             'Artifacts\Services\PopulationService'
         );
         // Player service
         $this->app->bind(
-            'Artifacts\Interfaces\PlayerInterface',
+            'Artifacts\Player\PlayerInterface',
             'Artifacts\Player\Player'
+        );
+        // Minor League Teams service
+        $this->app->bind(
+            'Artifacts\MinorLeagueTeams\MinorLeagueTeamsInterface',
+            'Artifacts\MinorLeagueTeams\MinorLeagueTeams'
         );
     }
 }

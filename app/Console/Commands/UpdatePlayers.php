@@ -8,6 +8,7 @@ use Storage;
 use Log;
 
 use Artifacts\Player\Player;
+use Artifacts\MinorLeagueTeams\MinorLeagueTeamsInterface;
 
 class UpdatePlayers extends Command
 {
@@ -74,13 +75,29 @@ class UpdatePlayers extends Command
     protected $player_ids;
 
     /**
+     * List of minor league teams.
+     *
+     * @var array
+     */
+    protected $ml_teams;
+
+    /**
+     * The Minor League Teams Interface
+     *
+     * @var Artifacts\Interfaces\MinorLeagueTeamsInterface
+     */
+    private $minor_league_teams;
+
+    /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(MinorLeagueTeamsInterface $minor_league_teams)
     {
-
+        // TODO use PlayerInterface
+        $this->minor_league_teams = $minor_league_teams;
+        $this->ml_teams = array_column($this->minor_league_teams->getTeams(), 'team');
         parent::__construct();
     }
 
@@ -91,7 +108,6 @@ class UpdatePlayers extends Command
      */
     public function handle()
     {
-
         $options = $this->options();
 
         if(isset($options['ids'])):
@@ -180,6 +196,7 @@ class UpdatePlayers extends Command
 
                 if($player_html):
 
+                    $this->getTeam($player_html);
                     // Most NL pitchers will have batting stats, and some batter have pitching stats, but they are no really of interest.
                     // This will get the important stats in all cases except for players like Shohei Ohtani
                     if('P' === $player->position):
@@ -342,11 +359,7 @@ class UpdatePlayers extends Command
         $player_html = @file_get_contents('https://www.mlb.com' . $link);
 
         // Get team
-        $pos = strpos($player_html, 'playerTeamName:');
-        $endpos = strpos($player_html, "',", $pos);
-        $team = substr($player_html, $pos + 17, $endpos - $pos - 17);
-        Log::info('Team ' . $team);
-        $team = array_search(trim($team), config('teams'));
+        $team = $this->getTeam($player_html);
 
         // Only add if they are in a major league team
         if($team):
@@ -406,5 +419,25 @@ class UpdatePlayers extends Command
                 'mlb_link'      => $link,
             ]);
         endif;
+    }
+
+    private function getTeam(string $player_html)
+    {
+        $team = null;
+        $pos = strpos($player_html, 'playerTeamName:');
+        $endpos = strpos($player_html, "',", $pos);
+        $team_str = trim(substr($player_html, $pos + 17, $endpos - $pos - 17));
+        Log::info('Team ' . $team_str);
+        if(strpos($team_str, 'html') === false):
+            $team = array_search($team_str, config('teams'));
+            // If it is not a major league team, add to minor league team data source
+            if(!$team):
+                if(!in_array($team_str, $this->ml_teams)):
+                    $this->minor_league_teams->addTeam($team_str);
+                    $this->ml_teams[] = $team_str;
+                endif;
+            endif;
+        endif;
+        return $team;
     }
 }

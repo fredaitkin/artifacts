@@ -7,7 +7,7 @@
  * this has been done was a way to practice dependency injection
  */
 
-namespace Artifacts\Interfaces;
+namespace Artifacts\Services;
 
 interface PopulationServiceInterface {
 

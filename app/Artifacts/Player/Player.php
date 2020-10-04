@@ -2,7 +2,7 @@
 
 namespace Artifacts\Player;
 
-use Artifacts\Interfaces\PlayerInterface;
+use Artifacts\Player\PlayerInterface;
 
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
