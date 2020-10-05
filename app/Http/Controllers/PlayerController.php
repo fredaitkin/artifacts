@@ -23,7 +23,7 @@ class PlayerController extends Controller
     {
     }
 
-  /**
+    /**
      * Display players
      *
      * @return Response
@@ -133,7 +133,7 @@ class PlayerController extends Controller
 
             Storage::disk('public')->put('images/smalls' . '/' . $file_name, $img);
 
-            // Regular phot
+            // Regular photo
             $img = Image::make($image->getRealPath());
             $img->stream();
             Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
@@ -155,7 +155,7 @@ class PlayerController extends Controller
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
         $player->mlb_link1 = explode('/', $player->mlb_link)[2];
-        if(isset($request->view)):
+        if (isset($request->view)):
             return view('player_view', ['player' => $player]);
         else:
             return view('player', [

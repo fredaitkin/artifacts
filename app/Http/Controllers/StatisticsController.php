@@ -3,13 +3,13 @@
 namespace Artifacts\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Artifacts\Interfaces\PlayerInterface;
+use Artifacts\Player\PlayerInterface;
 
 class StatisticsController extends Controller
 {
 
     /**
-     * The Player Interfact
+     * The Player Interface
      *
      * @var Artifacts\Interfaces\PlayerInterface
      */
@@ -46,8 +46,8 @@ class StatisticsController extends Controller
         $most_rbis_by_position = [];
         $best_average_by_position = [];
 
-        foreach($this->positions as $k => $v):
-            if(!in_array($k, ['P', 'OF', 'DH'])):
+        foreach ($this->positions as $k => $v):
+            if (!in_array($k, ['P', 'OF', 'DH'])):
                 $most_hrs_by_position[$v] = $this->player->getMostHomeRuns(['position' => $k]);
                 $most_rbis_by_position[$v] = $this->player->getMostRBIs(['position' => $k]);
                 $best_average_by_position[$v] = $this->player->getBestAverage(['position' => $k]);

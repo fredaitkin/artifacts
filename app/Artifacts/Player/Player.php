@@ -160,7 +160,7 @@ class Player extends Model implements PlayerInterface
         $teams = '';
         if (!empty($this->previous_teams)):
             $data = explode(',', $this->previous_teams);
-            foreach($data as $key => $value):
+            foreach ($data as $key => $value):
               $data[$key] = config('teams')[$value];
             endforeach;
             $teams = implode(', ', $data);
@@ -205,7 +205,7 @@ class Player extends Model implements PlayerInterface
         $query = Player::select('id', 'first_name', 'last_name', 'team', 'home_runs')
             ->orderBy('home_runs', 'DESC');
         if (isset($where)):
-            foreach($where as $field => $value):
+            foreach ($where as $field => $value):
                 $query->where([$field => $value]);
             endforeach;
         endif;
@@ -218,7 +218,7 @@ class Player extends Model implements PlayerInterface
         $query = Player::select('id', 'first_name', 'last_name', 'team', 'rbis')
             ->orderBy('rbis', 'DESC');
         if (isset($where)):
-            foreach($where as $field => $value):
+            foreach ($where as $field => $value):
                 $query->where([$field => $value]);
             endforeach;
         endif;
@@ -233,7 +233,7 @@ class Player extends Model implements PlayerInterface
             ->where('at_bats', '>', 500)
             ->orderBy('average', 'DESC');
         if (isset($where)):
-            foreach($where as $field => $value):
+            foreach ($where as $field => $value):
                 $query->where([$field => $value]);
             endforeach;
         endif;
@@ -250,7 +250,7 @@ class Player extends Model implements PlayerInterface
             ->where('at_bats', '>', 500)
             ->orderBy('strike_rate', 'ASC');
         if (isset($where)):
-            foreach($where as $field => $value):
+            foreach ($where as $field => $value):
                 $query->where([$field => $value]);
             endforeach;
         endif;
@@ -278,7 +278,7 @@ class Player extends Model implements PlayerInterface
         $query = Player::select('id', 'first_name', 'last_name', 'team', 'wins')
             ->orderBy('wins', 'DESC');
         if (isset($where)):
-            foreach($where as $field => $value):
+            foreach ($where as $field => $value):
                 $query->where([$field => $value]);
             endforeach;
         endif;
@@ -294,7 +294,7 @@ class Player extends Model implements PlayerInterface
             ->where('wins', '>', 50)
             ->orderBy('era', 'ASC');
         if (isset($where)):
-            foreach($where as $field => $value):
+            foreach ($where as $field => $value):
                 $query->where([$field => $value]);
             endforeach;
         endif;
@@ -309,7 +309,7 @@ class Player extends Model implements PlayerInterface
             ->where('wins', '>', 0)
             ->orderBy('strike_rate', 'ASC');
         if (isset($where)):
-            foreach($where as $field => $value):
+            foreach ($where as $field => $value):
                 $query->where([$field => $value]);
             endforeach;
         endif;

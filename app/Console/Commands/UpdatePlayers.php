@@ -110,11 +110,11 @@ class UpdatePlayers extends Command
     {
         $options = $this->options();
 
-        if(isset($options['ids'])):
+        if (isset($options['ids'])):
             $this->player_ids = explode(',', $options['ids']);
         endif;
 
-        if($options['all']):
+        if ($options['all']):
             $this->updatePlayersInSite();
         else:
              $this->updatePlayersInDB();
@@ -130,13 +130,13 @@ class UpdatePlayers extends Command
     private function updatePlayersInDB()
     {
 
-        if(isset($this->player_ids)):
+        if (isset($this->player_ids)):
             $players = Player::whereIn('id', $this->player_ids)->get();
         else:
             $players = Player::all();
         endif;
 
-        foreach($players as $player):
+        foreach ($players as $player):
             $this->updatePlayer($player->mlb_link, $player);
         endforeach;
     }
@@ -186,20 +186,20 @@ class UpdatePlayers extends Command
         Log::info("");
         Log::info($link);
 
-        if($link):
+        if ($link):
             Log::info($player->status);
 
-            if($player->status !== 'retired'):
+            if ($player->status !== 'retired'):
 
                 // Get player page
                 $player_html = @file_get_contents('https://www.mlb.com' . $link);
 
-                if($player_html):
+                if ($player_html):
 
                     $this->getTeam($player_html);
                     // Most NL pitchers will have batting stats, and some batter have pitching stats, but they are no really of interest.
                     // This will get the important stats in all cases except for players like Shohei Ohtani
-                    if('P' === $player->position):
+                    if ('P' === $player->position):
                         $mlb_career_stats = '{"header":"MLB Career Stats","wins"';
                     else:
                         $mlb_career_stats = '{"header":"MLB Career Stats","atBats"';
@@ -212,7 +212,7 @@ class UpdatePlayers extends Command
 
                     $status = 'rookie';
 
-                    if(isset($stats->atBats)):
+                    if (isset($stats->atBats)):
                         Log::info('Batter');
                         Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . (intval($stats->atBats) - intval($player->at_bats)));
                         Log::info('HRs ' . $stats->homeRuns . ' ' . $player->home_runs . ' ' . (intval($stats->homeRuns) - intval($player->home_runs)));
@@ -237,7 +237,7 @@ class UpdatePlayers extends Command
                         $player->ops            = floatval($stats->ops);
                     endif;
 
-                    if(isset($stats->wins)):
+                    if (isset($stats->wins)):
                         Log::info('Pitcher');
                         Log::info('Wins ' . $stats->wins . ' ' . $player->wins . ' ' . (intval($stats->wins) - intval($player->wins)));
                         Log::info('Losses ' . $stats->losses . ' ' . $player->losses . ' ' . (intval($stats->losses) - intval($player->losses)));
@@ -282,21 +282,22 @@ class UpdatePlayers extends Command
      * @param string $url Player link
      * @return array Name
      */
-    private function getPlayerName(string $link) {
+    private function getPlayerName(string $link)
+    {
         $name = null;
 
         $player_name = explode('/', $link);
 
-        if(count($player_name) > 2 && strpos($player_name[2], '-') !== false):
+        if (count($player_name) > 2 && strpos($player_name[2], '-') !== false):
             // Extract last portion of link
             $name = explode('-', $player_name[2]);
             $count = count($name);
 
-            if($count > 3):
+            if ($count > 3):
                 // Non standard name
                 $non_standard_name = $this->non_standard_names[$link] ?? null;
 
-                if($non_standard_name):
+                if ($non_standard_name):
                     $name = $non_standard_name;
                 elseif ($count === 4):
                     // Catch players who are known by initialed nicknames such as JD Martinez or TJ McFarland
@@ -325,12 +326,13 @@ class UpdatePlayers extends Command
      * @param string $url Player link
      * @return mixed Id
      */
-    private function getPlayerId(string $link) {
+    private function getPlayerId(string $link)
+    {
         $id = null;
 
         $player_name = explode('/', $link);
 
-        if(count($player_name) > 2 && strpos($player_name[2], '-') !== false):
+        if (count($player_name) > 2 && strpos($player_name[2], '-') !== false):
             // Extract last portion of link
             $name = explode('-', $player_name[2]);
             $count = count($name);
@@ -347,7 +349,8 @@ class UpdatePlayers extends Command
      *
      * @param string $link MLB player link
      */
-    private function addPlayer(string $link) {
+    private function addPlayer(string $link)
+    {
         Log::info("");
         Log::info($link);
         Log::info('Player does not exist, adding');
@@ -362,7 +365,7 @@ class UpdatePlayers extends Command
         $team = $this->getTeam($player_html);
 
         // Only add if they are in a major league team
-        if($team):
+        if ($team):
             // Get birthdate
             $pos = strpos($player_html, 'Born:');
             $endpos = strpos($player_html, "in", $pos);
@@ -371,7 +374,7 @@ class UpdatePlayers extends Command
             $born = explode('/', $born);
             $birthdate = null;
             // Translate 3/27/1990 to 1990-3-27
-            if(count($born) === 3):
+            if (count($born) === 3):
                 $birthdate = $born[2] . '-' . $born[0] . '-' . $born[1];
             endif;
             Log::info('Birthdate ' . $birthdate);
@@ -428,11 +431,11 @@ class UpdatePlayers extends Command
         $endpos = strpos($player_html, "',", $pos);
         $team_str = trim(substr($player_html, $pos + 17, $endpos - $pos - 17));
         Log::info('Team ' . $team_str);
-        if(strpos($team_str, 'html') === false):
+        if (strpos($team_str, 'html') === false):
             $team = array_search($team_str, config('teams'));
             // If it is not a major league team, add to minor league team data source
-            if(!$team):
-                if(!in_array($team_str, $this->ml_teams)):
+            if (!$team):
+                if (!in_array($team_str, $this->ml_teams)):
                     $this->minor_league_teams->addTeam($team_str);
                     $this->ml_teams[] = $team_str;
                 endif;
