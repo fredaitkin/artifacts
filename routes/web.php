@@ -36,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/statistics', 'StatisticsController@index');
 
+    Route::get('/funfacts', 'FunFactsController@index');
+
 });
 
 Auth::routes();

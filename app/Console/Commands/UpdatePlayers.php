@@ -434,7 +434,7 @@ class UpdatePlayers extends Command
         if (strpos($team_str, 'html') === false):
             $team = array_search($team_str, config('teams'));
             // If it is not a major league team, add to minor league team data source
-            if (!$team):
+            if (!$team && !empty($team_str)):
                 if (!in_array($team_str, $this->ml_teams)):
                     $this->minor_league_teams->addTeam($team_str);
                     $this->ml_teams[] = $team_str;

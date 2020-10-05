@@ -78,6 +78,7 @@
                         <a href="{{ url('/players') }}">Players</a>
                         <a href="{{ url('/demographics') }}">Demographics</a>
                         <a href="{{ url('/statistics') }}">Statistics</a>
+                        <a href="{{ url('/funfacts') }}">Fun Facts</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>

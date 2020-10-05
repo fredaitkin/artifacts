@@ -15,7 +15,8 @@ class MinorLeagueTeams extends Model implements MinorLeagueTeamsInterface
 
     public function getTeams()
     {
-        return MinorLeagueTeams::select('team')->get()->toArray();
+        $teams = MinorLeagueTeams::select('team')->orderBy('team', 'asc')->get()->toArray();
+        return array_column($teams, 'team');
     }
 
     public function addTeam(string $team)
