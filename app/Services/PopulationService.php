@@ -2,7 +2,7 @@
 
 namespace Artifacts\Services;
 
-use Artifacts\Interfaces\PopulationServiceInterface;
+use Artifacts\Services\PopulationServiceInterface;
 use Cache;
 
 class PopulationService implements PopulationServiceInterface {
@@ -25,7 +25,7 @@ class PopulationService implements PopulationServiceInterface {
             $population = [];
             // First record is header
             unset($states[0]);
-            foreach($states as $state):
+            foreach ($states as $state):
                 $population[$state[1]] = ['population' => $state[0], 'percent' => round($state[0] / $country[1][0] * 100, 2)];
             endforeach;
             ksort($population);

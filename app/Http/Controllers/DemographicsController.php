@@ -5,7 +5,7 @@ namespace Artifacts\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Khill\Lavacharts\Lavacharts;
-use Artifacts\Interfaces\PopulationServiceInterface;
+use Artifacts\Services\PopulationServiceInterface;
 
 class DemographicsController extends Controller
 {
@@ -37,41 +37,40 @@ class DemographicsController extends Controller
         $total = json_decode($response->getContent());
         $total = $total[0]->total;
 
-        $rows = array();
+        $rows = [];
         $data = array_slice($state_data, 0, 5);
 
         $other = $total;
-        foreach($data as $state) {
-            $rows[] = array($state->state, round($state->total / ($total / 100),2));
+        foreach ($data as $state):
+            $rows[] = [$state->state, round($state->total / ($total / 100), 2)];
             $other -= $state->total;
-        }
-        $rows[] = array('Other', round($other / ($total / 100),2));
+        endforeach;
+        $rows[] = ['Other', round($other / ($total / 100), 2)];
 
         $popularity->addStringColumn('State')
-                   ->addNumberColumn('Popularity')
-                   ->addRows($rows);
+            ->addNumberColumn('Popularity')
+            ->addRows($rows);
 
         $lava->PieChart('Popularity', $popularity, ['title' => 'Players by State', 'height' => 350, 'width' => 400]);
 
-        // TODO PieChart does not make sense, use BarChart?
         // Players by State by Population
         $comparative_popularity = $lava->DataTable();
         $states = config('states');
-        foreach($state_data as $state):
+        foreach ($state_data as $state):
             $state->comparative = round($state->total / $us_population_statistics['state_populations'][$states[$state->state]]['population'] * 100, 6);
         endforeach;
 
-        usort($state_data, array('Artifacts\Http\Controllers\DemographicsController', 'pop_compare'));
+        usort($state_data, ['Artifacts\Http\Controllers\DemographicsController', 'popCompare']);
 
         $data = array_slice($state_data, 0, 10);
-        $rows = array();
-        foreach($data as $state) {
-            $rows[] = array($state->state, $state->comparative);
-        }
+        $rows = [];
+        foreach ($data as $state):
+            $rows[] = [$state->state, $state->comparative];
+        endforeach;
 
         $comparative_popularity->addStringColumn('State')
-                   ->addNumberColumn('ComparativePopularity')
-                   ->addRows($rows);
+            ->addNumberColumn('ComparativePopularity')
+            ->addRows($rows);
 
         $lava->BarChart(
             'ComparativePopularity',
@@ -97,33 +96,33 @@ class DemographicsController extends Controller
         $total = json_decode($response->getContent());
         $total = $total[0]->total;
 
-        $rows = array();
+        $rows = [];
         $other = $total;
-        foreach($data as $country) {
-            if ($country->country != 'US') {
-                $rows[] = array($country->country, round($country->total / ($total / 100),2));
-            } else {
-                $us = array($country->country, round($country->total / ($total / 100),2));
-            }
+        foreach ($data as $country):
+            if ($country->country != 'US'):
+                $rows[] = [$country->country, round($country->total / ($total / 100), 2)];
+            else:
+                $us = [$country->country, round($country->total / ($total / 100), 2)];
+            endif;
             $other -= $country->total;
-        }
-        $rows[] = array('Other', round($other / ($total / 100),2));
+        endforeach;
+        $rows[] = ['Other', round($other / ($total / 100), 2)];
         $rows[] = $us;
 
         $population->addStringColumn('Country')
-                   ->addNumberColumn('Population')
-                   ->addRows($rows);
+            ->addNumberColumn('Population')
+            ->addRows($rows);
 
         $lava->PieChart('Population', $population, ['title' => 'Players by Country', 'height' => 350, 'width' => 400]);
 
         return view('demographics', compact('lava'));
     }
 
-    public function pop_compare($a, $b)
+    public function popCompare($a, $b)
     {
-        if ($a->comparative == $b->comparative) {
+        if ($a->comparative == $b->comparative):
             return 0;
-        }
+        endif;
         return ($a->comparative > $b->comparative) ? -1 : 1;
     }
 
