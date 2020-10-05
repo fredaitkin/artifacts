@@ -7,7 +7,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Storage;
 use Log;
 
-use Artifacts\Player\Player;
+use Artifacts\Player\PlayerInterface;
 use Artifacts\MinorLeagueTeams\MinorLeagueTeamsInterface;
 
 class UpdatePlayers extends Command
@@ -79,25 +79,32 @@ class UpdatePlayers extends Command
      *
      * @var array
      */
-    protected $ml_teams;
+    protected $minor_league_teams;
+
+    /**
+     * The Player Interface
+     *
+     * @var Artifacts\Player\PlayerInterface
+     */
+    private $player;
 
     /**
      * The Minor League Teams Interface
      *
      * @var Artifacts\Interfaces\MinorLeagueTeamsInterface
      */
-    private $minor_league_teams;
+    private $mlt;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(MinorLeagueTeamsInterface $minor_league_teams)
+    public function __construct(PlayerInterface $player, MinorLeagueTeamsInterface $mlt)
     {
-        // TODO use PlayerInterface
-        $this->minor_league_teams = $minor_league_teams;
-        $this->ml_teams = array_column($this->minor_league_teams->getTeams(), 'team');
+        $this->player = $player;
+        $this->mlt = $mlt;
+        $this->minor_league_teams = array_column($this->mlt->getTeams(), 'team');
         parent::__construct();
     }
 
@@ -131,9 +138,9 @@ class UpdatePlayers extends Command
     {
 
         if (isset($this->player_ids)):
-            $players = Player::whereIn('id', $this->player_ids)->get();
+            $players = $this->player->getPlayersByIDs($this->player_ids);
         else:
-            $players = Player::all();
+            $players = $this->player->getAllPlayers();
         endif;
 
         foreach ($players as $player):
@@ -155,12 +162,11 @@ class UpdatePlayers extends Command
 
         $offset = 0;
         while (($pos = strpos($players_html, $player_href, $offset)) !== FALSE):
-
             $pos = strpos($players_html, $player_href, $offset);
             $endpos = strpos($players_html, ' ', $pos);
             // Strip off href tag from string, and therefore tweak end position, to be left with /player/fernando-abad-472551
             $player_link = substr($players_html, $pos + 6, $endpos - $pos - 7);
-            $player = Player::select('*')->where('mlb_link', $player_link)->get();
+            $player = $this->player->getPlayerByLink($player_link);
             $player = $player[0] ?? null;
 
             if ($player):
@@ -412,7 +418,7 @@ class UpdatePlayers extends Command
                 Log::info('Unable to retrieve player photo');
             endif;
 
-            Player::create([
+            $this->player->create([
                 'first_name'    => ucfirst($name[0]),
                 'last_name'     => ucfirst($name[1]),
                 'team'          => $team,
@@ -435,9 +441,9 @@ class UpdatePlayers extends Command
             $team = array_search($team_str, config('teams'));
             // If it is not a major league team, add to minor league team data source
             if (!$team && !empty($team_str)):
-                if (!in_array($team_str, $this->ml_teams)):
-                    $this->minor_league_teams->addTeam($team_str);
-                    $this->ml_teams[] = $team_str;
+                if (!in_array($team_str, $this->minor_league_teams)):
+                    $this->mlt->addTeam($team_str);
+                    $this->minor_league_teams[] = $team_str;
                 endif;
             endif;
         endif;

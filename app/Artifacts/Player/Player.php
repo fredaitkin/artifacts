@@ -42,77 +42,134 @@ class Player extends Model implements PlayerInterface
     protected $guarded = [];
 
     /**
+     * Get all players
+     *
+     * @return array
+     */
+    public function getAllPlayers()
+    {
+        return Player::all();
+    }
+
+    /**
+     * Get players by ids
+     *
+     * @return array
+     */
+    public function getPlayersByIDs(array $ids)
+    {
+        return Player::whereIn('id', $ids)->get();
+    }
+
+    /**
+     * Get player by mlb link
+     *
+     * @return array
+     */
+    public function getPlayerByLink(string $link)
+    {
+        return Player::select('*')->where('mlb_link', $link)->get();
+    }
+
+    /**
+     * Create player
+     *
+     * @param array $fields
+     * @return object
+     */
+    public function create(array $fields)
+    {
+        return Player::create($fields);
+    }
+
+    /**
      * Get formatted birth date.
      *
      * @return string
      */
-   public function getBirthDateDisplayAttribute() {
+    public function getBirthDateDisplayAttribute()
+    {
        return Carbon::parse($this->birthdate)->format('d/m/Y');
     }
 
-   /**
+    /**
     * Sort on first and last name
     */
-    public function lastNameSortable($query, $direction) {
+    public function lastNameSortable($query, $direction)
+    {
         return $query->orderBy('last_name', $direction)->orderBy('first_name', 'ASC');
     }
 
     /**
     * Sort null draft years to the bottom
     */
-    public function draftYearSortable($query, $direction) {
+    public function draftYearSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(draft_year), draft_year ' . $direction);
     }
 
-    public function draftRoundSortable($query, $direction) {
+    public function draftRoundSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(draft_round), draft_round+0 ' . $direction);
     }
 
-    public function draftPositionSortable($query, $direction) {
+    public function draftPositionSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(draft_position), draft_position ' . $direction);
     }
 
-    public function debutYearSortable($query, $direction) {
+    public function debutYearSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(debut_year), debut_year ' . $direction);
     }
 
-    public function positionSortable($query, $direction) {
+    public function positionSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(position), position ' . $direction);
     }
 
-    public function averageSortable($query, $direction) {
+    public function averageSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(average), average ' . $direction);
     }
 
-    public function atBatsSortable($query, $direction) {
+    public function atBatsSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(at_bats), at_bats ' . $direction);
     }
 
-    public function homeRunsSortable($query, $direction) {
+    public function homeRunsSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(home_runs), home_runs ' . $direction);
     }
 
-    public function rbisSortable($query, $direction) {
+    public function rbisSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(rbis), rbis ' . $direction);
     }
 
-    public function eraSortable($query, $direction) {
+    public function eraSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(era), era ' . $direction);
     }
 
-    public function gamesSortable($query, $direction) {
+    public function gamesSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(games), games ' . $direction);
     }
 
-    public function winsSortable($query, $direction) {
+    public function winsSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(wins), wins ' . $direction);
     }
 
-    public function lossesSortable($query, $direction) {
+    public function lossesSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(losses), losses ' . $direction);
     }
 
-    public function savesSortable($query, $direction) {
+    public function savesSortable($query, $direction)
+    {
         return $query->orderByRaw('ISNULL(saves), saves ' . $direction);
     }
 

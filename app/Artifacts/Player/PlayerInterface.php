@@ -13,5 +13,9 @@ interface PlayerInterface {
     public function getBestAverage();
     public function getMostWins();
     public function getBestERA();
+    public function getAllPlayers();
+    public function getPlayersByIDs(array $ids);
+    public function getPlayerByLink(string $link);
+    public function create(array $fields);
 
 }
