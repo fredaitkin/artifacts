@@ -14,8 +14,13 @@ interface PlayerInterface {
     public function getMostWins();
     public function getBestERA();
     public function getAllPlayers();
+    public function getTabulatedPlayers();
+    public function getPlayerByID(int $id);
     public function getPlayersByIDs(array $ids);
     public function getPlayerByLink(string $link);
     public function create(array $fields);
+    public function updateCreate(array $keys, array $fields);
+    public function search(string $q);
+    public function deleteByID(int $id);
 
 }

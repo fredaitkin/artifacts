@@ -42,6 +42,13 @@ class Player extends Model implements PlayerInterface
     protected $guarded = [];
 
     /**
+     * The number of records to return for pagination.
+     *
+     * @var int
+     */
+    protected $perPage = 15;
+
+    /**
      * Get all players
      *
      * @return array
@@ -49,6 +56,26 @@ class Player extends Model implements PlayerInterface
     public function getAllPlayers()
     {
         return Player::all();
+    }
+
+    /**
+     * Get tabulated players
+     *
+     * @return array
+     */
+    public function getTabulatedPlayers()
+    {
+        return Player::sortable()->paginate();
+    }
+
+    /**
+     * Get player by id
+     *
+     * @return array
+     */
+    public function getPlayerByID(int $id)
+    {
+        return Player::findOrFail($id);
     }
 
     /**
@@ -80,6 +107,51 @@ class Player extends Model implements PlayerInterface
     public function create(array $fields)
     {
         return Player::create($fields);
+    }
+
+    /**
+     * Update or create player
+     *
+     * @param array $keys
+     * @param array $fields
+     * @return object
+     */
+    public function updateCreate(array $keys, array $fields)
+    {
+        return Player::updateOrCreate($keys, $fields);
+    }
+
+    /**
+     * Delete a player
+     *
+     * @param string $id
+     */
+    public function deleteByID(int $id)
+    {
+        Player::findOrFail($id)->delete();
+    }
+
+    /**
+     * Search
+     *
+     * @param string $q
+     * @return array
+     */
+    public function search(string $q)
+    {
+        return Player::select('players.*')
+            ->where('team', 'LIKE', '%' . $q . '%')
+            ->orWhere('city', 'LIKE', '%' . $q . '%')
+            ->orWhere('first_name', 'LIKE', '%' . $q . '%')
+            ->orWhere('last_name', 'LIKE', '%' . $q . '%')
+            ->orWhere('state', 'LIKE', '%' . $q . '%')
+            ->orWhere('country', 'LIKE', '%' . $q . '%')
+            ->orWhere('draft_year', 'LIKE', '%' . $q . '%')
+            ->orWhere('draft_round', 'LIKE', '%' . $q . '%')
+            ->orWhere('debut_year', 'LIKE', '%' . $q . '%')
+            ->paginate()
+            ->appends(['q' => $q])
+            ->setPath('');
     }
 
     /**

@@ -7,7 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-use Artifacts\Player\Player;
+use Artifacts\Player\PlayerInterface;
 use Artifacts\Rules\IsTeam;
 
 use Kyslik\ColumnSortable\Sortable;
@@ -16,11 +16,20 @@ use Storage;
 
 class PlayerController extends Controller
 {
+
+    /**
+     * The Player Interface
+     *
+     * @var Artifacts\Interfaces\PlayerInterface
+     */
+    private $player;
+
      /**
      * Constructor
      */
-    public function __construct()
+    public function __construct(PlayerInterface $player)
     {
+        $this->player = $player;
     }
 
     /**
@@ -30,8 +39,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $players = Player::sortable()->paginate(15);
-        return view('players', ['players' => $players]);
+        return view('players', ['players' => $this->player->getTabulatedPlayers()]);
     }
 
     /**
@@ -85,41 +93,36 @@ class PlayerController extends Controller
             $file_name  = time() . '.' . $request->first_name . '_' . $request->last_name . '.' . $image->extension();
         endif;
 
-        if (isset($request->id)):
-            $player = Player::findOrFail($request->id);
-        else:
-            $player = new Player();
-        endif;
-
-        $player->first_name     = $request->first_name;
-        $player->last_name      = $request->last_name;
-        $player->team           = $request->team;
-        $player->city           = $request->city;
-        $player->state          = $request->state;
-        $player->country        = $request->country;
-        $player->birthdate      = $request->birthdate;        
-        $player->draft_year     = $request->draft_year;
-        $player->draft_round    = $request->draft_round;
-        $player->draft_position = $request->draft_position;
-        $player->debut_year     = $request->debut_year;
-        $player->position       = $request->position;
-        $player->average        = $request->average;
-        $player->at_bats        = $request->at_bats;
-        $player->rbis           = $request->rbis;
-        $player->home_runs      = $request->home_runs;
-        $player->era            = $request->era;
-        $player->games          = $request->games;
-        $player->wins           = $request->wins;
-        $player->losses         = $request->losses;
-        $player->saves          = $request->saves;
-        $player->previous_teams = $request->previous_teams;
+        $player = [];
+        $player['first_name']     = $request->first_name;
+        $player['last_name']      = $request->last_name;
+        $player['team']           = $request->team;
+        $player['city']           = $request->city;
+        $player['state']          = $request->state;
+        $player['country']        = $request->country;
+        $player['birthdate']      = $request->birthdate;
+        $player['draft_year']     = $request->draft_year;
+        $player['draft_round']    = $request->draft_round;
+        $player['draft_position'] = $request->draft_position;
+        $player['debut_year']     = $request->debut_year;
+        $player['position']       = $request->position;
+        $player['average']        = $request->average;
+        $player['at_bats']        = $request->at_bats;
+        $player['rbis']           = $request->rbis;
+        $player['home_runs']      = $request->home_runs;
+        $player['era']            = $request->era;
+        $player['games']          = $request->games;
+        $player['wins']           = $request->wins;
+        $player['losses']         = $request->losses;
+        $player['saves']          = $request->saves;
+        $player['previous_teams'] = $request->previous_teams;
 
         if (isset($file_name)):
             // Duplication caused by legacy photo processing
-            $player->photo = serialize(['regular' => $file_name, 'small' => $file_name]);
+            $player['photo'] = serialize(['regular' => $file_name, 'small' => $file_name]);
         endif;
 
-        $player->save();
+        $this->player->updateCreate(['id' => $request->id ?? null], $player);
 
         // Only save photo if save if successful
         if (isset($file_name)):
@@ -150,11 +153,13 @@ class PlayerController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $player = Player::find($id);
+        $player = $this->player->getPlayerByID($id);
         $teams = ['' => 'Please Select'] + config('teams');
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
-        $player->mlb_link1 = explode('/', $player->mlb_link)[2];
+        if (isset($player->mlb_link[2])):
+            $player->mlb_link = explode('/', $player->mlb_link)[2];
+        endif;
         if (isset($request->view)):
             return view('player_view', ['player' => $player]);
         else:
@@ -170,7 +175,7 @@ class PlayerController extends Controller
     }
 
     /**
-     * Search for player.
+     * Search for player/s.
      *
      * @param  string  $q
      * @return Response
@@ -180,19 +185,7 @@ class PlayerController extends Controller
         $q = $request->q;
         $players = [];
         if ($q != ""):
-          $players = Player::select('players.*')
-                ->where('team', 'LIKE', '%' . $q . '%')
-                ->orWhere('city', 'LIKE', '%' . $q . '%')
-                ->orWhere('first_name', 'LIKE', '%' . $q . '%')
-                ->orWhere('last_name', 'LIKE', '%' . $q . '%')
-                ->orWhere('state', 'LIKE', '%' . $q . '%')
-                ->orWhere('country', 'LIKE', '%' . $q . '%')
-                ->orWhere('draft_year', 'LIKE', '%' . $q . '%')
-                ->orWhere('draft_round', 'LIKE', '%' . $q . '%')
-                ->orWhere('debut_year', 'LIKE', '%' . $q . '%')
-                ->paginate(15)
-                ->appends(['q' => $q])
-                ->setPath('');
+          $players = $this->player->search($q);
         endif;
         if (count($players) > 0):
             return view('players', ['players' => $players, 'q' => $q]);
@@ -209,7 +202,7 @@ class PlayerController extends Controller
      */
     public function destroy($id)
     {
-        Player::findOrFail($id)->delete();
+        $this->player->deleteByID($id);
         return redirect('/players');
     }
 
