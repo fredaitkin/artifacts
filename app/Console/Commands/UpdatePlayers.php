@@ -104,7 +104,7 @@ class UpdatePlayers extends Command
     {
         $this->player = $player;
         $this->mlt = $mlt;
-        $this->minor_league_teams = array_column($this->mlt->getTeams(), 'team');
+        $this->minor_league_teams = $this->mlt->getTeams();
         parent::__construct();
     }
 
