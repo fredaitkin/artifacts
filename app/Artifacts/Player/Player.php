@@ -29,14 +29,22 @@ class Player extends Model implements PlayerInterface
         'debut_year',
         'position',
         'average',
+        'hits',
         'at_bats',
         'home_runs',
+        'runs',
         'rbis',
+        'stolen_bases',
+        'obp',
+        'ops',
         'era',
         'games',
         'wins',
         'losses',
         'saves',
+        'innings_pitched',
+        'strike_outs',
+        'whip',
     ];
 
     protected $guarded = [];

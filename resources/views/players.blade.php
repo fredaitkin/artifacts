@@ -47,24 +47,28 @@
                             <tr>
                             <th scope='col'>@sortablelink('last_name', 'Name')</th>
                             <th scope='col'>@sortablelink('team')</th>
-                            <th scope='col'>@sortablelink('city')</th>
-                            <th scope='col'>@sortablelink('state')</th>
-                            <th scope='col'>@sortablelink('country')</th>
                             <th scope='col'>@sortablelink('birthdate', 'Age')</th>
-                            <th scope='col'>@sortablelink('draftYear', 'Draft Yr')</th>
-                            <th scope='col'>@sortablelink('draftRound', 'Draft Rnd')</th>
-                            <th scope='col'>@sortablelink('draftPosition', 'Draft Pos')</th>
-                            <th scope='col'>@sortablelink('debutYear', 'Debut Yr')</th>
+                            <th scope='col'>@sortablelink('draftRound', 'Round')</th>
+                            <th scope='col'>@sortablelink('draftPosition', 'Pick')</th>
+                            <th scope='col'>@sortablelink('debutYear', 'Debut')</th>
                             <th scope='col'>@sortablelink('position', 'Position')</th>
-                            <th scope='col'>@sortablelink('average', 'Avg')</th>
-                            <th scope='col'>@sortablelink('atBats', 'At Bats')</th>
+                            <th scope='col'>@sortablelink('average', 'AVG')</th>
+                            <th scope='col'>@sortablelink('atBats', 'ABs')</th>
+                            <th scope='col'>@sortablelink('hits')</th>
                             <th scope='col'>@sortablelink('homeRuns', 'HRs')</th>
+                            <th scope='col'>@sortablelink('runs')</th>
                             <th scope='col'>@sortablelink('rbis', 'RBIs')</th>
-                            <th scope='col'>@sortablelink('era')</th>
+                            <th scope='col'>@sortablelink('stolen_bases', 'SBs')</th>
+                            <th scope='col'>@sortablelink('obp', 'OBP')</th>
+                            <th scope='col'>@sortablelink('ops', 'OPS')</th>
+                            <th scope='col'>@sortablelink('era', 'ERA')</th>
                             <th scope='col'>@sortablelink('games')</th>
                             <th scope='col'>@sortablelink('wins')</th>
                             <th scope='col'>@sortablelink('losses')</th>
                             <th scope='col'>@sortablelink('saves')</th>
+                            <th scope='col'>@sortablelink('innings_pitched', 'IPs')</th>
+                            <th scope='col'>@sortablelink('strike_outs', 'SOs')</th>
+                            <th scope='col'>@sortablelink('whip', 'WHIP')</th>
                             <th>&nbsp;</th>
                         </tr>
                         </thead>
@@ -80,19 +84,7 @@
                                         <div>{{ $player->team }}</div>
                                     </td>
                                     <td class="table-text">
-                                        <div>{{ $player->city }}</div>
-                                    </td>
-                                    <td class="table-text">
-                                        <div>@if (isset($player->state)) {{ $player->state }} @else -- @endif</div>
-                                    </td>
-                                    <td class="table-text">
-                                        <div>{{ $player->country }}</div>
-                                    </td>
-                                    <td class="table-text">
                                         <div>{{ $player->age }}</div>
-                                    </td>
-                                    <td class="table-text">
-                                        <div>@if (isset($player->draft_year)) {{ $player->draft_year }} @else -- @endif</div>
                                     </td>
                                     <td class="table-text">
                                         <div>@if (isset($player->draft_round)) {{ $player->draft_round }} @else -- @endif</div>
@@ -113,10 +105,25 @@
                                         <div class="text-right">@if (isset($player->at_bats)) {{ $player->at_bats }} @else -- @endif</div>
                                     </td>
                                     <td class="table-text">
+                                        <div class="text-right">@if (isset($player->hits)) {{ $player->hits }} @else -- @endif</div>
+                                    </td>
+                                    <td class="table-text">
                                         <div class="text-right">@if (isset($player->home_runs)) {{ $player->home_runs }} @else -- @endif</div>
                                     </td>
                                     <td class="table-text">
+                                        <div class="text-right">@if (isset($player->runs)) {{ $player->runs }} @else -- @endif</div>
+                                    </td>
+                                    <td class="table-text">
                                         <div class="text-right">@if (isset($player->rbis)) {{ $player->rbis }} @else -- @endif</div>
+                                    </td>
+                                    <td class="table-text">
+                                        <div class="text-right">@if (isset($player->stolen_bases)) {{ $player->stolen_bases }} @else -- @endif</div>
+                                    </td>
+                                    <td class="table-text">
+                                        <div class="text-right">@if (isset($player->obp)) {{ $player->obp }} @else -- @endif</div>
+                                    </td>
+                                    <td class="table-text">
+                                        <div class="text-right">@if (isset($player->ops)) {{ $player->ops }} @else -- @endif</div>
                                     </td>
                                     <td class="table-text">
                                         <div class="text-right">@if (isset($player->era)) {{ $player->era }} @else -- @endif</div>
@@ -132,6 +139,15 @@
                                     </td>
                                     <td class="table-text">
                                         <div>@if (isset($player->saves)) {{ $player->saves }} @else -- @endif</div>
+                                    </td>
+                                    <td class="table-text">
+                                        <div>@if (isset($player->innings_pitched)) {{ $player->innings_pitched }} @else -- @endif</div>
+                                    </td>
+                                    <td class="table-text">
+                                        <div>@if (isset($player->strike_outs)) {{ $player->strike_outs }} @else -- @endif</div>
+                                    </td>
+                                    <td class="table-text">
+                                        <div>@if (isset($player->whip)) {{ $player->whip }} @else -- @endif</div>
                                     </td>
                                     <td>
                                         {{ csrf_field() }}
