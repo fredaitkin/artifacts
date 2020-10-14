@@ -68,6 +68,40 @@ class UpdatePlayers extends Command
     ];
 
     /**
+    * MLB batting stats mappings
+    *
+    * @var array
+    */
+    protected $batting_stats_mappings = [
+        'atBats'        => ['at_bats', 'intval'],
+        'homeRuns'      => ['home_runs', 'intval'],
+        'rbi'           => ['rbis', 'intval'],
+        'avg'           => ['average', 'floatval'],
+        'hits'          => ['hits', 'intval'],
+        'runs'          => ['runs', 'intval'],
+        'stolenBases'   => ['stolen_bases', 'intval'],
+        'obp'           => ['obp', 'floatval'],
+        'ops'           => ['ops', 'floatval'],
+    ];
+
+    /**
+    * MLB pitching stats mappings
+    *
+    * @var array
+    */
+    protected $pitching_stats_mappings = [
+        'wins'              => ['wins', 'intval'],
+        'losses'            => ['losses', 'intval'],
+        'era'               => ['era', 'floatval'],
+        'gamesPlayed'       => ['games', 'intval'],
+        'saves'             => ['saves', 'intval'],
+        'gamesStarted'      => ['games_started', 'intval'],
+        'inningsPitched'    => ['innings_pitched', 'floatval'],
+        'strikeOuts'        => ['strike_outs', 'intval'],
+        'whip'              => ['whip', 'floatval'],
+    ];
+
+    /**
      * Specific player ids to update.
      *
      * @var string
@@ -202,75 +236,8 @@ class UpdatePlayers extends Command
 
                 if ($player_html):
 
-                    $this->getTeam($player_html);
-                    // Most NL pitchers will have batting stats, and some batter have pitching stats, but they are no really of interest.
-                    // This will get the important stats in all cases except for players like Shohei Ohtani
-                    if ('P' === $player->position):
-                        $mlb_career_stats = '{"header":"MLB Career Stats","wins"';
-                    else:
-                        $mlb_career_stats = '{"header":"MLB Career Stats","atBats"';
-                    endif;
-
-                    $pos = strpos($player_html, $mlb_career_stats);
-                    $endpos = strpos($player_html, '}', $pos);
-                    $stats = substr($player_html, $pos, $endpos - $pos + 1);
-                    $stats = json_decode($stats);
-
-                    $status = 'rookie';
-
-                    if (isset($stats->atBats)):
-                        Log::info('Batter');
-                        Log::info('ABs ' . $stats->atBats . ' ' . $player->at_bats . ' ' . (intval($stats->atBats) - intval($player->at_bats)));
-                        Log::info('HRs ' . $stats->homeRuns . ' ' . $player->home_runs . ' ' . (intval($stats->homeRuns) - intval($player->home_runs)));
-                        Log::info('RBIs ' . $stats->rbi . ' ' . $player->rbis . ' ' . (intval($stats->rbi) - intval($player->rbis)));
-                        Log::info('AVG ' . $stats->avg . ' ' . $player->average . ' ' . (floatval($stats->avg) - floatval($player->average)));
-                        Log::info('Hits ' . $stats->hits . ' ' . $player->hits . ' ' . (intval($stats->hits) - intval($player->hits)));
-                        Log::info('Runs ' . $stats->runs . ' ' . $player->runs . ' ' . (intval($stats->runs) - intval($player->runs)));
-                        Log::info('Stolen Bases ' . $stats->stolenBases . ' ' . $player->stolen_bases . ' ' . (intval($stats->stolenBases) - intval($player->stolen_bases)));
-                        Log::info('OBP ' . $stats->obp . ' ' . $player->obp . ' ' . (floatval($stats->obp) - floatval($player->obp)));
-                        Log::info('OPS ' . $stats->ops . ' ' . $player->ops . ' ' . (floatval($stats->ops) - floatval($player->ops)));
-
-                        $status                 = 'active';
-
-                        $player->at_bats        = intval($stats->atBats);
-                        $player->home_runs      = intval($stats->homeRuns);
-                        $player->rbis           = intval($stats->rbi);
-                        $player->average        = floatval($stats->avg);
-                        $player->hits           = intval($stats->hits);
-                        $player->runs           = intval($stats->runs);
-                        $player->stolen_bases   = intval($stats->stolenBases);
-                        $player->obp            = floatval($stats->obp);
-                        $player->ops            = floatval($stats->ops);
-                    endif;
-
-                    if (isset($stats->wins)):
-                        Log::info('Pitcher');
-                        Log::info('Wins ' . $stats->wins . ' ' . $player->wins . ' ' . (intval($stats->wins) - intval($player->wins)));
-                        Log::info('Losses ' . $stats->losses . ' ' . $player->losses . ' ' . (intval($stats->losses) - intval($player->losses)));
-                        Log::info('ERA ' . $stats->era . ' ' . $player->era . ' ' . (floatval($stats->era) - floatval($player->era)));
-                        Log::info('Games ' . $stats->gamesPlayed . ' ' . $player->games . ' ' . (intval($stats->gamesPlayed) - intval($player->games)));
-                        Log::info('Saves ' . $stats->saves . ' ' . $player->saves . ' ' . (intval($stats->saves) - intval($player->saves)));
-                        Log::info('Games Started ' . $stats->gamesStarted . ' ' . $player->games_started . ' ' . (intval($stats->gamesStarted) - intval($player->games_started)));
-                        Log::info('Innings Pitched ' . $stats->inningsPitched . ' ' . $player->innings_pitched . ' ' . (floatval($stats->inningsPitched) - floatval($player->innings_pitched)));
-                        Log::info('Strike Outs ' . $stats->strikeOuts . ' ' . $player->strike_outs . ' ' . (intval($stats->strikeOuts) - intval($player->strike_outs)));
-                        Log::info('WHIP ' . $stats->whip . ' ' . $player->whip . ' ' . (floatval($stats->whip) - floatval($player->whip)));
-
-                        $status = 'active';
-
-                        $player->wins               = intval($stats->wins);
-                        $player->losses             = intval($stats->losses);
-                        $player->era                = floatval($stats->era);
-                        $player->games              = intval($stats->gamesPlayed);
-                        $player->saves              = intval($stats->saves);
-                        $player->games_started      = intval($stats->gamesStarted);
-                        $player->innings_pitched    = floatval($stats->inningsPitched);
-                        $player->strike_outs        = intval($stats->strikeOuts);
-                        $player->whip               = floatval($stats->whip);
-                    endif;
-
-                    // Update status
-                    $player->status = $status;
-                    // Update player stats
+                   // Update player stats
+                    $this->setStats($player_html, $player);
                     $player->save();
 
                 else:
@@ -324,6 +291,40 @@ class UpdatePlayers extends Command
         endif;
 
         return $name;
+    }
+
+    /**
+     * Set stats
+     *
+     * @param string $url Player html
+     * @param object $player Player
+     */
+    private function setStats(string $player_html, object &$player)
+    {
+        // Most NL pitchers will have batting stats, and some batter have pitching stats, but they are no really of interest.
+        // This will get the important stats in all cases except for players like Shohei Ohtani
+        if ('P' === $player->position):
+            $mlb_career_stats = '{"header":"MLB Career Stats","wins"';
+            $mappings = $this->pitching_stats_mappings;
+            $indicator = 'wins';
+        else:
+            $mlb_career_stats = '{"header":"MLB Career Stats","atBats"';
+            $mappings = $this->batting_stats_mappings;
+            $indicator = 'atBats';
+        endif;
+
+        $pos = strpos($player_html, $mlb_career_stats);
+        $endpos = strpos($player_html, '}', $pos);
+        $stats = substr($player_html, $pos, $endpos - $pos + 1);
+        $stats = json_decode($stats);
+
+        if (isset($stats->{$indicator})):
+            foreach ($mappings as $key => $stat):
+                Log::info($key . ' ' . $stats->{$key} . ' ' . $player->{$stat[0]} . ' ' . ($stat[1]($stats->{$key}) - $stat[1]($player->{$stat[0]})));
+                $player->{$stat[0]} = $stat[1]($stats->{$key});
+            endforeach;
+            $stats_found = true;
+        endif;
     }
 
     /**
