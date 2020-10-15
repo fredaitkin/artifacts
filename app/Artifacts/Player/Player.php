@@ -112,9 +112,13 @@ class Player extends Model implements PlayerInterface
      * @param array $fields
      * @return object
      */
-    public function create(array $fields)
+    public function create(array $fields = null)
     {
-        return Player::create($fields);
+        if ($fields):
+            return Player::create($fields);
+        else:
+            return new Player;
+        endif;
     }
 
     /**

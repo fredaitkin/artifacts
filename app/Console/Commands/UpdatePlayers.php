@@ -294,10 +294,12 @@ class UpdatePlayers extends Command
     }
 
     /**
-     * Set stats
+     * Set stats and returns a flag to indicate if the player has stats
      *
      * @param string $url Player html
      * @param object $player Player
+     *
+     * @return bool
      */
     private function setStats(string $player_html, object &$player)
     {
@@ -318,6 +320,7 @@ class UpdatePlayers extends Command
         $stats = substr($player_html, $pos, $endpos - $pos + 1);
         $stats = json_decode($stats);
 
+        $stats_found = false;
         if (isset($stats->{$indicator})):
             foreach ($mappings as $key => $stat):
                 Log::info($key . ' ' . $stats->{$key} . ' ' . $player->{$stat[0]} . ' ' . ($stat[1]($stats->{$key}) - $stat[1]($player->{$stat[0]})));
@@ -325,6 +328,8 @@ class UpdatePlayers extends Command
             endforeach;
             $stats_found = true;
         endif;
+
+        return $stats_found;
     }
 
     /**
@@ -373,7 +378,15 @@ class UpdatePlayers extends Command
 
         // Only add if they are in a major league team
         if ($team):
-            // Get birthdate
+
+            // Create player
+            $player = $this->player->create();
+            $player->first_name = ucfirst($name[0]);
+            $player->last_name  = ucfirst($name[1]);
+            $player->team       = $team;
+            $player->mlb_link   = $link;
+
+            // Set birthdate
             $pos = strpos($player_html, 'Born:');
             $endpos = strpos($player_html, "in", $pos);
             $born = substr($player_html, $pos + 12, $endpos - $pos - 12);
@@ -384,14 +397,23 @@ class UpdatePlayers extends Command
             if (count($born) === 3):
                 $birthdate = $born[2] . '-' . $born[0] . '-' . $born[1];
             endif;
+            $player->birthdate = $birthdate;
             Log::info('Birthdate ' . $birthdate);
 
-            // Get position
+            // Set position
             $pos = strpos($player_html, 'player-header--vitals');
             $pos = strpos($player_html, "<li>", $pos);
             $endpos = strpos($player_html, "</li>", $pos);
-            $position = substr($player_html, $pos + 4, $endpos - $pos - 4);
-            Log::info('Position ' . $position);
+            $player->position = substr($player_html, $pos + 4, $endpos - $pos - 4);
+            Log::info('Position ' . $player->position);
+
+            // Set stats
+            $status = 'rookie';
+            $stats_found = $this->setStats($player_html, $player);
+            if ($stats_found):
+                $status = 'active';
+            endif;
+            $player->status = $status;
 
             // Get player photo
             $photo = null;
@@ -414,20 +436,12 @@ class UpdatePlayers extends Command
                 $img->stream();
                 Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
 
-                $photo = serialize(['regular' => $file_name, 'small' => $file_name]);
+                $player->photo = serialize(['regular' => $file_name, 'small' => $file_name]);
             else:
                 Log::info('Unable to retrieve player photo');
             endif;
 
-            $this->player->create([
-                'first_name'    => ucfirst($name[0]),
-                'last_name'     => ucfirst($name[1]),
-                'team'          => $team,
-                'birthdate'     => $birthdate,
-                'position'      => $position,
-                'photo'         => $photo,
-                'mlb_link'      => $link,
-            ]);
+            $player->save();
         endif;
     }
 
