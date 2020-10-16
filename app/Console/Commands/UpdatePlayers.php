@@ -29,45 +29,6 @@ class UpdatePlayers extends Command
     protected $description = 'Scrapes MLB website to get latest player stats and updates the DB';
 
     /**
-    * Map MLB player linked name to player in DB
-    *
-    * @var array
-    */
-    protected $non_standard_names = [
-        '/player/wei-yin-chen-612672'           => ['Wei-Yin', 'Chen'],
-        '/player/shao-ching-chiang-623992'      => ['Shao-Ching', 'Chang'],
-        '/player/ji-man-choi-596847'            => ['Ji-Man', 'Choi'],
-        '/player/shin-soo-choo-425783'          => ['Shin-Soo', 'Choo'],
-        '/player/travis-d-arnaud-51859'         => ['Travis', "d'Arnaud"],
-        '/player/brett-de-geus-676969'          => ['Brett', 'De Geus'],
-        '/player/alex-de-goti-621008'           => ['Alex', 'De Goti'],
-        '/player/adrian-de-horta-641506'        => ['Adrian', 'De Horta'],
-        '/player/jasseel-de-la-cruz-665600'     => ['Jasseel', 'De La Cruz'],
-        '/player/oscar-de-la-cruz-642601'       => ['Oscar', 'De La Cruz'],
-        '/player/chad-de-la-guerra-664750'      => ['Chad', 'De La Guerra'],
-        '/player/jose-de-leon-592254'           => ['Jose', 'De Leon'],
-        '/player/enyel-de-los-santos-660853'    => ['Enyel', 'De Los Santos'],
-        '/player/miguel-del-pozo-600887'        => ['Miguel', 'Del Pozo'],
-        '/player/chi-chi-gonzalez-592346'       => ['Chi chi', 'Gonzalez'],
-        '/player/chih-wei-hu-629496'            => ['Chih-Wei', 'Hu'],
-        '/player/wei-chieh-huang-658791'        => ['Wei-Chieh', 'Huang'],
-        '/player/jung-ho-kang-628356'           => ['Jung Ho', 'Kang'],
-        '/player/kwang-hyun-kim-547942'         => ['Kwang-Hyun', 'Kim'],
-        '/player/tommy-la-stella-600303'        => ['Tommy', 'La Stella'],
-        '/player/tzu-wei-lin-624407'            => ['Tzu-Wei', 'Lin'],
-        '/player/jean-carlos-mejia-650496'      => ['Jean Carlos', 'Mejia'],
-        '/player/seth-mejias-brean-623180'      => ['Seth', 'Mejias-Brean'],
-        '/player/john-ryan-murphy-571974'       => ['John Ryan', 'Murphy'],
-        '/player/daniel-ponce-de-leon-594965'   => ['Daniel ', 'Ponce De Leon'],
-        '/player/sean-reid-foley-656887'        => ['Sean', 'Reid-Foley'],
-        '/player/hyun-jin-ryu-547943'           => ['Hyun Jin', 'Ryu'],
-        '/player/ka-ai-tom-664789'              => ["Ka'ai", 'Tom'],
-        '/player/wei-chung-wang-623913'         => ['Wei-Chung', 'Wang'],
-        '/player/luis-alexander-basabe-642772'  => ['Luis Alexander', 'Basabe'],
-        '/player/ke-bryan-hayes-663647'         => ["Ke'Bryan", "Hayes"],
-    ];
-
-    /**
     * MLB batting stats mappings
     *
     * @var array
@@ -266,21 +227,14 @@ class UpdatePlayers extends Command
             $name = explode('-', $player_name[2]);
             $count = count($name);
 
-            if ($count > 3):
-                // Non standard name
-                $non_standard_name = $this->non_standard_names[$link] ?? null;
-
-                if ($non_standard_name):
-                    $name = $non_standard_name;
-                elseif ($count === 4):
-                    // Catch players who are known by initialed nicknames such as JD Martinez or TJ McFarland
-                    if(strlen($name[0]) === 1 && strlen($name[1]) === 1):
-                        $name[0] = $name[0] .  $name[1];
-                        $name[1] = $name[2];
-                    // Catch Irish names such as Ryan O'Hearn
-                    elseif (strlen($name[1]) === 1 && $name[1] === 'o'):
-                        $name[1] = $name[1] . "'" . $name[2];
-                    endif;
+            if ($count === 4):
+                // Catch players who are known by initialed nicknames such as JD Martinez or TJ McFarland
+                if (strlen($name[0]) === 1 && strlen($name[1]) === 1):
+                    $name[0] = $name[0] . $name[1];
+                    $name[1] = $name[2];
+                // Catch Irish names such as Ryan O'Hearn
+                elseif (strlen($name[1]) === 1 && $name[1] === 'o'):
+                    $name[1] = $name[1] . "'" . $name[2];
                 endif;
             endif;
 
