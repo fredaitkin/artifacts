@@ -11,6 +11,10 @@
                 <a class="nav-link active" id="mlt-tab" data-toggle="tab" href="#mlt" role="tab" aria-controls="mlt"
               aria-selected="true">Minor League Teams</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" id="cities-tab" data-toggle="tab" href="#cities" role="tab" aria-controls="cities"
+              aria-selected="true">Player Cities</a>
+            </li>
         </ul>
 
         <div class="tab-content" id="statsTabsContent">
@@ -22,6 +26,16 @@
                 <ul>
                     @foreach($ml_teams as $ml_team)
                         <li>{{$ml_team}}</li>
+                    @endforeach
+            </div>
+
+            <div class="tab-pane fade" id="cities" role="tabpanel" aria-labelledby="cities-tab">
+                <div class="ml-3 mt-3 mb-2">
+                    Hometown of players:
+                </div>
+                <ul>
+                    @foreach($player_cities as $city)
+                        <li>{{$city->city}} ({{$city->count}})</li>
                     @endforeach
             </div>
 

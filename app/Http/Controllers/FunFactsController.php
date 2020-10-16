@@ -4,6 +4,7 @@ namespace Artifacts\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Artifacts\MinorLeagueTeams\MinorLeagueTeamsInterface;
+use Artifacts\Player\PlayerInterface;
 
 class FunFactsController extends Controller
 {
@@ -15,9 +16,10 @@ class FunFactsController extends Controller
      */
     private $mlt;
 
-    public function __construct(MinorLeagueTeamsInterface $mlt)
+    public function __construct(MinorLeagueTeamsInterface $mlt, PlayerInterface $player)
     {
         $this->mlt = $mlt;
+        $this->player = $player;
     }
 
     /**
@@ -31,7 +33,8 @@ class FunFactsController extends Controller
         return view(
             'fun_facts',
             [
-                'ml_teams' => $this->mlt->getTeams(),
+                'ml_teams'      => $this->mlt->getTeams(),
+                'player_cities' => $this->player->getPlayerCityCount(),
             ]
         );
     }

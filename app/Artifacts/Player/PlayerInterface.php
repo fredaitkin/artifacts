@@ -22,5 +22,6 @@ interface PlayerInterface {
     public function updateCreate(array $keys, array $fields);
     public function search(string $q);
     public function deleteByID(int $id);
+    public function getPlayerCityCount();
 
 }
