@@ -35,7 +35,7 @@
                 </div>
                 <ul>
                     @foreach($player_cities as $city)
-                        <li>{{$city->city}} ({{$city->count}})</li>
+                        <li>{{$city->city}}@if($city->country != 'US'), {{$city->country}}@endif - {{$city->count}}</li>
                     @endforeach
             </div>
 
