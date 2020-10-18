@@ -34,8 +34,16 @@
                     Hometown of players:
                 </div>
                 <ul>
-                    @foreach($player_cities as $city)
-                        <li>{{$city->city}}@if($city->country != 'US'), {{$city->country}}@endif - {{$city->count}}</li>
+                    @foreach($player_cities as $player)
+                        <li>
+                            {{$player->city}},
+                            @if($player->country == 'US')
+                                {{$player->state}}
+                            @else
+                                {{$player->country}}
+                            @endif
+                            ({{$player->count}})
+                        </li>
                     @endforeach
             </div>
 

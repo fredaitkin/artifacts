@@ -460,9 +460,10 @@ class Player extends Model implements PlayerInterface
 
     public function getPlayerCityCount()
     {
-        return Player::selectRaw('city, country, count(*) as count')
+        return Player::selectRaw('city, country, state, count(*) as count')
             ->groupBy('city')
             ->groupBy('country')
+            ->groupBy('state')
             ->orderBy('count', 'DESC')
             ->orderBy('city', 'ASC')
             ->get();
