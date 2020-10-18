@@ -51,24 +51,24 @@
             <div class="mt-2 w-25">
                 @if(!empty($player->draft_year))
                     <div class="row">
-                        <div class="col-sm-5">Drafted:</div>
+                        <div class="col-sm-5">Drafted</div>
                         <div class="col-sm-3 text-right">{{$player->draft_year}}</div>
                     </div>
                 @endif
                 @if(!empty($player->draft_round))
                     <div class="row">
-                        <div class="col-sm-5">Round:</div>
+                        <div class="col-sm-5">Round</div>
                        <div class="col-sm-3 text-right">{{$player->draft_round}}</div>
                     </div>
                 @endif
                 @if(!empty($player->draft_position))
                     <div class="row">
-                        <div class="col-sm-5">Position:</div>
+                        <div class="col-sm-5">Position</div>
                         <div class="col-sm-3 text-right">{{$player->draft_position}}</div>
                     </div>
                 @endif
                 <div class="row">
-                    <div class="col-sm-5">Debuted:</div>
+                    <div class="col-sm-5">Debuted</div>
                     <div class="col-sm-3 text-right">{{$player->debut_year}}</div>
                 </div>
             </div>
@@ -76,47 +76,65 @@
 
         <div class="row">
             <div class="col-sm-3"></div>
-            <div class="mt-2 w-25">
+            <div class="mt-2">
                 @if(!empty($player->position))
                     @if($player->position == 'P')
-                        <div class="row">
-                            <div class="col-sm-5">ERA:</div>
-                            <div class="col-sm-3 text-right">{{$player->era}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-5">Games:</div>
-                            <div class="col-sm-3 text-right">{{$player->games}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-5">Wins:</div>
-                            <div class="col-sm-3 text-right">{{$player->wins}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-5">Losses:</div>
-                            <div class="col-sm-3 text-right">{{$player->losses}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-5">Saves:</div>
-                            <div class="col-sm-3 text-right">{{$player->saves}}</div>
-                        </div>
+                    <table class="table stats-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ERA</th>
+                                <th scope="col">Games</th>
+                                <th scope="col">IPs</th>
+                                <th scope="col">SOs</th>
+                                <th scope="col">Wins</th>
+                                <th scope="col">Losses</th>
+                                <th scope="col">Saves</th>
+                                <th scope="col">WHIP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{$player->era}}</td>
+                                <td>{{$player->games}}</td>
+                                <td>{{$player->innings_pitched}}</td>
+                                <td>{{$player->strike_outs}}</td>
+                                <td>{{$player->wins}}</td>
+                                <td>{{$player->losses}}</td>
+                                <td>{{$player->saves}}</td>
+                                <td>{{$player->whip}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     @endif
                     @if(!empty($player->average))
-                        <div class="row">
-                            <div class="col-sm-5">Average:</div>
-                            <div class="col-sm-3 text-right">{{$player->average}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-5">At Bats:</div>
-                            <div class="col-sm-3 text-right">{{$player->at_bats}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-5">Home Runs:</div>
-                            <div class="col-sm-3 text-right">{{$player->home_runs}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-5">RBIs:</div>
-                            <div class="col-sm-3 text-right">{{$player->rbis}}</div>
-                        </div>
+                    <table class="table stats-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">AVG</th>
+                                <th scope="col">ABs</th>
+                                <th scope="col">HRs</th>
+                                <th scope="col">RBIs</th>
+                                <th scope="col">Hits</th>
+                                <th scope="col">Runs</th>
+                                <th scope="col">SBs</th>
+                                <th scope="col">OBP</th>
+                                <th scope="col">OPS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{$player->average}}</td>
+                                <td>{{$player->at_bats}}</td>
+                                <td>{{$player->home_runs}}</td>
+                                <td>{{$player->rbis}}</td>
+                                <td>{{$player->hits}}</td>
+                                <td>{{$player->runs}}</td>
+                                <td>{{$player->stolen_bases}}</td>
+                                <td>{{$player->obp}}</td>
+                                <td>{{$player->ops}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     @endif
                 @endif
             </div>

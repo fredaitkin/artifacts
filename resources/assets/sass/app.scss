@@ -170,3 +170,12 @@ body {
 .previous-teams-div {
   width: 500px;
 }
+
+.stats-table {
+  color: white;
+}
+
+.stats-table thead th, .stats-table td {
+  border: none;
+  padding: 0.35rem;
+}
