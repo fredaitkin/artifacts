@@ -11049,11 +11049,17 @@ body {
 
 .stats-table {
   color: white;
+  padding-top: 10px;
+}
+
+.stats-table th {
+  font-weight: 400;
 }
 
 .stats-table thead th,
 .stats-table td {
   border: none;
   padding: 0.35rem;
+  line-height: 10px;
 }
 
