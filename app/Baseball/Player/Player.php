@@ -47,7 +47,7 @@ class Player extends Model implements PlayerInterface
         'whip',
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     /**
      * The number of records to return for pagination.

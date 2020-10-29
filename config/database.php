@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,6 +53,21 @@ return [
                 'exclude_tables' => ['table1', 'table2'],
                 'add_extra_option' => '--optionname=optionvalue',
             ]
+        ],
+
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'url' => env('PG_DATABASE_URL'),
+            'host' => env('PG_DB_HOST', '127.0.0.1'),
+            'port' => env('PG_DB_PORT', '5432'),
+            'database' => env('PG_DB_DATABASE', 'forge'),
+            'username' => env('PG_DB_USERNAME', 'forge'),
+            'password' => env('PG_DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
         ],
 
     ],
