@@ -10,7 +10,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "^2.5",
         "james-heinrich/getid3": "^1.9",
-        "khill/lavacharts": "3.1.*",
+        "khill/lavacharts": "^3.1",
         "kyslik/column-sortable": "^6.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0"
