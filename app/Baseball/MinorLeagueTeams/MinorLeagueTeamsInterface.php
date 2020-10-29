@@ -4,7 +4,7 @@
  * Works with minor league teams data source
  */
 
-namespace Artifacts\MinorLeagueTeams;
+namespace Artifacts\Baseball\MinorLeagueTeams;
 
 interface MinorLeagueTeamsInterface {
 

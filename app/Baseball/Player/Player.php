@@ -1,8 +1,8 @@
 <?php
 
-namespace Artifacts\Player;
+namespace Artifacts\Baseball\Player;
 
-use Artifacts\Player\PlayerInterface;
+use Artifacts\Baseball\Player\PlayerInterface;
 
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;

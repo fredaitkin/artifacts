@@ -7,8 +7,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Storage;
 use Log;
 
-use Artifacts\Player\PlayerInterface;
-use Artifacts\MinorLeagueTeams\MinorLeagueTeamsInterface;
+use Artifacts\Baseball\Player\PlayerInterface;
+use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
 
 class UpdatePlayers extends Command
 {
@@ -79,14 +79,14 @@ class UpdatePlayers extends Command
     /**
      * The Player Interface
      *
-     * @var Artifacts\Player\PlayerInterface
+     * @var Artifacts\Baseball\Player\PlayerInterface
      */
     private $player;
 
     /**
      * The Minor League Teams Interface
      *
-     * @var Artifacts\Interfaces\MinorLeagueTeamsInterface
+     * @var Artifacts\Baseball\Player\MinorLeagueTeams\MinorLeagueTeamsInterface
      */
     private $mlt;
 

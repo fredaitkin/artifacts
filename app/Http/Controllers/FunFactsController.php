@@ -3,8 +3,8 @@
 namespace Artifacts\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Artifacts\MinorLeagueTeams\MinorLeagueTeamsInterface;
-use Artifacts\Player\PlayerInterface;
+use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
+use Artifacts\Baseball\Player\PlayerInterface;
 
 class FunFactsController extends Controller
 {

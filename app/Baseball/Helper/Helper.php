@@ -1,6 +1,6 @@
 <?php
 
-namespace Artifacts\Helper;
+namespace Artifacts\Baseball\Helper;
 
 class Helper
 {

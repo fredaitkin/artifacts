@@ -7,7 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-use Artifacts\Player\PlayerInterface;
+use Artifacts\Baseball\Player\PlayerInterface;
 use Artifacts\Rules\IsTeam;
 
 use Kyslik\ColumnSortable\Sortable;

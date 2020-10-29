@@ -1,8 +1,8 @@
 <?php
 
-namespace Artifacts\MinorLeagueTeams;
+namespace Artifacts\Baseball\MinorLeagueTeams;
 
-use Artifacts\MinorLeagueTeams\MinorLeagueTeamsInterface;
+use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
 
 use Illuminate\Database\Eloquent\Model;
 

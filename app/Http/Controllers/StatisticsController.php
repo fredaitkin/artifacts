@@ -3,7 +3,7 @@
 namespace Artifacts\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Artifacts\Player\PlayerInterface;
+use Artifacts\Baseball\Player\PlayerInterface;
 
 class StatisticsController extends Controller
 {

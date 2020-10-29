@@ -4,7 +4,7 @@
  * Returns player information
  */
 
-namespace Artifacts\Player;
+namespace Artifacts\Baseball\Player;
 
 interface PlayerInterface {
 

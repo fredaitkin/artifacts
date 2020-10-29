@@ -29,13 +29,13 @@ class AppServiceProvider extends ServiceProvider
         );
         // Player service
         $this->app->bind(
-            'Artifacts\Player\PlayerInterface',
-            'Artifacts\Player\Player'
+            'Artifacts\Baseball\Player\PlayerInterface',
+            'Artifacts\Baseball\Player\Player'
         );
         // Minor League Teams service
         $this->app->bind(
-            'Artifacts\MinorLeagueTeams\MinorLeagueTeamsInterface',
-            'Artifacts\MinorLeagueTeams\MinorLeagueTeams'
+            'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface',
+            'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeams'
         );
     }
 }
