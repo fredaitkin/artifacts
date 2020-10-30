@@ -344,6 +344,7 @@ class Player extends Model implements PlayerInterface
     public function getMostHomeRuns(array $where = null)
     {
         $query = Player::select('id', 'first_name', 'last_name', 'team', 'home_runs')
+            ->whereNotNull('home_runs')
             ->orderBy('home_runs', 'DESC');
         if (isset($where)):
             foreach ($where as $field => $value):
@@ -357,6 +358,7 @@ class Player extends Model implements PlayerInterface
     public function getMostRBIs(array $where = null)
     {
         $query = Player::select('id', 'first_name', 'last_name', 'team', 'rbis')
+            ->whereNotNull('rbis')
             ->orderBy('rbis', 'DESC');
         if (isset($where)):
             foreach ($where as $field => $value):
@@ -417,6 +419,7 @@ class Player extends Model implements PlayerInterface
     public function getMostWins(array $where = null)
     {
         $query = Player::select('id', 'first_name', 'last_name', 'team', 'wins')
+            ->whereNotNull('wins')
             ->orderBy('wins', 'DESC');
         if (isset($where)):
             foreach ($where as $field => $value):
