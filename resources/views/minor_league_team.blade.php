@@ -82,6 +82,13 @@
 
             <div class="form-group row">
                 <div class="col-sm-4">
+                    <label for="previous_teams" class="control-label">Previous Affiliations</label>
+                    <input type="text" name="previous_teams" class="form-control" value="@if (old('previous_teams')){{old('previous_teams')}}@elseif (!empty($team->previous_teams)){{ implode(',', unserialize($team->previous_teams)) }}@endif">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-4">
                     <label for="country" class="control-label">Country</label>
                     <select class="form-control" name="country">
                         @foreach($countries as $country)

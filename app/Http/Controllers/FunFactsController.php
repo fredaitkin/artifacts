@@ -80,6 +80,11 @@ class FunFactsController extends Controller
         $team['division']   = $request->division;
         $team['founded']    = $request->founded;
 
+        if (!empty($request->previous_teams)):
+            $previous_teams = explode(',', $request->previous_teams);
+            $team['previous_teams'] = serialize($previous_teams);
+        endif;
+
         $this->mlt->updateCreate(['id' => $request->id], $team);
 
         return redirect('/funfacts');
