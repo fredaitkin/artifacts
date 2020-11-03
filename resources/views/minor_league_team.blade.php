@@ -32,7 +32,11 @@
             <div class="form-group row">
                 <div class="col-sm-4">
                     <label for="affiliate" class="control-label">Affiliate</label>
-                    <input type="text" name="affiliate" class="form-control" value="@if (old('affiliate')){{old('affiliate')}}@elseif (!empty($team->affiliate)){{$team->affiliate}}@endif">
+                    <select class="form-control" name="affiliate">
+                        @foreach($teams as $key => $major_league_team)
+                            <option value="{{$key}}"  @if (old('affiliate') && old('affiliate') == $key) selected @elseif (!empty($team->affiliate) && ($team->affiliate == $key)) selected @endif>{{$major_league_team}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 

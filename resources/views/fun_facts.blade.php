@@ -30,7 +30,6 @@
                             <th scope='col'>Class</th>
                             <th scope='col'>Affiliate</th>
                             <th scope='col'>League</th>
-                            <th scope='col'>Division</th>
                             <th scope='col'>City</th>
                             <th scope='col'>State</th>
                             <th scope='col'>Country</th>
@@ -43,7 +42,6 @@
                                 <td class="table-text">{{$ml_team->class}}</td>
                                 <td class="table-text">{{$ml_team->affiliate}}</td>
                                 <td class="table-text">{{$ml_team->league}}</td>
-                                <td class="table-text">{{$ml_team->division}}</td>
                                 <td class="table-text">{{$ml_team->city}}</td>
                                 <td class="table-text">{{$ml_team->state}}</td>
                                 <td class="table-text">{{$ml_team->country}}</td>

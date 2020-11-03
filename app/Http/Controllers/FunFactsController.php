@@ -50,7 +50,8 @@ class FunFactsController extends Controller
         $team = $this->mlt->getTeamByID($id);
         return view('minor_league_team', [
             'team'      => $team,
-            'states'    => config('states'),
+            'states'    => ['' => ''] + config('states'),
+            'teams'     => ['' => ''] + config('teams'),
             'classes'   => ['' => ''] + config('minor_league_teams.classes'),
             'leagues'   => ['' => ''] + config('minor_league_teams.leagues'),
             'divisions' => ['' => ''] + config('minor_league_teams.divisions'),
