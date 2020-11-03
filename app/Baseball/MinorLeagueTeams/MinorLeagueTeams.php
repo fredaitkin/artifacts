@@ -11,17 +11,38 @@ class MinorLeagueTeams extends Model implements MinorLeagueTeamsInterface
 
     protected $table = 'minor_league_teams';
 
-    protected $fillable = ['team'];
+    protected $guarded = ['id'];
 
     public function getTeams()
     {
-        $teams = MinorLeagueTeams::select('team')->orderBy('team', 'asc')->get()->toArray();
-        return array_column($teams, 'team');
+        return MinorLeagueTeams::select('*')->orderBy('team', 'asc')->get();
     }
 
     public function addTeam(string $team)
     {
         MinorLeagueTeams::create(['team' => $team]);
+    }
+
+    /**
+     * Get team by id
+     *
+     * @return array
+     */
+    public function getTeamByID(int $id)
+    {
+        return MinorLeagueTeams::findOrFail($id);
+    }
+
+    /**
+     * Update or create team
+     *
+     * @param array $keys
+     * @param array $fields
+     * @return object
+     */
+    public function updateCreate(array $keys, array $fields)
+    {
+        return MinorLeagueTeams::updateOrCreate($keys, $fields);
     }
 
 }

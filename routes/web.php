@@ -38,6 +38,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/funfacts', 'FunFactsController@index');
 
+    Route::get('/funfacts/mlt/{id}', 'FunFactsController@edit');
+
+    Route::post('/funfacts/mlt/', 'FunFactsController@store');
+
 });
 
 Auth::routes();

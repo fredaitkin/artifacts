@@ -23,10 +23,34 @@
                 <div class="ml-3 mt-3 mb-2">
                     Minor league teams that rookies are currently playing with / have played with:
                 </div>
-                <ul>
-                    @foreach($ml_teams as $ml_team)
-                        <li>{{$ml_team}}</li>
-                    @endforeach
+                <table class="table table-striped artifacts-table">
+                    <thead>
+                        <tr>
+                            <th scope='col'>Team</th>
+                            <th scope='col'>Class</th>
+                            <th scope='col'>Affiliate</th>
+                            <th scope='col'>League</th>
+                            <th scope='col'>Division</th>
+                            <th scope='col'>City</th>
+                            <th scope='col'>State</th>
+                            <th scope='col'>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($ml_teams as $ml_team)
+                            <tr>
+                                <td class="table-text"><a href="/funfacts/mlt/{{$ml_team->id}}">{{$ml_team->team}}</a></td>
+                                <td class="table-text">{{$ml_team->class}}</td>
+                                <td class="table-text">{{$ml_team->affiliate}}</td>
+                                <td class="table-text">{{$ml_team->league}}</td>
+                                <td class="table-text">{{$ml_team->division}}</td>
+                                <td class="table-text">{{$ml_team->city}}</td>
+                                <td class="table-text">{{$ml_team->state}}</td>
+                                <td class="table-text">{{$ml_team->country}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
 
             <div class="tab-pane fade" id="cities" role="tabpanel" aria-labelledby="cities-tab">

@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.25, for osx10.14 (x86_64)
 --
 -- Host: localhost    Database: artifacts
 -- ------------------------------------------------------
--- Server version	5.7.28
+-- Server version	5.7.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,13 +21,13 @@
 
 DROP TABLE IF EXISTS `migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_05_05_223809_create_players_table',1),(4,'2019_05_20_201849_create_players_table',2),(5,'2019_06_15_171257_add_debut_year_to_players',2),(6,'2019_10_14_011910_add_extra_fields_to_players',3),(7,'2020_08_09_210335_add_stats_fields_to_players',4),(8,'2020_08_09_221222_add_era_to_players',5),(9,'2020_08_12_174259_more_player_stats_fields',6),(10,'2020_08_20_181437_add_pitching_stats_fields_to_players',7),(12,'2020_09_23_143746_add_mlb_link',8),(14,'2020_10_02_202818_add_further_stats',9),(15,'2020_10_03_002300_add_status',10),(16,'2020_10_04_213413_add_minor_league_table',11);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_05_05_223809_create_players_table',1),(4,'2019_05_20_201849_create_players_table',2),(5,'2019_06_15_171257_add_debut_year_to_players',2),(6,'2019_10_14_011910_add_extra_fields_to_players',3),(7,'2020_08_09_210335_add_stats_fields_to_players',4),(8,'2020_08_09_221222_add_era_to_players',5),(9,'2020_08_12_174259_more_player_stats_fields',6),(10,'2020_08_20_181437_add_pitching_stats_fields_to_players',7),(12,'2020_09_23_143746_add_mlb_link',8),(14,'2020_10_02_202818_add_further_stats',9),(15,'2020_10_03_002300_add_status',10),(16,'2020_10_04_213413_add_minor_league_table',11),(18,'2020_11_03_162307_add_fields_to_mlt_table',12),(19,'2020_11_03_193910_add_fields_to_mlt_table',13),(20,'2020_11_03_212551_add_fields_to_mlt_table',14);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46,12 +46,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `minor_league_teams`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `minor_league_teams` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `team` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `class` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `affiliate` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `league` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `division` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=148 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -62,7 +69,7 @@ CREATE TABLE `minor_league_teams` (
 
 LOCK TABLES `minor_league_teams` WRITE;
 /*!40000 ALTER TABLE `minor_league_teams` DISABLE KEYS */;
-INSERT INTO `minor_league_teams` VALUES (1,'Memphis Redbirds','2020-10-05 02:54:23','2020-10-05 02:54:23'),(2,'Northwest Arkansas Naturals','2020-10-05 03:00:57','2020-10-05 03:00:57'),(3,'Johnson City','2020-10-05 03:14:41','2020-10-05 03:14:41'),(4,'Iowa Cubs','2020-10-05 03:14:43','2020-10-05 03:14:43'),(5,'Buffalo Bisons','2020-10-05 03:14:44','2020-10-05 03:14:44'),(6,'Toledo Mud Hens','2020-10-05 03:14:46','2020-10-05 03:14:46'),(7,'El Paso Chihuahuas','2020-10-05 03:14:48','2020-10-05 03:14:48'),(8,'Springfield Cardinals','2020-10-05 03:14:50','2020-10-05 03:14:50'),(9,'Portland Sea Dogs','2020-10-05 03:15:01','2020-10-05 03:15:01'),(10,'Salt Lake Bees','2020-10-05 03:15:03','2020-10-05 03:15:03'),(12,'Acereros del Norte','2020-10-05 03:15:09','2020-10-05 03:15:09'),(13,'Syracuse Mets','2020-10-05 03:15:11','2020-10-05 03:15:11'),(14,'Lehigh Valley IronPigs','2020-10-05 03:15:13','2020-10-05 03:15:13'),(15,'Scranton/Wilkes-Barre RailRiders','2020-10-05 03:15:15','2020-10-05 03:15:15'),(16,'San Antonio Missions','2020-10-05 03:15:17','2020-10-05 03:15:17'),(17,'Fresno Grizzlies','2020-10-05 03:15:19','2020-10-05 03:15:19'),(18,'Charlotte Knights','2020-10-05 03:15:25','2020-10-05 03:15:25'),(19,'Gwinnett Stripers','2020-10-05 03:15:27','2020-10-05 03:15:27'),(20,'Reno Aces','2020-10-05 03:15:29','2020-10-05 03:15:29'),(21,'Montgomery Biscuits','2020-10-05 03:15:32','2020-10-05 03:15:32'),(22,'Omaha Storm Chasers','2020-10-05 03:15:35','2020-10-05 03:15:35'),(23,'Bowie Baysox','2020-10-05 03:15:39','2020-10-05 03:15:39'),(24,'New Hampshire Fisher Cats','2020-10-05 03:15:41','2020-10-05 03:15:41'),(25,'Norfolk Tides','2020-10-05 03:15:48','2020-10-05 03:15:48'),(26,'Tacoma Rainiers','2020-10-05 03:15:55','2020-10-05 03:15:55'),(27,'Akron RubberDucks','2020-10-05 03:16:01','2020-10-05 03:16:01'),(28,'Las Vegas Aviators','2020-10-05 03:16:05','2020-10-05 03:16:05'),(29,'Rancho Cucamonga Quakes','2020-10-05 03:16:22','2020-10-05 03:16:22'),(30,'Pawtucket Red Sox','2020-10-05 03:16:36','2020-10-05 03:16:36'),(31,'Altoona Curve','2020-10-05 03:16:38','2020-10-05 03:16:38'),(32,'Reading Fightin Phils','2020-10-05 03:16:45','2020-10-05 03:16:45'),(33,'Columbus Clippers','2020-10-05 03:16:47','2020-10-05 03:16:47'),(34,'Round Rock Express','2020-10-05 03:16:49','2020-10-05 03:16:49'),(35,'Jackson Generals','2020-10-05 03:16:51','2020-10-05 03:16:51'),(36,'Mississippi Braves','2020-10-05 03:17:01','2020-10-05 03:17:01'),(37,'Hartford Yard Goats','2020-10-05 03:17:02','2020-10-05 03:17:02'),(38,'Midland RockHounds','2020-10-05 03:17:09','2020-10-05 03:17:09'),(39,'Augusta GreenJackets','2020-10-05 03:17:16','2020-10-05 03:17:16'),(40,'Albuquerque Isotopes','2020-10-05 03:17:23','2020-10-05 03:17:23'),(41,'Oklahoma City Dodgers','2020-10-05 03:17:31','2020-10-05 03:17:31'),(42,'Palm Beach Cardinals','2020-10-05 03:17:42','2020-10-05 03:17:42'),(43,'Indianapolis Indians','2020-10-05 03:18:02','2020-10-05 03:18:02'),(44,'Chattanooga Lookouts','2020-10-05 03:18:04','2020-10-05 03:18:04'),(45,'Rochester Red Wings','2020-10-05 03:18:09','2020-10-05 03:18:09'),(46,'San Jose Giants','2020-10-05 03:18:24','2020-10-05 03:18:24'),(47,'Florida Fire Frogs','2020-10-05 03:18:26','2020-10-05 03:18:26'),(48,'West Virginia Power','2020-10-05 03:18:28','2020-10-05 03:18:28'),(49,'West Michigan Whitecaps','2020-10-05 03:18:46','2020-10-05 03:18:46'),(50,'Durham Bulls','2020-10-05 03:18:59','2020-10-05 03:18:59'),(51,'Amarillo Sod Poodles','2020-10-05 03:19:12','2020-10-05 03:19:12'),(52,'Wichita Wind Surge','2020-10-05 03:19:14','2020-10-05 03:19:14'),(53,'Jacksonville Jumbo Shrimp','2020-10-05 03:19:34','2020-10-05 03:19:34'),(54,'Sacramento River Cats','2020-10-05 03:20:06','2020-10-05 03:20:06'),(55,'Arkansas Travelers','2020-10-05 03:20:17','2020-10-05 03:20:17'),(56,'Trenton Thunder','2020-10-05 03:20:19','2020-10-05 03:20:19'),(57,'Louisville Bats','2020-10-05 03:20:27','2020-10-05 03:20:27'),(58,'Birmingham Barons','2020-10-05 03:20:47','2020-10-05 03:20:47'),(59,'Rocket City Trash Pandas','2020-10-05 03:20:50','2020-10-05 03:20:50'),(60,'Burlington Bees','2020-10-05 03:20:52','2020-10-05 03:20:52'),(61,'Erie SeaWolves','2020-10-05 03:20:55','2020-10-05 03:20:55'),(63,'Corpus Christi Hooks','2020-10-05 03:21:07','2020-10-05 03:21:07'),(64,'Aberdeen IronBirds','2020-10-05 03:21:42','2020-10-05 03:21:42'),(65,'Charlotte Stone Crabs','2020-10-05 03:21:59','2020-10-05 03:21:59'),(66,'Peoria Chiefs','2020-10-05 03:22:26','2020-10-05 03:22:26'),(67,'Binghamton Rumble Ponies','2020-10-05 03:22:39','2020-10-05 03:22:39'),(68,'Richmond Flying Squirrels','2020-10-05 03:23:06','2020-10-05 03:23:06'),(69,'Clearwater Threshers','2020-10-05 03:23:13','2020-10-05 03:23:13'),(70,'Harrisburg Senators','2020-10-05 03:23:15','2020-10-05 03:23:15'),(71,'Bradenton Marauders','2020-10-05 03:23:20','2020-10-05 03:23:20'),(74,'Nashville Sounds','2020-10-05 22:28:42','2020-10-05 22:28:42'),(78,'Stockton Ports','2020-10-05 22:29:31','2020-10-05 22:29:31'),(82,'Biloxi Shuckers','2020-10-05 22:30:31','2020-10-05 22:30:31'),(89,'Frisco RoughRiders','2020-10-05 22:31:46','2020-10-05 22:31:46'),(92,'Rome Braves','2020-10-05 22:31:58','2020-10-05 22:31:58'),(95,'Pensacola Blue Wahoos','2020-10-05 22:32:12','2020-10-05 22:32:12'),(100,'Columbia Fireflies','2020-10-05 22:34:22','2020-10-05 22:34:22'),(101,'Jupiter Hammerheads','2020-10-05 22:34:25','2020-10-05 22:34:25'),(134,'Wilmington Blue Rocks','2020-10-05 22:54:24','2020-10-05 22:54:24'),(138,'Dayton Dragons','2020-10-05 23:00:20','2020-10-05 23:00:20'),(141,'GCL Blue Jays','2020-10-05 23:04:00','2020-10-05 23:04:00');
+INSERT INTO `minor_league_teams` VALUES (1,'Memphis Redbirds','2020-10-05 02:54:23','2020-10-05 02:54:23','','','','','','',''),(2,'Northwest Arkansas Naturals','2020-10-05 03:00:57','2020-10-05 03:00:57','','','','','','',''),(3,'Johnson City','2020-10-05 03:14:41','2020-10-05 03:14:41','','','','','','',''),(4,'Iowa Cubs','2020-10-05 03:14:43','2020-10-05 03:14:43','','','','','','',''),(5,'Buffalo Bisons','2020-10-05 03:14:44','2020-10-05 03:14:44','','','','','','',''),(6,'Toledo Mud Hens','2020-10-05 03:14:46','2020-10-05 03:14:46','','','','','','',''),(7,'El Paso Chihuahuas','2020-10-05 03:14:48','2020-10-05 03:14:48','','','','','','',''),(8,'Springfield Cardinals','2020-10-05 03:14:50','2020-10-05 03:14:50','','','','','','',''),(9,'Portland Sea Dogs','2020-10-05 03:15:01','2020-10-05 03:15:01','','','','','','',''),(10,'Salt Lake Bees','2020-10-05 03:15:03','2020-10-05 03:15:03','','','','','','',''),(12,'Acereros del Norte','2020-10-05 03:15:09','2020-10-05 03:15:09','AAA','','','','','',''),(13,'Syracuse Mets','2020-10-05 03:15:11','2020-10-05 03:15:11','','','','','','',''),(14,'Lehigh Valley IronPigs','2020-10-05 03:15:13','2020-10-05 03:15:13','','','','','','',''),(15,'Scranton/Wilkes-Barre RailRiders','2020-10-05 03:15:15','2020-10-05 03:15:15','','','','','','',''),(16,'San Antonio Missions','2020-10-05 03:15:17','2020-10-05 03:15:17','','','','','','',''),(17,'Fresno Grizzlies','2020-10-05 03:15:19','2020-10-05 03:15:19','','','','','','',''),(18,'Charlotte Knights','2020-10-05 03:15:25','2020-10-05 03:15:25','','','','','','',''),(19,'Gwinnett Stripers','2020-10-05 03:15:27','2020-10-05 03:15:27','','','','','','',''),(20,'Reno Aces','2020-10-05 03:15:29','2020-10-05 03:15:29','','','','','','',''),(21,'Montgomery Biscuits','2020-10-05 03:15:32','2020-10-05 03:15:32','','','','','','',''),(22,'Omaha Storm Chasers','2020-10-05 03:15:35','2020-10-05 03:15:35','','','','','','',''),(23,'Bowie Baysox','2020-10-05 03:15:39','2020-10-05 03:15:39','','','','','','',''),(24,'New Hampshire Fisher Cats','2020-10-05 03:15:41','2020-10-05 03:15:41','','','','','','',''),(25,'Norfolk Tides','2020-10-05 03:15:48','2020-10-05 03:15:48','','','','','','',''),(26,'Tacoma Rainiers','2020-10-05 03:15:55','2020-10-05 03:15:55','','','','','','',''),(27,'Akron RubberDucks','2020-10-05 03:16:01','2020-10-05 03:16:01','AA','CLE','','','','',''),(28,'Las Vegas Aviators','2020-10-05 03:16:05','2020-10-05 03:16:05','','','','','','',''),(29,'Rancho Cucamonga Quakes','2020-10-05 03:16:22','2020-10-05 03:16:22','','','','','','',''),(30,'Pawtucket Red Sox','2020-10-05 03:16:36','2020-10-05 03:16:36','','','','','','',''),(31,'Altoona Curve','2020-10-05 03:16:38','2020-10-05 03:16:38','AA','PIT','','','','',''),(32,'Reading Fightin Phils','2020-10-05 03:16:45','2020-10-05 03:16:45','','','','','','',''),(33,'Columbus Clippers','2020-10-05 03:16:47','2020-10-05 03:16:47','','','','','','',''),(34,'Round Rock Express','2020-10-05 03:16:49','2020-10-05 03:16:49','','','','','','',''),(35,'Jackson Generals','2020-10-05 03:16:51','2020-10-05 03:16:51','','','','','','',''),(36,'Mississippi Braves','2020-10-05 03:17:01','2020-10-05 03:17:01','','','','','','',''),(37,'Hartford Yard Goats','2020-10-05 03:17:02','2020-10-05 03:17:02','','','','','','',''),(38,'Midland RockHounds','2020-10-05 03:17:09','2020-10-05 03:17:09','','','','','','',''),(39,'Augusta GreenJackets','2020-10-05 03:17:16','2020-10-05 03:17:16','A','SFG','','','','',''),(40,'Albuquerque Isotopes','2020-10-05 03:17:23','2020-10-05 03:17:23','','','','','','',''),(41,'Oklahoma City Dodgers','2020-10-05 03:17:31','2020-10-05 03:17:31','','','','','','',''),(42,'Palm Beach Cardinals','2020-10-05 03:17:42','2020-10-05 03:17:42','','','','','','',''),(43,'Indianapolis Indians','2020-10-05 03:18:02','2020-10-05 03:18:02','','','','','','',''),(44,'Chattanooga Lookouts','2020-10-05 03:18:04','2020-10-05 03:18:04','','','','','','',''),(45,'Rochester Red Wings','2020-10-05 03:18:09','2020-10-05 03:18:09','','','','','','',''),(46,'San Jose Giants','2020-10-05 03:18:24','2020-10-05 03:18:24','','','','','','',''),(47,'Florida Fire Frogs','2020-10-05 03:18:26','2020-10-05 03:18:26','','','','','','',''),(48,'West Virginia Power','2020-10-05 03:18:28','2020-10-05 03:18:28','','','','','','',''),(49,'West Michigan Whitecaps','2020-10-05 03:18:46','2020-10-05 03:18:46','','','','','','',''),(50,'Durham Bulls','2020-10-05 03:18:59','2020-10-05 03:18:59','','','','','','',''),(51,'Amarillo Sod Poodles','2020-10-05 03:19:12','2020-10-05 03:19:12','','','','','','',''),(52,'Wichita Wind Surge','2020-10-05 03:19:14','2020-10-05 03:19:14','','','','','','',''),(53,'Jacksonville Jumbo Shrimp','2020-10-05 03:19:34','2020-10-05 03:19:34','','','','','','',''),(54,'Sacramento River Cats','2020-10-05 03:20:06','2020-10-05 03:20:06','','','','','','',''),(55,'Arkansas Travelers','2020-10-05 03:20:17','2020-10-05 03:20:17','','','','','','',''),(56,'Trenton Thunder','2020-10-05 03:20:19','2020-10-05 03:20:19','','','','','','',''),(57,'Louisville Bats','2020-10-05 03:20:27','2020-10-05 03:20:27','','','','','','',''),(58,'Birmingham Barons','2020-10-05 03:20:47','2020-10-05 03:20:47','','','','','','',''),(59,'Rocket City Trash Pandas','2020-10-05 03:20:50','2020-10-05 03:20:50','','','','','','',''),(60,'Burlington Bees','2020-10-05 03:20:52','2020-10-05 03:20:52','','','','','','',''),(61,'Erie SeaWolves','2020-10-05 03:20:55','2020-10-05 03:20:55','','','','','','',''),(63,'Corpus Christi Hooks','2020-10-05 03:21:07','2020-10-05 03:21:07','','','','','','',''),(64,'Aberdeen IronBirds','2020-10-05 03:21:42','2020-11-04 02:32:17','Class A Short Season','BAL','Aberdeen','MD','US','New York - Penn',NULL),(65,'Charlotte Stone Crabs','2020-10-05 03:21:59','2020-10-05 03:21:59','','','','','','',''),(66,'Peoria Chiefs','2020-10-05 03:22:26','2020-10-05 03:22:26','','','','','','',''),(67,'Binghamton Rumble Ponies','2020-10-05 03:22:39','2020-10-05 03:22:39','','','','','','',''),(68,'Richmond Flying Squirrels','2020-10-05 03:23:06','2020-10-05 03:23:06','','','','','','',''),(69,'Clearwater Threshers','2020-10-05 03:23:13','2020-10-05 03:23:13','','','','','','',''),(70,'Harrisburg Senators','2020-10-05 03:23:15','2020-10-05 03:23:15','','','','','','',''),(71,'Bradenton Marauders','2020-10-05 03:23:20','2020-10-05 03:23:20','','','','','','',''),(74,'Nashville Sounds','2020-10-05 22:28:42','2020-10-05 22:28:42','','','','','','',''),(78,'Stockton Ports','2020-10-05 22:29:31','2020-10-05 22:29:31','','','','','','',''),(82,'Biloxi Shuckers','2020-10-05 22:30:31','2020-10-05 22:30:31','','','','','','',''),(89,'Frisco RoughRiders','2020-10-05 22:31:46','2020-10-05 22:31:46','','','','','','',''),(92,'Rome Braves','2020-10-05 22:31:58','2020-10-05 22:31:58','','','','','','',''),(95,'Pensacola Blue Wahoos','2020-10-05 22:32:12','2020-10-05 22:32:12','','','','','','',''),(100,'Columbia Fireflies','2020-10-05 22:34:22','2020-10-05 22:34:22','','','','','','',''),(101,'Jupiter Hammerheads','2020-10-05 22:34:25','2020-10-05 22:34:25','','','','','','',''),(134,'Wilmington Blue Rocks','2020-10-05 22:54:24','2020-10-05 22:54:24','','','','','','',''),(138,'Dayton Dragons','2020-10-05 23:00:20','2020-10-05 23:00:20','','','','','','',''),(141,'GCL Blue Jays','2020-10-05 23:04:00','2020-10-05 23:04:00','','','','','','','');
 /*!40000 ALTER TABLE `minor_league_teams` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +79,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `password_resets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -96,7 +103,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `players`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `players` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -155,7 +162,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `songs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `songs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -189,7 +196,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -223,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-15 18:54:59
+-- Dump completed on 2020-11-03 16:39:20
