@@ -33,6 +33,7 @@
                             <th scope='col'>City</th>
                             <th scope='col'>State</th>
                             <th scope='col'>Country</th>
+                            <th scope='col'>Founded</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,6 +46,7 @@
                                 <td class="table-text">{{$ml_team->city}}</td>
                                 <td class="table-text">{{$ml_team->state}}</td>
                                 <td class="table-text">{{$ml_team->country}}</td>
+                                <td class="table-text">{{$ml_team->founded}}</td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -67,6 +67,9 @@ class FunFactsController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validator = $request->validate(['founded' => 'nullable|integer']);
+
         $team = [];
         $team['city']       = $request->city;
         $team['state']      = $request->state;
@@ -75,6 +78,7 @@ class FunFactsController extends Controller
         $team['class']      = $request->class;
         $team['league']     = $request->league;
         $team['division']   = $request->division;
+        $team['founded']    = $request->founded;
 
         $this->mlt->updateCreate(['id' => $request->id], $team);
 

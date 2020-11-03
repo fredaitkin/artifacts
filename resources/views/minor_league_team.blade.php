@@ -75,6 +75,13 @@
 
             <div class="form-group row">
                 <div class="col-sm-4">
+                    <label for="founded" class="control-label">Founded</label>
+                    <input type="text" name="founded" class="form-control" value="@if (old('founded')){{old('founded')}}@elseif (!empty($team->founded)){{$team->founded}}@endif">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-4">
                     <label for="country" class="control-label">Country</label>
                     <select class="form-control" name="country">
                         @foreach($countries as $country)
