@@ -26,14 +26,14 @@
                 <table class="table table-striped artifacts-table">
                     <thead>
                         <tr>
-                            <th scope='col'>Team</th>
-                            <th scope='col'>Class</th>
-                            <th scope='col'>Affiliate</th>
-                            <th scope='col'>League</th>
+                            <th scope='col'>@sortablelink('team')</th>
+                            <th scope='col'>@sortablelink('class')</th>
+                            <th scope='col'>@sortablelink('affiliate')</th>
+                            <th scope='col'>@sortablelink('league')</th>
                             <th scope='col'>City</th>
-                            <th scope='col'>State</th>
-                            <th scope='col'>Country</th>
-                            <th scope='col'>Founded</th>
+                            <th scope='col'>@sortablelink('state')</th>
+                            <th scope='col'>@sortablelink('country')</th>
+                            <th scope='col'>@sortablelink('founded')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +51,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $ml_teams->appends(\Request::except('page'))->render() }}
             </div>
 
             <div class="tab-pane fade" id="cities" role="tabpanel" aria-labelledby="cities-tab">
