@@ -26,7 +26,7 @@ class IsTeam implements Rule
     public function passes($attribute, $value)
     {
         if (!empty($value)):
-            $teams = config('teams');
+            $teams = array_merge(config('teams.current'), config('teams.defunct'));
             $previous_teams = explode(',', $value);
             foreach($previous_teams as $team):
                 if (!array_key_exists($team, $teams)):

@@ -49,7 +49,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        $teams = ['' => 'Please Select'] + config('teams');
+        $teams = ['' => 'Please Select'] + config('teams.current');
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
         return view('player', [
@@ -157,7 +157,7 @@ class PlayerController extends Controller
     public function edit(Request $request, $id)
     {
         $player = $this->player->getPlayerByID($id);
-        $teams = ['' => 'Please Select'] + config('teams');
+        $teams = ['' => 'Please Select'] + config('teams.current');
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
         if (isset($player->mlb_link[2])):

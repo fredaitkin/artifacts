@@ -288,7 +288,7 @@ class Player extends Model implements PlayerInterface
      */
     public function getTeamDisplayAttribute()
     {
-        return config('teams')[$this->team];
+        return config('teams.current')[$this->team];
     }
 
     /**
@@ -302,7 +302,11 @@ class Player extends Model implements PlayerInterface
         if (!empty($this->previous_teams)):
             $data = unserialize($this->previous_teams);
             foreach ($data as $key => $value):
-              $data[$key] = config('teams')[$value];
+                if (isset(config('teams.current')[$value])):
+                    $data[$key] = config('teams.current')[$value];
+                elseif (isset(config('teams.defunct')[$value])):
+                    $data[$key] = config('teams.defunct')[$value];
+                endif;
             endforeach;
             $teams = implode(', ', $data);
         endif;

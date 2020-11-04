@@ -215,7 +215,7 @@
                     <label for="previous_teams" class="col-sm-12 control-label">Previous Teams</label>
 
                     <div class="col-sm-12">
-                        <input type="text" name="previous_teams" id="player->previous_teams" class="form-control" value=@if (old('previous_teams')) {{ old('previous_teams') }} @elseif (!empty($player->previous_teams)) {{$player->previous_teams}} @endif>
+                        <input type="text" name="previous_teams" id="player->previous_teams" class="form-control" value=@if (old('previous_teams')) {{ old('previous_teams') }} @elseif (!empty($player->previous_teams)) {{implode(',', unserialize($player->previous_teams))}} @endif>
                     </div>
                 </div>
                 <div class="col">
