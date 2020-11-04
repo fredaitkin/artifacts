@@ -9,6 +9,7 @@ return [
         'Class A',
         'Class A Short Season',
         'Rookie Advanced',
+        'Rookie',
     ],
 
     'leagues' => [
@@ -35,8 +36,10 @@ return [
     'divisions' => [
         'Eastern',
         'North',
+        'Northern',
         'South',
         'Southern',
+        'West',
         'Western',
     ],
 

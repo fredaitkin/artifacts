@@ -67,7 +67,7 @@ class MinorLeagueTeams extends Model implements MinorLeagueTeamsInterface
 
     public function classSortable($query, $direction)
     {
-        return $query->orderByRaw('FIELD(class, "Triple-A", "Double-A", "Class A - Advanced", "Class A", "Class A Short Season", "Rookie Advanced") ' . $direction);
+        return $query->orderByRaw('FIELD(class, "Triple-A", "Double-A", "Class A - Advanced", "Class A", "Class A Short Season", "Rookie Advanced", "Rookie") ' . $direction);
     }
 
     /**
