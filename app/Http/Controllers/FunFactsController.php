@@ -5,6 +5,7 @@ namespace Artifacts\Http\Controllers;
 use Illuminate\Http\Request;
 use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
 use Artifacts\Baseball\Player\PlayerInterface;
+use Artifacts\Rules\IsTeam;
 
 class FunFactsController extends Controller
 {
@@ -51,7 +52,7 @@ class FunFactsController extends Controller
         return view('minor_league_team', [
             'team'      => $team,
             'states'    => ['' => ''] + config('states'),
-            'teams'     => ['' => ''] + config('teams'),
+            'teams'     => ['' => ''] + config('teams.current'),
             'classes'   => ['' => ''] + config('minor_league_teams.classes'),
             'leagues'   => ['' => ''] + config('minor_league_teams.leagues'),
             'divisions' => ['' => ''] + config('minor_league_teams.divisions'),
@@ -68,7 +69,10 @@ class FunFactsController extends Controller
     public function store(Request $request)
     {
 
-        $validator = $request->validate(['founded' => 'nullable|integer']);
+        $validator = $request->validate([
+            'founded' => 'nullable|integer',
+            'previous_teams'    => new IsTeam,
+        ]);
 
         $team = [];
         $team['city']       = $request->city;

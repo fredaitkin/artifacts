@@ -38,6 +38,7 @@ return [
     'defunct' => [
         'FLA' => 'Florida Marlins',
         'MON' => 'Montreal Expos',
+        'SEN' => 'Washington Senators',
     ],
 
 ];
