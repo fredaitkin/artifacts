@@ -13,7 +13,8 @@ class BackupDatabase extends Command
      *
      * @var string
      */
-    protected $signature = 'db:backup';
+    protected $signature = 'db:backup
+                            {--no-stats-flag : Drop MySQL8 column-statistics flag}';
 
     /**
      * The console command description.
@@ -37,15 +38,6 @@ class BackupDatabase extends Command
     public function __construct()
     {
         parent::__construct();
-        
-        $this->process = new Process(sprintf(
-            'mysqldump -u%s -p%s --port=%s %s --column-statistics=0 > %s',
-            config('database.connections.mysql.username'),
-            config('database.connections.mysql.password'),
-            config('database.connections.mysql.port'),
-            config('database.connections.mysql.database'),
-            storage_path('backups/artifacts.sql')
-        ));
     }
 
     /**
@@ -56,10 +48,28 @@ class BackupDatabase extends Command
     public function handle()
     {
         try {
+
+            $options = $this->options();
+
+            if (isset($options['no-stats-flag'])):
+                $stats_flag = '';
+            else:
+                $stats_flag = '--column-statistics=0';
+            endif;
+
+            $this->process = new Process(sprintf(
+                'mysqldump -u%s -p%s --port=%s %s ' . $stats_flag . ' > %s',
+                config('database.connections.mysql.username'),
+                config('database.connections.mysql.password'),
+                config('database.connections.mysql.port'),
+                config('database.connections.mysql.database'),
+                storage_path('backups/artifacts.sql')
+            ));
+
             $this->process->mustRun();
             $this->info('The backup has been proceed successfully.');
-        } catch (ProcessFailedException $exception) {
-            $this->error('The backup process has been failed.');
+        } catch (ProcessFailedException $e) {
+            $this->error('The backup process has been failed: ' . $e->getMessage());
         }
     }
 }
