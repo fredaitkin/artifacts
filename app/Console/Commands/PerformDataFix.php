@@ -53,8 +53,8 @@ class PerformDataFix extends Command
     {
         $options = $this->options();
 
-        if (isset($options['serialize-prev-teams'])):
-             $this->serializePreviousTeams();
+        if ($options['serialize-prev-teams']):
+            echo "This has been run.";
         endif;
 
     }
@@ -66,7 +66,6 @@ class PerformDataFix extends Command
      */
     private function serializePreviousTeams()
     {
-
         $players = $this->player->getAllPlayers();
         foreach ($players as $player):
             if ($player->previous_teams):
