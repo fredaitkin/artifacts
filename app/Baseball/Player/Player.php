@@ -300,7 +300,7 @@ class Player extends Model implements PlayerInterface
     {
         $teams = '';
         if (!empty($this->previous_teams)):
-            $data = explode(',', $this->previous_teams);
+            $data = unserialize($this->previous_teams);
             foreach ($data as $key => $value):
               $data[$key] = config('teams')[$value];
             endforeach;

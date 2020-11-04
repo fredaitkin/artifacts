@@ -115,7 +115,10 @@ class PlayerController extends Controller
         $player['wins']           = $request->wins;
         $player['losses']         = $request->losses;
         $player['saves']          = $request->saves;
-        $player['previous_teams'] = $request->previous_teams;
+
+        if ($request->previous_teams):
+            $player['previous_teams'] = serialize(explode(',', $request->previous_teams));
+        endif;
 
         if (isset($file_name)):
             // Duplication caused by legacy photo processing
