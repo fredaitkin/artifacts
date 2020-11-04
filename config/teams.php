@@ -39,6 +39,9 @@ return [
         'FLA' => 'Florida Marlins',
         'MON' => 'Montreal Expos',
         'SEN' => 'Washington Senators',
+        'SLB' => 'St. Louis Browns',
+        'KCA' => 'Kansas City Athletics',
+        'BRD' => 'Brooklyn Dodgers',
     ],
 
 ];
