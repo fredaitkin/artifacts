@@ -29,10 +29,8 @@
                                 <span class="glyphicon glyphicon-search">Search</span>
                             </button>
                         </span>
-                        @if (Route::has('login'))
-                            @auth
-                                <a href="{{ url('/player') }}" class="btn btn-xs btn-info pull-right">Add</a>
-                            @endauth
+                        @if(Auth::user()->id === 1)
+                            <a href="{{ url('/player') }}" class="btn btn-xs btn-info pull-right">Add</a>
                         @endif
                     </div>
                 </form>
@@ -69,7 +67,9 @@
                             <th scope='col'>@sortablelink('innings_pitched', 'IPs')</th>
                             <th scope='col'>@sortablelink('strike_outs', 'SOs')</th>
                             <th scope='col'>@sortablelink('whip', 'WHIP')</th>
-                            <th>&nbsp;</th>
+                            @if(Auth::user()->id === 1)
+                                <th>&nbsp;</th>
+                            @endif
                         </tr>
                         </thead>
 
@@ -149,10 +149,12 @@
                                     <td class="table-text">
                                         <div>@if (isset($player->whip)) {{ $player->whip }} @else -- @endif</div>
                                     </td>
-                                    <td>
-                                        {{ csrf_field() }}
-                                        <a href="/player/{{ $player->id }}">edit</a>
-                                    </td>
+                                    @if(Auth::user()->id === 1)
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <a href="/player/{{ $player->id }}">edit</a>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
@@ -165,9 +167,9 @@
         <div>
             @if (Route::has('login'))
                 <div class="col-sm-3 pt-3">
-                    @auth
+                    @if(Auth::user()->id === 1)
                         <a href="{{ url('/player') }}">Add</a>
-                    @endauth
+                    @endif
                 </div>
             @endif
         </div>

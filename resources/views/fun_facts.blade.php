@@ -39,7 +39,13 @@
                     <tbody>
                         @foreach ($ml_teams as $ml_team)
                             <tr>
-                                <td class="table-text"><a href="/funfacts/mlt/{{$ml_team->id}}">{{$ml_team->team}}</a></td>
+                                <td class="table-text">
+                                     @if(Auth::user()->id === 1)
+                                        <a href="/funfacts/mlt/{{$ml_team->id}}">{{$ml_team->team}}</a>
+                                    @else
+                                        {{$ml_team->team}}
+                                    @endif
+                                </td>
                                 <td class="table-text">{{$ml_team->class}}</td>
                                 <td class="table-text">{{$ml_team->affiliate}}</td>
                                 <td class="table-text">{{$ml_team->league}}</td>

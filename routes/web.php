@@ -20,27 +20,31 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/players', 'PlayerController@index');
+    Route::get('/players', 'PlayerController@index')->name('players');
 
-    Route::any('/players/search', 'PlayerController@search');
+    Route::any('/players/search', 'PlayerController@search')->name('player.search');
 
-    Route::get('/player', 'PlayerController@create');
+    Route::get('/demographics', 'DemographicsController@index')->name('demographics');
 
-    Route::post('/player', 'PlayerController@store');
+    Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 
-    Route::get('/player/{id}', 'PlayerController@edit');
+    Route::get('/funfacts', 'FunFactsController@index')->name('funfacts');
 
-    Route::delete('/player/{id}', 'PlayerController@destroy');
+});
 
-    Route::get('/demographics', 'DemographicsController@index');
+Route::middleware(['auth', 'admin'])->group(function () {
 
-    Route::get('/statistics', 'StatisticsController@index');
+    Route::get('/player', 'PlayerController@create')->name('player.add');
 
-    Route::get('/funfacts', 'FunFactsController@index');
+    Route::post('/player', 'PlayerController@store')->name('player.store');
 
-    Route::get('/funfacts/mlt/{id}', 'FunFactsController@edit');
+    Route::get('/player/{id}', 'PlayerController@edit')->name('player.read');
 
-    Route::post('/funfacts/mlt/', 'FunFactsController@store');
+    Route::delete('/player/{id}', 'PlayerController@destroy')->name('player.delete');
+
+    Route::get('/funfacts/mlt/{id}', 'FunFactsController@edit')->name('funfact.mlt');
+
+    Route::post('/funfacts/mlt/', 'FunFactsController@store')->name('funfact.mlt.store');
 
 });
 
