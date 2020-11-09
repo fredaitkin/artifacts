@@ -1,5 +1,10 @@
 <?php
 
+/**
+* The PostgreSQL implementation of the minor league table class
+*
+*/
+
 namespace Artifacts\Baseball\MinorLeagueTeams;
 
 use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
@@ -7,7 +12,7 @@ use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 
-class MinorLeagueTeams extends Model implements MinorLeagueTeamsInterface
+class MinorLeagueTeamsPostgres extends Model implements MinorLeagueTeamsInterface
 {
 
     use Sortable;
@@ -35,12 +40,12 @@ class MinorLeagueTeams extends Model implements MinorLeagueTeamsInterface
 
     public function getTeams()
     {
-        return MinorLeagueTeams::select('*')->sortable('team')->paginate();
+        return MinorLeagueTeamsPostgres::select('*')->sortable('team')->paginate();
     }
 
     public function addTeam(string $team)
     {
-        MinorLeagueTeams::create(['team' => $team]);
+        MinorLeagueTeamsPostgres::create(['team' => $team]);
     }
 
     /**
@@ -50,7 +55,7 @@ class MinorLeagueTeams extends Model implements MinorLeagueTeamsInterface
      */
     public function getTeamByID(int $id)
     {
-        return MinorLeagueTeams::findOrFail($id);
+        return MinorLeagueTeamsPostgres::findOrFail($id);
     }
 
     /**
@@ -62,12 +67,21 @@ class MinorLeagueTeams extends Model implements MinorLeagueTeamsInterface
      */
     public function updateCreate(array $keys, array $fields)
     {
-        return MinorLeagueTeams::updateOrCreate($keys, $fields);
+        return MinorLeagueTeamsPostgres::updateOrCreate($keys, $fields);
     }
 
     public function classSortable($query, $direction)
     {
-        return $query->orderByRaw('FIELD(class, "Triple-A", "Double-A", "Class A - Advanced", "Class A", "Class A Short Season", "Rookie Advanced", "Rookie") ' . $direction);
+        return $query->orderByRaw("CASE
+            WHEN class='Triple-A' THEN 1
+            WHEN class='Double-A' THEN 2
+            WHEN class='Class A - Advanced' THEN 3
+            WHEN class='Class A' THEN 4
+            WHEN class='Class A Short Season' THEN 5
+            WHEN class='Rookie Advanced' THEN 6
+            WHEN class='Rookie' THEN 7
+            ELSE 8
+          END " . $direction);
     }
 
     /**
@@ -75,6 +89,6 @@ class MinorLeagueTeams extends Model implements MinorLeagueTeamsInterface
     */
     public function affiliateSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(affiliate), affiliate ' . $direction);
+        return $query->orderByRaw('COALESCE(affiliate), affiliate ' . $direction);
     }
 }

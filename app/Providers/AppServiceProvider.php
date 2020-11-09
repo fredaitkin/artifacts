@@ -30,12 +30,12 @@ class AppServiceProvider extends ServiceProvider
         // Player service
         $this->app->bind(
             'Artifacts\Baseball\Player\PlayerInterface',
-            'Artifacts\Baseball\Player\Player'
+            'Artifacts\Baseball\Player\PlayerPostgres'
         );
         // Minor League Teams service
         $this->app->bind(
             'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface',
-            'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeams'
+            'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsPostgres'
         );
     }
 }

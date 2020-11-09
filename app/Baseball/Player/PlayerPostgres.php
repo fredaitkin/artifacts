@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 use Carbon\Carbon;
 
-class Player extends Model implements PlayerInterface
+class PlayerPostgres extends Model implements PlayerInterface
 {
 
     use Sortable;
@@ -63,7 +63,7 @@ class Player extends Model implements PlayerInterface
      */
     public function getAllPlayers()
     {
-        return Player::all();
+        return PlayerPostgres::all();
     }
 
     /**
@@ -73,7 +73,7 @@ class Player extends Model implements PlayerInterface
      */
     public function getTabulatedPlayers()
     {
-        return Player::sortable()->paginate();
+        return PlayerPostgres::sortable()->paginate();
     }
 
     /**
@@ -83,7 +83,7 @@ class Player extends Model implements PlayerInterface
      */
     public function getPlayerByID(int $id)
     {
-        return Player::findOrFail($id);
+        return PlayerPostgres::findOrFail($id);
     }
 
     /**
@@ -93,7 +93,7 @@ class Player extends Model implements PlayerInterface
      */
     public function getPlayersByIDs(array $ids)
     {
-        return Player::whereIn('id', $ids)->get();
+        return PlayerPostgres::whereIn('id', $ids)->get();
     }
 
     /**
@@ -103,7 +103,7 @@ class Player extends Model implements PlayerInterface
      */
     public function getPlayerByLink(string $link)
     {
-        return Player::select('*')->where('mlb_link', $link)->get();
+        return PlayerPostgres::select('*')->where('mlb_link', $link)->get();
     }
 
     /**
@@ -115,9 +115,9 @@ class Player extends Model implements PlayerInterface
     public function create(array $fields = null)
     {
         if ($fields):
-            return Player::create($fields);
+            return PlayerPostgres::create($fields);
         else:
-            return new Player;
+            return new PlayerPostgres;
         endif;
     }
 
@@ -130,7 +130,7 @@ class Player extends Model implements PlayerInterface
      */
     public function updateCreate(array $keys, array $fields)
     {
-        return Player::updateOrCreate($keys, $fields);
+        return PlayerPostgres::updateOrCreate($keys, $fields);
     }
 
     /**
@@ -140,7 +140,7 @@ class Player extends Model implements PlayerInterface
      */
     public function deleteByID(int $id)
     {
-        Player::findOrFail($id)->delete();
+        PlayerPostgres::findOrFail($id)->delete();
     }
 
     /**
@@ -151,7 +151,7 @@ class Player extends Model implements PlayerInterface
      */
     public function search(string $q)
     {
-        return Player::select('players.*')
+        return PlayerPostgres::select('players.*')
             ->where('team', 'LIKE', '%' . $q . '%')
             ->orWhere('city', 'LIKE', '%' . $q . '%')
             ->orWhere('first_name', 'LIKE', '%' . $q . '%')
@@ -184,77 +184,84 @@ class Player extends Model implements PlayerInterface
         return $query->orderBy('last_name', $direction)->orderBy('first_name', 'ASC');
     }
 
-    /**
-    * Sort null draft years to the bottom
-    */
-    public function draftYearSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(draft_year), draft_year ' . $direction);
-    }
-
     public function draftRoundSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(draft_round), draft_round+0 ' . $direction);
+        return $query->orderByRaw('draft_round '. $direction . ' NULLS LAST');
     }
 
     public function draftPositionSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(draft_position), draft_position ' . $direction);
+        return $query->orderByRaw('draft_position '. $direction . ' NULLS LAST');
     }
 
     public function debutYearSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(debut_year), debut_year ' . $direction);
+        return $query->orderByRaw('debut_year '. $direction . ' NULLS LAST');
     }
 
     public function positionSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(position), position ' . $direction);
+        return $query->orderByRaw('position '. $direction . ' NULLS LAST');
     }
 
     public function averageSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(average), average ' . $direction);
+        return $query->orderByRaw('average '. $direction . ' NULLS LAST');
     }
 
     public function atBatsSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(at_bats), at_bats ' . $direction);
+        return $query->orderByRaw('at_bats '. $direction . ' NULLS LAST');
     }
 
     public function homeRunsSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(home_runs), home_runs ' . $direction);
+        return $query->orderByRaw('home_runs '. $direction . ' NULLS LAST');
     }
 
     public function rbisSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(rbis), rbis ' . $direction);
+        return $query->orderByRaw('rbis '. $direction . ' NULLS LAST');
     }
 
     public function eraSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(era), era ' . $direction);
+        return $query->orderByRaw('era '. $direction . ' NULLS LAST');
     }
 
     public function gamesSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(games), games ' . $direction);
+        return $query->orderByRaw('games '. $direction . ' NULLS LAST');
     }
 
     public function winsSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(wins), wins ' . $direction);
+        return $query->orderByRaw('wins '. $direction . ' NULLS LAST');
     }
 
     public function lossesSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(losses), losses ' . $direction);
+        return $query->orderByRaw('losses '. $direction . ' NULLS LAST');
     }
 
     public function savesSortable($query, $direction)
     {
-        return $query->orderByRaw('ISNULL(saves), saves ' . $direction);
+        return $query->orderByRaw('saves '. $direction . ' NULLS LAST');
+    }
+
+    public function strikeOutsSortable($query, $direction)
+    {
+        return $query->orderByRaw('strike_outs '. $direction . ' NULLS LAST');
+    }
+
+    public function inningsPitchedSortable($query, $direction)
+    {
+        return $query->orderByRaw('innings_pitched '. $direction . ' NULLS LAST');
+    }
+
+    public function whipSortable($query, $direction)
+    {
+        return $query->orderByRaw('whip '. $direction . ' NULLS LAST');
     }
 
     /**
@@ -347,7 +354,7 @@ class Player extends Model implements PlayerInterface
 
     public function getMostHomeRuns(array $where = null)
     {
-        $query = Player::select('id', 'first_name', 'last_name', 'team', 'home_runs')
+        $query = PlayerPostgres::select('id', 'first_name', 'last_name', 'team', 'home_runs')
             ->whereNotNull('home_runs')
             ->orderBy('home_runs', 'DESC');
         if (isset($where)):
@@ -361,7 +368,7 @@ class Player extends Model implements PlayerInterface
 
     public function getMostRBIs(array $where = null)
     {
-        $query = Player::select('id', 'first_name', 'last_name', 'team', 'rbis')
+        $query = PlayerPostgres::select('id', 'first_name', 'last_name', 'team', 'rbis')
             ->whereNotNull('rbis')
             ->orderBy('rbis', 'DESC');
         if (isset($where)):
@@ -375,7 +382,7 @@ class Player extends Model implements PlayerInterface
 
     public function getBestAverage(array $where = null)
     {
-        $query = Player::select('id', 'first_name', 'last_name', 'team', 'average')
+        $query = PlayerPostgres::select('id', 'first_name', 'last_name', 'team', 'average')
             ->whereNotNull('average')
             ->where('at_bats', '>', 500)
             ->orderBy('average', 'DESC');
@@ -390,7 +397,7 @@ class Player extends Model implements PlayerInterface
 
     public function getBestHomeRunStrikeRate(array $where = null)
     {
-        $query = Player::selectRaw('id, first_name, last_name, team, round(at_bats/home_runs, 2) as strike_rate')
+        $query = PlayerPostgres::selectRaw('id, first_name, last_name, team, round(at_bats/home_runs, 2) as strike_rate')
             ->whereNotNull('home_runs')
             ->whereNotNull('at_bats')
             ->where('home_runs', '>', 0)
@@ -407,7 +414,7 @@ class Player extends Model implements PlayerInterface
 
     public function getBestRBIStrikeRate(array $where = null)
     {
-        $query = Player::selectRaw('id, first_name, last_name, team, round(at_bats/rbis, 2) as strike_rate')
+        $query = PlayerPostgres::selectRaw('id, first_name, last_name, team, round(at_bats/rbis, 2) as strike_rate')
             ->whereNotNull('at_bats')
             ->where('at_bats', '>', 500)
             ->orderBy('strike_rate', 'ASC');
@@ -422,7 +429,7 @@ class Player extends Model implements PlayerInterface
 
     public function getMostWins(array $where = null)
     {
-        $query = Player::select('id', 'first_name', 'last_name', 'team', 'wins')
+        $query = PlayerPostgres::select('id', 'first_name', 'last_name', 'team', 'wins')
             ->whereNotNull('wins')
             ->orderBy('wins', 'DESC');
         if (isset($where)):
@@ -436,7 +443,7 @@ class Player extends Model implements PlayerInterface
 
     public function getBestERA(array $where = null)
     {
-        $query = Player::select('id', 'first_name', 'last_name', 'team', 'era')
+        $query = PlayerPostgres::select('id', 'first_name', 'last_name', 'team', 'era')
             ->whereNotNull('era')
             ->where('games', '>', 100)
             ->where('wins', '>', 50)
@@ -452,7 +459,7 @@ class Player extends Model implements PlayerInterface
 
     public function getBestWinStrikeRate(array $where = null)
     {
-        $query = Player::selectRaw('id, first_name, last_name, team, round(games/wins, 2) as strike_rate')
+        $query = PlayerPostgres::selectRaw('id, first_name, last_name, team, round(games/wins, 2) as strike_rate')
             ->where('games', '>', 100)
             ->where('wins', '>', 0)
             ->orderBy('strike_rate', 'ASC');
@@ -467,7 +474,7 @@ class Player extends Model implements PlayerInterface
 
     public function getPlayerCityCount()
     {
-        return Player::selectRaw('city, country, state, count(*) as count')
+        return PlayerPostgres::selectRaw('city, country, state, count(*) as count')
             ->groupBy('city')
             ->groupBy('country')
             ->groupBy('state')
