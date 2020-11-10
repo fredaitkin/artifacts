@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="panel-body artifacts-submit-form-div">
+    <div class="panel-body">
 
         <h2 class="col-sm-3">Demographics</h2>
 
