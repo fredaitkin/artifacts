@@ -11,10 +11,11 @@
 |
 */
 
-use Illuminate\Http\Request;
-
-
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', function () {
     return view('welcome');
 });
 
@@ -49,5 +50,3 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
