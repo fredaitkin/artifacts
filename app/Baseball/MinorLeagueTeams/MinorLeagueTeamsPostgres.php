@@ -1,16 +1,16 @@
 <?php
 
-/**
-* The PostgreSQL implementation of the minor league table class
-*
-*/
-
 namespace Artifacts\Baseball\MinorLeagueTeams;
 
 use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
 
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+
+/**
+* The PostgreSQL implementation of the minor league table class
+*
+*/
 
 class MinorLeagueTeamsPostgres extends Model implements MinorLeagueTeamsInterface
 {

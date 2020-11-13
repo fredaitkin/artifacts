@@ -1,16 +1,15 @@
 <?php
 
-/**
-* The MySQL implementation of the minor league table class
-*
-*/
-
 namespace Artifacts\Baseball\MinorLeagueTeams;
 
 use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
 
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+
+/**
+* The MySQL implementation of the minor league table class
+*/
 
 class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
 {

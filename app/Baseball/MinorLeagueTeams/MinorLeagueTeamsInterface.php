@@ -1,10 +1,10 @@
 <?php
 
+namespace Artifacts\Baseball\MinorLeagueTeams;
+
 /**
  * Works with minor league teams data source
  */
-
-namespace Artifacts\Baseball\MinorLeagueTeams;
 
 interface MinorLeagueTeamsInterface {
 

@@ -1,10 +1,10 @@
 <?php
 
+namespace Artifacts\Baseball\Player;
+
 /**
  * Returns player information
  */
-
-namespace Artifacts\Baseball\Player;
 
 interface PlayerInterface {
 
