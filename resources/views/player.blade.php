@@ -11,7 +11,7 @@
         <form action="/player" enctype="multipart/form-data" method="POST" class="form-horizontal">
             {{ csrf_field() }}
 
-            <div class="form-group w-50 row">
+            <div class="form-group w-75 row">
                 @if(!empty($player->photo))
                     <div class="col">
                         <div class="col-sm-8">
@@ -33,14 +33,10 @@
                         <input type="text" name="last_name" id="last_name" class="form-control" value="@if (old('last_name')) {{old('last_name') }}@elseif (!empty($player->last_name)){{$player->last_name}}@endif">
                     </div>
                 </div>
-                @if(isset($player->mlb_link)) <a href="https://www.mlb.com/player/{{ $player->mlb_link}}">click</a>@endif
-            </div>
-
-            <div class="form-group row">
                 <div class="col">
                     <label for="team" class="col-sm-8 control-label">Team</label>
 
-                    <div class="col-sm-8">
+                    <div class="col-sm-12">
 
                         <select class="form-control" name="team">
                             @foreach($teams as $key => $team)
@@ -50,6 +46,10 @@
 
                     </div>
                 </div>
+                @if(isset($player->mlb_link)) <a href="https://www.mlb.com/player/{{ $player->mlb_link}}">mlb</a>@endif
+            </div>
+
+            <div class="form-group row">
                 <div class="col">
                     <label for="city" class="col-sm-8 control-label">City</label>
 
@@ -70,9 +70,6 @@
 
                     </div>
                 </div>
-            </div>
-
-            <div class="form-group row">
                 <div class="col">
                     <label for="country" class="col-sm-8 control-label">Country</label>
                     <div class="col-sm-8">
@@ -85,6 +82,9 @@
 
                     </div>
                 </div>
+            </div>
+
+            <div class="form-group row">
                 <div class="col">
                     <label for="birthdate" class="col-sm-8 control-label">Birth Date</label>
 
@@ -99,9 +99,6 @@
                         <input type="text" name="draft_year" id="draft_year" class="form-control" value=@if (old('draft_year')) {{ old('draft_year') }} @elseif (!empty($player->draft_year)) {{$player->draft_year}} @endif>
                     </div>
                 </div>
-            </div>
-
-            <div class="form-group row">
                 <div class="col">
                     <label for="draft_round" class="col-sm-8 control-label">Draft Round</label>
 
@@ -109,6 +106,9 @@
                         <input type="text" name="draft_round" id="draft_round" class="form-control" value=@if (old('draft_round')) {{ old('draft_round') }} @elseif (!empty($player->draft_round)) {{$player->draft_round}} @endif>
                     </div>
                 </div>
+            </div>
+
+            <div class="form-group row">
                 <div class="col">
                     <label for="draft_position" class="col-sm-8 control-label">Draft Position</label>
 
@@ -123,9 +123,6 @@
                         <input type="text" name="debut_year" id="debut_year" class="form-control" value=@if (old('debut_year')) {{ old('debut_year') }} @elseif (!empty($player->debut_year)) {{$player->debut_year}} @endif>
                     </div>
                 </div>
-            </div>
-
-            <div class="form-group row">
                 <div class="col">
                     <label for="position" class="col-sm-8 control-label">Position</label>
 
@@ -139,6 +136,9 @@
 
                     </div>
                 </div>
+            </div>
+
+            <div class="form-group row">
                 <div class="col">
                     <label for="average" class="col-sm-8 control-label">Average</label>
 
@@ -153,9 +153,6 @@
                         <input type="text" name="at_bats" id="at_bats" class="form-control" value=@if (old('at_bats')) {{ old('at_bats') }} @elseif (isset($player->at_bats)) {{$player->at_bats}} @endif>
                     </div>
                 </div>
-            </div>
-
-            <div class="form-group row">
                 <div class="col">
                     <label for="home_runs" class="col-sm-8 control-label">Home Runs</label>
 
@@ -163,6 +160,9 @@
                         <input type="text" name="home_runs" id="home_runs" class="form-control" value=@if (old('home_runs')) {{ old('home_runs') }} @elseif (isset($player->home_runs)) {{$player->home_runs}} @endif>
                     </div>
                 </div>
+            </div>
+
+            <div class="form-group row">
                 <div class="col">
                     <label for="rbis" class="col-sm-8 control-label">RBIs</label>
 
@@ -177,9 +177,6 @@
                         <input type="text" name="era" id="era" class="form-control" value=@if (old('era')) {{ old('era') }} @elseif (isset($player->era)) {{$player->era}} @endif>
                     </div>
                 </div>
-            </div>
-
-           <div class="form-group row">
                 <div class="col">
                     <label for="games" class="col-sm-8 control-label">Games</label>
 
@@ -187,6 +184,9 @@
                         <input type="text" name="games" id="games" class="form-control" value=@if (old('games')) {{ old('games') }} @elseif (isset($player->games)) {{$player->games}} @endif>
                     </div>
                 </div>
+            </div>
+
+           <div class="form-group row">
                 <div class="col">
                     <label for="wins" class="col-sm-8 control-label">Wins</label>
 
@@ -201,9 +201,6 @@
                         <input type="text" name="losses" id="player->losses" class="form-control" value=@if (old('losses')) {{ old('losses') }} @elseif (isset($player->losses)) {{$player->losses}} @endif>
                     </div>
                 </div>
-            </div>
-
-            <div class="form-group row">
                 <div class="col">
                     <label for="saves" class="col-sm-8 control-label">Saves</label>
 
@@ -211,6 +208,9 @@
                         <input type="text" name="saves" id="player->saves" class="form-control" value=@if (old('saves')) {{ old('saves') }} @elseif (isset($player->saves)) {{ $player->saves }} @endif>
                     </div>
                 </div>
+            </div>
+
+            <div class="form-group row">
                 <div class="col">
                     <label for="previous_teams" class="col-sm-12 control-label">Previous Teams</label>
 
