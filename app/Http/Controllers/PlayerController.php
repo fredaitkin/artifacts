@@ -80,11 +80,20 @@ class PlayerController extends Controller
             'at_bats'           => 'nullable|integer',
             'home_runs'         => 'nullable|integer',
             'rbis'              => 'nullable|integer',
+            'hits'              => 'nullable|integer',
+            'runs'              => 'nullable|integer',
+            'stolen_bases'      => 'nullable|integer',
+            'obp'               => 'nullable|numeric',
+            'ops'               => 'nullable|numeric',
             'era'               => 'nullable|numeric',
             'games'             => 'nullable|numeric',
             'wins'              => 'nullable|integer',
             'losses'            => 'nullable|integer',
             'saves'             => 'nullable|integer',
+            'games_started'     => 'nullable|integer',
+            'innings_pitched'   => 'nullable|numeric',
+            'strike_outs'       => 'nullable|integer',
+            'whip'              => 'nullable|numeric',
             'previous_teams'    => new IsTeam,
         ]);
 
@@ -94,27 +103,37 @@ class PlayerController extends Controller
         endif;
 
         $player = [];
-        $player['first_name']     = $request->first_name;
-        $player['last_name']      = $request->last_name;
-        $player['team']           = $request->team;
-        $player['city']           = $request->city;
-        $player['state']          = $request->state;
-        $player['country']        = $request->country;
-        $player['birthdate']      = $request->birthdate;
-        $player['draft_year']     = $request->draft_year;
-        $player['draft_round']    = $request->draft_round;
-        $player['draft_position'] = $request->draft_position;
-        $player['debut_year']     = $request->debut_year;
-        $player['position']       = $request->position;
-        $player['average']        = $request->average;
-        $player['at_bats']        = $request->at_bats;
-        $player['rbis']           = $request->rbis;
-        $player['home_runs']      = $request->home_runs;
-        $player['era']            = $request->era;
-        $player['games']          = $request->games;
-        $player['wins']           = $request->wins;
-        $player['losses']         = $request->losses;
-        $player['saves']          = $request->saves;
+        $player['first_name']       = $request->first_name;
+        $player['last_name']        = $request->last_name;
+        $player['team']             = $request->team;
+        $player['city']             = $request->city;
+        $player['state']            = $request->state;
+        $player['country']          = $request->country;
+        $player['birthdate']        = $request->birthdate;
+        $player['draft_year']       = $request->draft_year;
+        $player['draft_round']      = $request->draft_round;
+        $player['draft_position']   = $request->draft_position;
+        $player['debut_year']       = $request->debut_year;
+        $player['position']         = $request->position;
+        $player['average']          = $request->average;
+        $player['at_bats']          = $request->at_bats;
+        $player['rbis']             = $request->rbis;
+        $player['home_runs']        = $request->home_runs;
+        $player['hits']             = $request->hits;
+        $player['runs']             = $request->runs;
+        $player['stolen_bases']     = $request->stolen_bases;
+        $player['obp']              = $request->obp;
+        $player['ops']              = $request->ops;
+        $player['era']              = $request->era;
+        $player['games']            = $request->games;
+        $player['wins']             = $request->wins;
+        $player['losses']           = $request->losses;
+        $player['saves']            = $request->saves;
+        $player['games_started']    = $request->games_started;
+        $player['innings_pitched']  = $request->innings_pitched;
+        $player['strike_outs']      = $request->strike_outs;
+        $player['whip']             = $request->whip;
+        $player['status']           = $request->status;
 
         if ($request->previous_teams):
             $player['previous_teams'] = serialize(explode(',', $request->previous_teams));

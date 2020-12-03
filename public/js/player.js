@@ -1,6 +1,6 @@
 document.getElementById("first_name").focus();
 
-if (document.getElementById("first_name").value == 'P') {
+if (document.getElementById("position").value == 'P') {
     toggle_stats('batting', 'hide');
     toggle_stats('pitching', 'show');
 } else {

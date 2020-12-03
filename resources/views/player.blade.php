@@ -174,6 +174,44 @@
                             <input type="text" name="rbis" id="rbis" class="form-control" value=@if (old('rbis')) {{ old('rbis') }} @elseif (isset($player->rbis)) {{$player->rbis}} @endif>
                         </div>
                     </div>
+                    <div class="col">
+                        <label for="hits" class="col-sm-8 control-label">Hits</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="hits" id="hits" class="form-control" value=@if (old('hits')) {{ old('hits') }} @elseif (isset($player->hits)) {{$player->hits}} @endif>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="runs" class="col-sm-8 control-label">Runs</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="runs" id="runs" class="form-control" value=@if (old('runs')) {{ old('runs') }} @elseif (isset($player->runs)) {{$player->runs}} @endif>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row batting-row">
+                    <div class="col">
+                        <label for="stolen_bases" class="col-sm-8 control-label">Stolen Bases</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="stolen_bases" id="stolen_bases" class="form-control" value=@if (old('stolen_bases')) {{ old('stolen_bases') }} @elseif (isset($player->stolen_bases)) {{$player->stolen_bases}} @endif>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="obp" class="col-sm-8 control-label">OBP</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="obp" id="obp" class="form-control" value=@if (old('obp')) {{ old('obp') }} @elseif (isset($player->obp)) {{$player->obp}} @endif>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="ops" class="col-sm-8 control-label">OPS</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="runs" id="ops" class="form-control" value=@if (old('ops')) {{ old('ops') }} @elseif (isset($player->ops)) {{$player->ops}} @endif>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -196,9 +234,6 @@
                             <input type="text" name="games" id="games" class="form-control" value=@if (old('games')) {{ old('games') }} @elseif (isset($player->games)) {{$player->games}} @endif>
                         </div>
                     </div>
-                </div>
-
-               <div class="form-group row pitching-row">
                     <div class="col">
                         <label for="wins" class="col-sm-8 control-label">Wins</label>
 
@@ -206,18 +241,52 @@
                             <input type="text" name="wins" id="wins" class="form-control" value=@if (old('wins')) {{ old('wins') }} @elseif (isset($player->wins)) {{$player->wins}} @endif>
                         </div>
                     </div>
+                </div>
+
+               <div class="form-group row pitching-row">
                     <div class="col">
                         <label for="losses" class="col-sm-8 control-label">Losses</label>
 
                         <div class="col-sm-8">
-                            <input type="text" name="losses" id="player->losses" class="form-control" value=@if (old('losses')) {{ old('losses') }} @elseif (isset($player->losses)) {{$player->losses}} @endif>
+                            <input type="text" name="losses" id="losses" class="form-control" value=@if (old('losses')) {{ old('losses') }} @elseif (isset($player->losses)) {{$player->losses}} @endif>
                         </div>
                     </div>
                     <div class="col">
                         <label for="saves" class="col-sm-8 control-label">Saves</label>
 
                         <div class="col-sm-8">
-                            <input type="text" name="saves" id="player->saves" class="form-control" value=@if (old('saves')) {{ old('saves') }} @elseif (isset($player->saves)) {{ $player->saves }} @endif>
+                            <input type="text" name="saves" id="saves" class="form-control" value=@if (old('saves')) {{ old('saves') }} @elseif (isset($player->saves)) {{ $player->saves }} @endif>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="games_started" class="col-sm-8 control-label">Games Started</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="games_started" id="games_started" class="form-control" value=@if (old('games_started')) {{ old('games_started') }} @elseif (isset($player->games_started)) {{$player->games_started}} @endif>
+                        </div>
+                    </div>
+                </div>
+
+               <div class="form-group row pitching-row">
+                    <div class="col">
+                        <label for="innings_pitched" class="col-sm-8 control-label">Innings Pitched</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="innings_pitched" id="innings_pitched" class="form-control" value=@if (old('innings_pitched')) {{ old('innings_pitched') }} @elseif (isset($player->innings_pitched)) {{$player->innings_pitched}} @endif>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="strike_outs" class="col-sm-8 control-label">Strike Outs</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="strike_outs" id="strike_outs" class="form-control" value=@if (old('strike_outs')) {{ old('strike_outs') }} @elseif (isset($player->strike_outs)) {{ $player->strike_outs }} @endif>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="whip" class="col-sm-8 control-label">WHIP</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="whip" id="whip" class="form-control" value=@if (old('whip')) {{ old('whip') }} @elseif (isset($player->whip)) {{$player->whip}} @endif>
                         </div>
                     </div>
                 </div>
@@ -229,6 +298,13 @@
 
                     <div class="col-sm-12">
                         <input type="text" name="previous_teams" id="player->previous_teams" class="form-control" value=@if (old('previous_teams')) {{ old('previous_teams') }} @elseif (!empty($player->previous_teams)) {{implode(',', unserialize($player->previous_teams))}} @endif>
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="status" class="col-sm-12 control-label">Status</label>
+
+                    <div class="col-sm-12">
+                        <input type="text" name="status" id="player->status" class="form-control" value=@if (old('status')) {{ old('previous_teams') }} @elseif (!empty($player->status)) {{$player->status}} @endif>
                     </div>
                 </div>
                 <div class="col">
