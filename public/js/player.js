@@ -20,6 +20,18 @@ document.getElementsByClassName("pitching-div")[0].addEventListener("click", fun
     toggle_stats('pitching', heading[0]);
 });
 
+document.getElementById("ids").style.display = 'none';
+
+document.getElementById("mlt-link").addEventListener("click", function() {
+  if (this.text == 'show ids') {
+    this.text = 'hide ids';
+    document.getElementById("ids").style.display = 'flex';
+  } else {
+    this.text = 'show ids';
+    document.getElementById("ids").style.display = 'none';
+  }
+});
+
 function toggle_stats(type, display) {
    var rows = document.getElementsByClassName(type + "-row");
 
