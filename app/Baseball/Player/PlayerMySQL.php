@@ -7,6 +7,7 @@ use Artifacts\Baseball\Player\PlayerInterface;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 use Carbon\Carbon;
+use Log;
 
 class PlayerMySQL extends Model implements PlayerInterface
 {
@@ -309,6 +310,20 @@ class PlayerMySQL extends Model implements PlayerInterface
                 endif;
             endforeach;
             $teams = implode(', ', $data);
+        endif;
+        return $teams;
+    }
+
+   /**
+     * Get the minor league teams
+     *
+     * @return string
+     */
+    public function getMinorLeagueTeamsAttribute($minor_league_teams)
+    {
+        $teams = '';
+        if (!empty($minor_league_teams)):
+            $teams = implode(',', unserialize($minor_league_teams));
         endif;
         return $teams;
     }

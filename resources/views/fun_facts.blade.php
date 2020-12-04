@@ -58,6 +58,8 @@
                     </tbody>
                 </table>
                 {{ $ml_teams->appends(\Request::except('page'))->render() }}
+                <a href="{{ url('/funfacts/mlt') }}">Add</a>
+
             </div>
 
             <div class="tab-pane fade" id="cities" role="tabpanel" aria-labelledby="cities-tab">

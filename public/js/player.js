@@ -62,8 +62,8 @@ $(function() {
     function extractLast( term ) {
       return split( term ).pop();
     }
- 
-    $( "#search" )
+
+    $( "#minor_league_teams_search" )
       .autocomplete({
         minLength: 0,
         source: function( request, response ) {

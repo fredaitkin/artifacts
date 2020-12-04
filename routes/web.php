@@ -47,6 +47,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/funfacts/mlt/{id}', 'FunFactsController@edit')->name('funfact.mlt');
 
+    Route::get('/funfacts/mlt', 'FunFactsController@create')->name('funfact.mlt.add');
+
     Route::post('/funfacts/mlt/', 'FunFactsController@store')->name('funfact.mlt.store');
 
 });

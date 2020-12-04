@@ -209,7 +209,7 @@
                         <label for="ops" class="col-sm-8 control-label">OPS</label>
 
                         <div class="col-sm-8">
-                            <input type="text" name="runs" id="ops" class="form-control" value=@if (old('ops')) {{ old('ops') }} @elseif (isset($player->ops)) {{$player->ops}} @endif>
+                            <input type="text" name="ops" id="ops" class="form-control" value=@if (old('ops')) {{ old('ops') }} @elseif (isset($player->ops)) {{$player->ops}} @endif>
                         </div>
                     </div>
                 </div>
@@ -319,17 +319,12 @@
             <div class="form-group w-50 row">
                 <div class="col">
                     <label for="minor_league_teams" class="col-sm-12 control-label">Minor League Teams</label>
-
-                    <form action="search" method="post" class="form-horizontal">
-                        <div class="col-sm-12">
-                            <input type="text" name="search" id="search" class="form-control" value=@if (old('minor_league_teams')) {{ old('minor_league_teams') }} @elseif (!empty($player->minor_league_teams)) {{$player->minor_league_teams}} @endif>
-                            <input type="hidden" name="minor_league_teams" id="minor_league_teams" class="form-control" value=@if (old('minor_league_teams')) {{ old('minor_league_teams') }} @elseif (!empty($player->minor_league_teams)) {{$player->minor_league_teams}} @endif>
-                        </div>
-                    </form>
-
+                    <div class="col-sm-12">
+                        <input type="text" name="minor_league_teams_search" id="minor_league_teams_search" class="form-control" value="@if(old('minor_league_teams_search')){{old('minor_league_teams_search')}}@elseif(!empty($minor_league_teams_search)){{$minor_league_teams_search}}@endif">
+                        <input type="hidden" name="minor_league_teams" id="minor_league_teams" class="form-control" value=@if (old('minor_league_teams')) {{ old('minor_league_teams') }} @elseif (!empty($player->minor_league_teams)) {{$player->minor_league_teams}} @endif>
+                    </div>
                 </div>
             </div>
-
 
             <div class="col-lg-6">
                 @if(!empty($player->id))

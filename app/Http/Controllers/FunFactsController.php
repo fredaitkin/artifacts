@@ -41,6 +41,23 @@ class FunFactsController extends Controller
     }
 
     /**
+     * Show the form for creating a new minor league team
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('minor_league_team', [
+            'states'    => ['' => ''] + config('states'),
+            'teams'     => ['' => ''] + config('teams.current'),
+            'classes'   => ['' => ''] + config('minor_league_teams.classes'),
+            'leagues'   => ['' => ''] + config('minor_league_teams.leagues'),
+            'divisions' => ['' => ''] + config('minor_league_teams.divisions'),
+            'countries' => config('minor_league_teams.countries'),
+        ]);
+    }
+
+    /**
      * Show the form for editing the minor league team.
      *
      * @param  int  $id
@@ -75,6 +92,9 @@ class FunFactsController extends Controller
         ]);
 
         $team = [];
+        if (isset($request->team)):
+            $team['team']   = $request->team;
+        endif;
         $team['city']       = $request->city;
         $team['state']      = $request->state;
         $team['country']    = $request->country;
@@ -89,7 +109,7 @@ class FunFactsController extends Controller
             $team['previous_teams'] = serialize($previous_teams);
         endif;
 
-        $this->mlt->updateCreate(['id' => $request->id], $team);
+        $this->mlt->updateCreate(['id' => $request->id ?? null], $team);
 
         return redirect('/funfacts');
     }

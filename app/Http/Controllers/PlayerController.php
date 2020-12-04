@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 use Artifacts\Baseball\Player\PlayerInterface;
+use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
 use Artifacts\Rules\IsTeam;
 
 use Kyslik\ColumnSortable\Sortable;
@@ -20,16 +21,24 @@ class PlayerController extends Controller
     /**
      * The Player Interface
      *
-     * @var Artifacts\Interfaces\PlayerInterface
+     * @var Artifacts\Baseball\Player\PlayerInterface
      */
     private $player;
+
+    /**
+     * The Minor League Teams interface
+     *
+     * @var Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface
+     */
+    private $mlt;
 
      /**
      * Constructor
      */
-    public function __construct(PlayerInterface $player)
+    public function __construct(PlayerInterface $player, MinorLeagueTeamsInterface $mlt)
     {
         $this->player = $player;
+        $this->mlt = $mlt;
     }
 
     /**
@@ -139,6 +148,10 @@ class PlayerController extends Controller
             $player['previous_teams'] = serialize(explode(',', $request->previous_teams));
         endif;
 
+        if (!empty($request->minor_league_teams)):
+            $player['minor_league_teams'] = serialize(explode(',', $request->minor_league_teams));
+        endif;
+
         if (isset($file_name)):
             // Duplication caused by legacy photo processing
             $player['photo'] = serialize(['regular' => $file_name, 'small' => $file_name]);
@@ -176,11 +189,10 @@ class PlayerController extends Controller
     public function edit(Request $request, $id)
     {
         $player = $this->player->getPlayerByID($id);
+        $minor_league_teams = $this->mlt->getPlayerTeams(explode(',', $player->minor_league_teams));
         $teams = ['' => 'Please Select'] + config('teams.current');
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
-        $a = ['1' => 'football', '3' => 'hockey'];
-        $b = ['1' =>'football', '2' => 'tennis', '3' => 'hockey', '4' => 'volleyball'];
         if (isset($player->mlb_link[2])):
             $player->mlb_link = explode('/', $player->mlb_link)[2];
         endif;
@@ -188,14 +200,13 @@ class PlayerController extends Controller
             return view('player_view', ['player' => $player]);
         else:
             return view('player', [
-                'title'     => '',
-                'player'    => $player,
-                'teams'     => $teams,
-                'states'    => $states,
-                'countries' => config('countries'),
-                'positions' => $positions,
-                'aSports' => $b,
-                'aItem' => $a,
+                'title'                     => '',
+                'player'                    => $player,
+                'teams'                     => $teams,
+                'states'                    => $states,
+                'countries'                 => config('countries'),
+                'positions'                 => $positions,
+                'minor_league_teams_search' => implode(', ', array_column($minor_league_teams, 'team')),
             ]);
         endif;
     }

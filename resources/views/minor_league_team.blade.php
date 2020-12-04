@@ -4,12 +4,21 @@
 
     <div class="panel-body artifacts-submit-form-div">
 
-        <h2 class="col-sm-4">{{$team->team}}</h2>
+        <h2 class="col-sm-4">@if(!empty($team->team)) {{$team->team}} @else Add Team @endif</h2>
 
         @include('common.errors')
 
         <form action="/funfacts/mlt" enctype="multipart/form-data" method="POST" class="form-horizontal">
             {{ csrf_field() }}
+
+            @if(empty($team->id))
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="team" class="control-label">Team</label>
+                        <input type="text" name="team" class="form-control" value="@if (old('team')){{old('team')}}@elseif (!empty($team->team)){{$team->team}}@endif">
+                    </div>
+                </div>
+            @endif
 
             <div class="form-group row">
                 <div class="col-sm-4">
@@ -100,8 +109,16 @@
 
              <div class="form-group row">
                 <div class="col-sm-4">
-                    <input type="hidden" name="id" id="id" value="{{$team->id}}">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    @if(!empty($team->id))
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <input type="hidden" name="id" id="id" value="{{$team->id}}">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    @else
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <button type="submit" class="btn btn-primary">Add Team</button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </form>

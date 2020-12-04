@@ -62,6 +62,18 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
     }
 
     /**
+     * Get minor league teams a player was in
+     *
+     * @param array $ids Ids of minor league teams
+     * @return array
+     */
+    public function getPlayerTeams($ids)
+    {
+        $preserve_order_ids = implode(',', $ids);
+        return MinorLeagueTeamsMySQL::select('team')->whereIn('id', $ids)->orderByRaw("FIELD(id, $preserve_order_ids)")->get()->toArray();
+    }
+
+    /**
      * Update or create team
      *
      * @param array $keys

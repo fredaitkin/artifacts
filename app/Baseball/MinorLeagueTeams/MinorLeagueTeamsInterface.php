@@ -11,6 +11,7 @@ interface MinorLeagueTeamsInterface {
     public function getTeams();
     public function addTeam(string $team);
     public function getTeamByID(int $id);
+    public function getPlayerTeams(array $ids);
     public function updateCreate(array $keys, array $fields);
 
 }
