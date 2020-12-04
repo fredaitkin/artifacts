@@ -3,6 +3,7 @@
 namespace Artifacts\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Log;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,15 +28,28 @@ class AppServiceProvider extends ServiceProvider
             'Artifacts\Services\PopulationServiceInterface',
             'Artifacts\Services\PopulationService'
         );
-        // Player service
-        $this->app->bind(
-            'Artifacts\Baseball\Player\PlayerInterface',
-            'Artifacts\Baseball\Player\PlayerPostgres'
-        );
-        // Minor League Teams service
-        $this->app->bind(
-            'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface',
-            'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsPostgres'
-        );
+
+        if (config('database')['default'] === 'mysql'):
+            // Player service
+            $this->app->bind(
+                'Artifacts\Baseball\Player\PlayerInterface',
+                'Artifacts\Baseball\Player\PlayerMySQL'
+            );
+            // Minor League Teams service
+            $this->app->bind(
+                'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface',
+                'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsMySQl'
+            );
+        else:
+            $this->app->bind(
+                'Artifacts\Baseball\Player\PlayerInterface',
+                'Artifacts\Baseball\Player\PlayerPostgres'
+            );
+            // Minor League Teams service
+            $this->app->bind(
+                'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface',
+                'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsPostgres'
+            );
+        endif;
     }
 }
