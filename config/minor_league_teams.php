@@ -15,6 +15,7 @@ return [
     'leagues' => [
         'Appalachian',
         'Arizona',
+        'Arizona Fall',
         'California',
         'Carolina',
         'Dominican Summer',

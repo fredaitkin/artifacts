@@ -301,22 +301,22 @@
                     </div>
                 </div>
                 <div class="col">
-                    <label for="status" class="col-sm-12 control-label">Status</label>
+                    <label for="status" class="col-sm-8 control-label">Status</label>
 
-                    <div class="col-sm-12">
+                    <div class="col-sm-8">
                         <input type="text" name="status" id="player->status" class="form-control" value=@if (old('status')) {{ old('previous_teams') }} @elseif (!empty($player->status)) {{$player->status}} @endif>
                     </div>
                 </div>
                 <div class="col">
-                    <label for="photo" class="col-sm-12 control-label">Photo</label>
+                    <label for="photo" class="col-sm-8 control-label">Photo</label>
 
-                    <div class="col-sm-12">
+                    <div class="col-sm-8">
                         <input type="file" name="photo" id="player->photo" class="form-control">
                     </div>
                 </div>
             </div>
 
-            <div class="form-group w-50 row">
+            <div class="form-group w-75 row">
                 <div class="col">
                     <label for="minor_league_teams" class="col-sm-12 control-label">Minor League Teams</label>
                     <div class="col-sm-12">
