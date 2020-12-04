@@ -38,9 +38,13 @@ class MinorLeagueTeamsPostgres extends Model implements MinorLeagueTeamsInterfac
      */
     protected $perPage = 10;
 
-    public function getTeams()
+    public function getTeams($fields = null)
     {
-        return MinorLeagueTeamsPostgres::select('*')->sortable('team')->paginate();
+        if (!$fields) {
+            return MinorLeagueTeamsPostgres::select('*')->sortable('team')->paginate();
+        } else {
+            return MinorLeagueTeamsPostgres::select($fields)->get();
+        }
     }
 
     public function addTeam(string $team)

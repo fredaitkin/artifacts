@@ -25,7 +25,6 @@ function toggle_stats(type, display) {
 
     for (var i = 0; i < rows.length; i++) {
         if (display == 'hide') {
-            console.log('hiding');
             rows[i].style.display = 'none';
         } else {
             rows[i].style.display = 'flex';
@@ -38,3 +37,63 @@ function toggle_stats(type, display) {
         document.getElementById(type + "-link").text = 'hide ' + type + ' stats';
     }
 }
+
+$(function() {
+    var items;
+    fetch('/funfacts/mlts')
+        .then(
+            function(response) {
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' + response.status);
+                    return;
+                }
+                response.json().then(function(data) {
+                    items = data;
+                });
+            }
+        )
+        .catch(function(err) {
+            console.log('Fetch Error: ', err);
+    });
+
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+ 
+    $( "#search" )
+      .autocomplete({
+        minLength: 0,
+        source: function( request, response ) {
+          response( $.ui.autocomplete.filter(
+            items, extractLast( request.term ) ) );
+        },
+        focus: function() {
+          return false;
+        },
+        select: function( event, ui ) {
+
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+        
+            $("#minor_league_teams").val(function() {
+                if (this.value.length == 0) {
+                    return ui.item.id;
+                } else {
+                return this.value + ',' + ui.item.id;
+                }
+               
+            });
+
+          return false;
+        }
+    });
+});

@@ -43,6 +43,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::delete('/player/{id}', 'PlayerController@destroy')->name('player.delete');
 
+    Route::get('/funfacts/mlts', 'FunFactsController@minor_league_teams')->name('funfact.mlts');
+
     Route::get('/funfacts/mlt/{id}', 'FunFactsController@edit')->name('funfact.mlt');
 
     Route::post('/funfacts/mlt/', 'FunFactsController@store')->name('funfact.mlt.store');

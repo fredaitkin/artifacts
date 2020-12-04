@@ -316,6 +316,21 @@
                 </div>
             </div>
 
+            <div class="form-group w-50 row">
+                <div class="col">
+                    <label for="minor_league_teams" class="col-sm-12 control-label">Minor League Teams</label>
+
+                    <form action="search" method="post" class="form-horizontal">
+                        <div class="col-sm-12">
+                            <input type="text" name="search" id="search" class="form-control" value=@if (old('minor_league_teams')) {{ old('minor_league_teams') }} @elseif (!empty($player->minor_league_teams)) {{$player->minor_league_teams}} @endif>
+                            <input type="hidden" name="minor_league_teams" id="minor_league_teams" class="form-control" value=@if (old('minor_league_teams')) {{ old('minor_league_teams') }} @elseif (!empty($player->minor_league_teams)) {{$player->minor_league_teams}} @endif>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
             <div class="col-lg-6">
                 @if(!empty($player->id))
                     <div class="col-sm-offset-3 col-sm-6">
@@ -334,5 +349,6 @@
 @endsection
 
 @section('scripts')
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="{{ asset('js/player.js') }}"></script>
 @endsection

@@ -179,6 +179,8 @@ class PlayerController extends Controller
         $teams = ['' => 'Please Select'] + config('teams.current');
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
+        $a = ['1' => 'football', '3' => 'hockey'];
+        $b = ['1' =>'football', '2' => 'tennis', '3' => 'hockey', '4' => 'volleyball'];
         if (isset($player->mlb_link[2])):
             $player->mlb_link = explode('/', $player->mlb_link)[2];
         endif;
@@ -192,6 +194,8 @@ class PlayerController extends Controller
                 'states'    => $states,
                 'countries' => config('countries'),
                 'positions' => $positions,
+                'aSports' => $b,
+                'aItem' => $a,
             ]);
         endif;
     }
