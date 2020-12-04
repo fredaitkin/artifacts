@@ -40,6 +40,7 @@ return [
         'Northwest',
         'South',
         'Southern',
+        'Stedler',
         'West',
         'Western',
     ],
