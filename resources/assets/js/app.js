@@ -6,3 +6,6 @@
  */
 
 require('./bootstrap');
+
+window.Jquery = require('jquery');
+import 'jquery-ui/ui/widgets/autocomplete.js';
