@@ -43,13 +43,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::delete('/player/{id}', 'PlayerController@destroy')->name('player.delete');
 
-    Route::get('/funfacts/mlts', 'FunFactsController@minor_league_teams')->name('funfact.mlts');
+    Route::get('/minor-league-teams', 'MinorLeagueTeamsController@index')->name('minor-league-teams');
 
-    Route::get('/funfacts/mlt/{id}', 'FunFactsController@edit')->name('funfact.mlt');
+    Route::get('/minor-league-team/{id}', 'MinorLeagueTeamsController@edit')->name('minor-league-team');
 
-    Route::get('/funfacts/mlt', 'FunFactsController@create')->name('funfact.mlt.add');
+    Route::get('/minor-league-team', 'MinorLeagueTeamsController@create')->name('minor-league-teams.add');
 
-    Route::post('/funfacts/mlt/', 'FunFactsController@store')->name('funfact.mlt.store');
+    Route::post('/minor-league-team', 'MinorLeagueTeamsController@store')->name('minor-league-teams.store');
+
+    // TODO use a parameterized get
+    Route::get('/minor-league-teams/ajax', 'MinorLeagueTeamsController@minor_league_teams')->name('minor-league-teams.ajax');
 
 });
 

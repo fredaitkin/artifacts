@@ -37,12 +37,18 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
      */
     protected $perPage = 10;
 
-    public function getTeams($fields = null)
+    public function getTeams($fields = null, $order_by = null)
     {
         if (!$fields) {
             return MinorLeagueTeamsMySQL::select('*')->sortable('team')->paginate();
         } else {
-            return MinorLeagueTeamsMySQL::select($fields)->get();
+            $query = MinorLeagueTeamsMySQL::select($fields);
+            if (isset($order_by)):
+                foreach($order_by as $order):
+                    $query->orderBY($order[0], $order[1]);
+                endforeach;
+            endif;
+            return $query->get();
         }
     }
 

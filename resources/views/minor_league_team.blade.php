@@ -8,7 +8,7 @@
 
         @include('common.errors')
 
-        <form action="/funfacts/mlt" enctype="multipart/form-data" method="POST" class="form-horizontal">
+        <form action="/minor-league-team" enctype="multipart/form-data" method="POST" class="form-horizontal">
             {{ csrf_field() }}
 
             @if(empty($team->id))

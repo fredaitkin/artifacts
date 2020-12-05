@@ -52,7 +52,7 @@ function toggle_stats(type, display) {
 
 $(function() {
     var items;
-    fetch('/funfacts/mlts')
+    fetch('/minor-league-teams/ajax')
         .then(
             function(response) {
                 if (response.status !== 200) {

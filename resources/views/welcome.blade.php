@@ -77,6 +77,7 @@
                         <a href="{{ url('/players') }}">Players</a>
                         <a href="{{ url('/demographics') }}">Demographics</a>
                         <a href="{{ url('/statistics') }}">Statistics</a>
+                        <a href="{{ url('/minor-league-teams') }}">Minor League Teams</a>
                         <a href="{{ url('/funfacts') }}">Fun Facts</a>
 
                         <a class="dropdown-item" href="{{ route('logout') }}"

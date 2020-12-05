@@ -37,6 +37,9 @@
                     <a class="navbar-brand" href="{{ url('/statistics') }}">
                          {{ __('Statistics') }}
                     </a>
+                    <a class="navbar-brand" href="{{ url('/minor-league-teams') }}">
+                         {{ __('Minor League Teams') }}
+                    </a>
                     <a class="navbar-brand" href="{{ url('/funfacts') }}">
                          {{ __('Fun Facts') }}
                     </a>
