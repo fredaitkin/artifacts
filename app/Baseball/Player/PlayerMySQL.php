@@ -16,6 +16,8 @@ class PlayerMySQL extends Model implements PlayerInterface
 
     protected $table = 'players';
 
+    protected $primaryKey = 'id';
+
     public $sortable = [
         'first_name',
         'last_name',
@@ -142,6 +144,11 @@ class PlayerMySQL extends Model implements PlayerInterface
     public function deleteByID(int $id)
     {
         PlayerMySQL::findOrFail($id)->delete();
+    }
+
+    public function previous_teamsx()
+    {
+        return PlayerMySQL::belongsToMany('Artifacts\Baseball\Teams\TeamsMySQL', 'player_previous_teams', 'player_id', 'team');
     }
 
     /**
@@ -290,6 +297,19 @@ class PlayerMySQL extends Model implements PlayerInterface
     public function getTeamDisplayAttribute()
     {
         return config('teams.current')[$this->team];
+    }
+
+    /**
+     * Get the previous teams from pivot table
+     * @return string
+     */
+    public function getPreviousTeamsAttribute()
+    {
+        $teams = '';
+        foreach($this->previous_teamsx as $t):
+            $teams .= $t->name . ', ';
+        endforeach;
+        return rtrim(trim($teams), ',');
     }
 
     /**

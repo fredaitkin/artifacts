@@ -42,6 +42,8 @@ return [
         'SLB' => 'St. Louis Browns',
         'KCA' => 'Kansas City Athletics',
         'BRD' => 'Brooklyn Dodgers',
+        'NYG' => 'New York Giants',
+        'BOB' => 'Boston Bees',
     ],
 
 ];

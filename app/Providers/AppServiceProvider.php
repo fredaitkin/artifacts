@@ -40,6 +40,11 @@ class AppServiceProvider extends ServiceProvider
                 'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface',
                 'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsMySQl'
             );
+            // Teams service
+            $this->app->bind(
+                'Artifacts\Baseball\Teams\TeamsInterface',
+                'Artifacts\Baseball\Teams\TeamsMySQl'
+            );
         else:
             $this->app->bind(
                 'Artifacts\Baseball\Player\PlayerInterface',
@@ -49,6 +54,10 @@ class AppServiceProvider extends ServiceProvider
             $this->app->bind(
                 'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface',
                 'Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsPostgres'
+            );
+            $this->app->bind(
+                'Artifacts\Baseball\Teams\TeamsInterface',
+                'Artifacts\Baseball\Teams\TeamsPostgres'
             );
         endif;
     }
