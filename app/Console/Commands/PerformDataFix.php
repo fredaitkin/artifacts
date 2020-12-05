@@ -7,6 +7,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Storage;
 use Log;
 
+use Illuminate\Support\Facades\DB;
 use Artifacts\Baseball\Player\PlayerInterface;
 
 class PerformDataFix extends Command
@@ -17,7 +18,8 @@ class PerformDataFix extends Command
      * @var string
      */
     protected $signature = 'db:perform-data-fix
-                            {--serialize-prev-teams : Convert previous teams to serialized data}';
+                            {--serialize-prev-teams : Convert previous teams to serialized data}
+                            {--pivot-prev-teams : Store previous teams in pivot table}';
 
     /**
      * The console command description.
@@ -54,9 +56,12 @@ class PerformDataFix extends Command
         $options = $this->options();
 
         if ($options['serialize-prev-teams']):
-            echo "This has been run.";
+            echo "This has been run.\n";
         endif;
 
+        if ($options['pivot-prev-teams']):
+            echo "This has been run.\n";
+        endif;
     }
 
     /**
@@ -73,7 +78,23 @@ class PerformDataFix extends Command
                 $player->save();
             endif;
         endforeach;
-
     }
 
+    /**
+     * Serialize previous teams
+     *
+     * @return mixed
+     */
+    private function playerPreviousTeamsPivot()
+    {
+        $players = $this->player->getAllPlayers();
+        foreach ($players as $player):
+            if ($player->previous_teams):
+                $teams = unserialize($player->previous_teams);
+                foreach($teams as $team):
+                    DB::table('player_previous_teams')->insert(array('player_id' => $player->id, 'team' => $team));
+                endforeach;
+            endif;
+        endforeach;
+    }
 }
