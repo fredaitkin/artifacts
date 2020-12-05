@@ -316,7 +316,7 @@
                 </div>
             </div>
 
-            <div class="form-group w-75 row">
+            <div class="form-group row">
                 <div class="col">
                     <label for="minor_league_teams" class="col-sm-12 control-label">Minor League Teams</label>
                     <div class="col-sm-12">

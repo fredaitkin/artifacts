@@ -189,7 +189,12 @@ class PlayerController extends Controller
     public function edit(Request $request, $id)
     {
         $player = $this->player->getPlayerByID($id);
-        $minor_league_teams = $this->mlt->getPlayerTeams(explode(',', $player->minor_league_teams));
+        if (!empty($player->minor_league_teams)):
+            $minor_league_teams = $this->mlt->getPlayerTeams(explode(',', $player->minor_league_teams));
+            $minor_league_teams = implode(', ', array_column($minor_league_teams, 'team'));
+        else:
+            $minor_league_teams = '';
+        endif;
         $teams = ['' => 'Please Select'] + config('teams.current');
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
@@ -206,7 +211,7 @@ class PlayerController extends Controller
                 'states'                    => $states,
                 'countries'                 => config('countries'),
                 'positions'                 => $positions,
-                'minor_league_teams_search' => implode(', ', array_column($minor_league_teams, 'team')),
+                'minor_league_teams_search' => $minor_league_teams,
             ]);
         endif;
     }
