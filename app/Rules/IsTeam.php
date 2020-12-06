@@ -3,9 +3,18 @@
 namespace Artifacts\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Artifacts\Baseball\Teams\TeamsMySQL as Teams;
 
 class IsTeam implements Rule
 {
+
+    /**
+     * The Teams as abbreviations
+     *
+     * @var array
+     */
+    private $team_abbreviations;
+
     /**
      * Create a new rule instance.
      *
@@ -13,7 +22,8 @@ class IsTeam implements Rule
      */
     public function __construct()
     {
-        //
+        $teams = new Teams();
+        $this->team_abbreviations = array_column($teams->getTeams(['team']), 'team');
     }
 
     /**
@@ -26,10 +36,9 @@ class IsTeam implements Rule
     public function passes($attribute, $value)
     {
         if (!empty($value)):
-            $teams = array_merge(config('teams.current'), config('teams.defunct'));
-            $previous_teams = explode(',', $value);
+            $previous_teams = explode(', ', trim($value));
             foreach($previous_teams as $team):
-                if (!array_key_exists($team, $teams)):
+                if (!in_array($team, $this->team_abbreviations)):
                     return false;
                 endif;
             endforeach;
@@ -44,6 +53,6 @@ class IsTeam implements Rule
      */
     public function message()
     {
-        return 'The previous teams must be in ' . implode(', ', array_keys(config('teams')));
+        return 'The previous teams must be in ' . implode(', ', $this->team_abbreviations);
     }
 }

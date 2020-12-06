@@ -304,7 +304,7 @@
                     <label for="status" class="col-sm-8 control-label">Status</label>
 
                     <div class="col-sm-8">
-                        <input type="text" name="status" id="player->status" class="form-control" value=@if (old('status')) {{ old('previous_teams') }} @elseif (!empty($player->status)) {{$player->status}} @endif>
+                        <input type="text" name="status" id="player->status" class="form-control" value=@if (old('status')) {{ old('status') }} @elseif (!empty($player->status)) {{$player->status}} @endif>
                     </div>
                 </div>
                 <div class="col">

@@ -146,7 +146,7 @@ class PlayerMySQL extends Model implements PlayerInterface
         PlayerMySQL::findOrFail($id)->delete();
     }
 
-    public function previous_teamsx()
+    public function teams()
     {
         return PlayerMySQL::belongsToMany('Artifacts\Baseball\Teams\TeamsMySQL', 'player_previous_teams', 'player_id', 'team');
     }
@@ -306,31 +306,36 @@ class PlayerMySQL extends Model implements PlayerInterface
     public function getPreviousTeamsAttribute()
     {
         $teams = '';
-        foreach($this->previous_teamsx as $t):
-            $teams .= $t->name . ', ';
+        foreach($this->teams as $t):
+            $teams .= $t->team . ', ';
         endforeach;
         return rtrim(trim($teams), ',');
     }
 
     /**
-     * Get the previous team/s display name/s from abbreviations
-     *
+     * Get the previous teams from pivot table
      * @return string
      */
     public function getPreviousTeamsDisplayAttribute()
     {
         $teams = '';
-        if (!empty($this->previous_teams)):
-            $data = unserialize($this->previous_teams);
-            foreach ($data as $key => $value):
-                if (isset(config('teams.current')[$value])):
-                    $data[$key] = config('teams.current')[$value];
-                elseif (isset(config('teams.defunct')[$value])):
-                    $data[$key] = config('teams.defunct')[$value];
-                endif;
-            endforeach;
-            $teams = implode(', ', $data);
-        endif;
+        foreach($this->teams as $t):
+            $teams .= $t->name . ', ';
+        endforeach;
+        return rtrim(trim($teams), ',');
+    }
+
+
+    /**
+     * Get the previous teams as an array from pivot table
+     * @return string
+     */
+    public function getPreviousTeamsArrayAttribute()
+    {
+        $teams = [];
+        foreach($this->teams as $t):
+            $teams[] = $t->team;
+        endforeach;
         return $teams;
     }
 

@@ -111,6 +111,7 @@ class PlayerController extends Controller
             $file_name  = time() . '.' . $request->first_name . '_' . $request->last_name . '.' . $image->extension();
         endif;
 
+        // Player as array
         $player = [];
         $player['first_name']       = $request->first_name;
         $player['last_name']        = $request->last_name;
@@ -144,10 +145,6 @@ class PlayerController extends Controller
         $player['whip']             = $request->whip;
         $player['status']           = $request->status;
 
-        if ($request->previous_teams):
-            $player['previous_teams'] = serialize(explode(',', $request->previous_teams));
-        endif;
-
         if (!empty($request->minor_league_teams)):
             $player['minor_league_teams'] = serialize(explode(',', $request->minor_league_teams));
         endif;
@@ -157,7 +154,8 @@ class PlayerController extends Controller
             $player['photo'] = serialize(['regular' => $file_name, 'small' => $file_name]);
         endif;
 
-        $this->player->updateCreate(['id' => $request->id ?? null], $player);
+        // Player as DB object
+        $player = $this->player->updateCreate(['id' => $request->id ?? null], $player);
 
         // Only save photo if save if successful
         if (isset($file_name)):
@@ -176,6 +174,17 @@ class PlayerController extends Controller
             $img->stream();
             Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
         endif;
+
+        // Make any updates to previous teams
+        $request->previous_teams = explode(', ', trim($request->previous_teams));
+        $inserts = array_diff($request->previous_teams, $player->previous_teams_array);
+        foreach($inserts as $team):
+            $player->teams()->attach(['team'=>$team]);
+        endforeach;
+        $deletes = array_diff($player->previous_teams_array, $request->previous_teams);
+        foreach($deletes as $team):
+            $player->teams()->detach(['team'=>$team]);
+        endforeach;
 
         return redirect('/players');
     }
