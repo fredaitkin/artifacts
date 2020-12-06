@@ -8,4 +8,7 @@ namespace Artifacts\Baseball\Teams;
 
 interface TeamsInterface {
 
+    public function getTeams(array $fields);
+    public function getCurrentTeams();
+
 }

@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-sm-3"></div>
             <div class="mt-2">
-                <h4>{{$player->team_display}}</h4>
+                <h4>{{$team}}</h4>
             </div>
         </div>
 

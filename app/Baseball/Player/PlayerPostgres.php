@@ -289,16 +289,6 @@ class PlayerPostgres extends Model implements PlayerInterface
     }
 
     /**
-     * Get the team display name from abbreviation
-     *
-     * @return string
-     */
-    public function getTeamDisplayAttribute()
-    {
-        return config('teams.current')[$this->team];
-    }
-
-    /**
      * Get the previous team/s display name/s from abbreviations
      *
      * @return string

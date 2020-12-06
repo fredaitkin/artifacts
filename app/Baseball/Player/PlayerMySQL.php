@@ -290,16 +290,6 @@ class PlayerMySQL extends Model implements PlayerInterface
     }
 
     /**
-     * Get the team display name from abbreviation
-     *
-     * @return string
-     */
-    public function getTeamDisplayAttribute()
-    {
-        return config('teams.current')[$this->team];
-    }
-
-    /**
      * Get the previous teams from pivot table
      * @return string
      */

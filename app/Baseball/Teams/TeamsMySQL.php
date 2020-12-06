@@ -37,6 +37,11 @@ class TeamsMySQL extends Model implements TeamsInterface
      */
     protected $perPage = 10;
 
+    /**
+     * Get teams
+     * @param array $fields specific subset of team fields
+     * @return mixed
+     **/
     public function getTeams($fields = null)
     {
         if (!$fields) {
@@ -44,6 +49,20 @@ class TeamsMySQL extends Model implements TeamsInterface
         } else {
             return TeamsMySQL::select($fields)->get()->toArray();
         }
+    }
+
+    /**
+     * Get current teams
+     * @return array Team abbreviation/name collection
+     **/
+    public function getCurrentTeams()
+    {
+        $current_teams = [];
+        $data = TeamsMySQL::select('team', 'name')->whereNull('closed')->get();
+        foreach($data as $d):
+            $current_teams[$d->team] = $d->name;
+        endforeach;
+        return $current_teams;
     }
 
 }

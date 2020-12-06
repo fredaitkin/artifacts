@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 use Artifacts\Baseball\Player\PlayerInterface;
 use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
+use Artifacts\Baseball\Teams\TeamsInterface;
 use Artifacts\Rules\IsTeam;
 
 use Kyslik\ColumnSortable\Sortable;
@@ -26,6 +27,13 @@ class PlayerController extends Controller
     private $player;
 
     /**
+     * The Teams interface
+     *
+     * @var Artifacts\Baseball\Teams\TeamsInterface
+     */
+    private $team;
+
+    /**
      * The Minor League Teams interface
      *
      * @var Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface
@@ -35,9 +43,10 @@ class PlayerController extends Controller
      /**
      * Constructor
      */
-    public function __construct(PlayerInterface $player, MinorLeagueTeamsInterface $mlt)
+    public function __construct(PlayerInterface $player, TeamsInterface $team, MinorLeagueTeamsInterface $mlt)
     {
         $this->player = $player;
+        $this->team = $team;
         $this->mlt = $mlt;
     }
 
@@ -58,7 +67,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        $teams = ['' => 'Please Select'] + config('teams.current');
+        $teams = ['' => 'Please Select'] + $this->team->getCurrentTeams();
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
         return view('player', [
@@ -204,14 +213,14 @@ class PlayerController extends Controller
         else:
             $minor_league_teams = '';
         endif;
-        $teams = ['' => 'Please Select'] + config('teams.current');
+        $teams = ['' => 'Please Select'] + $this->team->getCurrentTeams();
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
         if (isset($player->mlb_link[2])):
             $player->mlb_link = explode('/', $player->mlb_link)[2];
         endif;
         if (isset($request->view)):
-            return view('player_view', ['player' => $player]);
+            return view('player_view', ['player' => $player, 'team' => $teams[$player->team]]);
         else:
             return view('player', [
                 'title'                     => '',
