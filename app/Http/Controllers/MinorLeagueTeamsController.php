@@ -4,6 +4,7 @@ namespace Artifacts\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
+use Artifacts\Baseball\Teams\TeamsInterface;
 use Artifacts\Baseball\Player\PlayerInterface;
 use Artifacts\Rules\IsTeam;
 use Log;
@@ -12,15 +13,30 @@ class MinorLeagueTeamsController extends Controller
 {
 
     /**
+     * The Player Interface
+     *
+     * @var Artifacts\Baseball\Player\PlayerInterface
+     */
+    private $player;
+
+    /**
+     * The Teams interface
+     *
+     * @var Artifacts\Baseball\Teams\TeamsInterface
+     */
+    private $team;
+
+    /**
      * The Minor League Teams interface
      *
-     * @var Artifacts\MinorLeagueTeams\MinorLeagueTeamsInterface
+     * @var Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface
      */
     private $mlt;
 
-    public function __construct(MinorLeagueTeamsInterface $mlt, PlayerInterface $player)
+    public function __construct(MinorLeagueTeamsInterface $mlt, TeamsInterface $team, PlayerInterface $player)
     {
         $this->mlt = $mlt;
+        $this->team = $team;
         $this->player = $player;
     }
 
@@ -43,7 +59,7 @@ class MinorLeagueTeamsController extends Controller
     {
         return view('minor_league_team', [
             'states'    => ['' => ''] + config('states'),
-            'teams'     => ['' => ''] + config('teams.current'),
+            'teams'     => ['' => ''] + $this->team->getCurrentTeams(),
             'classes'   => ['' => ''] + config('minor_league_teams.classes'),
             'leagues'   => ['' => ''] + config('minor_league_teams.leagues'),
             'divisions' => ['' => ''] + config('minor_league_teams.divisions'),
@@ -63,7 +79,7 @@ class MinorLeagueTeamsController extends Controller
         return view('minor_league_team', [
             'team'      => $team,
             'states'    => ['' => ''] + config('states'),
-            'teams'     => ['' => ''] + config('teams.current'),
+            'teams'     => ['' => ''] + $this->team->getCurrentTeams(),
             'classes'   => ['' => ''] + config('minor_league_teams.classes'),
             'leagues'   => ['' => ''] + config('minor_league_teams.leagues'),
             'divisions' => ['' => ''] + config('minor_league_teams.divisions'),
