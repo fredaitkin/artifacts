@@ -148,7 +148,13 @@ class PlayerMySQL extends Model implements PlayerInterface
 
     public function teams()
     {
+        // TODO refactor into one function?
         return PlayerMySQL::belongsToMany('Artifacts\Baseball\Teams\TeamsMySQL', 'player_previous_teams', 'player_id', 'team');
+    }
+
+    public function minor_teams()
+    {
+        return PlayerMySQL::belongsToMany('Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsMySQL', 'player_minor_league_teams', 'player_id', 'mlt_id');
     }
 
     /**
@@ -315,7 +321,6 @@ class PlayerMySQL extends Model implements PlayerInterface
         return rtrim(trim($teams), ',');
     }
 
-
     /**
      * Get the previous teams as an array from pivot table
      * @return string
@@ -334,12 +339,41 @@ class PlayerMySQL extends Model implements PlayerInterface
      *
      * @return string
      */
-    public function getMinorLeagueTeamsAttribute($minor_league_teams)
+    public function getMinorLeagueTeamsAttribute()
     {
         $teams = '';
-        if (!empty($minor_league_teams)):
-            $teams = implode(',', unserialize($minor_league_teams));
-        endif;
+        foreach($this->minor_teams as $t):
+            $teams .= $t->id . ',';
+        endforeach;
+        return rtrim(trim($teams), ',');
+        return $teams;
+    }
+
+   /**
+     * Get the minor league team names
+     *
+     * @return string
+     */
+    public function getMinorLeagueTeamsDisplayAttribute()
+    {
+        $teams = '';
+        foreach($this->minor_teams as $t):
+            $teams .= $t->team . ', ';
+        endforeach;
+        return rtrim(trim($teams), ',');
+        return $teams;
+    }
+
+    /**
+     * Get the minor league teams as an array from pivot table
+     * @return string
+     */
+    public function getMinorLeagueTeamsArrayAttribute()
+    {
+        $teams = [];
+        foreach($this->minor_teams as $t):
+            $teams[] = $t->id;
+        endforeach;
         return $teams;
     }
 

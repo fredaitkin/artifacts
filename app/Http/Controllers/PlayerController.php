@@ -188,13 +188,24 @@ class PlayerController extends Controller
         $request->previous_teams = explode(', ', trim($request->previous_teams));
         $inserts = array_diff($request->previous_teams, $player->previous_teams_array);
         foreach($inserts as $team):
-            $player->teams()->attach(['team'=>$team]);
+            $player->teams()->attach(['team' => $team]);
         endforeach;
         $deletes = array_diff($player->previous_teams_array, $request->previous_teams);
         foreach($deletes as $team):
-            $player->teams()->detach(['team'=>$team]);
+            $player->teams()->detach(['team' => $team]);
         endforeach;
 
+        // Make any updates to minor league teams
+        $request->minor_league_teams = explode(',', trim($request->minor_league_teams));
+        $inserts = array_diff($request->minor_league_teams, $player->minor_league_teams_array);
+        foreach($inserts as $id):
+            $player->minor_teams()->attach(['mlt_id' => $id]);
+        endforeach;
+        $deletes = array_diff($player->minor_league_teams_array, $request->minor_league_teams);
+        foreach($deletes as $id):
+            $player->minor_teams()->detach(['mlt_id' => $id]);
+        endforeach;
+        // exit;
         return redirect('/players');
     }
 
@@ -207,12 +218,6 @@ class PlayerController extends Controller
     public function edit(Request $request, $id)
     {
         $player = $this->player->getPlayerByID($id);
-        if (!empty($player->minor_league_teams)):
-            $minor_league_teams = $this->mlt->getPlayerTeams(explode(',', $player->minor_league_teams));
-            $minor_league_teams = implode(', ', array_column($minor_league_teams, 'team'));
-        else:
-            $minor_league_teams = '';
-        endif;
         $teams = ['' => 'Please Select'] + $this->team->getCurrentTeams();
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
@@ -229,7 +234,6 @@ class PlayerController extends Controller
                 'states'                    => $states,
                 'countries'                 => config('countries'),
                 'positions'                 => $positions,
-                'minor_league_teams_search' => $minor_league_teams,
             ]);
         endif;
     }

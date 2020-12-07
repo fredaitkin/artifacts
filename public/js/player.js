@@ -75,7 +75,7 @@ $(function() {
       return split( term ).pop();
     }
 
-    $( "#minor_league_teams_search" )
+    $( "#minor_league_teams_display" )
       .autocomplete({
         minLength: 0,
         source: function( request, response ) {

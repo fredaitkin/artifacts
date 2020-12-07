@@ -297,7 +297,7 @@
                     <label for="previous_teams" class="col-sm-12 control-label">Previous Teams</label>
 
                     <div class="col-sm-12">
-                        <input type="text" name="previous_teams" id="player->previous_teams" class="form-control" value="@if (old('previous_teams')) {{ old('previous_teams') }} @elseif (!empty($player->previous_teams)) {{$player->previous_teams}} @endif">
+                        <input type="text" name="previous_teams" id="player->previous_teams" class="form-control" value="@if (old('previous_teams')) {{ old('previous_teams') }} @elseif (!empty($player->previous_teams)){{$player->previous_teams}}@endif">
                     </div>
                 </div>
                 <div class="col">
@@ -320,7 +320,7 @@
                 <div class="col">
                     <label for="minor_league_teams" class="col-sm-12 control-label">Minor League Teams</label>
                     <div class="col-sm-12">
-                        <input type="text" name="minor_league_teams_search" id="minor_league_teams_search" class="form-control" value="@if(old('minor_league_teams_search')){{old('minor_league_teams_search')}}@elseif(!empty($minor_league_teams_search)){{$minor_league_teams_search}}@endif">
+                        <input type="text" name="minor_league_teams_display" id="minor_league_teams_display" class="form-control" value="@if(old('minor_league_teams_search')){{old('minor_league_teams_display')}}@elseif(!empty($player->minor_league_teams_display)){{$player->minor_league_teams_display}}@endif">
                     </div>
                     <div class="col"><div class="col-sm-8"><a id='mlt-link' href="#">show ids</a></div></div>
                     <div id="ids" class="col-sm-4">
