@@ -65,7 +65,7 @@
                     <label for="league" class="control-label">League</label>
                     <select class="form-control" name="league">
                         @foreach($leagues as $league)
-                            <option value="{{$league}}"  @if (old('class') && old('league') == $class) selected @elseif (!empty($team->league) && ($team->league == $league)) selected @endif>{{$league}}</option>
+                            <option value="{{$league}}"  @if (old('league') && old('league') == $league) selected @elseif (!empty($team->league) && ($team->league == $league)) selected @endif>{{$league}}</option>
                         @endforeach
                     </select>
                 </div>

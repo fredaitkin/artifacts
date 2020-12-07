@@ -39,6 +39,28 @@
 
             <div class="form-group row">
                 <div class="col-sm-4">
+                    <label for="league" class="control-label">League</label>
+                    <select class="form-control" name="league">
+                        @foreach($leagues as $key => $league)
+                            <option value="{{$key}}"  @if (old('league') && old('league') == $key) selected @elseif (!empty($team->league) && ($team->league == $key)) selected @endif>{{$league}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="division" class="control-label">Division</label>
+                    <select class="form-control" name="division">
+                        @foreach($divisions as $division)
+                            <option value="{{$division}}"  @if (old('division') && old('division') == $division) selected @elseif (!empty($team->division) && ($team->division == $division)) selected @endif>{{$division}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-4">
                     <label for="ground" class="control-label">Ground</label>
                     <input type="text" name="ground" class="form-control" value="@if (old('ground')){{old('ground')}}@elseif (!empty($team->ground)){{$team->ground}}@endif">
                 </div>

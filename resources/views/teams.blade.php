@@ -10,6 +10,8 @@
                     <thead>
                         <tr>
                             <th scope='col'>@sortablelink('name')</th>
+                            <th scope='col'>@sortablelink('league')</th>
+                            <th scope='col'>@sortablelink('division')</th>
                             <th scope='col'>City</th>
                             <th scope='col'>@sortablelink('state')</th>
                             <th scope='col'>@sortablelink('ground')</th>
@@ -27,6 +29,8 @@
                                         {{$team->name}}
                                     @endif
                                 </td>
+                                <td class="table-text">{{$team->league}}</td>
+                                <td class="table-text">{{$team->division}}</td>
                                 <td class="table-text">{{$team->city}}</td>
                                 <td class="table-text">{{$team->state}}</td>
                                 <td class="table-text">{{$team->ground}}</td>

@@ -55,7 +55,12 @@ class TeamsController extends Controller
     public function edit(Request $request, $code)
     {
         $team = $this->team->getTeamByCode($code);
-        return view('team', ['team' => $team, 'states' => ['' => ''] + config('states')]);
+        return view('team', [
+            'team'      => $team,
+            'states'    => ['' => ''] + config('states'),
+            'leagues'   => ['' => ''] + config('teams.leagues'),
+            'divisions' => ['' => ''] + config('teams.divisions'),
+        ]);
     }
 
     /**
@@ -75,6 +80,8 @@ class TeamsController extends Controller
         ]);
 
         $team = [];
+        $team['league']         = $request->league;
+        $team['division']       = $request->division;
         $team['city']           = $request->city;
         $team['state']          = $request->state;
         $team['country']        = $request->country;
