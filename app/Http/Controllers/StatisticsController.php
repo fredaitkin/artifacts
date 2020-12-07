@@ -4,6 +4,7 @@ namespace Artifacts\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Artifacts\Baseball\Player\PlayerInterface;
+use Artifacts\Baseball\Teams\TeamsInterface;
 
 class StatisticsController extends Controller
 {
@@ -11,10 +12,16 @@ class StatisticsController extends Controller
     /**
      * The Player Interface
      *
-     * @var Artifacts\Interfaces\PlayerInterface
+     * @var Artifacts\Player\PlayerInterface
      */
     private $player;
 
+    /**
+     * The Teams Interface
+     *
+     * @var Artifacts\Teams\Teams\Interface
+     */
+    private $teams;
     /**
      * The player positions array
      *
@@ -22,9 +29,10 @@ class StatisticsController extends Controller
      */
     private $positions;
 
-    public function __construct(PlayerInterface $player)
+    public function __construct(PlayerInterface $player, TeamsInterface $team)
     {
         $this->player = $player;
+        $this->team = $team;
         $this->positions = config('positions');
     }
 
@@ -63,6 +71,7 @@ class StatisticsController extends Controller
         return view(
             'statistics',
             [
+                'teams'                         => $this->team->getCurrentTeams(),
                 'most_home_runs'                => $most_hrs,
                 'most_rbis'                     => $most_rbis,
                 'best_average'                  => $best_average,
