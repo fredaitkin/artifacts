@@ -47,7 +47,7 @@ class TeamsMySQL extends Model implements TeamsInterface
     public function getTeams($fields = null)
     {
         if (!$fields) {
-            return TeamsMySQL::select('*')->sortable('team')->paginate();
+            return TeamsMySQL::select('*')->sortable('name')->paginate();
         } else {
             return TeamsMySQL::select($fields)->get()->toArray();
         }

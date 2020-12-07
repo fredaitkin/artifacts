@@ -4,7 +4,7 @@
 
     <div class="panel-body artifacts-submit-form-div">
 
-        <h2 class="col-sm-4">@if(!empty($team->team)) {{$team->team}} @else Add Team @endif</h2>
+        <h2 class="col-sm-4">@if(!empty($team->name)) {{$team->name}} @else Add Team @endif</h2>
 
         @include('common.errors')
 
@@ -50,7 +50,7 @@
             <div class="form-group row">
                 <div class="col-sm-4">
                     <label for="country" class="control-label">Country</label>
-                    <input type="text" name="country" class="form-control" value="@if (old('country')){{old('country')}}@elseif (!empty($team->country)){{$team->country}}@endif">
+                    <input type="text" name="country" class="form-control" value="@if (old('country')){{old('country')}}@elseif (!empty($team->country)){{$team->country}}@else{{'US'}} @endif">
                 </div>
             </div>
 
