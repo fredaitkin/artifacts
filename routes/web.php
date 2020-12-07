@@ -47,6 +47,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/team/{code}', 'TeamsController@edit')->name('team');
 
+    Route::get('/team', 'TeamsController@create')->name('team.add');
+
     Route::post('/team', 'TeamsController@store')->name('team.store');
 
     Route::get('/minor-league-teams', 'MinorLeagueTeamsController@index')->name('minor-league-teams');

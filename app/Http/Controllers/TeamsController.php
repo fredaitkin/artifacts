@@ -35,19 +35,22 @@ class TeamsController extends Controller
     }
 
     /**
-     * Show the form for creating a new minor league team
+     * Show the form for adding a team.
      *
+     * @param  int  $id
      * @return Response
      */
     public function create()
     {
         return view('team', [
             'states'    => ['' => ''] + config('states'),
+            'leagues'   => ['' => ''] + config('teams.leagues'),
+            'divisions' => ['' => ''] + config('teams.divisions'),
         ]);
     }
 
     /**
-     * Show the form for editing the minor league team.
+     * Show the form for editing the team.
      *
      * @param  int  $id
      * @return Response
@@ -64,7 +67,7 @@ class TeamsController extends Controller
     }
 
     /**
-     * Store a newly update minor league team in the database
+     * Store a newly update team in the database
      *
      * @param Request request
      * @return Response
@@ -80,6 +83,8 @@ class TeamsController extends Controller
         ]);
 
         $team = [];
+        $team['team']           = $request->team;
+        $team['name']           = $request->name;
         $team['league']         = $request->league;
         $team['division']       = $request->division;
         $team['city']           = $request->city;
@@ -88,8 +93,10 @@ class TeamsController extends Controller
         $team['ground']         = $request->ground;
         $team['founded']        = $request->founded;
         $team['closed']         = $request->closed;
+        // TODO Change to file field
         $team['logo']           = $request->logo;
         $team['other_names']    = $request->other_names;
+        // TODO make these fields foreign keys to a team table
         $team['relocated_to']   = $request->relocated_to;
         $team['relocated_from'] = $request->relocated_from;
 

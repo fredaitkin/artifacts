@@ -20,7 +20,7 @@ class TeamsMySQL extends Model implements TeamsInterface
 
     protected $primaryKey = 'team';
 
-    protected $guarded = ['team'];
+    protected $guarded = [];
 
     public $incrementing = false;
 

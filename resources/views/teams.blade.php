@@ -4,7 +4,7 @@
 
     <div class="panel-body">
 
-        <h2 class="col-sm-3">Minor League Teams</h2>
+        <h2 class="col-sm-3">Teams</h2>
 
                 <table class="table table-striped artifacts-table">
                     <thead>
@@ -12,11 +12,13 @@
                             <th scope='col'>@sortablelink('name')</th>
                             <th scope='col'>@sortablelink('league')</th>
                             <th scope='col'>@sortablelink('division')</th>
-                            <th scope='col'>City</th>
+                            <th scope='col'>@sortablelink('city')</th>
                             <th scope='col'>@sortablelink('state')</th>
-                            <th scope='col'>@sortablelink('ground')</th>
+                            <th scope='col'>@sortablelink('ground', 'Ballpark')</th>
                             <th scope='col'>@sortablelink('founded')</th>
                             <th scope='col'>@sortablelink('closed', 'Defunct')</th>
+                            <th scope='col'>@sortablelink('relocated_to', 'Relocated To')</th>
+                            <th scope='col'>@sortablelink('relocated_from', 'Relocated From')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +38,8 @@
                                 <td class="table-text">{{$team->ground}}</td>
                                 <td class="table-text">{{$team->founded}}</td>
                                 <td class="table-text">{{$team->closed}}</td>
+                                <td class="table-text">{{$team->relocated_to}}</td>
+                                <td class="table-text">{{$team->relocated_from}}</td>
                             </tr>
                         @endforeach
                     </tbody>

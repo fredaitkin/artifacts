@@ -4,18 +4,35 @@
 
     <div class="panel-body artifacts-submit-form-div">
 
-        <h2 class="col-sm-4">{{$team->name}}</h2>
+        <h2 class="col-sm-4">@if(!empty($team->team)) {{$team->team}} @else Add Team @endif</h2>
 
         @include('common.errors')
 
         <form action="/team" enctype="multipart/form-data" method="POST" class="form-horizontal">
             {{ csrf_field() }}
 
+            @if(empty($team->team))
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="team" class="control-label">Team</label>
+                        <input type="text" name="team" class="form-control" value="@if (old('team')){{old('team')}}@elseif (!empty($team->team)){{$team->team}}@endif">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="name" class="control-label">Name</label>
+                        <input type="text" name="name" class="form-control" value="@if (old('name')){{old('name')}}@elseif (!empty($team->name)){{$team->name}}@endif">
+                    </div>
+                </div>
+            @else
+                <input type="hidden" name="team" class="form-control" value="{{$team->team}}">
+                <input type="hidden" name="name" class="form-control" value="{{$team->name}}">
+            @endif
+
             <div class="form-group row">
                 <div class="col-sm-4">
                     <label for="city" class="control-label">City</label>
                     <input type="text" name="city" class="form-control" value="@if (old('city')){{old('city')}}@elseif (!empty($team->city)){{$team->city}}@endif">
-                    <input type="hidden" name="team" class="form-control" value="{{$team->team}}">
                 </div>
             </div>
 
@@ -61,7 +78,7 @@
 
             <div class="form-group row">
                 <div class="col-sm-4">
-                    <label for="ground" class="control-label">Ground</label>
+                    <label for="ground" class="control-label">Ballpark</label>
                     <input type="text" name="ground" class="form-control" value="@if (old('ground')){{old('ground')}}@elseif (!empty($team->ground)){{$team->ground}}@endif">
                 </div>
             </div>
@@ -117,10 +134,16 @@
 
              <div class="form-group row">
                 <div class="col-sm-4">
-                    <div class="col-sm-offset-3 col-sm-6">
-                        <input type="hidden" name="id" id="id" value="{{$team->team}}">
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </div>
+                    @if(!empty($team->team))
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <input type="hidden" name="id" id="id" value="{{$team->team}}">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    @else
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <button type="submit" class="btn btn-primary">Add Team</button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </form>
