@@ -46,7 +46,7 @@ class MinorLeagueTeamsController extends Controller
      * @return Response
      */
     public function index()
-    {Log::info('gday');
+    {
         return view('minor_league_teams', ['ml_teams' => $this->mlt->getTeams()]);
     }
 

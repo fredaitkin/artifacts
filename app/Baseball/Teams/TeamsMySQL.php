@@ -20,6 +20,8 @@ class TeamsMySQL extends Model implements TeamsInterface
 
     protected $primaryKey = 'team';
 
+    protected $guarded = ['team'];
+
     public $incrementing = false;
 
     public $sortable = [
@@ -63,6 +65,28 @@ class TeamsMySQL extends Model implements TeamsInterface
             $current_teams[$d->team] = $d->name;
         endforeach;
         return $current_teams;
+    }
+
+    /**
+     * Get team by code
+     *
+     * @return array
+     */
+    public function getTeamByCode(string $code)
+    {
+        return TeamsMySQL::findOrFail($code);
+    }
+
+    /**
+     * Update or create team
+     *
+     * @param array $keys
+     * @param array $fields
+     * @return object
+     */
+    public function updateCreate(array $keys, array $fields)
+    {
+        return TeamsMySQL::updateOrCreate($keys, $fields);
     }
 
 }
