@@ -38,8 +38,8 @@
                                 <td class="table-text">{{$team->ground}}</td>
                                 <td class="table-text">{{$team->founded}}</td>
                                 <td class="table-text">{{$team->closed}}</td>
-                                <td class="table-text">{{$team->relocated_to}}</td>
-                                <td class="table-text">{{$team->relocated_from}}</td>
+                                <td class="table-text">{{$team->relocated_to_display}}</td>
+                                <td class="table-text">{{$team->relocated_from_display}}</td>
                             </tr>
                         @endforeach
                     </tbody>

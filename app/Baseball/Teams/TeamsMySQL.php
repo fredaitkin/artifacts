@@ -53,6 +53,27 @@ class TeamsMySQL extends Model implements TeamsInterface
         }
     }
 
+
+    public function relocatedToTeam()
+    {
+        return TeamsMySQL::belongsTo('Artifacts\Baseball\Teams\TeamsMySQL', 'relocated_to');
+    }
+
+    public function getRelocatedToDisplayAttribute()
+    {
+        return $this->relocatedToTeam->name ?? '';
+    }
+
+    public function relocatedFromTeam()
+    {
+        return TeamsMySQL::belongsTo('Artifacts\Baseball\Teams\TeamsMySQL', 'relocated_from');
+    }
+
+    public function getRelocatedFromDisplayAttribute()
+    {
+        return $this->relocatedFromTeam->name ?? '';
+    }
+
     /**
      * Get current teams
      * @return array Team abbreviation/name collection
