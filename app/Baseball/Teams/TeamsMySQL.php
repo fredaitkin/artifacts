@@ -6,6 +6,7 @@ use Artifacts\Baseball\Teams\TeamsInterface;
 
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+use Log;
 
 /**
 * The MySQL implementation of the team table class
@@ -44,15 +45,23 @@ class TeamsMySQL extends Model implements TeamsInterface
      * @param array $fields specific subset of team fields
      * @return mixed
      **/
-    public function getTeams($fields = null)
+    public function getTeams($fields = null, $active = true)
     {
-        if (!$fields) {
-            return TeamsMySQL::select('*')->sortable('name')->paginate();
-        } else {
+        if (!$fields):
+            $query = TeamsMySQL::select('*');
+            if ($active):
+                $query = $query->active();
+            endif;
+            return $query->sortable('name')->paginate();
+        else:
             return TeamsMySQL::select($fields)->get()->toArray();
-        }
+        endif;
     }
 
+    public function scopeActive($query)
+    {
+        return $query->whereNull('closed');
+    }
 
     public function relocatedToTeam()
     {

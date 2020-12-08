@@ -29,9 +29,17 @@ class TeamsController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('teams', ['teams' => $this->team->getTeams()]);
+        $filter = $request->query('filter');
+        if (!empty($filter) && $filter === 'all'):
+            $teams = $this->team->getTeams(null, false);
+        else:
+            $filter = 'current';
+            $teams = $this->team->getTeams(null, true);
+        endif;
+
+        return view('teams')->with('teams', $teams)->with('filter', $filter);
     }
 
     /**
