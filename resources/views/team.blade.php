@@ -100,7 +100,7 @@
             <div class="form-group row">
                 <div class="col-sm-4">
                     <label for="titles" class="control-label">Titles</label>
-                    <input type="text" name="titles" class="form-control" value="@if (old('titles')){{old('titles')}}@elseif (!empty($team->titles)){{$team->titles}}@endif">
+                    <input type="text" name="titles" class="form-control" value="@if (old('titles')){{old('titles')}}@elseif (!empty($team->titles)){{$team->titles_display}}@endif">
                 </div>
             </div>
 

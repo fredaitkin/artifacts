@@ -27,10 +27,11 @@ class TeamsMySQL extends Model implements TeamsInterface
 
     public $sortable = [
         'name',
-        'city',
         'state',
-        'country',
+        'league',
+        'division',
         'founded',
+        'titles_count'
     ];
 
     /**
@@ -70,7 +71,11 @@ class TeamsMySQL extends Model implements TeamsInterface
 
     public function getRelocatedToDisplayAttribute()
     {
-        return $this->relocatedToTeam->name ?? '';
+        $relocated = null;
+        if (!empty($this->relocatedToTeam->name)):
+            $relocated = [$this->relocatedToTeam->team, $this->relocatedToTeam->name];
+        endif;
+        return $relocated;
     }
 
     public function relocatedFromTeam()
@@ -80,7 +85,30 @@ class TeamsMySQL extends Model implements TeamsInterface
 
     public function getRelocatedFromDisplayAttribute()
     {
-        return $this->relocatedFromTeam->name ?? '';
+        $relocated = null;
+        if (!empty($this->relocatedFromTeam->name)):
+            $relocated = [$this->relocatedFromTeam->team, $this->relocatedFromTeam->name];
+        endif;
+        return $relocated;
+    }
+
+    public function getTitlesDisplayAttribute()
+    {
+        return implode(',', unserialize($this->titles));
+    }
+
+    public function getTitleCountAttribute()
+    {
+        $count = 0;
+        if (!empty($this->titles)):
+            $count = count(unserialize($this->titles));
+        endif;
+        return $count;
+    }
+
+    public function titleCountSortable($query, $direction)
+    {
+        return $query->orderByRaw('CHAR_LENGTH(titles) ' . $direction);
     }
 
     /**

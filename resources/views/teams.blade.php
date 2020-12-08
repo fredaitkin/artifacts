@@ -23,13 +23,14 @@
                     <th scope='col'>@sortablelink('name')</th>
                     <th scope='col'>@sortablelink('league')</th>
                     <th scope='col'>@sortablelink('division')</th>
-                    <th scope='col'>@sortablelink('city')</th>
+                    <th scope='col'>City</th>
                     <th scope='col'>@sortablelink('state')</th>
-                    <th scope='col'>@sortablelink('ground', 'Ballpark')</th>
+                    <th scope='col'>Ballpark</th>
+                    <th scope='col'>@sortablelink('title_count', 'Titles')</th>
                     <th scope='col'>@sortablelink('founded')</th>
                     <th scope='col'>@sortablelink('closed', 'Defunct')</th>
-                    <th scope='col'>@sortablelink('relocated_to', 'Relocated To')</th>
-                    <th scope='col'>@sortablelink('relocated_from', 'Relocated From')</th>
+                    <th scope='col'>Relocated To</th>
+                    <th scope='col'>Relocated From</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,10 +48,19 @@
                         <td class="table-text">{{$team->city}}</td>
                         <td class="table-text">{{$team->state}}</td>
                         <td class="table-text">{{$team->ground}}</td>
+                        <td class="table-text">{{$team->title_count}}</td>
                         <td class="table-text">{{$team->founded}}</td>
                         <td class="table-text">{{$team->closed}}</td>
-                        <td class="table-text">{{$team->relocated_to_display}}</td>
-                        <td class="table-text">{{$team->relocated_from_display}}</td>
+                        <td class="table-text">
+                            @if(isset($team->relocated_to_display))
+                                <a href="/team/{{$team->relocated_to_display[0]}}">{{$team->relocated_to_display[1]}}</a>
+                            @endif
+                        </td>
+                        <td class="table-text">
+                            @if(isset($team->relocated_from_display))
+                                <a href="/team/{{$team->relocated_from_display[0]}}">{{$team->relocated_from_display[1]}}</a>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

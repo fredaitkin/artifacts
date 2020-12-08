@@ -185,27 +185,31 @@ class PlayerController extends Controller
         endif;
 
         // Make any updates to previous teams
-        $request->previous_teams = explode(', ', trim($request->previous_teams));
-        $inserts = array_diff($request->previous_teams, $player->previous_teams_array);
-        foreach($inserts as $team):
-            $player->teams()->attach(['team' => $team]);
-        endforeach;
-        $deletes = array_diff($player->previous_teams_array, $request->previous_teams);
-        foreach($deletes as $team):
-            $player->teams()->detach(['team' => $team]);
-        endforeach;
+        if (!empty($request->previous_teams)):
+            $request->previous_teams = explode(', ', trim($request->previous_teams));
+            $inserts = array_diff($request->previous_teams, $player->previous_teams_array);
+            foreach($inserts as $team):
+                $player->teams()->attach(['team' => $team]);
+            endforeach;
+            $deletes = array_diff($player->previous_teams_array, $request->previous_teams);
+            foreach($deletes as $team):
+                $player->teams()->detach(['team' => $team]);
+            endforeach;
+        endif;
 
         // Make any updates to minor league teams
-        $request->minor_league_teams = explode(',', trim($request->minor_league_teams));
-        $inserts = array_diff($request->minor_league_teams, $player->minor_league_teams_array);
-        foreach($inserts as $id):
-            $player->minor_teams()->attach(['mlt_id' => $id]);
-        endforeach;
-        $deletes = array_diff($player->minor_league_teams_array, $request->minor_league_teams);
-        foreach($deletes as $id):
-            $player->minor_teams()->detach(['mlt_id' => $id]);
-        endforeach;
-        // exit;
+        if (!empty($request->minor_league_teams)):
+            $request->minor_league_teams = explode(',', trim($request->minor_league_teams));
+            $inserts = array_diff($request->minor_league_teams, $player->minor_league_teams_array);
+            foreach($inserts as $id):
+                $player->minor_teams()->attach(['mlt_id' => $id]);
+            endforeach;
+            $deletes = array_diff($player->minor_league_teams_array, $request->minor_league_teams);
+            foreach($deletes as $id):
+                $player->minor_teams()->detach(['mlt_id' => $id]);
+            endforeach;
+        endif;
+
         return redirect('/players');
     }
 
