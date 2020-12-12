@@ -78,12 +78,12 @@ class TeamsMySQL extends Model implements TeamsInterface
 
     public function relocatedFromTeam()
     {
-        return TeamsMySQL::belongsTo('Artifacts\Baseball\Teams\TeamsMySQL', 'relocated_from');
+        return TeamsMySQL::belongsTo($this, 'relocated_from');
     }
 
     public function relocatedToTeam()
     {
-        return TeamsMySQL::belongsTo('Artifacts\Baseball\Teams\TeamsMySQL', 'relocated_to');
+        return TeamsMySQL::belongsTo($this, 'relocated_to');
     }
 
     public function titleCountSortable($query, $direction)
