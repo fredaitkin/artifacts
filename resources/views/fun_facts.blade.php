@@ -8,7 +8,11 @@
 
         <ul class="nav nav-tabs" id="factsTabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="mlt-tab" data-toggle="tab" href="#mlt" role="tab" aria-controls="mlt"
+                <a class="nav-link active" id="winners-tab" data-toggle="tab" href="#winners" role="tab" aria-controls="winners"
+              aria-selected="true">World Series Winners</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="mlt-tab" data-toggle="tab" href="#mlt" role="tab" aria-controls="mlt"
               aria-selected="true">Minor League Teams</a>
             </li>
             <li class="nav-item">
@@ -19,7 +23,20 @@
 
         <div class="tab-content" id="statsTabsContent">
 
-            <div class="tab-pane fade show active" id="mlt" role="tabpanel" aria-labelledby="mlt-tab">
+            <div class="tab-pane fade show active" id="winners" role="tabpanel" aria-labelledby="winners-tab">
+                <div class="ml-3 mt-3 mb-2">
+                   Winners
+                </div>
+                <ul>
+                    @foreach($world_series_winners as $year => $team)
+                        <li>
+                            {{$year}} {{$team}}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            <div class="tab-pane fade" id="mlt" role="tabpanel" aria-labelledby="mlt-tab">
                 <div class="ml-3 mt-3 mb-2">
                     Minor league teams that rookies are currently playing with / players have played with:
                 </div>

@@ -12,5 +12,6 @@ interface TeamsInterface {
     public function getCurrentTeams();
     public function getTeamByCode(string $code);
     public function updateCreate(array $keys, array $fields);
+    public function getWorldSeriesWinners();
 
 }

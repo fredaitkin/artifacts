@@ -147,4 +147,23 @@ class TeamsMySQL extends Model implements TeamsInterface
         return TeamsMySQL::updateOrCreate($keys, $fields);
     }
 
+    /**
+     * Get world series winners
+     * @return array Year/team collection
+     **/
+    public function getWorldSeriesWinners()
+    {
+        $winners = [];
+        $teams = TeamsMySQL::select('name', 'titles')->get();
+        foreach($teams as $team):
+            if (!empty($team->titles)):
+                $titles = unserialize($team->titles);
+                foreach($titles as $year):
+                    $winners[$year] = $team->name;
+                endforeach;
+            endif;
+        endforeach;
+        ksort($winners);
+        return $winners;
+    }
 }

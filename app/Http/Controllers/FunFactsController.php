@@ -3,24 +3,40 @@
 namespace Artifacts\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
-use Artifacts\Baseball\Player\PlayerInterface;
+use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface as MinorLeagueTeams;
+use Artifacts\Baseball\Teams\TeamsInterface as Teams;
+use Artifacts\Baseball\Player\PlayerInterface as Player;
 use Artifacts\Rules\IsTeam;
 
 class FunFactsController extends Controller
 {
 
     /**
+     * The Player Interface
+     *
+     * @var Artifacts\Baseball\Player\PlayerInterface
+     */
+    private $player;
+
+    /**
+     * The Teams interface
+     *
+     * @var Artifacts\Baseball\Teams\TeamsInterface
+     */
+    private $team;
+
+    /**
      * The Minor League Teams interface
      *
-     * @var Artifacts\MinorLeagueTeams\MinorLeagueTeamsInterface
+     * @var Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface
      */
     private $mlt;
 
-    public function __construct(MinorLeagueTeamsInterface $mlt, PlayerInterface $player)
+    public function __construct(MinorLeagueTeams $mlt, Player $player, Teams $team)
     {
         $this->mlt = $mlt;
         $this->player = $player;
+        $this->team = $team;
     }
 
     /**
@@ -34,8 +50,9 @@ class FunFactsController extends Controller
         return view(
             'fun_facts',
             [
-                'ml_teams'      => $this->mlt->getTeams(['id', 'team'], [['team', 'ASC']]),
-                'player_cities' => $this->player->getPlayerCityCount(),
+                'world_series_winners'  => $this->team->getWorldSeriesWinners(),
+                'ml_teams'              => $this->mlt->getTeams(['id', 'team'], [['team', 'ASC']]),
+                'player_cities'         => $this->player->getPlayerCityCount(),
             ]
         );
     }
