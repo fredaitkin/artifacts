@@ -3,7 +3,6 @@
 namespace Artifacts\Baseball\MinorLeagueTeams;
 
 use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
-
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 
@@ -16,10 +15,6 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
 
     use Sortable;
 
-    protected $table = 'minor_league_teams';
-
-    protected $guarded = ['id'];
-
     public $sortable = [
         'team',
         'class',
@@ -30,6 +25,10 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
         'founded',
     ];
 
+    protected $table = 'minor_league_teams';
+
+    protected $guarded = ['id'];
+
     /**
      * The number of records to return for pagination.
      *
@@ -39,7 +38,7 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
 
     public function getTeams($fields = null, $order_by = null)
     {
-        if (!$fields) {
+        if (! $fields) {
             return MinorLeagueTeamsMySQL::select('*')->sortable('team')->paginate();
         } else {
             $query = MinorLeagueTeamsMySQL::select($fields);
@@ -76,7 +75,7 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
     public function getPlayerTeams($ids)
     {
         $preserve_order_ids = implode(',', $ids);
-        return MinorLeagueTeamsMySQL::select('team')->whereIn('id', $ids)->orderByRaw("FIELD(id, $preserve_order_ids)")->get()->toArray();
+        return MinorLeagueTeamsMySQL::select('team')->whereIn('id', $ids)->orderByRaw("FIELD(id, {$preserve_order_ids})")->get()->toArray();
     }
 
     /**

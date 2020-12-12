@@ -28,11 +28,11 @@
                    Winners
                 </div>
                 <ul>
-                    @foreach($world_series_winners as $year => $team)
+                    @foreach ($world_series_winners as $year => $team)
                         <li>
-                            {{$year}} {{$team}}
+                            {{ $year }} {{ $team }}
                         </li>
-                    @endforeach
+                    @endforeach 
                 </ul>
             </div>
 
@@ -42,11 +42,11 @@
                 </div>
  
                 <ul>
-                    @foreach($ml_teams as $team)
+                    @foreach ($ml_teams as $team)
                         <li>
-                            {{$team->team}}
+                            {{ $team->team }}
                         </li>
-                    @endforeach
+                    @endforeach 
                 </ul>
 
             </div>
@@ -56,17 +56,17 @@
                     Hometown of players:
                 </div>
                 <ul>
-                    @foreach($player_cities as $player)
+                    @foreach ($player_cities as $player)
                         <li>
-                            {{$player->city}},
-                            @if($player->country == 'US')
-                                {{$player->state}}
+                            {{ $player->city }},
+                            @if ($player->country == 'US')
+                                {{ $player->state }}
                             @else
-                                {{$player->country}}
+                                {{ $player->country }}
                             @endif
-                            ({{$player->count}})
+                            ({{ $player->count }})
                         </li>
-                    @endforeach
+                    @endforeach 
                 </ul>
             </div>
 

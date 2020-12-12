@@ -2,12 +2,9 @@
 
 namespace Artifacts\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
-use Artifacts\Baseball\Teams\TeamsInterface;
-use Artifacts\Baseball\Player\PlayerInterface;
+use Artifacts\Baseball\Teams\TeamsInterface as Team;
 use Artifacts\Rules\IsTeam;
-use Log;
+use Illuminate\Http\Request;
 
 class TeamsController extends Controller
 {
@@ -19,7 +16,7 @@ class TeamsController extends Controller
      */
     private $team;
 
-    public function __construct(TeamsInterface $team)
+    public function __construct(Team $team)
     {
         $this->team = $team;
     }
@@ -32,14 +29,14 @@ class TeamsController extends Controller
     public function index(Request $request)
     {
         $filter = $request->query('filter');
-        if (!empty($filter) && $filter === 'all'):
+        if (! empty($filter) && $filter === 'all'):
             $teams = $this->team->getTeams(null, false);
         else:
             $filter = 'current';
             $teams = $this->team->getTeams(null, true);
         endif;
 
-        return view('teams')->with('teams', $teams)->with('filter', $filter);
+        return view('teams', ['teams' => $teams, 'filter' => $filter]);
     }
 
     /**
@@ -108,7 +105,7 @@ class TeamsController extends Controller
         $team['relocated_to']   = $request->relocated_to;
         $team['relocated_from'] = $request->relocated_from;
 
-        if (!empty($request->titles)):
+        if (! empty($request->titles)):
             $titles = explode(',', $request->titles);
             $team['titles'] = serialize($titles);
         endif;

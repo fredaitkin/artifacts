@@ -13,7 +13,7 @@ class PopulationService implements PopulationServiceInterface {
      */
     public function getUSStatistics()
     {
-        if (!Cache::has('us_population_statistics')):
+        if (! Cache::has('us_population_statistics')):
             // Get population of country
             $url = 'https://api.census.gov/data/2019/pep/natmonthly?get=POP,MONTHLY_DESC&for=us:*';
             $country = json_decode(file_get_contents($url));

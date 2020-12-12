@@ -3,17 +3,14 @@
 namespace Artifacts\Baseball\Player;
 
 use Artifacts\Baseball\Player\PlayerInterface;
-
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
-use Carbon\Carbon;
 
 class PlayerPostgres extends Model implements PlayerInterface
 {
 
     use Sortable;
-
-    protected $table = 'players';
 
     public $sortable = [
         'first_name',
@@ -47,6 +44,8 @@ class PlayerPostgres extends Model implements PlayerInterface
         'whip',
     ];
 
+    protected $table = 'players';
+
     protected $guarded = ['id'];
 
     /**
@@ -55,6 +54,84 @@ class PlayerPostgres extends Model implements PlayerInterface
      * @var int
      */
     protected $perPage = 15;
+
+    /**
+     * Get the state from abbreviations
+     *
+     * @return string
+     */
+    public function getStateDisplayAttribute()
+    {
+        $state = '';
+        if (! empty($this->state)):
+              $state = config('states')[$this->state];
+        endif;
+        return $state;
+    }
+
+    /**
+     * Get the position from abbreviations
+     *
+     * @return string
+     */
+    public function getPositionDisplayAttribute()
+    {
+        return config('positions')[$this->position];
+    }
+
+    /**
+     * Get the previous team/s display name/s from abbreviations
+     *
+     * @return string
+     */
+    public function getPreviousTeamsDisplayAttribute()
+    {
+        $teams = '';
+        if (! empty($this->previous_teams)):
+            $data = unserialize($this->previous_teams);
+            foreach ($data as $key => $value):
+                if (isset(config('teams.current')[$value])):
+                    $data[$key] = config('teams.current')[$value];
+                elseif (isset(config('teams.defunct')[$value])):
+                    $data[$key] = config('teams.defunct')[$value];
+                endif;
+            endforeach;
+            $teams = implode(', ', $data);
+        endif;
+        return $teams;
+    }
+
+    /**
+     * Get player age from birthdate
+     *
+     * @return string
+     */
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->birthdate)->age;
+    }
+
+    /**
+     * Get regular photo
+     *
+     * @return string
+     */
+    public function getRegularPhotoAttribute()
+    {
+        $photos = @unserialize($this->photo);
+        return $photos['regular'] ?? '';
+    }
+
+    /**
+     * Get small photo
+     *
+     * @return string
+     */
+    public function getSmallPhotoAttribute()
+    {
+        $photos = @unserialize($this->photo);
+        return $photos['small'] ?? '';
+    }
 
     /**
      * Get all players
@@ -186,160 +263,82 @@ class PlayerPostgres extends Model implements PlayerInterface
 
     public function draftRoundSortable($query, $direction)
     {
-        return $query->orderByRaw('draft_round '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('draft_round ' . $direction . ' NULLS LAST');
     }
 
     public function draftPositionSortable($query, $direction)
     {
-        return $query->orderByRaw('draft_position '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('draft_position ' . $direction . ' NULLS LAST');
     }
 
     public function debutYearSortable($query, $direction)
     {
-        return $query->orderByRaw('debut_year '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('debut_year ' . $direction . ' NULLS LAST');
     }
 
     public function positionSortable($query, $direction)
     {
-        return $query->orderByRaw('position '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('position ' . $direction . ' NULLS LAST');
     }
 
     public function averageSortable($query, $direction)
     {
-        return $query->orderByRaw('average '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('average ' . $direction . ' NULLS LAST');
     }
 
     public function atBatsSortable($query, $direction)
     {
-        return $query->orderByRaw('at_bats '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('at_bats ' . $direction . ' NULLS LAST');
     }
 
     public function homeRunsSortable($query, $direction)
     {
-        return $query->orderByRaw('home_runs '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('home_runs ' . $direction . ' NULLS LAST');
     }
 
     public function rbisSortable($query, $direction)
     {
-        return $query->orderByRaw('rbis '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('rbis ' . $direction . ' NULLS LAST');
     }
 
     public function eraSortable($query, $direction)
     {
-        return $query->orderByRaw('era '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('era ' . $direction . ' NULLS LAST');
     }
 
     public function gamesSortable($query, $direction)
     {
-        return $query->orderByRaw('games '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('games ' . $direction . ' NULLS LAST');
     }
 
     public function winsSortable($query, $direction)
     {
-        return $query->orderByRaw('wins '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('wins ' . $direction . ' NULLS LAST');
     }
 
     public function lossesSortable($query, $direction)
     {
-        return $query->orderByRaw('losses '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('losses ' . $direction . ' NULLS LAST');
     }
 
     public function savesSortable($query, $direction)
     {
-        return $query->orderByRaw('saves '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('saves ' . $direction . ' NULLS LAST');
     }
 
     public function strikeOutsSortable($query, $direction)
     {
-        return $query->orderByRaw('strike_outs '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('strike_outs ' . $direction . ' NULLS LAST');
     }
 
     public function inningsPitchedSortable($query, $direction)
     {
-        return $query->orderByRaw('innings_pitched '. $direction . ' NULLS LAST');
+        return $query->orderByRaw('innings_pitched ' . $direction . ' NULLS LAST');
     }
 
     public function whipSortable($query, $direction)
     {
-        return $query->orderByRaw('whip '. $direction . ' NULLS LAST');
-    }
-
-    /**
-     * Get the state from abbreviations
-     *
-     * @return string
-     */
-    public function getStateDisplayAttribute()
-    {
-        $state = '';
-        if (!empty($this->state)):
-              $state = config('states')[$this->state];
-        endif;
-        return $state;
-    }
-
-    /**
-     * Get the position from abbreviations
-     *
-     * @return string
-     */
-    public function getPositionDisplayAttribute()
-    {
-        return config('positions')[$this->position];
-    }
-
-    /**
-     * Get the previous team/s display name/s from abbreviations
-     *
-     * @return string
-     */
-    public function getPreviousTeamsDisplayAttribute()
-    {
-        $teams = '';
-        if (!empty($this->previous_teams)):
-            $data = unserialize($this->previous_teams);
-            foreach ($data as $key => $value):
-                if (isset(config('teams.current')[$value])):
-                    $data[$key] = config('teams.current')[$value];
-                elseif (isset(config('teams.defunct')[$value])):
-                    $data[$key] = config('teams.defunct')[$value];
-                endif;
-            endforeach;
-            $teams = implode(', ', $data);
-        endif;
-        return $teams;
-    }
-
-    /**
-     * Get player age from birthdate
-     *
-     * @return string
-     */
-    public function getAgeAttribute()
-    {
-        return Carbon::parse($this->birthdate)->age;
-    }
-
-    /**
-     * Get regular photo
-     *
-     * @return string
-     */
-    public function getRegularPhotoAttribute()
-    {
-        $photos = @unserialize($this->photo);
-        return $photos['regular'] ?? '';
-    }
-
-    /**
-     * Get small photo
-     *
-     * @return string
-     */
-    public function getSmallPhotoAttribute()
-    {
-        $photos = @unserialize($this->photo);
-        return $photos['small'] ?? '';
+        return $query->orderByRaw('whip ' . $direction . ' NULLS LAST');
     }
 
     public function getMostHomeRuns(array $where = null)

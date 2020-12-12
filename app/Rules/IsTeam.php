@@ -2,8 +2,8 @@
 
 namespace Artifacts\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use Artifacts\Baseball\Teams\TeamsMySQL as Teams;
+use Illuminate\Contracts\Validation\Rule;
 
 class IsTeam implements Rule
 {
@@ -22,7 +22,7 @@ class IsTeam implements Rule
      */
     public function __construct()
     {
-        $teams = new Teams();
+        $teams = new Teams;
         $this->team_abbreviations = array_column($teams->getTeams(['team']), 'team');
     }
 
@@ -35,10 +35,10 @@ class IsTeam implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (!empty($value)):
+        if (! empty($value)):
             $previous_teams = explode(', ', trim($value));
             foreach($previous_teams as $team):
-                if (!in_array($team, $this->team_abbreviations)):
+                if (! in_array($team, $this->team_abbreviations)):
                     return false;
                 endif;
             endforeach;

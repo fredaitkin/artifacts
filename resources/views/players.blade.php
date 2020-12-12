@@ -29,7 +29,7 @@
                                 <span class="glyphicon glyphicon-search">Search</span>
                             </button>
                         </span>
-                        @if(Auth::user()->id === 1)
+                        @if (Auth::user()->id === 1)
                             <a href="{{ url('/player') }}" class="btn btn-xs btn-info pull-right">Add</a>
                         @endif
                     </div>
@@ -38,7 +38,7 @@
 
             <div class="panel-body">
 
-                @if(count($players) > 0)
+                @if (count($players) > 0)
                     <table class="table table-striped artifacts-table">
 
                         <thead>
@@ -67,7 +67,7 @@
                             <th scope='col'>@sortablelink('innings_pitched', 'IPs')</th>
                             <th scope='col'>@sortablelink('strike_outs', 'SOs')</th>
                             <th scope='col'>@sortablelink('whip', 'WHIP')</th>
-                            @if(Auth::user()->id === 1)
+                            @if (Auth::user()->id === 1)
                                 <th>&nbsp;</th>
                             @endif
                         </tr>
@@ -149,7 +149,7 @@
                                     <td class="table-text">
                                         <div>@if (isset($player->whip)) {{ $player->whip }} @else -- @endif</div>
                                     </td>
-                                    @if(Auth::user()->id === 1)
+                                    @if (Auth::user()->id === 1)
                                         <td>
                                             {{ csrf_field() }}
                                             <a href="/player/{{ $player->id }}">edit</a>
@@ -167,12 +167,11 @@
         <div>
             @if (Route::has('login'))
                 <div class="col-sm-3 pt-3">
-                    @if(Auth::user()->id === 1)
+                    @if (Auth::user()->id === 1)
                         <a href="{{ url('/player') }}">Add</a>
                     @endif
                 </div>
             @endif
         </div>
-
 
 @endsection

@@ -37,28 +37,28 @@
                 @foreach ($teams as $team)
                     <tr>
                         <td class="table-text">
-                             @if(Auth::user()->id === 1)
-                                <a href="/team/{{$team->team}}">{{$team->name}}</a>
+                             @if (Auth::user()->id === 1)
+                                <a href="/team/{{ $team->team }}">{{ $team->name }}</a>
                             @else
-                                {{$team->name}}
+                                {{ $team->name }}
                             @endif
                         </td>
-                        <td class="table-text">{{$team->league}}</td>
-                        <td class="table-text">{{$team->division}}</td>
-                        <td class="table-text">{{$team->city}}</td>
-                        <td class="table-text">{{$team->state}}</td>
-                        <td class="table-text">{{$team->ground}}</td>
-                        <td class="table-text">{{$team->title_count}}</td>
-                        <td class="table-text">{{$team->founded}}</td>
-                        <td class="table-text">{{$team->closed}}</td>
+                        <td class="table-text">{{ $team->league }}</td>
+                        <td class="table-text">{{ $team->division }}</td>
+                        <td class="table-text">{{ $team->city }}</td>
+                        <td class="table-text">{{ $team->state }}</td>
+                        <td class="table-text">{{ $team->ground }}</td>
+                        <td class="table-text">{{ $team->title_count }}</td>
+                        <td class="table-text">{{ $team->founded }}</td>
+                        <td class="table-text">{{ $team->closed }}</td>
                         <td class="table-text">
-                            @if(isset($team->relocated_to_display))
-                                <a href="/team/{{$team->relocated_to_display[0]}}">{{$team->relocated_to_display[1]}}</a>
+                            @if (isset($team->relocated_to_display))
+                                <a href="/team/{{ $team->relocated_to_display[0] }}">{{ $team->relocated_to_display[1] }}</a>
                             @endif
                         </td>
                         <td class="table-text">
-                            @if(isset($team->relocated_from_display))
-                                <a href="/team/{{$team->relocated_from_display[0]}}">{{$team->relocated_from_display[1]}}</a>
+                            @if (isset($team->relocated_from_display))
+                                <a href="/team/{{ $team->relocated_from_display[0] }}">{{$team->relocated_from_display[1] }}</a>
                             @endif
                         </td>
                     </tr>

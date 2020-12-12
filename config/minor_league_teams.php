@@ -52,6 +52,6 @@ return [
         'Canada',
         'Dominican Republic',
         'Mexico',
-    ]
+    ],
 
 ];

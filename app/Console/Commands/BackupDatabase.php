@@ -2,9 +2,9 @@
 
 namespace Artifacts\Console\Commands;
 
-use Illuminate\Console\Command;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
+
 
 class BackupDatabase extends Command
 {

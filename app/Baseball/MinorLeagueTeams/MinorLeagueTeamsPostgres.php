@@ -3,7 +3,6 @@
 namespace Artifacts\Baseball\MinorLeagueTeams;
 
 use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
-
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 
@@ -17,10 +16,6 @@ class MinorLeagueTeamsPostgres extends Model implements MinorLeagueTeamsInterfac
 
     use Sortable;
 
-    protected $table = 'minor_league_teams';
-
-    protected $guarded = ['id'];
-
     public $sortable = [
         'team',
         'class',
@@ -31,6 +26,10 @@ class MinorLeagueTeamsPostgres extends Model implements MinorLeagueTeamsInterfac
         'founded',
     ];
 
+    protected $table = 'minor_league_teams';
+
+    protected $guarded = ['id'];
+
     /**
      * The number of records to return for pagination.
      *
@@ -40,7 +39,7 @@ class MinorLeagueTeamsPostgres extends Model implements MinorLeagueTeamsInterfac
 
     public function getTeams($fields = null)
     {
-        if (!$fields) {
+        if (! $fields) {
             return MinorLeagueTeamsPostgres::select('*')->sortable('team')->paginate();
         } else {
             return MinorLeagueTeamsPostgres::select($fields)->get();

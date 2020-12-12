@@ -2,13 +2,9 @@
 
 namespace Artifacts\Console\Commands;
 
-use Illuminate\Console\Command;
-use Intervention\Image\ImageManagerStatic as Image;
-use Storage;
-use Log;
-
-use Illuminate\Support\Facades\DB;
 use Artifacts\Baseball\Player\PlayerInterface;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class PerformDataFix extends Command
 {

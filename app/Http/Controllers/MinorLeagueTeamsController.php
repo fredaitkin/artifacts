@@ -2,12 +2,11 @@
 
 namespace Artifacts\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
-use Artifacts\Baseball\Teams\TeamsInterface;
-use Artifacts\Baseball\Player\PlayerInterface;
+use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface as MinorLeagueTeam;
+use Artifacts\Baseball\Player\PlayerInterface as Player;
+use Artifacts\Baseball\Teams\TeamsInterface as Team;
 use Artifacts\Rules\IsTeam;
-use Log;
+use Illuminate\Http\Request;
 
 class MinorLeagueTeamsController extends Controller
 {
@@ -33,7 +32,7 @@ class MinorLeagueTeamsController extends Controller
      */
     private $mlt;
 
-    public function __construct(MinorLeagueTeamsInterface $mlt, TeamsInterface $team, PlayerInterface $player)
+    public function __construct(MinorLeagueTeam $mlt, Team $team, Player $player)
     {
         $this->mlt = $mlt;
         $this->team = $team;
@@ -114,7 +113,7 @@ class MinorLeagueTeamsController extends Controller
         $team['division']   = $request->division;
         $team['founded']    = $request->founded;
 
-        if (!empty($request->previous_teams)):
+        if (! empty($request->previous_teams)):
             $previous_teams = explode(',', $request->previous_teams);
             $team['previous_teams'] = serialize($previous_teams);
         endif;

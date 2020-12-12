@@ -3,10 +3,8 @@
 namespace Artifacts\Baseball\Teams;
 
 use Artifacts\Baseball\Teams\TeamsInterface;
-
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
-use Log;
 
 /**
 * The MySQL implementation of the team table class
@@ -17,12 +15,6 @@ class TeamsMySQL extends Model implements TeamsInterface
 
     use Sortable;
 
-    protected $table = 'teams';
-
-    protected $primaryKey = 'team';
-
-    protected $guarded = [];
-
     public $incrementing = false;
 
     public $sortable = [
@@ -31,8 +23,14 @@ class TeamsMySQL extends Model implements TeamsInterface
         'league',
         'division',
         'founded',
-        'titles_count'
+        'titles_count',
     ];
+
+    protected $table = 'teams';
+
+    protected $primaryKey = 'team';
+
+    protected $guarded = [];
 
     /**
      * The number of records to return for pagination.
@@ -41,27 +39,9 @@ class TeamsMySQL extends Model implements TeamsInterface
      */
     protected $perPage = 10;
 
-    /**
-     * Get teams
-     * @param array $fields specific subset of team fields
-     * @return mixed
-     **/
-    public function getTeams($fields = null, $active = true)
+    public function relocatedFromTeam()
     {
-        if (!$fields):
-            $query = TeamsMySQL::select('*');
-            if ($active):
-                $query = $query->active();
-            endif;
-            return $query->sortable('name')->paginate();
-        else:
-            return TeamsMySQL::select($fields)->get()->toArray();
-        endif;
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->whereNull('closed');
+        return TeamsMySQL::belongsTo('Artifacts\Baseball\Teams\TeamsMySQL', 'relocated_from');
     }
 
     public function relocatedToTeam()
@@ -69,24 +49,24 @@ class TeamsMySQL extends Model implements TeamsInterface
         return TeamsMySQL::belongsTo('Artifacts\Baseball\Teams\TeamsMySQL', 'relocated_to');
     }
 
+    public function scopeActive($query)
+    {
+        return $query->whereNull('closed');
+    }
+
     public function getRelocatedToDisplayAttribute()
     {
         $relocated = null;
-        if (!empty($this->relocatedToTeam->name)):
+        if (! empty($this->relocatedToTeam->name)):
             $relocated = [$this->relocatedToTeam->team, $this->relocatedToTeam->name];
         endif;
         return $relocated;
     }
 
-    public function relocatedFromTeam()
-    {
-        return TeamsMySQL::belongsTo('Artifacts\Baseball\Teams\TeamsMySQL', 'relocated_from');
-    }
-
     public function getRelocatedFromDisplayAttribute()
     {
         $relocated = null;
-        if (!empty($this->relocatedFromTeam->name)):
+        if (! empty($this->relocatedFromTeam->name)):
             $relocated = [$this->relocatedFromTeam->team, $this->relocatedFromTeam->name];
         endif;
         return $relocated;
@@ -100,7 +80,7 @@ class TeamsMySQL extends Model implements TeamsInterface
     public function getTitleCountAttribute()
     {
         $count = 0;
-        if (!empty($this->titles)):
+        if (! empty($this->titles)):
             $count = count(unserialize($this->titles));
         endif;
         return $count;
@@ -109,6 +89,24 @@ class TeamsMySQL extends Model implements TeamsInterface
     public function titleCountSortable($query, $direction)
     {
         return $query->orderByRaw('CHAR_LENGTH(titles) ' . $direction);
+    }
+
+    /**
+     * Get teams
+     * @param array $fields specific subset of team fields
+     * @return mixed
+     **/
+    public function getTeams($fields = null, $active = true)
+    {
+        if (! $fields):
+            $query = TeamsMySQL::select('*');
+            if ($active):
+                $query = $query->active();
+            endif;
+            return $query->sortable('name')->paginate();
+        else:
+            return TeamsMySQL::select($fields)->get()->toArray();
+        endif;
     }
 
     /**
@@ -156,7 +154,7 @@ class TeamsMySQL extends Model implements TeamsInterface
         $winners = [];
         $teams = TeamsMySQL::select('name', 'titles')->get();
         foreach($teams as $team):
-            if (!empty($team->titles)):
+            if (! empty($team->titles)):
                 $titles = unserialize($team->titles);
                 foreach($titles as $year):
                     $winners[$year] = $team->name;

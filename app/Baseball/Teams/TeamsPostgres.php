@@ -13,10 +13,10 @@ use Artifacts\Baseball\MinorLeagueTeams\TeamsInterface;
 class TeamsPostgres extends Model implements TeamsInterface
 {
 
+    public $incrementing = false;
+
     protected $table = 'teams';
 
     protected $primaryKey = 'team';
-
-    public $incrementing = false;
 
 }

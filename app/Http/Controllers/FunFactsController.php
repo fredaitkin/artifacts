@@ -2,11 +2,9 @@
 
 namespace Artifacts\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface as MinorLeagueTeams;
-use Artifacts\Baseball\Teams\TeamsInterface as Teams;
 use Artifacts\Baseball\Player\PlayerInterface as Player;
-use Artifacts\Rules\IsTeam;
+use Artifacts\Baseball\Teams\TeamsInterface as Teams;
 
 class FunFactsController extends Controller
 {

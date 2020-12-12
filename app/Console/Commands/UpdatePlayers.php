@@ -2,13 +2,12 @@
 
 namespace Artifacts\Console\Commands;
 
+use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
+use Artifacts\Baseball\Player\PlayerInterface;
 use Illuminate\Console\Command;
 use Intervention\Image\ImageManagerStatic as Image;
-use Storage;
 use Log;
-
-use Artifacts\Baseball\Player\PlayerInterface;
-use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
+use Storage;
 
 class UpdatePlayers extends Command
 {
@@ -409,8 +408,8 @@ class UpdatePlayers extends Command
         if (strpos($team_str, 'html') === false):
             $team = array_search($team_str, config('teams'));
             // If it is not a major league team, add to minor league team data source
-            if (!$team && !empty($team_str)):
-                if (!in_array($team_str, $this->minor_league_teams)):
+            if (! $team && ! empty($team_str)):
+                if (! in_array($team_str, $this->minor_league_teams)):
                     $this->mlt->addTeam($team_str);
                     $this->minor_league_teams[] = $team_str;
                 endif;

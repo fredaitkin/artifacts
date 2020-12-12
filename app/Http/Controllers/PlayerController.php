@@ -2,20 +2,16 @@
 
 namespace Artifacts\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-
-use Artifacts\Baseball\Player\PlayerInterface;
 use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
+use Artifacts\Baseball\Player\PlayerInterface;
 use Artifacts\Baseball\Teams\TeamsInterface;
 use Artifacts\Rules\IsTeam;
-
-use Kyslik\ColumnSortable\Sortable;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic as Image;
 use Storage;
 
+// TODO  You should not mix restful and non-restful public methods in a controller
 class PlayerController extends Controller
 {
 
@@ -154,7 +150,7 @@ class PlayerController extends Controller
         $player['whip']             = $request->whip;
         $player['status']           = $request->status;
 
-        if (!empty($request->minor_league_teams)):
+        if (! empty($request->minor_league_teams)):
             $player['minor_league_teams'] = serialize(explode(',', $request->minor_league_teams));
         endif;
 
@@ -185,7 +181,7 @@ class PlayerController extends Controller
         endif;
 
         // Make any updates to previous teams
-        if (!empty($request->previous_teams)):
+        if (! empty($request->previous_teams)):
             $request->previous_teams = explode(', ', trim($request->previous_teams));
             $inserts = array_diff($request->previous_teams, $player->previous_teams_array);
             foreach($inserts as $team):
@@ -198,7 +194,7 @@ class PlayerController extends Controller
         endif;
 
         // Make any updates to minor league teams
-        if (!empty($request->minor_league_teams)):
+        if (! empty($request->minor_league_teams)):
             $request->minor_league_teams = explode(',', trim($request->minor_league_teams));
             $inserts = array_diff($request->minor_league_teams, $player->minor_league_teams_array);
             foreach($inserts as $id):

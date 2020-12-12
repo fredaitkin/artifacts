@@ -2,10 +2,10 @@
 
 namespace Artifacts\Http\Controllers;
 
+use Artifacts\Services\PopulationServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Khill\Lavacharts\Lavacharts;
-use Artifacts\Services\PopulationServiceInterface;
 
 class DemographicsController extends Controller
 {
@@ -28,6 +28,7 @@ class DemographicsController extends Controller
         // Players by State
         $popularity = $lava->DataTable();
 
+        // TODO You should not mix restful and non-restful public methods in a controller
         $request = Request::create('/api/player/state', 'GET');
         $response = Route::dispatch($request);
         $state_data = json_decode($response->getContent());
@@ -115,6 +116,7 @@ class DemographicsController extends Controller
 
         $lava->PieChart('Population', $population, ['title' => 'Players by Country', 'height' => 350, 'width' => 400]);
 
+        // TODO There should be no calls to compact() in controllers
         return view('demographics', compact('lava'));
     }
 

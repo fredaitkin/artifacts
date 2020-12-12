@@ -3,20 +3,14 @@
 namespace Artifacts\Baseball\Player;
 
 use Artifacts\Baseball\Player\PlayerInterface;
-
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
-use Carbon\Carbon;
-use Log;
 
 class PlayerMySQL extends Model implements PlayerInterface
 {
 
     use Sortable;
-
-    protected $table = 'players';
-
-    protected $primaryKey = 'id';
 
     public $sortable = [
         'first_name',
@@ -50,6 +44,10 @@ class PlayerMySQL extends Model implements PlayerInterface
         'whip',
     ];
 
+    protected $table = 'players';
+
+    protected $primaryKey = 'id';
+
     protected $guarded = ['id'];
 
     /**
@@ -59,92 +57,6 @@ class PlayerMySQL extends Model implements PlayerInterface
      */
     protected $perPage = 15;
 
-    /**
-     * Get all players
-     *
-     * @return array
-     */
-    public function getAllPlayers()
-    {
-        return PlayerMySQL::all();
-    }
-
-    /**
-     * Get tabulated players
-     *
-     * @return array
-     */
-    public function getTabulatedPlayers()
-    {
-        return PlayerMySQL::sortable()->paginate();
-    }
-
-    /**
-     * Get player by id
-     *
-     * @return array
-     */
-    public function getPlayerByID(int $id)
-    {
-        return PlayerMySQL::findOrFail($id);
-    }
-
-    /**
-     * Get players by ids
-     *
-     * @return array
-     */
-    public function getPlayersByIDs(array $ids)
-    {
-        return PlayerMySQL::whereIn('id', $ids)->get();
-    }
-
-    /**
-     * Get player by mlb link
-     *
-     * @return array
-     */
-    public function getPlayerByLink(string $link)
-    {
-        return PlayerMySQL::select('*')->where('mlb_link', $link)->get();
-    }
-
-    /**
-     * Create player
-     *
-     * @param array $fields
-     * @return object
-     */
-    public function create(array $fields = null)
-    {
-        if ($fields):
-            return PlayerMySQL::create($fields);
-        else:
-            return new PlayerMySQL;
-        endif;
-    }
-
-    /**
-     * Update or create player
-     *
-     * @param array $keys
-     * @param array $fields
-     * @return object
-     */
-    public function updateCreate(array $keys, array $fields)
-    {
-        return PlayerMySQL::updateOrCreate($keys, $fields);
-    }
-
-    /**
-     * Delete a player
-     *
-     * @param string $id
-     */
-    public function deleteByID(int $id)
-    {
-        PlayerMySQL::findOrFail($id)->delete();
-    }
 
     public function teams()
     {
@@ -158,29 +70,6 @@ class PlayerMySQL extends Model implements PlayerInterface
     }
 
     /**
-     * Search
-     *
-     * @param string $q
-     * @return array
-     */
-    public function search(string $q)
-    {
-        return PlayerMySQL::select('players.*')
-            ->where('team', 'LIKE', '%' . $q . '%')
-            ->orWhere('city', 'LIKE', '%' . $q . '%')
-            ->orWhere('first_name', 'LIKE', '%' . $q . '%')
-            ->orWhere('last_name', 'LIKE', '%' . $q . '%')
-            ->orWhere('state', 'LIKE', '%' . $q . '%')
-            ->orWhere('country', 'LIKE', '%' . $q . '%')
-            ->orWhere('draft_year', 'LIKE', '%' . $q . '%')
-            ->orWhere('draft_round', 'LIKE', '%' . $q . '%')
-            ->orWhere('debut_year', 'LIKE', '%' . $q . '%')
-            ->paginate()
-            ->appends(['q' => $q])
-            ->setPath('');
-    }
-
-    /**
      * Get formatted birth date.
      *
      * @return string
@@ -191,87 +80,6 @@ class PlayerMySQL extends Model implements PlayerInterface
     }
 
     /**
-    * Sort on first and last name
-    */
-    public function lastNameSortable($query, $direction)
-    {
-        return $query->orderBy('last_name', $direction)->orderBy('first_name', 'ASC');
-    }
-
-    /**
-    * Sort null draft years to the bottom
-    */
-    public function draftYearSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(draft_year), draft_year ' . $direction);
-    }
-
-    public function draftRoundSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(draft_round), draft_round+0 ' . $direction);
-    }
-
-    public function draftPositionSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(draft_position), draft_position ' . $direction);
-    }
-
-    public function debutYearSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(debut_year), debut_year ' . $direction);
-    }
-
-    public function positionSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(position), position ' . $direction);
-    }
-
-    public function averageSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(average), average ' . $direction);
-    }
-
-    public function atBatsSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(at_bats), at_bats ' . $direction);
-    }
-
-    public function homeRunsSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(home_runs), home_runs ' . $direction);
-    }
-
-    public function rbisSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(rbis), rbis ' . $direction);
-    }
-
-    public function eraSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(era), era ' . $direction);
-    }
-
-    public function gamesSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(games), games ' . $direction);
-    }
-
-    public function winsSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(wins), wins ' . $direction);
-    }
-
-    public function lossesSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(losses), losses ' . $direction);
-    }
-
-    public function savesSortable($query, $direction)
-    {
-        return $query->orderByRaw('ISNULL(saves), saves ' . $direction);
-    }
-
-    /**
      * Get the state from abbreviations
      *
      * @return string
@@ -279,7 +87,7 @@ class PlayerMySQL extends Model implements PlayerInterface
     public function getStateDisplayAttribute()
     {
         $state = '';
-        if (!empty($this->state)):
+        if (! empty($this->state)):
               $state = config('states')[$this->state];
         endif;
         return $state;
@@ -409,6 +217,87 @@ class PlayerMySQL extends Model implements PlayerInterface
         return $photos['small'] ?? '';
     }
 
+    /**
+    * Sort on first and last name
+    */
+    public function lastNameSortable($query, $direction)
+    {
+        return $query->orderBy('last_name', $direction)->orderBy('first_name', 'ASC');
+    }
+
+    /**
+    * Sort null draft years to the bottom
+    */
+    public function draftYearSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(draft_year), draft_year ' . $direction);
+    }
+
+    public function draftRoundSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(draft_round), draft_round+0 ' . $direction);
+    }
+
+    public function draftPositionSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(draft_position), draft_position ' . $direction);
+    }
+
+    public function debutYearSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(debut_year), debut_year ' . $direction);
+    }
+
+    public function positionSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(position), position ' . $direction);
+    }
+
+    public function averageSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(average), average ' . $direction);
+    }
+
+    public function atBatsSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(at_bats), at_bats ' . $direction);
+    }
+
+    public function homeRunsSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(home_runs), home_runs ' . $direction);
+    }
+
+    public function rbisSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(rbis), rbis ' . $direction);
+    }
+
+    public function eraSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(era), era ' . $direction);
+    }
+
+    public function gamesSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(games), games ' . $direction);
+    }
+
+    public function winsSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(wins), wins ' . $direction);
+    }
+
+    public function lossesSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(losses), losses ' . $direction);
+    }
+
+    public function savesSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(saves), saves ' . $direction);
+    }
+
     public function getMostHomeRuns(array $where = null)
     {
         $query = PlayerMySQL::select('id', 'first_name', 'last_name', 'team', 'home_runs')
@@ -421,6 +310,116 @@ class PlayerMySQL extends Model implements PlayerInterface
         endif;
 
         return $query->first();
+    }
+
+    /**
+     * Get all players
+     *
+     * @return array
+     */
+    public function getAllPlayers()
+    {
+        return PlayerMySQL::all();
+    }
+
+    /**
+     * Get tabulated players
+     *
+     * @return array
+     */
+    public function getTabulatedPlayers()
+    {
+        return PlayerMySQL::sortable()->paginate();
+    }
+
+    /**
+     * Get player by id
+     *
+     * @return array
+     */
+    public function getPlayerByID(int $id)
+    {
+        return PlayerMySQL::findOrFail($id);
+    }
+
+    /**
+     * Get players by ids
+     *
+     * @return array
+     */
+    public function getPlayersByIDs(array $ids)
+    {
+        return PlayerMySQL::whereIn('id', $ids)->get();
+    }
+
+    /**
+     * Get player by mlb link
+     *
+     * @return array
+     */
+    public function getPlayerByLink(string $link)
+    {
+        return PlayerMySQL::select('*')->where('mlb_link', $link)->get();
+    }
+
+    /**
+     * Create player
+     *
+     * @param array $fields
+     * @return object
+     */
+    public function create(array $fields = null)
+    {
+        if ($fields):
+            return PlayerMySQL::create($fields);
+        else:
+            return new PlayerMySQL;
+        endif;
+    }
+
+    /**
+     * Update or create player
+     *
+     * @param array $keys
+     * @param array $fields
+     * @return object
+     */
+    public function updateCreate(array $keys, array $fields)
+    {
+        return PlayerMySQL::updateOrCreate($keys, $fields);
+    }
+
+    /**
+     * Delete a player
+     *
+     * @param string $id
+     */
+    public function deleteByID(int $id)
+    {
+        PlayerMySQL::findOrFail($id)->delete();
+    }
+
+    /**
+     * Search
+     *
+     * @param string $q
+     * @return array
+     */
+    public function search(string $q)
+    {
+        return PlayerMySQL::select('players.*')
+            ->where('team', 'LIKE', '%' . $q . '%')
+            ->orWhere('city', 'LIKE', '%' . $q . '%')
+            ->orWhere('first_name', 'LIKE', '%' . $q . '%')
+            ->orWhere('last_name', 'LIKE', '%' . $q . '%')
+            ->orWhere('state', 'LIKE', '%' . $q . '%')
+            ->orWhere('country', 'LIKE', '%' . $q . '%')
+            ->orWhere('draft_year', 'LIKE', '%' . $q . '%')
+            ->orWhere('draft_round', 'LIKE', '%' . $q . '%')
+            ->orWhere('debut_year', 'LIKE', '%' . $q . '%')
+            ->paginate()
+            ->appends(['q' => $q])
+            ->setPath('');
     }
 
     public function getMostRBIs(array $where = null)

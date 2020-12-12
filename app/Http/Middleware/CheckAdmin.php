@@ -2,8 +2,8 @@
 
 namespace Artifacts\Http\Middleware;
 
-use Illuminate\Support\Facades\Auth;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class CheckAdmin
 {
@@ -17,7 +17,7 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (!$this->validateAccess($request)):
+        if (! $this->validateAccess($request)):
            abort(403);
         endif;
 
