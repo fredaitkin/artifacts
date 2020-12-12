@@ -39,16 +39,6 @@ class TeamsMySQL extends Model implements TeamsInterface
      */
     protected $perPage = 10;
 
-    public function relocatedFromTeam()
-    {
-        return TeamsMySQL::belongsTo('Artifacts\Baseball\Teams\TeamsMySQL', 'relocated_from');
-    }
-
-    public function relocatedToTeam()
-    {
-        return TeamsMySQL::belongsTo('Artifacts\Baseball\Teams\TeamsMySQL', 'relocated_to');
-    }
-
     public function scopeActive($query)
     {
         return $query->whereNull('closed');
@@ -84,6 +74,16 @@ class TeamsMySQL extends Model implements TeamsInterface
             $count = count(unserialize($this->titles));
         endif;
         return $count;
+    }
+
+    public function relocatedFromTeam()
+    {
+        return TeamsMySQL::belongsTo('Artifacts\Baseball\Teams\TeamsMySQL', 'relocated_from');
+    }
+
+    public function relocatedToTeam()
+    {
+        return TeamsMySQL::belongsTo('Artifacts\Baseball\Teams\TeamsMySQL', 'relocated_to');
     }
 
     public function titleCountSortable($query, $direction)

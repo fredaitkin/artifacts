@@ -57,18 +57,6 @@ class PlayerMySQL extends Model implements PlayerInterface
      */
     protected $perPage = 15;
 
-
-    public function teams()
-    {
-        // TODO refactor into one function?
-        return PlayerMySQL::belongsToMany('Artifacts\Baseball\Teams\TeamsMySQL', 'player_previous_teams', 'player_id', 'team');
-    }
-
-    public function minor_teams()
-    {
-        return PlayerMySQL::belongsToMany('Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsMySQL', 'player_minor_league_teams', 'player_id', 'mlt_id');
-    }
-
     /**
      * Get formatted birth date.
      *
@@ -215,6 +203,17 @@ class PlayerMySQL extends Model implements PlayerInterface
     {
         $photos = @unserialize($this->photo);
         return $photos['small'] ?? '';
+    }
+
+    public function teams()
+    {
+        // TODO refactor into one function?
+        return PlayerMySQL::belongsToMany('Artifacts\Baseball\Teams\TeamsMySQL', 'player_previous_teams', 'player_id', 'team');
+    }
+
+    public function minor_teams()
+    {
+        return PlayerMySQL::belongsToMany('Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsMySQL', 'player_minor_league_teams', 'player_id', 'mlt_id');
     }
 
     /**
