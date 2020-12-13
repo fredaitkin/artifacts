@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePlayerMinorLeagueTeamsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('player_minor_league_teams', function (Blueprint $table) {
@@ -20,11 +15,6 @@ class CreatePlayerMinorLeagueTeamsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('player_minor_league_teams');

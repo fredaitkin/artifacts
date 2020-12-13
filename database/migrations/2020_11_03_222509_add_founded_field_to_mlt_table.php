@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class AddFoundedFieldToMltTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('minor_league_teams', function (Blueprint $table) {
@@ -18,11 +13,6 @@ class AddFoundedFieldToMltTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('minor_league_teams', function (Blueprint $table) {

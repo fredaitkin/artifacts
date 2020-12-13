@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class AddMltToPlayers extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('players', function (Blueprint $table) {
@@ -18,11 +13,6 @@ class AddMltToPlayers extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('players', function (Blueprint $table) {

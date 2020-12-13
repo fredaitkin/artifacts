@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class AddForeignKeys extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('teams', function (Blueprint $table) {
@@ -19,11 +14,6 @@ class AddForeignKeys extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('teams', function (Blueprint $table) {
