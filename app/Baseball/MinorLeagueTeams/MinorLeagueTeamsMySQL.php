@@ -102,4 +102,14 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
     {
         return $query->orderByRaw('ISNULL(affiliate), affiliate ' . $direction);
     }
+
+    public function players()
+    {
+        return MinorLeagueTeamsMySQL::belongsToMany('Artifacts\Baseball\Player\PlayerMySQL', 'player_minor_league_teams', 'mlt_id', 'player_id');
+    }
+
+    public function getPlayerCountAttribute()
+    {
+        return count($this->players);
+    }
 }

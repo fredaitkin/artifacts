@@ -17,6 +17,7 @@
                             <th scope='col'>@sortablelink('state')</th>
                             <th scope='col'>@sortablelink('country')</th>
                             <th scope='col'>@sortablelink('founded')</th>
+                            <th scope='col'>@sortablelink('player_count', 'Players')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,7 @@
                                 <td class="table-text">{{ $ml_team->state }}</td>
                                 <td class="table-text">{{ $ml_team->country }}</td>
                                 <td class="table-text">{{ $ml_team->founded }}</td>
+                                <td class="table-text">{{ $ml_team->player_count }}</td>
                             </tr>
                         @endforeach
                     </tbody>
