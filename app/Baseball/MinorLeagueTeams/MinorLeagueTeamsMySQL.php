@@ -36,6 +36,11 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
      */
     protected $perPage = 10;
 
+    public function getPlayerCountAttribute()
+    {
+        return count($this->players);
+    }
+
     public function getTeams($fields = null, $order_by = null)
     {
         if (! $fields) {
@@ -103,13 +108,17 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
         return $query->orderByRaw('ISNULL(affiliate), affiliate ' . $direction);
     }
 
+    /**
+    * Sort null founded years to the bottom
+    */
+    public function foundedSortable($query, $direction)
+    {
+        return $query->orderByRaw('ISNULL(founded), founded ' . $direction);
+    }
+
     public function players()
     {
         return MinorLeagueTeamsMySQL::belongsToMany('Artifacts\Baseball\Player\PlayerMySQL', 'player_minor_league_teams', 'mlt_id', 'player_id');
     }
 
-    public function getPlayerCountAttribute()
-    {
-        return count($this->players);
-    }
 }
