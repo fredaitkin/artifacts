@@ -120,7 +120,7 @@ class DemographicsController extends Controller
         return view('demographics', compact('lava'));
     }
 
-    public function popCompare($a, $b)
+    private function popCompare($a, $b)
     {
         if ($a->comparative == $b->comparative):
             return 0;

@@ -2,16 +2,14 @@
 
 namespace Artifacts\Http\Controllers;
 
-use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
-use Artifacts\Baseball\Player\PlayerInterface;
-use Artifacts\Baseball\Teams\TeamsInterface;
+use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface as MinorLeagueTeam;
+use Artifacts\Baseball\Player\PlayerInterface as Player;
+use Artifacts\Baseball\Teams\TeamsInterface as Team;
 use Artifacts\Rules\IsTeam;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic as Image;
 use Storage;
 
-// TODO  You should not mix restful and non-restful public methods in a controller
 class PlayerController extends Controller
 {
 
@@ -39,7 +37,7 @@ class PlayerController extends Controller
      /**
      * Constructor
      */
-    public function __construct(PlayerInterface $player, TeamsInterface $team, MinorLeagueTeamsInterface $mlt)
+    public function __construct(Player $player, Team $team, MinorLeagueTeam $mlt)
     {
         $this->player = $player;
         $this->team = $team;
@@ -238,6 +236,7 @@ class PlayerController extends Controller
         endif;
     }
 
+    // TODO tlint considers this restful
     /**
      * Search for player/s.
      *
@@ -268,49 +267,6 @@ class PlayerController extends Controller
     {
         $this->player->deleteByID($id);
         return redirect('/players');
-    }
-
-    public function getStateCount()
-    {
-        return DB::table('players')
-            ->select('state', DB::raw('count(*) as total'))
-            ->whereNotNull('state')
-            ->where('country', '=', 'US')
-            ->groupBy('state')
-            ->orderBy('total', 'DESC')
-            ->get();
-    }
-
-    public function getCountryCount()
-    {
-        return DB::table('players')
-            ->select('country', DB::raw('count(*) as total'))
-            ->groupBy('country')
-            ->orderBy('total', 'DESC')
-            ->get();
-    }
-
-    public function getPlayerCount()
-    {
-        return DB::table('players')
-            ->select(DB::raw('count(*) as total'))
-            ->get();
-    }
-
-    public function getUSPlayerCount()
-    {
-        return DB::table('players')
-            ->select(DB::raw('count(*) as total'))
-            ->where('country', '=', 'US')
-            ->get();
-    }
-
-    public function getNonUSPlayerCount()
-    {
-        return DB::table('players')
-            ->select(DB::raw('count(*) as total'))
-            ->where('country', '<>', 'US')
-            ->get();
     }
 
 }

@@ -60,7 +60,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('minor-league-team', 'MinorLeagueTeamsController@store')->name('minor-league-team.store');
 
     // TODO use a parameterized get
-    Route::get('minor-league-teams/ajax', 'MinorLeagueTeamsController@minor_league_teams')->name('minor-league-teams.ajax');
+    Route::get('minor-league-teams/ajax', 'MinorLeagueTeamsAPIController@minor_league_teams')->name('minor-league-teams.ajax');
 
 });
 

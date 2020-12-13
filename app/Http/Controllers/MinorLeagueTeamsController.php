@@ -123,14 +123,4 @@ class MinorLeagueTeamsController extends Controller
         return redirect('/minor-league-teams');
     }
 
-    /**
-     * Retrieve minor league teams
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function minor_league_teams(Request $request)
-    {
-        return $this->mlt->getTeams(['id', 'team as value']);
-    }
 }
