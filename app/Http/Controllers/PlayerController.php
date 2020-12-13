@@ -49,9 +49,13 @@ class PlayerController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('players', ['players' => $this->player->getTabulatedPlayers()]);
+        if (empty($request->q)):
+            return view('players', ['players' => $this->player->getTabulatedPlayers()]);
+        else:
+            return $this->search($request->q);
+        endif;
     }
 
     /**
@@ -236,16 +240,14 @@ class PlayerController extends Controller
         endif;
     }
 
-    // TODO tlint considers this restful
     /**
      * Search for player/s.
      *
      * @param  string  $q
      * @return Response
      */
-    public function search(Request $request)
+    private function search(string $q)
     {
-        $q = $request->q;
         $players = [];
         if ($q != ""):
           $players = $this->player->search($q);

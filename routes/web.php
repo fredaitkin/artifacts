@@ -23,8 +23,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('players', 'PlayerController@index')->name('players');
 
-    Route::any('players/search', 'PlayerController@search')->name('player.search');
-
     Route::get('demographics', 'DemographicsController@index')->name('demographics');
 
     Route::get('statistics', 'StatisticsController@index')->name('statistics');

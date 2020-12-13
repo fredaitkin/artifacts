@@ -20,7 +20,7 @@
 
         <div class="panel panel-default">
             <div class="panel-body">
-                <form action="/players/search" method="POST" role="search">
+                <form action="/players" role="search">
                     {{ csrf_field() }}
                     <div class="input-group col-sm-6">
                         <input type="text" class="form-control" name="q"
