@@ -23,6 +23,7 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
         'state',
         'country',
         'founded',
+        'player_count',
     ];
 
     protected $table = 'minor_league_teams';
@@ -114,6 +115,19 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
     public function foundedSortable($query, $direction)
     {
         return $query->orderByRaw('ISNULL(founded), founded ' . $direction);
+    }
+
+    /**
+    * Sort null founded years to the bottom
+    */
+    public function playerCountSortable($query, $direction)
+    {
+        // TODO use relationship?
+        return $query->join('player_minor_league_teams', 'minor_league_teams.id', '=', 'player_minor_league_teams.mlt_id')
+            ->groupBy('mlt_id')
+            ->orderBy('player_count', $direction)
+            ->select('minor_league_teams.*')
+            ->selectRaw('COUNT(player_minor_league_teams.player_id) AS player_count');
     }
 
     public function players()
