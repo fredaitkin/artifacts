@@ -46,10 +46,10 @@
                             <th scope='col'>@sortablelink('last_name', 'Name')</th>
                             <th scope='col'>@sortablelink('team')</th>
                             <th scope='col'>@sortablelink('birthdate', 'Age')</th>
-                            <th scope='col'>@sortablelink('draftRound', 'Round')</th>
+                            <th scope='col'>@sortablelink('draftRound', 'Rnd')</th>
                             <th scope='col'>@sortablelink('draftPosition', 'Pick')</th>
                             <th scope='col'>@sortablelink('debutYear', 'Debut')</th>
-                            <th scope='col'>@sortablelink('position', 'Position')</th>
+                            <th scope='col'>@sortablelink('position', 'Pos')</th>
                             <th scope='col'>@sortablelink('average', 'AVG')</th>
                             <th scope='col'>@sortablelink('atBats', 'ABs')</th>
                             <th scope='col'>@sortablelink('hits')</th>

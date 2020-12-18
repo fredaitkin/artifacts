@@ -24,6 +24,7 @@ return [
         'Gulf Coast',
         'International',
         'Mexican',
+        'Mid-Atlantic',
         'Midwest',
         'New York - Penn',
         'Northwest',
