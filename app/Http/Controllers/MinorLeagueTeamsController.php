@@ -44,9 +44,13 @@ class MinorLeagueTeamsController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('minor_league_teams', ['ml_teams' => $this->mlt->getTeams()]);
+        if (empty($request->q)):
+            return view('minor_league_teams', ['ml_teams' => $this->mlt->getTeams()]);
+        else:
+            return $this->search($request->q);
+        endif;
     }
 
     /**
@@ -124,6 +128,25 @@ class MinorLeagueTeamsController extends Controller
         $this->mlt->updateCreate(['id' => $request->id ?? null], $team);
 
         return redirect('/minor-league-teams');
+    }
+
+    /**
+     * Search for team/s.
+     *
+     * @param  string  $q
+     * @return Response
+     */
+    private function search(string $q)
+    {
+        $teams = [];
+        if ($q != ""):
+          $teams = $this->mlt->search($q);
+        endif;
+        if (count($teams) > 0):
+            return view('minor_league_teams', ['ml_teams' => $teams, 'q' => $q]);
+        else:
+            return view('minor_league_teams', ['ml_teams' => $teams, 'q' => $q])->withMessage('No teams found. Try to search again!');
+        endif;
     }
 
 }

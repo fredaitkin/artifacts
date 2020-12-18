@@ -135,4 +135,20 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
         return MinorLeagueTeamsMySQL::belongsToMany('Artifacts\Baseball\Player\PlayerMySQL', 'player_minor_league_teams', 'mlt_id', 'player_id');
     }
 
+    /**
+     * Search
+     *
+     * @param string $q
+     * @return array
+     */
+    public function search(string $q)
+    {
+        return MinorLeagueTeamsMySQL::select('minor_league_teams.*')
+            ->where('team', 'LIKE', '%' . $q . '%')
+            ->orWhere('city', 'LIKE', '%' . $q . '%')
+            ->orWhere('other_names', 'LIKE', '%' . $q . '%')
+            ->paginate()
+            ->appends(['q' => $q])
+            ->setPath('');
+    }
 }
