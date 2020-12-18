@@ -91,8 +91,22 @@
 
             <div class="form-group row">
                 <div class="col-sm-4">
+                    <label for="defunct" class="control-label">Defunct</label>
+                    <input type="text" name="defunct" class="form-control" value="@if (old('defunct')){{ old('defunct') }}@elseif (!empty($team->defunct)){{ $team->defunct }}@endif">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-4">
                     <label for="previous_teams" class="control-label">Previous Affiliations</label>
                     <input type="text" name="previous_teams" class="form-control" value="@if (old('previous_teams')){{ old('previous_teams') }}@elseif (!empty($team->previous_teams)){{  implode(',', unserialize($team->previous_teams))  }}@endif">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="other_names" class="control-label">Other Names</label>
+                    <input type="text" name="other_names" class="form-control" value="@if (old('other_names')){{ old('other_names') }}@elseif (!empty($team->other_names)){{ $team->other_names }}@endif">
                 </div>
             </div>
 

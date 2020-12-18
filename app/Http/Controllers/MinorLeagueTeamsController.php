@@ -97,21 +97,24 @@ class MinorLeagueTeamsController extends Controller
 
         $validator = $request->validate([
             'founded' => 'nullable|integer',
+            'defunct' => 'nullable|integer',
             'previous_teams'    => new IsTeam,
         ]);
 
         $team = [];
         if (isset($request->team)):
-            $team['team']   = $request->team;
+            $team['team'] = $request->team;
         endif;
-        $team['city']       = $request->city;
-        $team['state']      = $request->state;
-        $team['country']    = $request->country;
-        $team['affiliate']  = $request->affiliate;
-        $team['class']      = $request->class;
-        $team['league']     = $request->league;
-        $team['division']   = $request->division;
-        $team['founded']    = $request->founded;
+        $team['city']           = $request->city;
+        $team['state']          = $request->state;
+        $team['country']        = $request->country;
+        $team['affiliate']      = $request->affiliate;
+        $team['class']          = $request->class;
+        $team['league']         = $request->league;
+        $team['division']       = $request->division;
+        $team['founded']        = $request->founded;
+        $team['defunct']        = $request->defunct;
+        $team['other_names']    = $request->other_names;
 
         if (! empty($request->previous_teams)):
             $previous_teams = explode(',', $request->previous_teams);
