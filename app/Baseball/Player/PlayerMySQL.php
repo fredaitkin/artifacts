@@ -328,7 +328,7 @@ class PlayerMySQL extends Model implements PlayerInterface
      */
     public function getTabulatedPlayers()
     {
-        return PlayerMySQL::where('id', '>', 35)->sortable()->paginate();
+        return PlayerMySQL::sortable()->paginate();
     }
 
     /**

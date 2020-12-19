@@ -38,6 +38,7 @@ return [
     'divisions' => [
         'Boca Chica North',
         'Boca Chica Northwest',
+        'Central',
         'East',
         'Eastern',
         'North',

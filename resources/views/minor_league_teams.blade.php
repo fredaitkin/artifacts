@@ -16,7 +16,7 @@
                     </button>
                 </span>
                 @if (Auth::user()->id === 1)
-                    <a href="{{ url('/player') }}" class="btn btn-xs btn-info pull-right">Add</a>
+                    <a href="{{ url('/minor-league-team') }}" class="btn btn-xs btn-info pull-right">Add</a>
                 @endif
             </div>
         </form>
