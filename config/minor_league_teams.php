@@ -45,6 +45,7 @@ return [
         'Northern',
         'Northwest',
         'Pinckney',
+        'San Pedro de Macorís',
         'South',
         'Southern',
         'Stedler',
