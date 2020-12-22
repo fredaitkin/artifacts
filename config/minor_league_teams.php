@@ -36,8 +36,10 @@ return [
     ],
 
     'divisions' => [
+        'Boca Chica Baseball City',
         'Boca Chica North',
         'Boca Chica Northwest',
+        'Boca Chica South',
         'Central',
         'East',
         'Eastern',
