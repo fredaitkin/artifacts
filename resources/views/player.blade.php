@@ -329,6 +329,19 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+                <div class="col">
+                    <label for="minor_league_teams" class="col-sm-12 control-label">Other Teams</label>
+                    <div class="col-sm-12">
+                        <textarea type="text" name="other_teams_display" id="other_teams_display" class="form-control" rows="2">@if (old('other_teams_search')){{ old('other_teams_display') }}@elseif(!empty($player->other_teams_display)){{ $player->other_teams_display }}@endif</textarea>
+                    </div>
+                    <div class="col"><div class="col-sm-8"><a id='other-link' href="#">show ids</a></div></div>
+                    <div id="other_ids" class="col-sm-4">
+                        <input type="text" name="other_teams" id="other_teams" class="form-control" value=@if (old('other_teams')) {{ old('other_teams') }} @elseif (!empty($player->other_teams)) {{ $player->other_teams }} @endif>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-lg-6">
                 @if (!empty($player->id))
                     <div class="col-sm-offset-3 col-sm-6">

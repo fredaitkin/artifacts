@@ -142,7 +142,6 @@ class PlayerMySQL extends Model implements PlayerInterface
             $teams .= $t->id . ',';
         endforeach;
         return rtrim(trim($teams), ',');
-        return $teams;
     }
 
    /**
@@ -157,7 +156,6 @@ class PlayerMySQL extends Model implements PlayerInterface
             $teams .= $t->team . ', ';
         endforeach;
         return rtrim(trim($teams), ',');
-        return $teams;
     }
 
     /**
@@ -173,6 +171,48 @@ class PlayerMySQL extends Model implements PlayerInterface
         return $teams;
     }
 
+   /**
+     * Get the other teams
+     *
+     * @return string
+     */
+    public function getOtherTeamsAttribute()
+    {
+        $teams = '';
+        foreach($this->non_mlb_affiliated_teams as $t):
+            $teams .= $t->id . ',';
+        endforeach;
+        $teams = rtrim(trim($teams), ',');
+        return $teams;
+    }
+
+   /**
+     * Get the other team names
+     *
+     * @return string
+     */
+    public function getOtherTeamsDisplayAttribute()
+    {
+        $teams = '';
+        foreach($this->non_mlb_affiliated_teams as $t):
+            $teams .= $t->name . ', ';
+        endforeach;
+        $teams = rtrim(trim($teams), ',');
+        return $teams;
+    }
+
+    /**
+     * Get the other teams as an array from pivot table
+     * @return array
+     */
+    public function getOtherTeamsArrayAttribute()
+    {
+        $teams = [];
+        foreach($this->non_mlb_affiliated_teams as $t):
+            $teams[] = $t->id;
+        endforeach;
+        return $teams;
+    }
     /**
      * Get player age from birthdate
      *
@@ -214,6 +254,11 @@ class PlayerMySQL extends Model implements PlayerInterface
     public function minor_teams()
     {
         return PlayerMySQL::belongsToMany('Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsMySQL', 'player_minor_league_teams', 'player_id', 'mlt_id');
+    }
+
+    public function non_mlb_affiliated_teams()
+    { 
+        return PlayerMySQL::belongsToMany('Artifacts\Baseball\OtherTeams\OtherTeamsMySQL', 'player_other_teams', 'player_id', 'other_teams_id');
     }
 
     /**
