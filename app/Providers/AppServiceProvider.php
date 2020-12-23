@@ -59,5 +59,11 @@ class AppServiceProvider extends ServiceProvider
                 'Artifacts\Baseball\Teams\TeamsPostgres'
             );
         endif;
+
+        // Other teams service - no Postgres instance at this stage
+        $this->app->bind(
+            'Artifacts\Baseball\OtherTeams\OtherTeamsInterface',
+            'Artifacts\Baseball\OtherTeams\OtherTeamsMySQl'
+        );
     }
 }

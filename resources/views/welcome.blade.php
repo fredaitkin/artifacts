@@ -80,6 +80,7 @@
                         <a href="{{ url('/statistics') }}">Statistics</a>
                         <a href="{{ url('/minor-league-teams') }}">Minor League Teams</a>
                         <a href="{{ url('/funfacts') }}">Fun Facts</a>
+                        <a href="{{ url('/other-teams') }}">Other Teams</a>
 
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();

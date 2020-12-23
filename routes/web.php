@@ -57,6 +57,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::post('minor-league-team', 'MinorLeagueTeamsController@store')->name('minor-league-team.store');
 
+    Route::get('other-teams', 'OtherTeamsController@index')->name('other-teams');
+
+    Route::get('other-team/{id}', 'OtherTeamsController@edit')->name('other-team');
+
+    Route::get('other-team', 'OtherTeamsController@create')->name('other-team.add');
+
+    Route::post('other-team', 'OtherTeamsController@store')->name('other-team.store');
     // TODO use a parameterized get
     Route::get('minor-league-teams/ajax', 'MinorLeagueTeamsAPIController@minor_league_teams')->name('minor-league-teams.ajax');
 
