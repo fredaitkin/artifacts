@@ -110,7 +110,6 @@ class PerformDataFix extends Command
     {
         $lines = '';
         $players = $this->player->getAllPlayers();
-        // $players = $this->player->getPlayersByIDs([1,2,3,4,5,6,7,8,9]);
         foreach ($players as $player):
             if ($player->mlb_link):
                 $player_html = @file_get_contents('https://www.mlb.com' . $player->mlb_link);
@@ -121,13 +120,22 @@ class PerformDataFix extends Command
                 $xp = new \DOMXpath($DOM);
                 $rows = $xp->query("//table[@class='transactions-table collapsed']//tr");
 
+                // TODO create player id / unique injury array 
                 foreach($rows as $row):
                     $cols = $xp->query( 'td', $row);
                     foreach($cols as $col):
                         if (strpos($col->textContent, 'injured') !== false || strpos($col->textContent, 'disabled') !== false):
+                            if (strpos($col->textContent, 'St. Louis Cardinals') !== false):
+                                $idx = 2;
+                            else:
+                                $idx = 1;
+                            endif;
                             $text = explode('.', $col->textContent);
-                            if (isset($text[1]) && !empty(trim($text[1])) && strlen($text[1]) > 10):
-                                $lines .= $text[1] . "\n";
+                            if (isset($text[$idx])):
+                                $text = trim($text[$idx]);
+                                if (!empty($text) && strlen($text) > 10):
+                                    $lines .= ucfirst($text) . "\n";
+                                endif;
                             endif;
                         endif;
                     endforeach;
@@ -135,6 +143,6 @@ class PerformDataFix extends Command
             endif;
 
         endforeach;
-        Storage::put('injuries.txt', $lines);
+        Storage::put('public/injuries.txt', $lines);
     }
 }
