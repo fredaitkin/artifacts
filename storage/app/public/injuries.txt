@@ -1,106 +1,121 @@
+Player:Mookie Betts
 Left abdominal strain
 Concussion symptoms
-Right rib cage strain
+Player:Andrew Benintendi
 Right rib cage strain
 Sprained left knee
-Left hamstring strain
+Player:Rafael Devers
 Left hamstring strain
 Left shoulder inflammation
+Player:Francisco Lindor
 Left ankle sprain and right calf strain
+Player:Carlos Santana
 Concussion-like symptoms
 Left knee sprain
+Player:Jason Kipnis
 Mild calf strain
 Right hamstring strain
 Strained right hamstring
 Right shoulder inflammation
 Right Shoulder Inflammation
 Strained right oblique
-Right hamstring strain
+Player:Kyle Schwarber
 Torn Ligaments in Left Knee & Severe Left Ankle Sprain
-Torn Ligaments in Left Knee & Severe Left Ankle Sprain
+Player:Anthony Rizzo
 Back injury
+Player:Kris Bryant
 Left ring finger sprain
 Left shoulder inflammation
-Left shoulder inflammation
+Player:Javier Baez
 Left thumb contusion
 Broken bone in left hand
+Player:Daniel Robertson
 Right knee inflammation
-Left thumb sprain
 Left thumb sprain
 Left hamstring strain
 Broken hamate bone
+Player:Yandy Diaz
 Right hamstring strain
-Left foot contusion
 Left foot contusion
 Right hamstring tightness
 Left hand contusion
 Right quad strain
 Wrist injury
+Player:Austin Meadows
 Left oblique strain
 Right thumb sprain
 Oblique strain
 Strained right hamstring
 Right hamstring strain
+Player:Avisail Garcia
 Right oblique strain
-Strained right hamstring
 Strained right hamstring
 Sprained right thumb
 Sprained right knee
 Torn labrum in his left shoulder
-Torn labrum in his left shoulder
+Player:Matt Carpenter
 Right foot contusion
 Lower back strain
 Right oblique strain
-Right oblique strain
+Player:Paul DeJong
 Fractured left hand
+Player:Paul Goldschmidt
 Fractured left hand
+Player:Marcell Ozuna
 Right middle finger fracture
 Right shoulder inflammation
 July 2013 left thumb surgery
 Left thumb ligament tear
+Player:Christian Vazquez
 Right fifth finger fracture
 Recovering from April 2015 Tommy John surgery
 Right elbow sprain
+Player:Xander Bogaerts
 Small crack in talus bone in left ankle
+Player:Michael Chavis
 Left AC joint sprain
-Left knee contusion
+Player:Eduardo Nunez
 Left knee contusion
 Mid-back strain
 Hamstring strain
 Left oblique strain
 Right hamstring strain
 Sore left ribcage
-Sore left ribcage
+Player:Sam Travis
 Left intercostal strain
+Player:Jackie Bradley
 From the 10-day injured list
 On the 10-day disabled list
 From the 10-day disabled list
 On the 10-day disabled list retroactive to April 9, 2017
 On the 7-day disabled list retroactive to July 31, 2013
 On the 7-day disabled list
+Player:Marco Hernandez
 Left shoulder
 Left shoulder surgery
 Left shoulder subluxation
-Left shoulder subluxation
+Player:Tommy Pham
 Fractured left hamate bone
 Right foot fracture
 Left oblique strain
 Strained left quadriceps
-Strained left quadriceps
+Player:Brandon Lowe
 Right shin bone bruise
-Right shin bone bruise
-Right forearm tendinitis
+Player:Christian Arroyo
 Right forearm tendinitis
 Fractured hand
+Player:Carlos Gonzalez
 Right hamstring strain
 Right shoulder strain
 Left knee tendinitis
 Left index finger inflammation
 Sprained joint of the right middle finger
 Strained right wrist
+Player:Willson Contreras
 Riight hamstring strain
 Right foot strain
 Right hamstring strain
+Player:Jason Heyward
 Right hamstring tightness
 Concussion protocol
 Left hand abrasion
@@ -109,9 +124,10 @@ Fractured right jaw
 Appendectomy
 Sore right shoulder
 Bone bruise in left thumb
+Player:Kyle Hendricks
 Right shoulder inflammation
 Right hand tendinitis
-Left foot fracture
+Player:Dexter Fowler
 Left foot fracture
 Left wrist strain
 Right heel spur
@@ -119,55 +135,55 @@ Right hamstring discomfort
 Right intercostal strain
 Right hand bone bruise
 Bruised right knee
+Player:Kolten Wong
 Left hamstring strain
 Left knee inflammation
 Right tricep strain
 Left elbow strain
 Sore left shoulder
+Player:Harrison Bader
 Right hamstring strain
+Player:Adam Wainwright
 Left hamstring strain
 Right elbow inflammation
-Right elbow inflammation
-Right elbow inflammation
-Left hamstring strain,
 Left hamstring strain,
 Right elbow impingement
 Mid-back tightness
 April 2015 left Achilles tendon surgery
 Left achilles and left ankle injury
 Recovering from February 2011 Tommy John surgery
+Player:Mike Freeman
 Knee injury
-Knee injury
+Player:Jordan Luplow
 Right hamstring strain
+Player:Jose Ramirez
 Right fractured hamate
 Hip flexor injury
+Player:Roberto Perez
 Right shoulder strain
-Right thumb injury
 Right thumb injury
 Left hamstring strain
 Left wrist injury
 Strained oblique
+Player:Tyler Naquin
 Hairline fracture of right big toe
-Right knee ACL tear
 Right knee ACL tear
 Left calf strain
 Right hip strain
-Right hip strain
 Left hamstring strain
 Lower back tightness
-Right hip strain
+Player:Leonys Martin
 Non-baseball related issue
-Non-baseball related issue
-Left hamstring strain
 Left hamstring strain
 Strained Left Hamstring
 Lower back injury
+Player:Kevin Plawecki
 Left hand fracture
+Player:DJ LeMahieu
 Left thumb sprain
 Left oblique strain
-Left thumb sprain
 Right hamstring strain
-Right flexor strain
+Player:Aaron Hicks
 Right flexor strain
 Left lower back strain
 Right intercostal muscle strain
@@ -179,32 +195,37 @@ Strained right forearm
 Concussion-like symptoms
 Left hamstring strain
 Right wrist injury
+Player:Luke Voit
 Sports hernia
 Abdominal strain
-Right elbow UCL surgery recovery
+Player:Didi Gregorius
 Right elbow UCL surgery recovery
 Left heel contusion
 Strained right shoulder
 Mild concussion
 Right elbow strain
+Player:Gary Sanchez
 Left groin strain
 Left calf strain
 Right groin strain
-Right groin strain
 Strained right biceps
 Hand injury
+Player:Gleyber Torres
 Left hamstring strain
 Right hip strain
-Right hip strain
+Player:Clint Frazier
 Left ankle sprain
 Left oblique strain
+Player:Brett Gardner
 Left knee inflammation
 Right elbow soreness
+Player:Gio Urshela
 Right elbow bone spur
 Left groin injury
 Right hamstring strain
 Lower back strain
 Back injury
+Player:Cameron Maybin
 Right quad strain
 Left calf strain
 Right MCL sprain
@@ -215,85 +236,99 @@ Ruptured left biceps tendon
 Left knee sprain
 Right wrist impingement
 Right knee inflammation
+Player:Cesar Hernandez
 Strained left oblique
 Dislocated left thumb
+Player:Bryce Harper
 Hyperextended left knee
 Left thumb sprain
 Left knee bursitis
+Player:Jean Segura
 Left hamstring strain
 Right high ankle sprain
 Strained right hamstring
 Fractured right pinkie finger
-Left hamstring strain
 Strained left hamstring
+Player:Rhys Hoskins
 Left elbow strain
 Fractured jaw
+Player:Jay Bruce
 Left quad strain
 Left Flexor Strain
 Right oblique strain
 Sore right hip
 Recovering from left knee surgery
 Broken right wrist
+Player:Vince Velasquez
 Right forearm strain
 Right forearm contusion
 Right middle finger
 Right middle finger injury
-Right middle finger injury
 Right flexor strain
 Right biceps strain
+Player:Phil Gosselin
 Avulsion fracture in his left thumb
+Player:Scott Kingery
 Back spasms
 Right hamstring strain
+Player:Lorenzo Cain
 Left groin strain
 Left hamstring strain
 Left Groin Strain
 Strained left oblique
 Strained left groin
+Player:Christian Yelich
 Right oblique
 Right knee contusion
 Lower back strain
-Lower back strain
+Player:Ryan Braun
 Infected right index finger
 Back strain
 Middle back tightness
 Left calf strain
-Left calf strain
 Right oblique strain
 Inflamed nerve in his right hand
+Player:Yasmani Grandal
 Right forearm soreness
 Right knee sprain
 Strained right oblique
+Player:Mike Moustakas
 Left quad bruise
 Torn right ACL
-Torn right ACL
 Left thumb fracture
+Player:Zach Davies
 Back spasms
 Right rotator cuff inflammation
 Right shoulder tendonitis
+Player:Eric Thames
 Right hamstring tightness
 Torn UCL in left thumb
+Player:Matt Albers
 Strained left hamstring
 Right shoulder injury
 Broken little finger on right hand
 Right shoulder tendinitis
-Right shoulder tendinitis
 Sore right lat
+Player:Alex Claudio
 Left ankle sprain
 Left groin strain
+Player:Travis Shaw
 Right wrist strain
+Player:Corbin Burnes
 Left oblique strain
+Player:Joe Panik
 Left groin strain
 Left thumb sprain
 Concussion-like symptoms
-Concussion-like symptoms
 Lower back inflammation
+Player:Brandon Belt
 Right achilles tendonitis
 Hyperextended right knee
 Appendicitis
 Broken left thumb
+Player:Pablo Sandoval
 Right elbow sprain
 Right elbow inflammation
-Right hamstring strain
 Right hamstring strain
 Left inner ear infection
 Right knee sprain
@@ -303,32 +338,38 @@ Left foot strain
 Strained Left Hamstring
 Broken left hand
 Broken hamate bone in his right hand
+Player:Buster Posey
 Right hamstring strain
 Right hip impingement
-Right hip impingement
 Fractured bone in lower left leg
+Player:Evan Longoria
 Right oblique strain
 Left foot plantar fasciitis
 Left hand fracture
 Partially torn left hamstring
 Strained left oblique
+Player:Sam Dyson
 Right biceps tendinitis
 Right hand contusion
-Right elbow flexor strain
+Player:Mark Melancon
 Right elbow flexor strain
 Right pronator strain
 Mild right pronator strain
+Player:Will Smith
 Recovery from Tommy John surgery
 Arm surgery
 Right knee injury
 Lower back strain
+Player:Brandon Crawford
 Strained right groin
+Player:Kevin Pillar
 SC joint sprain
 Left thumb sprain
-Left shoulder AC joint sprain
+Player:Steven Duggar
 Left shoulder AC joint sprain
 Lower back strain
 Left shoulder bruise
+Player:Drew Pomeranz
 Left shoulder strain
 Left lat strain
 Left biceps tendinitis
@@ -336,169 +377,186 @@ Left forearm flexor strain
 Sprained AC joint in his left shoulder
 Left bicep tendinitis
 Appendectomy
+Player:Reyes Moronta
 Right shoulder strain
-Right shoulder strain
+Player:Max Kepler
 Left adductor strain
 Strained left groin
+Player:Mitch Garver
 Low-grade right intercostal strain
 Left high ankle sprain
 Concussion symptoms
+Player:Eddie Rosario
 Left ankle sprain
 Left thumb fracture
+Player:Miguel Sano
 Right heal laceration
 Left hamstring strain
 Left shin stress reaction
-Left hamstring strain
+Player:Ehire Adrianza
 Abdominal issues
 Left hamstring strain
-Abdominal issues
 Broken bone in left foot
-Broken bone in left foot
-Strained right hamstring
-Strained right hamstring
 Strained right hamstring
 Left thumb injury
-Right wrist sprain
+Player:Jonathan Schoop
 Right wrist sprain
 Right oblique strain
 Partially torn right knee ligament
-Partially torn right knee ligament
+Player:Byron Buxton
 Left shoulder inflammation
 Left shoulder subluxation
-Left shoulder subluxation
-Concussion-like symptoms
 Concussion-like symptoms
 Right wrist contusion
 Left wrist strain
-Left wrist strain
-Left great toe fracture
 Left great toe fracture
 Left groin strain
 Left thumb sprain
+Player:Marwin Gonzalez
 Right hamstring strain
 Bruised right heel
+Player:Kole Calhoun
 Right oblique strain
 Sprained right ankle
 Fractured right hamate
+Player:Mike Trout
 Right wrist inflammation
 Trout placed on D10 with torn ligament in left thumb
+Player:Shohei Ohtani
 Right elbow UCL injury
 Right elbow UCL sprain
+Player:Kevan Smith
 Lumbar strain
 Left hand metacarpal sprain (retro to 6/19)
 Sacroiliac joint dysfunction
+Player:Brian Goodwin
 Right wrist contusion
 Left groin strain
 Left wrist contusion
-Left groin strain
+Player:David Fletcher
 Left ankle sprain
-Left oblique strain
+Player:Justin Bour
 Left oblique strain
 Right oblique strain
 Left ankle contusion
 Right ankle sprain
-Right ankle sprain
 Right Ankle Sprain
+Player:Wilfredo Tovar
 Left thumb sprain
+Player:Luis Rengifo
 Right hamstring strain
 Left hand hamate fracture
+Player:Hanser Alberto
 Right hamstring strain
 Right shoulder tightness
-Right shoulder tightness
+Player:Trey Mancini
 Cancer treatment
+Player:Renato Nunez
 Strained left hamstring
+Player:Anthony Santander
 Right oblique strain
 Strained right forearm
-Strained right forearm
 Righ Elbow strain
+Player:Jonathan Villar
 Sprained right thumb
 Lower back strain
+Player:Stevie Wilkerson
 Right hamstring injury
+Player:Richie Martin
 Right wrist fracture
+Player:Ketel Marte
 Left wrist inflammation
 Mononucleosis
 Sprained left thumb
+Player:Ildemaro Vargas
 Right hamstring strain
 Hamstring strain
+Player:David Peralta
 Right AC joint inflammation
-Right AC joint inflammation
-Right AC joint inflammation
-Right AC joint inflammation
-Right wrist inflamation
 Right wrist inflamation
 Low back sprain
 Right wrist inflammation
+Player:Adam Jones
 Sprained left ankle
-Sprained left ankle
+Player:Eduardo Escobar
 Left groin strain
+Player:Joey Votto
 Low back strain
 Right lower leg contusion
-Distal left quadriceps strain
 Distal left quadriceps strain
 Distal quad strain in left knee
 Torn medial meniscus in left knee
 Stress related issues
+Player:Eugenio Suarez
 Right thumb fracture
+Player:Yasiel Puig
 Right oblique strain
 Bruised hip
 Strained left hamstring
 Strained right hamstring
 Left hamstring strain
+Player:Derek Dietrich
 Left shoulder inflammation
 Right knee contusion
 Left oblique strain
+Player:Jose Iglesias
 Left quadriceps strain
-Lower abdominal strain
 Lower abdominal strain
 Strained left hamstring
 Stress fractures in both shins
 Lower back soreness
+Player:Curt Casali
 Right knee sprain
 Strained left hamstring
+Player:Jesse Winker
 Cervical strain
-Right shoulder subluxation
 Right shoulder subluxation
 Left hip flexor strain
 Sprained right wrist
+Player:Kyle Farmer
 Left oblique strain
+Player:Tucker Barnhart
 Right oblique strain
+Player:Amir Garrett
 Left lat strain
 Bone bruise on left foot
 Right hip inflammation
+Player:Michael Lorenzen
 Right shoulder strain
 Right elbow sprain
-Right elbow sprain
+Player:Shin-Soo Choo
 Right hand sprain
 Fracture in his left forearm
 Inflammation in lower back
 Left hamstring strain
 Right calf strain
 Bone spur in left elbow
-Bone spur in left elbow
-Left oblique strain
 Left oblique strain
 Fractured left thumb
 Sprained right thumb
+Player:Danny Santana
 Right elbow sprain
 Left quadriceps strain
-Left quadriceps strain
 Bacterial infection
-Left shoulder AC joint sprain
 Left shoulder AC joint sprain
 Left hamstring strain
 Strained right hamstring
 Bone bruise in his left knee
+Player:Elvis Andrus
 Back strain
 Lower back strain
 Right hamstring strain
 Right elbow olecranon fracture
-Right elbow olecranon fracture
+Player:Nomar Mazara
 Left oblique strain
 Right thumb sprain
+Player:Ronald Guzman
 Right hamstring strain
+Player:Delino DeShields
 Right middle finger fracture
 Fractured hamate bone in left hand
 Left hamstring strain
+Player:Asdrubal Cabrera
 Left thumb sprain
 Sprained left thumb
 Strained patella tendon in his left knee
@@ -506,22 +564,27 @@ Strained right hamstring
 Right quadriceps strain
 Fractured left forearm
 Sprained left shoulder
+Player:Rougned Odor
 Right knee sprain
 Left hamstring strain
-Fractured right hand
+Player:Jeff Mathis
 Fractured right hand
 Fractured right clavicle
+Player:Mike Minor
 Recovering from May 2015 left labrum surgery
 Left shoulder discomfort
 Inflammation in his left rotator cuff
 Left shoulder tendinitis
+Player:Chris Martin
 Esophageal constriction
 Left groin strain
 Right calf strain
 Right forearm irritation
 Lower back strain
+Player:Jose Leclerc
 Tear of Right Teres Muscle
 Bruised right index finger
+Player:Hunter Pence
 Lower back strain
 Right groin strain
 Right thumb sprain
@@ -530,6 +593,7 @@ Right hamstring strain
 Left oblique strain
 Left Wrist Tendonitis
 Fractured left forearm
+Player:Shawn Kelly
 Right biceps muscle soreness
 Bacterial infection
 Ulnar nerve injury
@@ -538,16 +602,15 @@ Right trapezius strain
 Lower back strain
 Left calf strain
 Back stiffness
-Back stiffness
 Rght elbow inflammation
 Strained left oblique
+Player:Jeff McNeil
 Right wrist fracture
 Low-grade left hamstring strain
 Left hamstring strain
-Lucie Mets activated 2B Jeff McNeil from the 7-day disabled list
-Lucie Mets placed 2B Jeff McNeil on the 7-day disabled list
+Player:Jonathan Davis
 Right ankle sprain
-Tear of the left big toe plantar plate
+Player:Juan Lagares
 Tear of the left big toe plantar plate
 Fracture of IP joint in left thumb
 Left oblique injury
@@ -555,25 +618,21 @@ Torn ligament in his left thumb
 Sprained left thumb
 Right intercostal strain
 Strained Right Hamstring
-Lucie Mets placed LF Juan Lagares on the 7-day disabled list
+Player:Michael Conforto
 Left hamstring tightness
 Left shoulder dislocation
-Left shoulder dislocation
-Lucie Mets activated 1B Peter Alonso from the 7-day disabled list
-Lucie Mets placed 1B Peter Alonso on the 7-day disabled list
+Player:Todd Frazier
 Left oblique strain
 Left rib cage muscle strain
 Left hamstring strain
+Player:Wilson Ramos
 Left hamstring strain
 Right hamstring strain
 Fractured left hand
-Left hamstring strain
-Left hamstring strain
 Torn right knee ligament
 Hamstring injury
 Finger injury
-Lucie Mets activated SS Amed Rosario from the 7-day disabled list
-Lucie Mets placed SS Amed Rosario on the 7-day disabled list
+Player:Carlos Gomez
 Strained right groin
 Excision of cyst behind right shoulder
 Strained right hamstring
@@ -582,55 +641,61 @@ Right hamstring strain
 Strained left hamstring
 Fractured left clavicle
 Strained left rotator cuff
+Player:Noah Syndergaard
 Right ulnar collateral ligament tear
 Right hamstring strain
 Hand, foot and mouth disease
 Strained ligament in right index finger
 Partial tear in right lat muscle
-Partial tear in right lat muscle
-Partial tear in right lat muscle
-Rib fracture
+Player:Robert Gsellman
 Rib fracture
 Right triceps tightness
 Right triceps soreness
 Strained left hamstring
 Hamstring strain
-Stress reaction in left foot
+Player:Dominic Smith
 Stress reaction in left foot
 Strained right quad
-Lucie Mets activated 1B Dominic Smith from the 7-day disabled list
-Lucie Mets placed 1B Dominic Smith on the 7-day disabled list
+Ankle injury
+Player:Seth Lugo
 Right shoulder tendonitis
 Right shoulder impingement
 Right elbow inflammation
-Right elbow inflammation
+Player:Joc Pederson
 Right groin strain
 Sprained right AC joint
 Right shoulder inflammation
+Player:Chris Taylor
 Fractured left forearm
+Player:Alex Verdugo
 Right oblique strain
+Player:Justin Turner
 Left hamstring strain
 Right groin strain
 Left wrist fracture
 Right hamstring strain
 Right thigh skin infection
-Left hamstring strain
 Left intercostal strain
 Sprained right ankle
 Sprained wrist
+Player:Cody Bellinger
 Right ankle sprain
 Strained hip
+Player:Max Muncy
 Right wrist fracture
+Player:Matt Beaty
 Left hip flexor strain
+Player:Enrique Hernandez
 Left hand sprain
 Left rib cage inflammation
 Left hamstring strain
+Player:Austin Barnes
 Left groin strain
 Right shoulder contusion
-Blister on right hand
+Player:Walker Buehler
 Blister on right hand
 Right rib microfracture
-Left hamstring strain
+Player:David Freese
 Left hamstring strain
 Right hamstring strain
 Non-displaced fracture on the tip of his right index finger
@@ -638,12 +703,14 @@ Non-displaced Finger Fracture of Right Middle Finger
 Lower back strain
 Broken hamate bone in his left hand
 Bone bruise to his right ankle
-Irregular heartbeat
+Player:Kenley Jansen
 Irregular heartbeat
 Fifth metatarsal injury
 Cardiac arrhythmia
 Right shoulder inflammation
+Player:Alex Bregman
 Right hamstring discomfort
+Player:Michael Brantley
 Right quad discomfort
 Rehab, right ankle surgery
 RIght ankle sprain
@@ -651,47 +718,56 @@ November 2015 right shoulder surgery
 Right shoulder inflammation
 Recovering from November 2015 right shoulder surgery
 Right wrist inflammation
+Player:Yuli Gurriel
 Left hand surgery
+Player:Yordan Alvarez
 Right knee discomfort
-Right knee discomfort
+Player:Tyler White
 Right trapezius strain
-Right trapezius strain
+Player:Josh Reddick
 Fractured left thumb
 Right oblique strain
 Right knee strain
 Hyperextended right knee
 Sprained right wrist
-Sprained right wrist
+Player:Ronald Acuna
 From the 10-day injured list
 On the 10-day injured list retroactive to August 12, 2020
-From the 10-day injured list
 On the 10-day disabled list
+Player:Dansby Swanson
 Right foot contusion
 Left wrist inflammation
+Player:Freddie Freeman
 Left wrist fracture
 Strained right oblique
 Right wrist contusion
-Strained right oblique
+Player:Josh Donaldson
 Right calf strain
 Left calf strain
 Left calf tightness
-Left calf tightness
 Right shoulder inflammation
 Left knee soreness
+Player:Johan Camargo
 Right shin fracture
 Right oblique muscle strain
 Right knee bone bruise
+Player:Nick Markakis
 Fractured left wrist
+Player:Austin Riley
 Right knee sprain
+Player:Ozzie Albies
 Right wrist bone contusion
+Player:Tyler Flowers
 Strained left oblique
 Left wrist contusion
 Fractured left hand
 Right shoulder surgery
+Player:Mike Foltynewicz
 Right elbow bone spur
 Right triceps tendonitis
 Right elbow soreness
 Costochondritis
+Player:Josh Tomlin
 Right hamstring strain
 Left hamstring strain
 Recovering from April 2015 right shoulder surgery
@@ -700,38 +776,44 @@ Right elbow inflammation
 Sore right wrist
 Right elbow soreness
 Left calf strain
+Player:Charlie Culberson
 Fractured right cheekbone
 Lumbar disk injury
 Lumbar disc injury
-Lumbar disc injury
+Player:Whit Merrifield
 Sprained left wrist
+Player:Alex Gordon
 Left hip labral tear
 Scaphoid Fracture in Right Wrist
 Strained left groin muscle
 Right thumb fracture
 Right hip labral cartilage tear
+Player:Hunter Dozier
 Right side thorax tightness
 Strained left oblique
+Player:Jorge Soler
 Right oblique strain
-Right oblique strain
-Left toe fracture
 Left toe fracture
 Strained left oblique
 Left hamstring strain
 Oblique Strain
 Left ankle sprain
 Strained right hamstring
-Lower back strain
+Player:Cheslor Cuthbert
 Lower back strain
 Left wrist sprain
+Player:Billy Hamilton
 Left thumb fracture
 Right shoulder sprain
 Sprained capsule in right shoulder
+Player:Eric Sogard
 Left ankle strain
 April 2016 left knee surgery
 Cervical strain
 Back strain
+Player:Vladimir Guerrero
 On the 7-day disabled list
+Player:Lourdes Gurriel
 From the 60-day injured list
 On the 60-day injured list
 From the 10-day injured list
@@ -739,47 +821,50 @@ On the 10-day injured list retroactive to August 9, 2019
 On the 10-day disabled list retroactive to July 31, 2018
 From the 7-day disabled list
 On the 7-day disabled list
+Player:Teoscar Hernandez
 Left oblique strain
+Player:Justin Smoak
 Left quad strain
 Strained right oblique
 Non-displaced fracture of the nose
+Player:Randal Grichuk
 Right knee sprain
 Lower back strain
 Right elbow strain
-Lower back strain
 Sore lower back
+Player:Freddy Galvis
 Fractured clavicle
 Staph infection
 Lower back strain
+Player:Victor Reyes
 Right lower leg contusion
+Player:Trea Turner
 Broken right index finger
 Right wrist fracture
-Right wrist fracture
 Right hamstring strain
+Player:Adam Eaton
 Fractured left index finger
 Bone bruise on left ankle
-Bone bruise on left ankle
-Strained left knee
 Strained left knee
 Strained right oblique
 Strained Right Hamstring
 Left elbow strain
+Player:Anthony Rendon
 Left elbow contusion
 Toe contusion
 Left quadriceps strain
 Sprained left knee
+Player:Juan Soto
 Back spasms
-Left hamstring strain
-Left hamstring strain
+Player:Howie Kendrick
 Left hamstring strain
 Right Achilles injury
-Right Achilles injury
-Left hamstring strain
 Right abdominal strain
 Strained left calf
 Strained left hamstring
 Sprained left knee
 Right hamstring injury
+Player:Matt Adams
 Left hamstring strain
 Left shoulder strain
 Fractured left index finger
@@ -788,9 +873,9 @@ Torn right quad
 Strained right quad
 Tightness in his left calf
 Strained right oblique
+Player:Ryan Zimmerman
 Plantar fasciitis in right foot
 Plantar fascitis
-Right oblique strain
 Right oblique strain
 Left wrist contusion
 Left rib cage strain
@@ -800,109 +885,118 @@ Fractured right thumb
 Left hamstring strain
 Sore right shoulder
 Left abdominal strain
-Separated right shoulder
+Player:Yan Gomes
 Separated right shoulder
 Right knee sprain
 Concussion symptoms
+Player:JaCoby Jones
 Left hand fracture
-Left hand fracture
-Left wrist fracture
 Left wrist fracture
 Low back strain
 Sprained right shoulder
 Right hamstring strain
 Lip laceration
+Player:Nick Castellanos
 Fractured left hand
-Ruptured left biceps tendon
+Player:Miguel Cabrera
 Ruptured left biceps tendon
 Right hamstring strain
 Right groin strain
 Left Calf Strain
+Player:Christin Stewart
 Right quad strain
+Player:Jeimer Candelario
 Lower back strain
 Left shoulder inflammation
 Left wrist tendonitis
+Player:Niko Goodrum
 Right oblique strain
 Left groin strain
 Strained right hamstring
+Player:John Hicks
 Right groin strain
-Right groin strain
+Player:Harold Castro
 Left hamstring strain
+Player:Miguel Rojas
 Right hamstring strain
 Right thumb fracture
 Right shoulder injury
 Right rotator cuff injury
 Left wrist injury
+Player:Harold Ramirez
 Left hamstring strain
-Left hamstring strain
+Player:Garrett Cooper
 Left hand contusion
 Left calf strain
 Right wrist sprain
-Right wrist sprain
-Right wrist contusion
 Right wrist contusion
 Left hamstring tendinitis
+Player:Brian Anderson
 Fractured left 5th metacarpal
-Fractured left 5th metacarpal
+Player:Neil Walker
 Right index finger sprain
 Right quad strain
 Partial tear in left hamstring
 Appendectomy
 Right side soreness
 Right hand laceration
+Player:Nick Anderson
 Right forearm inflammation
+Player:Sergio Romo
 Left ankle sprain
 Flexor strain in his right elbow
-Flexor strain in his right elbow
 Right elbow inflammation
+Player:Starlin Castro
 Right wrist fracture
 Right hamstring strain
-Right hamstring strain
+Player:JT Riddle
 Right abdomen strain
-Right forearm strain
 Right forearm strain
 Right shoulder tendinitis
 Left biceps tendinitis
+Player:Bryan Holaday
 Bruised left thumb
+Player:Jordan Yamamoto
 Right forearm strain
-Fractured left hand
+Player:Curtis Granderson
 Fractured left hand
 Fractured right forearm
 Strained left groin
+Player:Adam Conley
 Left third-finger tendonitis
 Left triceps strain
+Player:Cesar Puello
 Left hip flexor strain
 Right knee soreness
 Left ankle sprain
 Stress fracture in his back
-Stress fracture in his back
-Lucie Mets placed RF Cesar Puello on the 7-day disabled list
-Lucie Mets activated RF Cesar Puello from the 7-day disabled list
-Lucie Mets placed RF Cesar Puello on the 7-day disabled list
-Lucie Mets placed RF Cesar Puello on the 7-day disabled list
 Lower back strain
+Player:Jarlin Garcia
 Right ankle contusion
 Left biceps strain
-Left biceps strain
+Player:Yadiel Rivera
 Torn ligament in right elbow
+Player:Mallex Smith
 Viral infection
 Right hamstring tightness
 Fractured left thumb
-Fractured left thumb
-Fractured left thumb
+Player:Domingo Santana
 Right elbow inflammation
 Right elbow soreness
 Right shoulder strain
+Player:Kyle Seager
 Left third-digit extensor hood tear
 Recovering from left hand surgery
+Player:Dylan Moore
 Right wrist sprain
 Right wrist contusion
-Left groin strain
+Player:Tim Beckham
 Left groin strain
 Left ankle sprain
+Player:Mac Williamson
 Strained left quad
 Left shoulder strain
-Left thumb sprain
+Player:Luery Garcia
 Left thumb sprain
 Strained left hamstring
 Left hamstring strain
@@ -910,315 +1004,375 @@ Left knee sprain
 Sprained right thumb
 Sprained finger on left hand
 Left hip flexor injury
+Player:Yoan Moncado
 Strained right hamstring
 Left hamstring tightness
 Right shin bone contusion
+Player:James McCann
 Left hand laceration
 Right ankle sprain
+Player:Jon Jay
 Right hip strain
-Right hip strain
-Right hip strain
-Right hip strain
-Right forearm fracture
 Right forearm fracture
 Left wrist stress reaction/bone bruise
 Left wrist tendinitis
 Sprained right shoulder
+Player:Eloy Jimenez
 Right ulnar nerve contusion
 High right ankle sprain
-Stress reaction in right foot
+Player:Charles Tilson
 Stress reaction in right foot
 Strained left hamstring
+Player:Charlie Blackmon
 Right calf strain
 Turf toe on his left foot
 Turf toe on left foot
 Fractured left foot
+Player:Raimel Tapia
 Left hand contusion
+Player:Nolan Arenado
 Sore left shoulder
 Left middle finger mallet fracture
-Right calf strain
+Player:Ian Desmond
 Right calf strain
 Fractured left hand
 Torn left oblique
 Hand surgery
+Player:Mark Reynolds
 Broken left hamate bone
 Strained left oblique
+Player:David Dahl
 Right shoulder strain
 Lower back soreness
 High right ankle sprain
 Right foot fracture
 Stress reaction in rib
+Player:Wade Davis
 Right shoulder strain
 Left oblique strain
 Right flexor strain
 Right forearm strain
-Right forearm strain
 Strained right shoulder
+Player:Tony Wolters
 Left knee strain
+Player:Jon Gray
 Right shoulder inflammation
 Left foot fracture
 Left foot navicular stress fracture
 Abdominal strain
+Player:Jairo Diaz
 Arm surgery
 Recovering from March 2016 Tommy John surgery
 Right arm fatigue
+Player:Daniel Murphy
 Avulsion fracture of left index finger
 Recovery from right knee surgery
 Strained left quad
 Strained right calf
 Torn ligament in his left knee
+Player:Bryan Shaw
 Right calf strain
+Player:Ryan McMahon
 Left elbow sprain
+Player:Kevin Newman
 Contusion to the peroneal nerve in left knee
 Right middle finger laceration
 Left Orbital Fracture
+Player:Bryan Reynolds
 Left wrist sprain
-Right forearm strain
+Player:Clay Holmes
 Right forearm strain
 Left quadriceps discomfort
 Right triceps inflammation
+Player:Starling Marte
 Abdominal wall contusion
 Right oblique strain
 Back tightness
 Right hand sprain and contusion
 Strained right oblique
 Left hand injury
+Player:Josh Bell
 Left oblique strain
 Left knee contusion
+Player:Colin Moran
 Facial fracture
+Player:Jose Osuna
 Lower neck discomfort
+Player:Corey Dickerson
 Fractured left foot
-Posterior right shoulder strain
 Posterior right shoulder strain
 Strained left hamstring
 Non-displaced rib fracture
 Plantar Fasciitis in Left Foot
 Plantar fasciitis in left foot
+Player:Elias Diaz
 Cellulitis of his left knee
 May 2016 right elbow debridement
 Right elbow strain
+Player:Adam Frazier
 Right hamstring strain
 Left hamstring strain
+Player:Jordan Lyles
 Left hamstring tightness
 Right side discomfort
 Right elbow inflammation
 Sprained left toe
-Sprained left toe
 Fractured third metatarsal in left hand
-Fractured third metatarsal in left hand
-Right forearm discomfort
+Player:Michael Feliz
 Right forearm discomfort
 Right shoulder inflammation
 Right shoulder discomfort
+Player:Melky Cabrera
 Broken right pinkie finger
-Broken right pinkie finger
-Left knee irritation
 Left knee irritation
 Left knee tendinitis
+Player:Christian Walker
 Facial fracture
+Player:Nick Ahmed
 Right hand fracture
 Fractured right hand
 Right hip impingement
-Right hip impingement
+Player:Alex Avila
 Low back tightness
 Strained left calf
 Strained left quadriceps
 Strained right hamstring
-Strained right hamstring
-Strained right hamstring
 Loose bodies in his left knee
-Delayed concussive symptoms
 Delayed concussive symptoms
 Left forearm injury
 Right hamstring strain
+Player:Zack Greinke
 Left oblique strain
 Fractured Left Collarbone
 Fractured left rib
+Player:Andrew Chafin
 Left finger sprain
 Left shoulder tendinitis
+Player:Yoshihisa Hirano
 Right elbow inflammation
+Player:Greg Holland
 Right oblique strain
 Right hip impingement
 Right pectoral strain
 Left rib stress reaction
-Right wrist contusion
+Player:Marcus Semien
 Right wrist contusion
 Left knee injury
 Hamstring injury
 Right shoulder injury
+Player:Matt Chapman
 Strained right hip
 Right thumb contusion
 Left knee cellulitis
 Left wrist injury
+Player:Mark Canha
 Sprained right wrist,
-Back strain
 Back strain
 Sprained left thumb
 Sprained left wrist
+Player:Matt Olson
 Right hand surgery
+Player:Chad Pinder
 Strained right hamstring
 Left elbow laceration
 Hyperextended left knee
 Left hamstring strain
+Player:Ramon Laureano
 Right lower leg stress reaction
+Player:Stephen Piscotty
 Sprained right ankle
 Right knee sprain
 Strained right groin
 Strained right hamstring
+Player:Robbie Grossman
 Right hamstring strain
 Fractured left thumb
+Player:Jurickson Profar
 Recovering from February 2015 right labrum surgery
 Torn muscle in his right shoulder
-Torn muscle in his right shoulder
+Player:Josh Phegley
 Left thumb contusion
 Fractured fourth and fifth fingers on right hand
 Strained left oblique
 Cyst in right knee
 Strained right knee
 Right knee inflammation
+Player:Fernando Tatis
 From the 60-day injured list
 From the 10-day injured list to the 60-day injured list
 On the 10-day injured list retroactive to August 14, 2019
 From the 10-day injured list
 On the 10-day injured list retroactive to April 29, 2019
+Player:Eric Hosmer
 Left index finger fracture
 Stress fracture in his right hand
+Player:Manny Machado
 Right knee sprain
 Recovering from October 2013 left knee surgery
 Torn medial patellofemoral ligament in left knee
+Player:Manuel Margot
 Bruised ribs
 Sprained right calf
+Player:Austin Hedges
 Right elbow tendonitis
+Player:Joey Lucchesi
 Strained hip
+Player:Chance Sisco
 Left elbow strain
-Left knee patellar tendinitis
+Player:Chris Davis
 Left knee patellar tendinitis
 Left hip inflammation
 Right oblique strain
 Left oblique strain
 Right shoulder strain
+Player:Rowan Wick
 Left oblique strain
+Player:Addison Russell
 Sprained left middle finger
 Right foot strain
 Hamstring strain
+Player:Daniel Descalso
 Left ankle sprain
 Sprained left ankle
 Fractured left hand
+Player:Jon Lester
 Left hamstring strain
 Left lat tightness
 Strained Lower Left Lat Muscle
+Player:Albert Almora
 From the 7-day disabled list
 On the 7-day disabled list retroactive to August 11, 2016
 Groin injury
+Player:Jose Rondon
 Strained left hamstring
+Player:Daniel Palka
 Fractured index finger on left hand
+Player:George Springer
 Left hamstring strain
 Sprained left thumb
 Left quad discomfort
 Right wrist fracture
 Left quad strain
+Player:Jose Altuve
 Right knee sprain
 Left hamstring strain
 Right knee soreness
+Player:Max Stassi
 Right quad strain and knee bruise
 Left knee soreness
 Shoulder surgery
 Shoulder inflammation
+Player:Jake Marisnick
 Right hamstring tightness
 Left hamstring strain
 Left groin discomfort
 Mild concussion
 Strained left hamstring
+Player:Adalberto Mondesi
 Left shoulder subluxation
 Groin strain
 Right shoulder impingement syndrome
 Lower back strain
+Player:Brian Flynn
 Left UCL sprain
-Left groin strain
 Left groin strain
 Stable lumbar vertebral fracture
 Left latissimus dorsi tear
+Player:Cam Gallagher
 Left oblique strain
+Player:Wily Peralta
 Right calf strain
 Strained left oblique
+Player:Jake Newberry
 Right shoulder inflammation
+Player:Jake Diekman
 Colon surgery
 Lacerated left index finger
+Player:Lucas Duda
 Lumbar strain
 Right foot plantar fasciitis
 Hyperextended left elbow
 Stress fracture of the lower back
-Stress fracture of the lower back
 Lower back strain
 Strained right hamstring
+Player:Ian Kennedy
 Left calf strain
-Left oblique strain
 Left oblique strain
 Strained right hamstring
 Strained Left Hamstring
+Player:Terrance Gore
 Sprained right ankle
-Right elbow inflammation
+Player:Kirby Yates
 Right elbow inflammation
 Right ankle tendonitis
+Player:Hunter Renfroe
 Right elbow inflammation
 Strained neck
+Player:Francisco Mejia
 Left thumb contusion
 Right oblique strain
-Herniated cervical disc
+Player:Ian Kinsler
 Herniated cervical disc
 Left hamstring strain
 Left abductor strain
-Left hamstring strain
 Right intercostal strain
 Left groin strain
 Sprained right ankle
+Player:Eric Lauer
 Left forearm strain
+Player:Craig Stammen
 Right forearm stiffness
+Player:Wil Myers
 Left foot contusion/bone bruise
 Left oblique strain
 Right arm nerve irritation
 Sore left wrist
 Left wrist tendinitis
-Left wrist tendinitis
 Right wrist fracture
 Right wrist sprain
-Left ankle sprain
-Left ankle sprain
+Player:Andrelton Simmons
 Left ankle sprain
 Sprained right ankle
 Torn left thumb ligament
 Non-displaced fracture of the fifth metacarpal in right hand
-Left knee surgery
+Player:Albert Pujols
 Left knee surgery
 Left knee inflammation
 Partial tear of the left plantar fascia
 Fractured left forearm
-Concussion and nose fracture
+Player:Jonathan Lucroy
 Concussion and nose fracture
 Broken left big toe
 Fractured right pinkie finger
-Left hand fracture
+Player:Brandon Drury
 Left hand fracture
 Severe migraines
+Player:Rowdy Tellez
 Right knee strain
+Player:Aaron Sanchez
 Right pectoral soreness
-Right index finger contustion
 Right index finger contustion
 Right middle finger blister
 Right lat strain
+Player:Joe Biagini
 Right shoulder soreness
 Left oblique strain
 Back injury
+Player:Jose Martinez
 Right AC joint sprain
 Left groin injury
+Player:Giovanny Gallegos
 Right groin strain
+Player:Rangel Ravelo
 Lacerated left thumb
+Player:Dominic Leone
 Right upper arm nerve irritation
-Right upper arm nerve irritation
+Player:Tyler O'Neill
 Left wrist strain
 Right elbow ulnar nerve subluxation
 Inflammation of the groin area
 Left groin strain
+Player:Matt Wieters
 Left great toe contusion
 Left hamstring strain
 Mild left oblique strain
@@ -1226,18 +1380,22 @@ June 2014 Tommy John surgery
 Recovering from Tommy John surgery
 Strained right elbow
 Strained right hamstring
+Player:Dakota Hudson
 Strained right elbow
-Strained right elbow
+Player:Jordy Mercer
 Right quadriceps strain
 Right quad strain
 Left calf strain
 Left knee MCL sprain
+Player:Ryan Carpenter
 Left elbow impingement
+Player:Jose Cisnero
 Right elbow discomfort
-Right elbow discomfort
+Player:Austin Adams
 Right shoulder strain
+Player:Fernando Rodney
 Upper back strain
-Right carpal tunnel neuritis
+Player:Stephen Strasburg
 Right carpal tunnel neuritis
 Cervical nerve impingement
 Right shoulder inflammation
@@ -1249,281 +1407,310 @@ Neck Tightness
 Mild lat strain
 Recovering from September 2010 Tommy John surgery
 Rght forearm flexor strain
-Right shoulder inflammation
+Player:Jonny Venters
 Calf strain
 Right hamstring strain
-Recovering from May 2013 Tommy John surgery
 Recovering from May 2013 Tommy John surgery
 May 2013 Tommy John surgery
 Left elbow sprain
 Left elbow impingement
+Player:Gerardo Parra
 Strained right quad
 Sprained left ankle
+Player:Kurt Suzuki
 Intercostal strain
+Player:Austin Voth
 Arm soreness/fatigue
+Player:Matt Grace
 Left groin strain
+Player:Adrian Sanchez
 Torn right Achilles
+Player:Marco Gonzales
 Cervical muscle strain
+Player:Roenis Elias
 Left flexor strain
 Right hamstring strain
 Left triceps strain
 Right oblique strain
-Right oblique strain
 Appendectomy
+Player:Khris Davis
 Left hip/oblique contusion
 Right groin strain
 Torn meniscus in his right knee
+Player:Franklin Barreto
 Left shoulder subluxation
+Player:Chris Bassitt
 Right lower leg contusion
-Recovering from Tommy John surgery
 Recovering from Tommy John surgery
 May 2016 Tommy John surgery
 Strained right elbow
+Player:Wei-Chung Wang
 Left shoulder tightness
+Player:Blake Treinen
 Right shoulder strain
+Player:Joey Wendle
 Right wrist inflammation
 Right wrist fracture
 Left hamstring strain
 Strained right shoulder
 Left orbital fracture
+Player:Kevin Kiermaier
 Left thumb sprain
 Torn ligament in right thumb
-Torn ligament in right thumb
-Right hip fracture
 Right hip fracture
 Fractured left hand
+Player:Blake Snell
 Loose bodies in left elbow
 Fractured right toe
 Left shoulder fatigue
-Right elbow soreness
+Player:Chaz Roe
 Right elbow soreness
 Right flexor strain
 Left meniscus tear
 Right shoulder tendinitis
+Player:Jose Alvarado
 Left shoulder inflammation
-Left shoulder inflammation
-Left elbow inflammation
 Left elbow inflammation
 Right oblique strain
+Player:Jake Faria
 Left oblique strain
 Strained left oblique
 Abdominal strain
+Player:Oliver Drake
 Right flexor tendon strain
 Right biceps tendinits
 Right shoulder tendinitis
 Right shoulder injury
+Player:Colin Poche
 Torn left UCL
-Right calf strain
+Player:Aaron Judge
 Right calf strain
 Left oblique strain
 Right wrist fracture
 Right oblique strain
+Player:Mike Tauchman
 Left calf strain
-Right knee inflammation
-Right knee inflammation
+Player:CC Sabathia
 Right knee inflammation
 Rehab from cardiac surgery
-Right knee inflammation
 Right hip strain
-Right knee inflammation
-Right knee inflammation
 Strained left hamstring
 Strained left groin
-Right knee inflammation
-Fluid in Right Knee
 Fluid in Right Knee
 Left hamstring strain
 Left elbow soreness
 Strained abductor muscle
+Player:Adam Ottavino
 Left oblique strain
 Right shoulder inflammation
 Recovering from May 2015 Tommy John surgery
 May 2015 Tommy John surgery
 Right triceps inflammation
 Right shoulder sprain
+Player:Chad Green
 Right forearm tendon injury
-Right forearm tendon injury
+Player:Aroldis Chapman
 Left knee tendinitis
 Left shoulder rotator cuff inflammation
 Fractures around his nose and left eye
 Left shoulder inflammation
+Player:Masahiro Tanaka
 Mild strains of left and right hamstrings
 Right shoulder inflammation
 Right wrist tendinitis and right forearm strain
 Right elbow inflammation
+Player:Maikel Franco
 Left hand contusion
 Non-displaced fracture of his left wrist
+Player:Jake Arrieta
 Right hamstring strain
-Bone spur in right elbow
 Bone spur in right elbow
 Right shoulder tightness
 Bone spur in his right elbow
+Player:Sean Rodriguez
 Right abdominal strain
 Left abdomen strain
 Right quadriceps strain
 Recovering from shoulder surgery
 Right hand fracture
+Player:Ranger Suarez
 Right abdominal strain
 Right hamstring injury
+Player:Brad Miller
 Right ankle bursitis
 Right hip flexor strain
 Left groin strain
 Right groin strain
 Left abdominal strain
-Left wrist strain
+Player:Nelson Cruz
 Left wrist strain
 Sprained right ankle
 Left hamstring strain
 Strained right quadriceps muscle
 Strained left hamstring
-Strained left hamstring
 Strained right hamstring
 Left ankle sprain
+Player:LaMonte Wade
 Right thumb dislocation
 Right hamstring strain
-Right knee meniscus tear
+Player:Jason Castro
 Right knee meniscus tear
 Cyst in his right knee
 Right knee swelling
 Recovering from March 2011 right knee surgery
+Player:Michael Pineda
 Right triceps strain
 Right knee tendinitis
-Right UCL injury
-Right UCL injury
 Right UCL injury
 Right flexor forearm muscle strain
 Upper back inflammation
 Right shoulder muscle injury
 Right rotator cuff tendinitis
+Player:Tyler Duffey
 Sprained right foot
+Player:Jose Abreu
 Lower abdominal and groin surgery
 Posterior tibia tendonitis in his left ankle
+Player:Lucas Giolito
 Right latissimus dorsi strain
 Strained left hamstring
+Player:Evan Marshall
 Right shoulder inflammation
 Right elbow inflammation
 Strained right hamstring
-Strained right hamstring
 Skull fracture
+Player:Jace Fry
 Back spasms
 Left shoulder soreness
+Player:Josh Osich
 Left forearm strain
 Shoulder impingement
+Player:Brock Holt
 Right eye scratched cornea
 Left hamstring strain
 Mild concussion
-Mild concussion
 Left hamstring injury
+Player:Rick Porcello
 Right triceps strain
+Player:Colten Brewer
 Strained right middle finger
 Strained left oblique
 Right lower leg stress reaction
+Player:Josh Taylor
 Left shoulder tendinitis
+Player:Matt Barnes
 Lower back strain
-Recovering from June 2015 Tommy John surgery
+Player:Brandon Workman
 Recovering from June 2015 Tommy John surgery
 Partially torn right elbow ligament
 Strained right elbow
 Right elbow strain
+Player:Steven Wright
 Right great toe contusion
-Right great toe contusion
-Left knee inflammation
 Left knee inflammation
 Recovery from cartilage restoration procedure
-Sprained left knee
 Sprained left knee
 Bursitis in his right shoulder
 Recovering from January 2014 right sports hernia surgery
 Right shoulder tightness
+Player:Chris Sale
 Left ulnar collateral ligament tear
 Left elbow inflammation
-Left elbow inflammation
-Mild left shoulder inflammation
 Mild left shoulder inflammation
 Avulsion fracture of right foot
 Flexor muscle strain in his left arm
+Player:David Price
 Left wrist TFCC cyst
 Left elbow tendinitis
 Left elbow inflammation
 Left elbow strain
-Left elbow strain
 Strained left triceps
+Player:Kyle Garlick
 Right oblique strain
-Left foot metatarsal fracture
+Player:Tom Murphy
 Left foot metatarsal fracture
 Fractured right forearm
 Strained left oblique
+Player:Cory Gearrin
 Right shoulder strain
 Right elbow sprain
-Right elbow sprain
 Right shoulder tendinitis
+Player:Jung Ho Kang
 Left side strain
 Left wrist sprain
 Left shoulder injury
 Left knee injury
 Torn left lateral meniscus and fractured left tibia
+Player:Trevor Williams
 Right side strain
 Right groin strain
+Player:Richard Rodriguez
 Right shoulder inflammation
-Right shoulder inflammation
+Player:Francisco Liriano
 Right hamstring strain
 Left shoulder inflammation
 Strained left oblique
 Fractured right arm
 Left shoulder strain
-Left shoulder inflammation
 Left arm fatigue
+Player:Robinson Chirinos
 Right ankle sprain
 Fractured right forearm
 Strained left shoulder
+Player:Josh James
 Left hip discomfort
 Right arm fatigue
-Left Achilles tendon surgery
+Player:Joe Smith
 Left Achilles tendon surgery
 Right elbow soreness
 Right shoulder inflammation
 Left hamstring strain
-Left hamstring strain
 Abdominal strain
 Sprained left knee
 Right rotator cuff strain
+Player:Collin McHugh
 Right elbow discomfort
 Right middle finger nail avulsion
+Player:Justin Verlander
 Right forearm strain
 Strained right triceps
+Player:Jerry Blevins
 Distal radius fracture of his left arm
-Distal radius fracture of his left arm
+Player:Dallas Keuchel
 Back spasms
 Neck discomfort
 Pinched nerve in neck
+Player:Anthony Swarzak
 Right shoulder inflammation
 Right shoulder impingement
-Right shoulder inflammation
 Left oblique strain
 Sore left oblique
 Right rotator cuff inflammation
 Fractured left ribs
 Mild right rotator cuff strain
 Broken right foot
+Player:Brian McCann
 Left knee spasm
 Right hamstring strain
 Right knee discomfort
 Right knee soreness
-Right knee soreness
 Recovering from October 2012 right shoulder surgery
 Strained left oblique
 Left eye infection
-Lumbar strain
+Player:Matt Joyce
 Lumbar strain
 Lower back tightness
+Player:Luke Jackson
 Right shoulder strain
-Right shoulder strain
+Player:Justin Upton
 Left foot turf toe
 Left index finger laceration
+Player:Luis Garcia
 Lumbar spine spasm
 Right wrist sprain
 Oblique strain
 Right forearm strain
+Player:Trevor Cahill
 Right elbow inflammation
 Strained right achilles
 Right elbow impingement
@@ -1532,75 +1719,92 @@ Strained right shoulder
 Strained lower back
 Right knee patellar tendinitis
 Right hip contusion
-Right groin strain
-Right groin strain
+Player:Jarrod Dyson
 Right groin strain
 Right oblique strain
 Sprained right ankle
+Player:Stefan Crichton
 Right shoulder inflammation
 Right shoulder strain
+Player:Carson Kelly
 Right hamstring strain
+Player:Jake Lamb
 Left quadricep strain
-Left shoulder contusion
 Left shoulder contusion
 Left AC Joint sprain
 Left foot stress reaction
+Player:Wilmer Flores
 Right foot contusion
 Sore lower back
 Right knee infection
 Strained left hamstring
+Player:Archie Bradley
 Right shoulder tendinitis
 Right sinus fracture
+Player:Dennis Santana
 Right rotator cuff strain
-Right rotator cuff strain
+Player:Edwin Rios
 Left hamstring strain
-Right shoulder lat strain
+Player:Mike Mayers
 Right shoulder lat strain
 Right shoulder inflammation
+Player:Kyle Lewis
 Right ACL injury
+Player:Tim Lopes
 Left ankle contusion
+Player:Jose Marmolejos
 Strained left forearm
+Player:Hoby Milner
 Right back spasm
 Cervical nerve injury
 Left hand contusion
+Player:Tommy La Stella
 Right tibia fracture
 Right hamstring strain
 Right rib cage inflammation
 Strained left hamstring
+Player:Willie Calhoun
 Left hamstring strain
 Left quad strain
+Player:Austin Slater
 Left groin strain
 Right groin strain
+Player:Dylan Floro
 Left intercostal strain
 Neck inflammation
+Player:Michael Hermosillo
 Core muscle injury
+Player:Caleb Ferguson
 Left elbow injury
 Oblique strain
+Player:Mike Zunino
 Left oblique strain
 Left quadricep strain
 Left ankle bone bruise
 Strained left oblique
 Fractured hamate bone in left hand
+Player:Ji-Man Choi
 Left hamstring strain
 Left ankle sprain
+Player:Trevor Bauer
 Right fibula stress fracture
+Player:Grayson Greiner
 Low back strain
 Sprained left wrist
+Player:Michael Fulmer
 Tommy John surgery
 Recovering from Tommy John surgery
 Torn meniscus in right knee
 Left oblique strain
 Right elbow ulnar neuritis
-Lucie Mets activated RHP Michael Fulmer from the 7-day disabled list
-Lucie Mets placed RHP Michael Fulmer on the 7-day disabled list
 Left shin contusion
+Player:Franchy Cordero
 Broken right hamate bone
 Right wrist sprain
 Right elbow sprain
-Right elbow sprain
-Right forearm strain
 Right forearm strain
 Left abductor strain
+Player:Edwin Encarnación
 Right wrist fracture
 Right hand contusion
 Right quadriceps strain
@@ -1610,36 +1814,43 @@ Sore right shoulder
 Strained left hamstring
 Broken left wrist
 Chip fracture in left wrist
+Player:Gio Gonzalez
 Right groin strain
 Left arm fatigue
 High left ankle sprain
 Left shoulder
+Player:Salvador Perez
 Left eye central serous chorioretinopathy
 Ulnar collateral ligament surgery
 Left knee sprain
 Right intercostal strain
 Mild concussion
 Recovering from March 2012 left knee surgery
+Player:Bubba Starling
 Right lower back spasms
 Left oblique strain
 Oblique injury
+Player:DJ Stewart
 Right hamstring injury
+Player:Andrew Velazquez
 Strained left shoulder
+Player:Bradley Zimmer
 Recovery from right shoulder surgery
 Left rib contusion
+Player:Luis Arraez
 Left knee tendinitis
+Player:Aaron Civale
 Right shoulder tightness
 Right lat strain
+Player:Phillip Evans
 Fractured left tibia
-Fractured left tibia
-Lucie Mets activated 3B Phillip Evans from the 7-day disabled list
-Lucie Mets placed SS Phillip Evans on the 7-day disabled list
-Lucie Mets activated SS Phillip Evans from the 7-day disabled list
-Lucie Mets placed SS Phillip Evans on the 7-day disabled list
+Strained right knee
 Lower back strain
+Player:Trevor Story
 Right thumb sprain
 Left shoulder strain
 Torn ligament in his left thumb
+Player:Matt Kemp
 Chest wall contusion
 Strained right hamstring
 Right hamstring strain
@@ -1649,27 +1860,31 @@ Left AC Joint Inflammation
 Mild right hamstring strain
 Strained left hamstring
 Left hamstring strain
+Player:Chris Owings
 Left hamstring strain
 Fractured right middle finger
 Plantar fasciitis in left foot
 Left shoulder strain
 Plantar fasciitis
+Player:Antonio Senzatela
 Blister infection on right heel
 Right shoulder inflammation
 Left middle finger blister
+Player:Pierce Johnson
 Strained left calf
+Player:Ben Gamel
 Right oblique strain
+Player:Jedd Gyorko
 Lower back strain
 Right calf strain
 Left groin strain
 Right hamstring strain
-Right hamstring strain
 Left foot plantar fasciitis
 Strained right groin
+Player:Keston Hiura
 Left hamstring strain
+Player:Logan Morrison
 Left hip strain
-Left hip impingement
-Left hip impingement
 Left hip impingement
 Left wrist strain
 Right forearm strain
@@ -1677,92 +1892,97 @@ Strained right hamstring
 Recovering from September 2012 right knee surgery
 Right knee inflammation
 Left foot strain
+Player:Manny Pina
 Torn meniscus in his right knee
 Right hamstring strain
 Left biceps strain
 Right calf strain
 Right thigh injury
+Player:Joe Musgrove
 Right triceps inflammation
 Right index finger infection
 Right shoulder strain
 Right shoulder discomfort
+Player:Jose Berrios
 Right shoulder strain
+Player:Erik Gonzalez
 Left clavicle fracture
 Left middle finger strain
+Player:Nik Turley
 Left elbow sprain
+Player:Bo Bichette
 Right knee sprain
-Right elbow fracture
+Player:Anthony Alford
 Right elbow fracture
 Right hamstring strain
 Left hamate fracture
+Player:Ender Inciarte
 Right hamstring strain
 Lumbar strain
 Left hamstring strain
-Right hamstring strain
+Player:Matt Shoemaker
 Right shoulder inflammation
 Left knee sprain
 Torn ACL in left knee
 Right forearm strain
-Right forearm strain
-Right forearm extensor strain
 Right forearm extensor strain
 Skull fracture
-Skull fracture
+Player:Billy McKinney
 Left shoulder sprain
+Player:Hyun Jin Ryu
 Neck soreness
-Left groin strain
-Left groin strain
 Left groin strain
 Left foot contusion
 Left hip contusion
 Left elbow tendonitis
-Left elbow tendonitis
-Recovering from May 2015 left shoulder surgery
 Recovering from May 2015 left shoulder surgery
 Left shoulder impingement
 Right hip strain
 Left shoulder inflammation
+Player:Adam Haseley
 Left wrist sprain
 Left groin strain
-Left ACL tear
+Player:Andrew McCutchen
 Left ACL tear
 Avulsion fracture involving the costochondral cartilage of the left 11th rib
-Right groin strain
+Player:Roman Quinn
 Right groin strain
 Oblique strain
 Right middle finger sprain
 Fractured left wrist
+Player:Kyle Freeland
 Left groin strain
 Blister on left middle finger
-Left groin strain
+Player:Adeiny Hechavarría
 Right hamstring strain
 Right oblique strain
 Left oblique strain
 Right triceps strain
 Right elbow contusion
+Player:Andrew Knapp
 Bruised right hand
+Player:Adam Duvall
 Sprained thumb
-Testicular contusion
+Player:Jose Alvarez
 Testicular contusion
 Elbow strain
 Left groin strain
 Eye irritation
+Player:Austin Davis
 Low back tightness
 Left elbow strain
+Player:Zach Eflin
 Mid-back tightness
 Right middle finger blister
-Right shoulder strain
 Right shoulder strain
 Knee surgeries
 August 2016 surgery in both knees
 Patellar tendinopathy in both knees
-Left knee inflammation
+Player:Deolis Guerra
 Left knee inflammation
 Strained right hamstring
 Right bicep injury
-Right forearm strain
-Right forearm strain
-Right forearm strain
+Player:Tommy Hunter
 Right forearm strain
 Right hamstring strain
 Right calf strain
@@ -1771,50 +1991,52 @@ Rehab from right core muscle surgery
 Left groin strain
 Strained right groin
 Left oblique strain
+Player:Grant Dayton
 Fractured right big toe
-Fractured right big toe
 Neck stiffness
-Neck stiffness
-Neck stiffness
-Left intercostal strain
 Left intercostal strain
 Left triceps tendonitis
+Player:Robbie Erlin
 Recovering from Tommy John surgery
 May 2016 Tommy John surgery
 Left elbow strain
 Left Elbow Soreness
-Left Elbow Soreness
+Player:Max Fried
 Left lumbar spine muscle spasm
 Left index finger blister
 Left groin strain
 Left middle finger blister
+Player:Shane Greene
 Right shoulder strain
 Blister on his right middle finger
 Sore right shoulder
+Player:Madison Bumgarner
 Mid-back strain
 Fractured fifth metacarpal
-Fractured fifth metacarpal
 Bruised ribs and sprained left shoulder
-Bruised ribs and sprained left shoulder
+Player:Julio Teheran
 Right thumb contusion
 Right lat strain
+Player:Daniel Bard
 Abdominal strain
+Player:Ryan Pressly
 Right knee arthroscopic surgery
 Right knee soreness
 Right lat strain
-Right lat strain
+Player:Kyle Hart
 Left hip impingement
-Left hip impingement
+Player:Liam Hendriks
 Right groin strain
 Right triceps strain
 Appendectomy
+Player:Chase Anderson
 Right oblique strain
 Right middle finger laceration
 Left oblique strain
 Right triceps inflammation
+Player:Andrew Miller
 Left shoulder fatigue
 External left shoulder impingement
-Right knee inflammation
 Right knee inflammation
 Left hamstring strain
 Right knee patellar tendinitis
@@ -1822,20 +2044,23 @@ Right knee patella tendonitis
 Strained left forearm
 July 2013 left foot surgery
 Left foot injury
-Left hamstring strain
 Right oblique strain
+Player:Craig Kimbrel
 Right elbow inflammation
 Right knee inflammation
 Left knee medial meniscus tear
+Player:Jordan Romano
 Right middle finger strain
+Player:Will Smith
 Neck inflammation
+Player:Dellin Betances
 Right lat tightness
 Partial tear of left Achilles tendon
 Right shoulder impingement
-Right shoulder impingement
 Right shoulder inflammation
+Player:Victor Caratini
 Fractured left hamate
-Non-baseball, medical condition
+Player:Carlos Carrasco
 Non-baseball, medical condition
 Right elbow contusion
 Broken right hand
@@ -1843,6 +2068,7 @@ Strained left hamstring
 Right shoulder inflammation
 Right elbow surgery
 Inflammation in right elbow
+Player:Andrew Cashner
 Neck strain
 Lower back strain
 Left oblique strain
@@ -1853,6 +2079,7 @@ Right shoulder soreness
 Right Elbow Soreness
 Strained Right Latissimus Dorsi Muscle
 Right rotator cuff strain
+Player:Welington Castillo
 Strained left oblique
 Right shoulder inflammation
 Groin contusion
@@ -1860,42 +2087,40 @@ Right shoulder tendinitis
 Left rib cage inflammation
 Recovering from September 2013 right knee surgery
 MCL sprain in right knee
+Player:Yoenis Cespedes
 Heel surgery
 Recovery from heel surgery
-Twin heel calcifiacations
 Twin heel calcifiacations
 Mild strain of right hip flexor
 Strained right hamstring
 Left hamstring strain
 Strained right quad
 Strained muscle in left hand
-Strained muscle in left hand
+Player:Jhoulys Chacin
 Right oblique strain
 Lower back strain
 Right shoulder inflammation
 Right shoulder strain
 Left lower-back strain
-Right shoulder inflammation
+Player:Steve Cishek
 Left hip inflammation
 Left hip labrum tear
-Left hip labrum tear
+Player:Gerrit Cole
 Right elbow posterior inflammation
 Posterior inflammation of right elbow
 Right triceps muscle strain
 Right lat soreness
 Right shoulder fatigue
-Right elbow strain
+Player:Johnny Cueto
 Right elbow strain
 Right elbow inflammation
-Right elbow inflammation
 Left ankle sprain
-Left ankle sprain
-Tightness in his right lat
 Tightness in his right lat
 Strained right shoulder
 Strained right lat
 Irritation in his right biceps/triceps
 Right shoulder inflammation
+Player:Yu Darvish
 Right triceps tendonitis
 Right triceps tendinitis
 Parainfluenza virus
@@ -1905,28 +2130,30 @@ Recovering from March 2015 Tommy John surgery
 Right elbow inflammation
 Neck stiffness
 Right shoulder strain
+Player:Jacob Degrom
 Right elbow soreness
 Hyperextended right elbow
 Right rotator cuff tendinitis
+Player:Nicky Delmonico
 Fractured third metatarsal on right hand
 Sprained right wrist
 Knee injury
-Right elbow soreness
+Player:Chris Devenski
 Right elbow soreness
 Left hamstring tightness
+Player:Sean Doolittle
 Right oblique strain
 Right knee fatigue
 Right knee tendonitis
 Left big toe inflamation
 Strained left big toe
-Left big toe inflamation
 Left shoulder strain
 Strained left shoulder
-Strained Left Shoulder
 Strained Left Shoulder
 Strained left rotator cuff
 Strained right intercostal
 Left knee tendinitis
+Player:Carl Edwards
 From the 10-day injured list to the 60-day injured list
 On the 10-day injured list retroactive to August 7, 2020
 From the 10-day injured list
@@ -1938,128 +2165,131 @@ From the 10-day disabled list
 On the 10-day disabled list
 From the 7-day disabled list
 On the 7-day disabled list
+Player:Nathan Eovaldi
 Right calf strain
 Loose body in the right elbow
-Loose body in the right elbow
-Loose bodies in right elbow
 Loose bodies in right elbow
 Recovering from August 2016 Tommy John Surgery
-Right elbow tendon injury
 Right elbow tendon injury
 Right shoulder inflammation
 Mild right shoulder inflammation
 Left oblique strain
+Player:Jeurys Familia
 Bennett Lesion in right shoulder
 Rght shoulder soreness
 Sore right shoulder
 Blood clot in right arm
-Blood clot in right arm
-Right biceps tendinitis
 Right biceps tendinitis
 Right shoulder impingement
-Lucie Mets placed RHP Jeurys Familia on the 7-day disabled list
+Player:Logan Forsythe
 Right oblique strain
 Right shoulder inflammation
 Right great toe fracture
 Hairline fracture in his left shoulder blade
 Left foot fracture
 Broken hand
-Recovering from right wrist surgery
+Player:Joey Gallo
 Recovering from right wrist surgery
 Left oblique strain
+Player:Domingo German
 Left hip flexor strain
 April 2015 Tommy John surgery
+Player:Nick Goody
 Back spasms
 Right elbow strain
-Right elbow strain
+Player:Sonny Gray
 Right mid-back strain
 Strained right shoulder
 Strained right forearm
 Strained right trapezius
-Left shoulder fatigue
+Player:Cole Hamels
 Left shoulder fatigue
 Triceps tendinitis
 Left oblique strain
 Right oblique strain
 Biceps tendinitis
 Left shoulder inflammation
+Player:Brad Hand
 Right ankle sprain
+Player:Ian Happ
 Bruised left thumb
+Player:Heath Hembree
 Right elbow strain
 Right lateral elbow inflammation
 Right elbow extensor strain
 Right shoulder inflammation
+Player:Kyle Higashioka
 Right oblique strain
 Left thumb injury
 Right elbow soreness
 Left groin strain
+Player:Rich Hill
 Left shoulder fatigue
-Left forearm strain
 Left forearm strain
 Left knee sprain
 Blister on left middle finger
 Left third digit inflammation
-Blister on left middle finger
-Blister on left middle finger
-Left middle finger blister
 Left middle finger blister
 Left groin strain
 Left forearm soreness
 Recovering from June 2011 Tommy John surgery
 Left elbow sprain
 Left shoulder inflammation
+Player:Chris Iannetta
 Right Lat Strain
 Fractured right wrist
 Strained right hamstring
+Player:Jeremy Jeffress
 Strained left hip
 Right shoulder injury
 Lower back strain
-Right UCL injury
+Player:Tommy Kahnle
 Right UCL injury
 Right shoulder tendonitis
 Right shoulder inflammation
+Player:Joe Kelly
 Right shoulder inflammation
 Strained left hamstring
 Impingement in his right shoulder
 Right biceps strain
 Left hamstring strain
+Player:Clayton Kershaw
 Back stiffness
 Left shoulder inflammation
 Lower back discomfort
 Left bicep tendinits
 Low back strain
 Mild disc herniation
-Mild disc herniation
 Left shoulder strain
+Player:Carter Kieboom
 Left wrist contusion
+Player:Brandon Kintzler
 Right pectoral inflammation
 Right forearm flexor strain
 Left patella tendinitis
 Mild strain of his right rotator cuff
 Right triceps tendonitis
+Player:Corey Kluber
 Tear of right teres muscle
-Right ulna fracture
 Right ulna fracture
 Lower back strain
 Right long finger sprain
+Player:Corey Knebel
 Left hamstring strain
-Right elbow injury
 Right elbow injury
 Left hamstring
 Strained left oblique
+Player:Wade LeBlanc
 Left elbow stress reaction
 Strained right oblique
 Strained left quadricep
+Player:Jonathan Loaisiga
 Right shoulder strain
-Right shoulder strain
-Left knee discomfort
+Player:Jed Lowrie
 Left knee discomfort
 Left knee capsule sprain
-Left knee capsule sprain
-Bunion on left foot
 Bunion on left foot
 Right shin contusion
-Ligament tear in right thumb
 Ligament tear in right thumb
 Fractured right index finger
 Right Ankle Sprain
@@ -2068,51 +2298,51 @@ Sore left shoulder
 Mononucleosis
 Ulnar neuritis in his left wrist
 Left wrist sprain
+Player:Kenta Maeda
 Left adductor contusion
 Right hip strain
 Left hamstring tightness
+Player:Steven Matz
 Left shoulder discomfort
 Radial nerve discomfort
 Flexor pronator strain in left arm
 Irritation of ulnar nerve in left elbow
-Irritation of ulnar nerve in left elbow
 Left elbow inflammation
 Left shoulder tightness
 Partial tear of lat muscle on left side
+Player:Lance McCullers
 From the 10-day injured list
 On the 10-day injured list retroactive to September 5, 2020
 From the 60-day injured list
 From the 10-day injured list to the 60-day injured list
 On the 10-day injured list retroactive to March 25, 2019
-From the 10-day injured list
-On the 10-day disabled list
-From the 10-day disabled list
 On the 10-day disabled list
 From the 10-day disabled list
 On the 10-day disabled list retroactive to June 9, 2017
 From the 15-day disabled list
 Right elbow discomfort
 Right shoulder soreness
+Player:Yadier Molina
 Right thumb tendon sprain
 Right thumb tendon strain
 Pelvic injury with traumatic hematoma
 Torn ligament in right thumb
 Right knee sprain
+Player:Yoan Moncada
 Strained right hamstring
 Left hamstring tightness
 Right shin bone contusion
+Player:Mitch Moreland
 Right quad strain
 Low back strain
 Left elbow surgery
 Impingement in his left ankle
 Strained right hamstring
 Left hamstring strain
+Player:Brandon Morrow
 Continued rehab from offseason right elbow debridement
-Continued rehab from offseason right elbow debridement
-Right biceps inflammation
 Right biceps inflammation
 Lower back tightness
-Right shoulder inflammation
 Right shoulder inflammation
 Torn tendon sheath in his right index finger
 Entrapped radial nerve in his right forearm
@@ -2120,6 +2350,7 @@ Right forearm strain
 Left oblique strain
 Right forearm inflammation
 Right biceps tendinitis
+Player:Charlie Morton
 Right shoulder inflammation
 Right shoulder discomfort
 Right lat strain
@@ -2131,10 +2362,12 @@ Right hip inflammation
 Recovering from June 2012 Tommy John surgery
 Right elbow inflammation
 Recovering from October 2011 right hip surgery
+Player:Brandon Nimmo
 Bruised left index finger
 Partially collapsed lung
 Right hamstring strain
 Left knee strain
+Player:Jake Odorizzi
 Right middle finger blister
 Chest contusion
 Right intercostal strain
@@ -2142,7 +2375,7 @@ Blister on right middle finger
 Lower back strain
 Strained left hamstring
 Left Oblique Strain
-Left flexor strain
+Player:James Paxton
 Left flexor strain
 Left knee inflammation
 Left forearm contusion
@@ -2152,215 +2385,234 @@ Left forearm strain
 Left elbow contusion
 Strained tendon in left middle finger
 Left Latissimus dorsi muscle strain
-Left Latissimus dorsi muscle strain
+Player:Austin Romine
 Lower back strain
+Player:Fernando Abad
 Right intercostal strain
+Player:Cristhian Adames
 Left ankle bruise
+Player:Jim Adduci
 Fractured Left Finger
-Right forearm strain
+Player:Dario Agrazal
 Right forearm strain
 Right shoulder strain
 Right pectoral strain
+Player:Jorge Alcala
 Right trapezius strain
+Player:Arismendy Alcantara
 Sprained ankle
+Player:Victor Alcantara
 Wisdom tooth extraction
-Left forearm inflammation
+Player:Scott Alexander
 Left forearm inflammation
 Right hamstring strain
+Player:Cody Allen
 Lumbar spine strain
+Player:Abraham Almonte
 Left hamstring strain
 Right biceps strain
 Left hamstring soreness
 Right hamstring soreness
+Player:Yonder Alonso
 Low back strain
 Deep bone bruise in his right shoulder
-Strained right forearm
 Strained right forearm
 Right wrist tendinitis
 Right hand contusion
 Hamate bone break in right hand
+Player:Dan Altavilla
 Right forearm strain
 Right elbow UCL sprain
-Right elbow UCL sprain
 Right AC joint inflammation
+Player:Aaron Altherr
 Right hamstring strain
 Strained right hamstring
-Strained right hamstring
-Strained right hamstring
 Recovering from March 2016 left wrist surgery
+Player:Trey Amburgey
 Concussion symptoms
+Player:Brett Anderson
 Strained left forearm
 Left should strain
 Low back strain
-Low back strain
 Left index finger blister
 Lower back strain
-Fractured left index finger
 Fractured left index finger
 Sprained right ankle
 Left elbow injury
 Left ellbow soreness
 Left elbow inflammation and a left forearm strain
+Player:Cody Anderson
 Right elbow surgery
 Right elbow inflammation
-Right elbow surgery
 Right elbow tightness
 Left oblique strain
+Player:Drew Anderson
 Right forearm strain
+Player:Justin Anderson
 Right elbow UCL injury
 Right upper trapezius strain
+Player:Shaun Anderson
 Right middle finger blister
+Player:Tim Anderson
 Strained right groin
 Sprained right ankle
+Player:Tyler Anderson
 Left knee chondral defect
 Left knee inflammation
-Left knee inflammation
-Left knee inflammation
-Left knee inflammation
+Player:John Andreoli
 Right hamstring strain
 Groin injury
 Abdominal pain
+Player:Matt Andriese
 Left foot contusion
 Hip stress reaction
-Hip stress reaction
-Hip stress reaction
 Groin strain
-Right labrum tear
+Player:Miguel Andujar
 Right labrum tear
 Right shoulder strain
+Player:Sherten Apostel
 Lower back tightness
+Player:Aristides Aquino
 Right shoulder sprain
 Right knee injury
 Abdominal strain
-Right elbow inflammation
-Right elbow inflammation
+Player:Victor Arano
 Right elbow inflammation
 Right rotator cuff strain
+Player:Pedro Araujo
 Right elbow sprain
-Right elbow sprain
+Player:Chris Archer
 Recovering from neck surgery
-Right shoulder inflammation
 Right shoulder inflammation
 Right thumb inflammation
 Left abdominal strain
+Player:Rogelio Armenteros
 Bone spurs in right elbow
-Bone spurs in right elbow
+Player:Shawn Armstrong
 Right forearm strain
 Right hand contusion
+Player:Willians Astudillo
 Left oblique strain
 Left hamstring strain
+Player:Tyler Austin
 Fractured left ankle
+Player:Luis Avilan
 Left shoulder inflammation
 Left elbow soreness
 Left triceps soreness
+Player:Dakota Bacus
 Right flexor strain
-Right biceps tendinitis
+Player:Homer Bailey
 Right biceps tendinitis
 Right knee inflammation
 Right elbow surgery
 Recovering May 2015 Tommy John surgery
-Recovering May 2015 Tommy John surgery
-Right elbow ligament sprain
 Right elbow ligament sprain
 Recovering from September 2014 right elbow surgery
-Strained flexor mass in his right elbow
 Strained flexor mass in his right elbow
 Sprained posterior capsule in right shoulder
 Right shoulder impingement
 Right shoulder inflammation
+Player:Anthony Banda
 Tommy John surgery
+Player:Jett Bandy
 Rib fracture
 Bruised right elbow
 Left knee contusion
+Player:Jacob Barnes
 Right elbow soreness
 Elbow injury
-Right shoulder inflammation
+Player:Tony Barnette
 Right shoulder inflammation
 Right shoulder strain
-Right shoulder strain
-Right shoulder inflammation
 Lower back strain
 Sprained right finger
+Player:Steven Baron
 Left ankle sprain
 Hamstring strain
+Player:Luis Barrera
 Right shoulder surgery
+Player:Aaron Barrett
 Right triceps strain
 Recovering from September 2015 Tommy John surgery
 Right elbow sprain
-Right elbow sprain
 Right bicep strain
+Player:Luis Alexander Basabe
 Right hamstring strain
+Player:Tyler Bashlor
 Lower back inflammation
-Lucie Mets activated RHP Tyler Bashlor from the 7-day disabled list
-Lucie Mets placed RHP Tyler Bashlor on the 7-day disabled list
+Player:Anthony Bass
 Right mid-thoracic strain,
 Right intercostal strain
 Right shoulder inflammation
+Player:Jeremy Beasley
 Right shoulder strain
-Right shoulder strain
+Player:Gerson Bautista
 Right elbow UCL sprain
 Right pectoralis strain
 Right pectoral strain
+Player:Tyler Beede
 Right ulnar colateral ligament sprain
+Player:Jalen Beeks
 Left elbow sprain
+Player:Anthony Bemboom
 Left knee sprain
-Left knee sprain
+Player:Travis Bergen
 Left shoulder strain
-Left shoulder strain
+Player:Jon Berti
 Right index finger laceration
 Left oblique strain
+Player:Jesse Biddle
 Left shoulder impingement
-Left shoulder fatigue
 Left shoulder fatigue
 Right thigh contusion/right groin strain
 Recovering from October 2015 Tommy John surgery
-Recovering from October 2015 Tommy John surgery
 Left shoulder strain
 Right strained quadriceps
+Player:Greg Bird
 Right calf strain
-Left plantar fascia tear
 Left plantar fascia tear
 Right ankle surgery
 Right ankle bruise
-Right ankle bruise
 Recovering from February 2016 right labrum surgery
-Recovering from February 2016 right labrum surgery
+Player:Braden Bishop
 Lacerated spleen
-Right rotator cuff strain
+Player:Ray Black
 Right rotator cuff strain
 Right elbow bone spur
 Right Shoulder Inflammation
-Right elbow lateral epicondylitis
+Player:Paul Blackburn
 Right elbow lateral epicondylitis
 Strained right forearm
-Strained right forearm
 Right hand contusion
-Right hand contusion
+Player:Alex Blandino
 Knee surgery recovery
 Torn ACL in right knee
-Torn ACL in right knee
+Player:Travis Blankenhorn
 Lower back strain
+Player:Michael Blazek
 Right arm injury
 Right forearm strain
 Right elbow impingement
 Right hand fracture
-Right hand fracture
+Player:Richard Bleier
 Left triceps strain
 Left shoulder tendinitis
 Left shoulder latissimus strain
-Left shoulder latissimus strain
 Right hamstring injury
+Player:Emilio Bonifacio
 Left oblique strain
 Strained rib cage muscle
 Sprained right knee
 Left thumb sprain
 Sprained left thumb
-Left elbow inflammation
+Player:Ryan Borucki
 Left elbow inflammation
 Left elbow soreness
-Left elbow soreness
+Player:Buddy Boshers
 Left elbow inflammation
 Left shoulder strain
+Player:Peter Bourjos
 Tennis elbow
 Right shoulder sprain
 RRght wrist fracture
@@ -2368,49 +2620,55 @@ Strained left hamstring
 Sore right wrist
 Tight right hamstring
 Left wrist sprain
+Player:James Bourque
 Right elbow strain
+Player:Matt Bowman
 Right elbow sprain
 Blisters on right middle finger
 Blisters on right middle and index fingers
-Lucie Mets activated RHP Matthew Bowman from the 7-day disabled list
-Lucie Mets placed RHP Matthew Bowman on the 7-day disabled list
-Right Flexor Strain
+Player:Brad Boxberger
 Right Flexor Strain
 Left oblique injury
 Recovering from March 2016 groin surgery
+Player:Silvino Bracho
 Right ulnar collateral ligament tear
 Torn right ulnar collateral ligament
-Right forearm strain
+Player:Chasen Bradford
 Right forearm strain
 Right shoulder inflammation
+Player:Ryan Brasier
 Right elbow strain
-Right elbow strain
+Player:Steven Brault
 Left shoulder strain
 Strained left hamstring
+Player:Brandon Brennan
 Left oblique strain
 Right shoulder inflammation
 Right shoulder strain
+Player:Austin Brice
 Right lat strain
 Right forearm strain
 Right forearm flexor strain
 Gastroenteritis
 Mid-back strain
-Right lat strain
 Right ulnar neuritis
 Right forearm tendinitis
-Right oblique strain
+Player:Jeff Brigham
 Right oblique strain
 Right Lumbar Spine Strain
+Player:Lewis Brinson
 Right hip inflammation
+Player:Socrates Brito
 Dislocated Ring Finger on Left Hand
+Player:Zack Britton
 Left hamstring strain
 Right Achilles surgery
 Left forearm strain
-Left forearm strain
-Left forearm strain
 Left shoulder impingement
 Left Shoulder Strain
+Player:JT Brubaker
 Right forearm strain
+Player:Clay Buchholz
 Shoulder inflammation
 Right shoulder inflammation
 Right flexor strain
@@ -2419,58 +2677,64 @@ Strained left oblique
 Torn flexor tendon in right elbow
 Torn flexor tendon in right forearm
 Right Flexor Strain
-Right Flexor Strain
 Hyperextended left knee
 Neck strain
 Gastro-intestinal problem
 Lower back strain
 Strained left hamstring
+Player:Ryan Buchter
 Strained left shoulder
+Player:Aaron Bummer
 Left biceps strain
-Left biceps strain
+Player:Nick Burdi
 Right elbow injury
-Right bicep/elbow pain
 Right bicep/elbow pain
 Recovery from Tommy John surgery
 Right UCL tear
 Bone bruise on right humerus
+Player:Brock Burke
 Left labrum debridement surgery
-Right elbow capsule strain
+Player:Ryan Burr
 Right elbow capsule strain
 Right shoulder AC joint inflammation
+Player:Edward Cabrera
 Right forearm strain
+Player:Eric Campbell
 Right shoulder strain
+Player:Luis Campusano
 Left wrist sprain
+Player:Robinson Cano
 Grade 2 left two adductor strain
 Left hamstring strain
 Left quad tightness
 Left quad strain
 Fractured fifth metacarpal on right hand
 Right quad strain
-Right shoulder inflammation
+Player:David Carpenter
 Right shoulder inflammation
 Strained right biceps
+Player:Diego Castillo
 Right shoulder inflammation
+Player:Jose Castillo
 Left lat strain
-Left lat strain
-Left middle finger
 Left middle finger
 Left flexor strain
 Right hamstring strain
+Player:Rusney Castillo
 Groin strain
 Right knee inflammation
 Left knee tendinitis
 Right groin pull
 Right shoulder inflammation
+Player:Miguel Castro
 Right shoulder inflammation
+Player:Willi Castro
 Right shoulder soreness
-Left wrist inflamation
+Player:Xavier Cedeno
 Left wrist inflamation
 Left wrist inflammation
 Left forearm tightness
-Left forearm tightness
-Left forearm tightness
-Lucie Mets placed C Juan Centeno on the 7-day disabled list
+Player:Francisco Cervelli
 Concussion symptoms
 Strained left quadricep
 Left wrist inflammation
@@ -2479,253 +2743,279 @@ Right hamstring strain
 Sore right elbow
 Fractured right hand
 Fracture in his left foot
+Player:Luis Cessa
 Left oblique strain
-Ribcage injury
 Ribcage injury
 Right elbow strain
 Right shin contusion
+Player:Dakota Chalmers
 Right elbow injury
+Player:Tyler Chatwood
 Right forearm strain
 Mid-back strain
 Left hip tightness
 Right calf strain
 Upper back strain
-Mid-back strain
 Recovering from July 2014 Tommy John surgery
-Right elbow strain
 Right elbow strain
 Strained left hamstring
 Right elbow inflammation
 Strained right triceps
+Player:Yu Chang
 Left finger sprain
-Left finger sprain
+Player:Jesse Chavez
 Left great toe sprain
 Right posterior elbow impingement
-Right posterior elbow impingement
 Fractured rib
-Right elbow strain
+Player:Yonny Chirinos
 Right elbow strain
 Right triceps inflammation
 Right middle finger inflammation
 Right forearm strain
+Player:Lonnie Chisenhall
 Right index finger fracture
-Right index finger fracture
-Left calf strain
 Left calf strain
 Right calf strain
 Right shoulder sprain
 Left wrist impingement
 Right shoulder soreness
+Player:Taylor Clarke
 Lower back inflammation
+Player:Ernie Clement
 Right adductor strain
+Player:Mike Clevinger
 Right posterior elbow impingement
 Left ankle sprain
 Right upper back/Teres major muscle strain
-Lumbar strain
-Lumbar strain
+Player:Alex Cobb
 Lumbar strain
 Right groin strain
 Turf toe on right big toe
-Recovering from May 2015 Tommy John surgery
 Recovering from May 2015 Tommy John surgery
 May 2015 Tommy John surgery
 Right forearm tendinitis
 Left oblique strain
 Concussion and a blister on his right index finger
 Right-hand Discomfort
+Player:Taylor Cole
 Right shoulder strain
 Right fifth toe fracture
+Player:Tim Collins
 Right hamstring strain
-Recovering from March 2015 Tommy John surgery
-Recovering from March 2015 Tommy John surgery
 Recovering from March 2015 Tommy John surgery
 Back strain
 Left elbow strain
+Player:Christian Colon
 Broken right middle finger
+Player:Ryan Cook
 Strained right latissimus dorsi muscle
 Right forearm muscle strain
 Right shoulder inflammation
 Blister on right hand
+Player:Sam Coonrod
 Right shoulder strain
 Right lat strain
+Player:Patrick Corbin
 Recovering from March 2014 Tommy John surgery
-Recovering from March 2014 Tommy John surgery
-Recovering from March 2014 Tommy John surgery
+Player:Jimmy Cordero
 Right shoulder strain
+Player:Carlos Correa
 Back discomfort
-Fractured rib
 Fractured rib
 Lower back soreness
 Torn ligament in left thumb
+Player:Nestor Cortes
 Left elbow impingement
-Left elbow impingement
-Right UCL surgery rehab
+Player:Jharel Cotton
 Right UCL surgery rehab
 Right ulnar collateral ligament strain
 Right thumb blister
+Player:Dylan Covey
 Right shoulder soreness
 Right shoulder inflammation
 Strained left oblique
-Left shoulder inflammation
+Player:Zack Cozart
 Left shoulder inflammation
 Neck Strain
-Left shoulder subluxation
 Left shoulder subluxation
 Left quadriceps soreness
 Strained right quadricep
 Right knee injury
-Right knee injury
-Torn ligaments in his right knee
 Torn ligaments in his right knee
 Hyperextended left elbow
 Right ankle sprain
+Player:Dylan Cozens
 Left quadriceps strain
+Player:Kyle Crick
 Right shoulder strain
 Right hand surgery
 Right triceps tightness
+Player:Oneil Cruz
 Right foot fracture
+Player:Tyler Cyr
 Right elbow soreness
+Player:Matt Davidson
 Back spasms
 Right wrist contusion
 Broken right foot
-Broken right foot
-Right middle finger blister
+Player:Rookie Davis
 Right middle finger blister
 Right hip injury
 Bruised right forearm
 Strained right groin
+Player:Yonathan Daza
 Left shoulder strain
+Player:Jose De Leon
 Right groin strain
 Tommy John surgery
-Tommy John surgery
 Recovery from Tommy John surgery
-Tommy John surgery
+Player:Miguel Del Pozo
 Sprained left elbow
+Player:Anthony Desclafani
 Mild right teres major strain
 Left oblique strain
 Sprained ulnar collateral ligament in right elbow
 Sprained right elbow
 Oblique strain
 Mild oblique strain
+Player:Ross Detwiler
 Left shoulder inflammation
 Herniated disc in his lower back
 Low back strain
 Right oblique strain
+Player:Aledmys Diaz
 Right groin strain
 Left hamstring strain
 Left ankle sprain
 Right thumb fracture
+Player:Isan Diaz
 Left groin strain
-Left groin strain
+Player:Lewin Diaz
 Right thumb fracture
+Player:Miguel Diaz
 Left knee surgery
 Torn meniscus
-Torn meniscus
 Strained right forearm
-Strained right forearm
+Player:Yennsy Diaz
 Right lat strain
+Player:Alex Dickerson
 Right oblique strain
 Right wrist sprain
 Tommy John surgery
 Lower back tightness
+Player:Randy Dobnak
 Left groin strain
+Player:Rafael Dolis
 Mild right forearm strain
+Player:Seranthony Dominguez
 Right elbow sprain
 Right UCL injury
-Right UCL injury
+Player:Danny Duffy
 Left hamstring strain
 Left shoulder impingement syndrome
 Left shoulder impingement
 Left elbow impingement/valgus extension overload
 Strained right oblique
-Strained right oblique
 Left biceps tendinitis
 Mild left flexor strain
 Recovering from June 2012 Tommy John surgery
 Left elbow tightness
+Player:Matt Duffy
 Right hamstring strain
-Recovering from Achilles surgery
 Recovering from Achilles surgery
 Left Achilles injury
 Strained left Achilles
+Player:Ryan Dull
 Strained right shoulder
 Strained right knee
-Lucie Mets activated RHP Justin Dunn from the 7-day disabled list
-Lucie Mets placed RHP Justin Dunn on the 7-day disabled list retroactive to May 2, 2018
-Lucie Mets activated RHP Justin Dunn from the 7-day disabled list
-Lucie Mets placed RHP Justin Dunn on the 7-day disabled list
+Player:Mike Dunn
 Left a/c joint inflammation
 Left rhomboid strain
 Back spasms
 Left forearm strain
+Player:Jon Duplantier
 Right shoulder inflammation
+Player:Montana Durapau
 Left ankle sprain
+Player:Ryan Eades
 Right groin strain
-Right flexor strain
+Player:Jon Edwards
 Right flexor strain
 Quadriceps injury
+Player:Jerad Eickhoff
 Right middle finger blister/laceration
 Right biceps tendinitis
-Right biceps tendinitis
 Right lat strain
-Right lat strain
-Nerve irritation in right hand
 Nerve irritation in right hand
 Upper back strain
+Player:Jacoby Ellsbury
 Left hip surgery
-Left hip surgery
-Right oblique strain
 Right oblique strain
 Right knee sprain
 Subluxation of his right shoulder
 Left chest contusion
-Left chest contusion
+Player:Jake Elmore
 Strained left quad
+Player:Paolo Espino
 Left oblique strain
+Player:Anderson Espinoza
 Tommy John surgery
+Player:Carlos Estevez
 Right elbow strain
 Left oblique strain
-Lumbar strain
+Player:Marco Estrada
 Lumbar strain
 Left gluteus strain
 Back injury
 Back soreness
 Left hamstring strain
 Right quadriceps strain
+Player:Thairo Estrada
 Right hamstring strain
+Player:Alex Faedo
 Back strain
+Player:Stuart Fairchild
 Right hamstring strain
+Player:Buck Farmer
 Left groin strain
+Player:Luke Farrell
 Non-displaced jaw fracture
-Right shoulder inflammation
+Player:Erick Fedde
 Right shoulder inflammation
 Right forearm flexor strain
-Right forearm flexor strain
+Player:Tim Federowicz
 Recovering from March 2015 right knee surgery
 Right thumb laceration
+Player:Mike Fiers
 Lumbar strain
+Player:Derek Fisher
 Right knee contusion
 Left quad strain
-Right shoulder strain
+Player:Ryan Flaherty
 Right shoulder strain
 Right groin strain
-Right groin strain
+Player:Wilmer Font
 Left shin contusion
+Player:Dustin Fowler
 Ruptured right patellar tendon
-Ruptured right patellar tendon
+Player:Jake Fraley
 Right quad strain
-Left flexor mass strain
+Player:Sam Freeman
 Left flexor mass strain
 Left shoulder inflammation
 Sore left elbow
+Player:Carson Fulmer
 Strained right hamstring
+Player:Drew Gagnon
 Right quad strain
+Player:Isaac Galloway
 Right elbow
 Right triceps tendonitis
 Left oblique muscle strain
 Left wrist sprain
+Player:Aramis Garcia
 Right hip labrum repair
-Left thumb sprain
+Player:Leury Garcia
 Left thumb sprain
 Strained left hamstring
 Left hamstring strain
@@ -2733,147 +3023,164 @@ Left knee sprain
 Sprained right thumb
 Sprained finger on left hand
 Left hip flexor injury
+Player:Yimi Garcia
 Right forearm inflammation
 Recovery from right elbow surgery
 Recovering from Tommy John Surgery
 Right biceps soreness
-Right biceps soreness
+Player:Kevin Gausman
 Plantar fasciitis in right foot
 Right shoulder tendinitis
 Right shoulder strain
-Right shoulder tendinitis
 Left intercostal strain
-Right groin strain
+Player:Scooter Gennett
 Right groin strain
 Right oblique tightness
 Left hand laceration
+Player:Kyle Gibson
 Ulcerative colitis
 Right shoulder strain
 Right groin strain
 Sprained left ankle
+Player:Ken Giles
 Right flexor strain
-Right flexor strain
-Right forearm strain
 Right forearm strain
 Right elbow inflammation
+Player:Andres Gimenez
 Right oblique tightness
+Player:Tyler Glasnow
 Mild right forearm strain
-Mild right forearm strain
+Player:Zack Godley
 Right elbow flexor strain
-Right elbow flexor strain
+Player:Ryan Goins
 Right forearm tightness
+Player:Jeanmar Gomez
 Right elbow impingement
 Right forearm inflammation
+Player:Chi Chi Gonzalez
 Right biceps tendonitis
 Partial tear of right UCL
+Player:Nick Gordon
 Left lower leg contusion
 Left adductor strain
+Player:Mackenzie Gore
 Left middle finger blister
+Player:Anthony Gose
 Right calf strain
 Left shoulder soreness
+Player:Daniel Gossett
 Recovery from Tommy John surgery
 Right elbow strain
-Right elbow strain
+Player:Trevor Gott
 Right elbow inflammation
 Right elbow strain
-Right elbow strain
 Right forearm strain
+Player:Juan Graterol
 Right wrist contusion
 Left elbow sprain and knee contusion
 Sprained right ankle
+Player:Kendall Graveman
 Recovering from Tommy John surgery
 Tommy John surgery
 Right shoulder strain
 Strained right shoulder
 Strained left oblique
-Strained left oblique
+Player:Zach Green
 Left hip impingement
+Player:Foster Griffin
 Left forearm strain
-Left forearm strain
+Player:Justin Grimm
 Callus laceration on right index finger
 Right shoulder impingement syndrome
 Lower back stiffness
 Right index finger infection
 Right forearm inflammation
+Player:Deivy Grullon
 Left toe fracture
+Player:Junior Guerra
 Right forearm tightness
 Right shin contusion
 Strained right calf
 Right elbow inflammation
+Player:Tayron Guerrero
 Torn fingernail
 Right middle finger blister
 Left lumbar strain
 Right foot contusion
+Player:Taylor Guilbeau
 Left shoulder strain
-Left shoulder strain
+Player:Kelvin Gutierrez
 Right elbow strain
 Right toe fracture
+Player:Sam Haggerty
 Left forearm strain
 Right shoulder strain
 Left oblique strain
+Player:Jesse Hahn
 Recovering from Tommy John surgery
 Right ulnar collateral ligament sprain
 Right  triceps strain
 Strained right forearm
-Strained right forearm
+Player:David Hale
 Lumbar spine strain
-Lumbar spine strain
-Right calf injury
 Right calf injury
 Mild left groin strain
 Right shoulder strain
+Player:Ian Hamilton
 Right shoulder soreness
 Right shoulder inflammation
+Player:Eric Hanhold
 Strained left oblique muscle
+Player:Mitch Haniger
 Lumbar microdiscectomy surgery
 Ruptured testicle
 Facial laceration
 Strained right oblique
+Player:Ryne Harper
 Right shoulder strain
+Player:Will Harris
 Right groin strain
 RIght shoulder inflammation
 Left shoulder inflammation
-Left hamstring tendon strain
+Player:Josh Harrison
 Left hamstring tendon strain
 Left shoulder contusion
 Fracture of 5th metacarpal bone in left hand
 Fractured left hand
-Fractured left hand
 Right groin strain
 Left thumb injury
+Player:Hunter Harvey
 Right forearm strain
+Player:Joe Harvey
 Right elbow sprain
 Right elbow strain
-Right lat strain
+Player:Matt Harvey
 Right lat strain
 Upper back strain
 Stress injury to scapula bone in right shoulder
 Thoracic outlet syndrome
-Thoracic outlet syndrome
 Recovering from October 2013 Tommy John surgery
 Partial ligament tear in his right elbow
-Partial ligament tear in his right elbow
+Player:Austin Hays
 Non-displaced rib fracture
 Right ankle surgery
-Lower back inflamation
+Player:Ryon Healy
 Lower back inflamation
 Sprained right ankle
-Left elbow inflammation
+Player:Andrew Heaney
 Left elbow inflammation
 Left elbow UCL injury
-Left elbow UCL injury
 Left flexor muscle strain
-Left flexor muscle strain
+Player:Taylor Hearn
 Left elbow tightness
-Left elbow tightness
+Player:Scott Heineman
 Left shoulder surgery rehabilitation
+Player:Ben Heller
 Right biceps nerve injury
 Right elbow UCL surgery recovery
-Right elbow UCL surgery recovery
-Right elbow bone spur
 Right elbow bone spur
 Right knee strain
-Stiff right shoulder
+Player:Jeremy Hellickson
 Stiff right shoulder
 Right wrist sprain
 Right hamstring strain
@@ -2881,100 +3188,109 @@ Strained left hamstring
 Right elbow
 Right shoulder fatigue
 Shoulder injury
+Player:Ryan Hendrix
 Right elbow strain
+Player:Darwinzon Hernandez
 Left AC joint sprain
+Player:David Hernandez
 Right shoulder fatigue
 Right shoulder inflammation
 Recovering from April 2014 Tommy John surgery
 Torn right elbow ligament
 Sprained left ankle
-Strained right latissimus dorsi
+Player:Elieser Hernandez
 Strained right latissimus dorsi
 Right third finger blister
 Tooth infection
-Right shoulder strain
+Player:Felix Hernandez
 Right shoulder strain
 Lower back stiffness
 Right biceps tendinitis
 Right shoulder inflammation
 Strained right calf
+Player:Oscar Hernandez
 Broken left hamate bone
-Broken left hamate bone
+Player:Dilson Herrera
 Broken right middle finger
 Broken Tip of Right Middle Finger
+Player:Kelvin Herrera
 Right oblique strain
 Left Lisfranc tear
 Right rotator cuff impingement
+Player:Jeff Hoffman
 Right shoulder inflammation
+Player:Jonathan Holder
 Right shoulder inflammation
-Right shoulder inflammation
+Player:Derek Holland
 Left wrist contusion
 Left index finger bone bruise
-Left shoulder inflammation
 Left shoulder inflammation
 Left shoulder strain
 Recovering from January 2014 left knee surgery
 Left shoulder fatigue
+Player:Jordan Holloway
 Right triceps strain
-Right triceps strain
+Player:Brent Honeywell
 On the 7-day injured list
+Player:Spencer Howard
 Right shoulder stiffness
+Player:James Hoyt
 Left oblique strain
 Right latissimus dorsi strain
+Player:Daniel Hudson
 Right forearm tightness
-Right forearm tightness
-Right forearm tightness
-Recovering from June 2013 Tommy John surgery
 Recovering from June 2013 Tommy John surgery
 Recovering from July 2012 Tommy John surgery
 Sore right elbow
 Right shoulder impingement
+Player:Jared Hughes
 Left lat strain
 Right shoulder inflammation
 Right elbow soreness
-Lucie Mets activated RHP Jordan Humphreys from the 7-day injured list
-Lucie Mets activated RHP Jordan Humphreys from the 7-day injured list
-Lucie Mets placed RHP Jordan Humphreys on the 7-day disabled list
-Lucie Mets activated RHP Jordan Humphreys from the 7-day disabled list
-Lucie Mets placed RHP Jordan Humphreys on the 7-day disabled list
+Player:Raisel Iglesias
 Left biceps strain
 Impingement in his right shoulder
 Right shoulder tendinitis
+Player:Alex Jackson
 Left knee sprain
+Player:Travis Jankowski
 Fractured left wrist
 Right foot bone bruise
-Right foot bone bruise
 Wrist injury
+Player:Jake Jewell
 Right fibula fracture
-Right fibula fracture
+Player:Brian Johnson
 Non-baseball related medical matter
 Left elbow inflammation
 Left hip inflammation
 Left shoulder inflammation
 Left shoulder impingement
+Player:James Jones
 Strained left tricep
+Player:Nate Jones
 Right forearm surgery
 Right elbow inflamation
-Right elbow inflamation
-Right pronator muscle strain
-Right pronator muscle strain
 Right pronator muscle strain
 Right elbow neuritis
 Muscle strain in his left hip
-Muscle strain in his left hip
+Player:Caleb Joseph
 Testicular injury
+Player:Jakob Junis
 Lower back spasms
 Lower back inflammation
+Player:James Kaprielian
 Right elbow pain
+Player:Keone Kela
 Right forearm tightness
-Right forearm tightness
-Right elbow inflammation
 Right elbow inflammation
 Right shoulder soreness
 Right elbow impingement
 Left calf strain
+Player:Mitch Keller
 Left side discomfort
+Player:Christian Kelley
 Lower back strain
+Player:Shawn Kelley
 Right biceps muscle soreness
 Bacterial infection
 Ulnar nerve injury
@@ -2983,246 +3299,286 @@ Right trapezius strain
 Lower back strain
 Left calf strain
 Back stiffness
-Back stiffness
 Rght elbow inflammation
 Strained left oblique
+Player:Merrill Kelly
 Right shoulder nerve impingement
-Right shoulder nerve impingement
+Player:Franklyn Kilome
 Split fingernail
+Player:Tyler Kinley
 Right Lat Strain
+Player:Andrew Kittredge
 Right UCL sprain
+Player:Tom Koehler
 Right shoulder strain
 Strained right shoulder
-Right shoulder strain
 Right shoulder bursitis
+Player:Michael Kopech
 Tommy John surgery
 Ulnar collateral ligament sprain in right elbow
+Player:Kevin Kramer
 Recovering from right hip surgery
 Fractured right hand
+Player:Erik Kratz
 Left hamstring strain
 Left foot injury
 Injured left knee
+Player:Chad Kuhl
 Recovering from Tommy John surgery
 Right forearm strain
-Right forearm strain
+Player:Ryan Lamarre
 Lower leg stress fracture
 Right knee sprain
+Player:Jimmy Lambert
 Right forearm strain
-Right forearm strain
+Player:Peter Lambert
 Tommy John surgery
+Player:Dinelson Lamet
 Recovering from Tommy John surgery
 Right elbow strain
-Right elbow strain
+Player:Ryan Lavarnway
 Fractured left hamate
 Left wrist injury
+Player:Derek Law
 Right elbow strain
 Forearm Tightness
+Player:Mike Leake
 Left hamstring strain
 Right shoulder fatigue
+Player:Tzu-Wei Lin
 Left knee sprain
+Player:Josh Lindblom
 Left side discomfort
-Left elbow surgery
+Player:Jacob Lindgren
 Left elbow surgery
 Recovery from Tommy John surgery
+Player:Zack Littell
 Right elbow inflammation
 Left hamstring strain
+Player:Jose Lobaton
 Left elbow tendinitis
 Sore right shoulder
 Sprained left knee
+Player:Walker Lockett
 Lower back discomfort
+Player:Shed Long
 From the 10-day injured list
 On the 10-day injured list retroactive to September 10, 2020
+Player:Nick Longhi
 Left wrist sprain
+Player:Pablo Lopez
 Right shoulder strain
-Right shoulder strain
+Player:Reynaldo Lopez
 Right shoulder soreness
 Strained back
-Left elbow strain
+Player:Aaron Loup
 Left elbow strain
 Left forearm strain
 Sore left elbow
+Player:Elvis Luciano
 Right elbow sprain
-Right elbow sprain
+Player:Lance Lynn
 Recovering from November 2015 Tommy John surgery
 Right forearm strain
 Left oblique strain
+Player:Tyler Lyons
 Left elbow sprain
 Mid back strain
 Right intercostal strain
 Stress reaction in his right knee
 Right knee stress reaction
 Left shoulder strain
+Player:Nick Madrigal
 Separated left shoulder
-Right shoulder strain
+Player:Matt Magill
 Right shoulder strain
 Right shoulder tendinitis
+Player:Tyler Mahle
 Left hamstring strain
+Player:Mikie Mahtook
 Broken left hand
+Player:Luke Maile
 Right finger fracture
 Left oblique strain
 Right knee inflammation
+Player:Sean Manaea
 Recovering from left shoulder surgery
 Left shoulder impingement
 Left shoulder strain
-Left shoulder strain
 Left pronator strain
+Player:Deven Marrero
 Left oblique strain
+Player:Nick Martini
 Sprained right knee
+Player:German Marquez
 Right arm inflammation
+Player:Brett Martin
 Left rotator cuff inflammation
+Player:Corbin Martin
 Oblique strain
+Player:Jason Martin
 Upper back strain
 Left shoulder dislocation
+Player:Mark Mathias
 Left shoulder soreness
+Player:Phil Maton
 Right latissimus dorsi strain
+Player:Trevor May
 Tommy John surgery
-Low back strain
 Low back strain
 Low back spasms
 Strained right calf
+Player:Chris Mazza
 Right shoulder tendinits
+Player:John Means
 Left shoulder fatigue
 Left bicep strain
 Left shoulder strain
+Player:Adalberto Mejia
 Right calf strain
-Right calf strain
-Left wrist strain
 Left wrist strain
 Blister on left middle finger
 Left arm brachialis strain
 Left shoulder
+Player:Seth Mejias-Brean
 Right shoulder tendinitis
+Player:Keury Mella
 Left oblique strain
+Player:Yohander Mendez
 Right UCL sprain
+Player:Daniel Mengden
 Right elbow debridement surgery
 Sprained right foot
 Right foot surgery
+Player:Julian Merryweather
 Right elbow tendinitis
+Player:Keynan Middleton
 Recovering from Tommy John surgery
 Right elbow UCL damage,
-Right elbow UCL damage,
 Right elbow inflammation
-Right oblique strain
+Player:Wade Miley
 Right oblique strain
 Upper respiratory infection
 Left shoulder impingement
 Sore left shoulder
 Sprained left foot
+Player:Ian Miller
 Back injury
 Lower back injury
-Right rotator cuff strain
+Player:Justin Miller
 Right rotator cuff strain
 Lower back strain
 Left oblique strain
-Right elbow inflammation
+Player:Shelby Miller
 Right elbow inflammation
 Recovery from Tommy John surgery
 Tear in right elbow
-Right elbow inflammation
 Sprained Right Index Finger
+Player:Alec Mills
 Left ankle contusion
+Player:Tommy Milone
 Left elbow inflammation
 Left shoulder soreness
 Left knee sprain
-Left knee sprain
 Left biceps tendinitis
 Mild left elbow strain
+Player:Bryan Mitchell
 Right elbow impingement
 Left great toe tear
-Left great toe tear
 Upper body injury
+Player:Frankie Montas
 Oblique injury
 Recovering from February 2016 rib surgery
+Player:Rafael Montero
 Right elbow tendonitis
 Tommy John surgery
 Right rotator cuff inflammation
-Right rotator cuff inflammation
-Lucie Mets placed RHP Rafael Montero on the 7-day disabled list
+Player:Jordan Montgomery
 Recovering from Tommy John surgery
 Left elbow strain
-Left elbow strain
+Player:Mike Montgomery
 Strained lat
 Mild left lat strain
 Left shoulder inflammation
 Forearm injury
+Player:Matt Moore
 Right knee sprain
 Right knee strain
 Right knee soreness
 Recovering from April 2014 Tommy John surgery
 April 2014 Tommy John surgery
 Left elbow soreness
-Left elbow soreness
-Right knee patellar tendinitis
+Player:Brian Moran
 Right knee patellar tendinitis
 Left elbow inflammation
-Left elbow inflammation
+Player:Adrian Morejon
 Shoulder impingement
-Shoulder impingement
-Left flexor strain
+Player:Adam Morgan
 Left flexor strain
 Left forearm strain
 Back strain
 Left shoulder stiffness
-Right elbow UCL injury
+Player:Mike Morin
 Right elbow UCL injury
 Neck tightness
 Left oblique strain
 Left foot laceration
+Player:Kyle Muller
 Calf strain
+Player:Andres Munoz
 Right ulnar colateral ligament tear
+Player:Yairo Munoz
 Lower back strain
 Right wrist strain
+Player:Brian Navarreto
 Left wrist sprain
-Left hamstring strain
+Player:Pat Neshek
 Left hamstring strain
 Right shoulder strain
-Right shoulder strain
+Player:Dovydas Neverauskas
 Left oblique strain
+Player:Juan Nicasio
 Right rotator cuff tendinitis
 Strained left groin
-Right knee inflammation
 Right knee inflammation
 Right knee effusion
 Left abdominal strain
 Strained left knee
 Neck Surgery
+Player:Aaron Nola
 Lower back strain
 Strained right elbow
-Right knee inflammation
+Player:Bud Norris
 Right knee inflammation
 Mid-back strain
 Right groin strain
 Left knee sprain
 Bursitis and biceps tendinitis
-Left groin strain
-Left groin strain
-Left groin strain
+Player:Daniel Norris
 Left groin strain
 Strained Oblique
+Player:James Norwood
 Right shoulder inflammation
-Right shoulder inflammation
-Right triceps tendinits
+Player:Ivan Nova
 Right triceps tendinits
 Right ring finger sprain
 Recovering from April 2014 Tommy John surgery
-Recovering from April 2014 Tommy John surgery
-Right elbow ulnar collateral ligament injury
 Right elbow ulnar collateral ligament injury
 Inflammation of the right triceps
 Inflammation in his right rotator cuff
+Player:Trevor Oaks
 Recovery from right hip surgery
+Player:Scott Oberg
 Blood clots in right arm
 Lower back strain
 Blood clot in right arm
-Blood clot in right arm
 Back strain
 Right arm axillary artery thrombosis
-Right arm axillary artery thrombosis
 Strained shoulder
+Player:Peter O'Brien
 Bruised left rib
+Player:Darren O'Day
 Right forearm strain
-Right forearm strain
-Left hamstring strain
 Left hamstring strain
 Hyperextended right elbow
 Right shoulder strain, retroactive to 6/7/17
@@ -3230,29 +3586,31 @@ Right shoulder rotator cuff strain
 Right hamstring strain
 Right shoulder inflammation
 Surgery to repair a partial tear of the labrum in his left hip
+Player:Brian O'Grady
 Lower back spasms
+Player:Rafael Ortega
 Staph infection
-Right elbow soreness
+Player:Roberto Osuna
 Right elbow soreness
 Cervical spasm
+Player:Corey Oswalt
 Right biceps tendinitis
-Lucie Mets activated RHP Corey Oswalt from the 7-day disabled list
-Lucie Mets placed RHP Corey Oswalt on the 7-day disabled list
-Right shoulder inflammation
+Player:Dan Otero
 Right shoulder inflammation
 Sore right arm
+Player:Emilio Pagan
 Right bicep inflammation
-Ulcerative colitis
+Player:Joe Palumbo
 Ulcerative colitis
 Recovery from Tommy John surgery
+Player:Blake Parker
 Right elbow stress reaction
-Right shoulder discomfort
+Player:Brad Peacock
 Right shoulder discomfort
 Right shoulder soreness
 Left intercostal strain
-Left intercostal strain
 Recovering from October 2014 right hip surgery
-Low back strain
+Player:Steve Pearce
 Low back strain
 Left calf injury
 Oblique strain
@@ -3264,330 +3622,361 @@ Left wrist tendinitis
 Broken right index finger
 Right calf strain
 Sprained right ankle
+Player:Nate Pearson
 Right elbow tightness
-Left knee discomfort
-Left knee discomfort
+Player:Dustin Pedroia
 Left knee discomfort
 Left knee rehab
 Left knee inflammation
-Left knee inflammation
 Left knee cartilage restoration surgery
-Left knee inflammation
-Left knee inflammation
 Left wrist sprain
-Strained right hamstring
 Strained right hamstring
 Sprained right thumb
 Soreness in left foot
+Player:Felix Pena
 Strained left calf
-Lucie Mets placed C Francisco Pena on the 7-day disabled list
+Player:Freddy Peralta
 SC joint injury
+Player:Wandy Peralta
 Right hip flexor strain
+Player:Luis Perdomo
 Right forearm inflammation
 Strained right shoulder
 Right shoulder inflammtion
+Player:Carlos Perez
 Right ankle sprain
 Right quad strain
-Right elbow discomfort
+Player:Martin Perez
 Right elbow discomfort
 Recovery from right elbow surgery
 Fracture and laceration of right thumb
 Recovery from ligament reconstruction surgery in left elbow
 Left elbow inflammation
 Lower back strain
+Player:Michael Perez
 Left hamstring strain
+Player:Oliver Perez
 Patella tendinitis of right knee
 Patellar tendinitis in his right knee
 Right knee tendinitis
+Player:David Peterson
 Left shoulder fatigue
-Lucie Mets activated RHP Tim Peterson from the 7-day disabled list
-Lucie Mets placed RHP Tim Peterson on the 7-day disabled list retroactive to July 30, 2014
+Player:Tim Peterson
+Left ankle contusion
+Player:Yusmeiro Petit
 Right Shoulder Strain
+Player:Jake Petricka
 Right elbow strain
-Right elbow strain
-Strained right lat
 Strained right lat
 June 2016 right hip surgery
 Right-hip impingement
 Right forearm strain
-Recovery from Tommy John surgery
+Player:David Phelps
 Recovery from Tommy John surgery
 Right elbow UCL construction
-Right elbow UCL construction
-Right elbow posterior impingement
 Right elbow posterior impingement
 Right elbow impingement
 Left oblique strain
-Left oblique strain
 Right forearm strain
 Right elbow inflammation
-Right forearm strain
-Right forearm strain
+Player:Evan Phillips
 Right elbow inflammation
+Player:Nick Pivetta
 Strained groin
-Posterior left shoulder inflammation
+Player:Gregory Polanco
 Posterior left shoulder inflammation
 Left shoulder surgery recovery
 Dislocated left shoulder and bone bruise on left knee
 Left hamstring strain
-Left hamstring strain
-Left hamstring strain
+Player:Sean Poppen
 Right elbow contusion
-Right elbow contusion
+Player:Boog Powell
 Right knee sprain
+Player:Bobby Poyner
 Left hamstring strain
+Player:Austin Pruitt
 Hairline fracture in his right elbow
-Hairline fracture in his right elbow
+Player:Jose Quijada
 Left pectoralis strain
+Player:Jose Quintana
 Left lat inflammation
 Left thumb nerve injury
+Player:Tanner Rainey
 Right flexor strain
+Player:Brooks Raley
 Left elbow impingement
+Player:Erasmo Ramirez
 Right groin tightness
 Right Teres Major strain
 Right shoulder-latissimus dorsi strain
+Player:Hanley Ramirez
 Right shoulder inflammation
 Right Oblique Strain
 Strained left hamstring
 Torn ligament in his right thumb
 Sprained left shoulder
 Left back strain
+Player:Neil Ramirez
 Lower back spasms
 Left abdominal soreness
 Right shoulder inflammation
 Right triceps soreness
 Right shoulder injury
-Right shoulder injury
 Arm fatigue
+Player:Yefry Ramirez
 Right calf strain
+Player:Robbie Ray
 Right lower back spasm
 Strained right oblique
-Right shoulder strain
+Player:Colin Rea
 Right shoulder strain
 Right elbow sprain
 Lower back spasms
+Player:Addison Reed
 Left thumb sprain
 Right triceps tightness
-Left pinky finger irritation
+Player:Cody Reed
 Left pinky finger irritation
 Back spasms
+Player:Michael Reed
 Left low back strain
 Ankle injury
+Player:Jacob Rhame
 Right elbow discomfort
-Right elbow discomfort
+Player:Clayton Richard
 Left lat strain
 Right knee stress reaction
 Left knee inflammation
-Left knee inflammation
 Blister on left middle finger
-Left shoulder strain
 Left shoulder strain
 Intestinal virus
 Strained left shoulder
+Player:Garrett Richards
 Recovering from Tommy John surgery
 Right elbow UCL damage
-Right elbow UCL damage
 Left hamstring strain
-Right biceps strain
 Right biceps strain
 High grade UCL tear in right arm
 High grade UCL tear in right elbow
 Recovering from August 2014 left knee surgery
 Torn left knee tendon
 Right adductor strain
+Player:Joey Rickard
 Left elbow inflammation
 Left middle finger sprain
 Right thumb ligament injury
-Right thumb ligament injury
-Right shoulder inflammation
+Player:Yacksel Rios
 Right shoulder inflammation
 Abdominal strain
-Hyperextended left elbow
+Player:Rene Rivera
 Hyperextended left elbow
 Right knee inflammation
-Right knee inflammation
+Player:David Robertson
 Tommy John surgery
-Right elbow soreness
 Right elbow soreness
 Left groin strain
 Left oblique strain
+Player:Hansel Robles
 Right shoulder impingement
 Sprained right knee
 Right foot contusion
-Lucie Mets placed RHP Hansel Robles on the 7-day disabled list
-Lucie Mets activated RHP Hansel Robles from the 7-day disabled list
-Lucie Mets placed RHP Hansel Robles on the 7-day disabled list
+Player:Brendan Rodgers
 Right shoulder capsular strain
 Right shoulder impingement
-Right shoulder impingement
+Player:Dereck Rodriguez
 Hamstring strain
+Player:Eduardo Rodriguez
 Right ankle sprain
 Recovery right knee patellofemoral ligament reconstruction surgery
 Right knee subluxation
 Right knee injury
 Left Knee Sprain
+Player:Jefry Rodriguez
 Right shoulder strain
-Right shoulder strain
-Right shoulder strain
+Player:Joely Rodriguez
 Left hamstring strain
 Left lat strain
+Player:Manuel Rodriguez
 Right biceps strain
-Left shoulder soreness
+Player:Carlos Rodon
 Left shoulder soreness
 Left elbow inflammation
-Left elbow inflammation
-Left shoulder rehabilitation
 Left shoulder rehabilitation
 Left shoulder inflammation
 Left biceps bursitis
-Left biceps bursitis
 Sprained left wrist
+Player:Tyler Rogers
 Shin Contusion
+Player:Josh Rojas
 Lower back inflammation
+Player:Jojo Romero
 Oblique strain
+Player:Sal Romano
 Bruised foot
+Player:Fernando Romero
 Right shoulder impingement
 Right elbow UCL repair
+Player:Andrew Romine
 Right shoulder impingement
+Player:Hector Rondon
 Right triceps strain
+Player:Brent Rooker
 Fractured right forearm
 Left wrist strain
+Player:Trevor Rosenthal
 Viral infection
 Right posterior elbow irritation
-Right posterior elbow irritation
 Right shoulder inflammation
+Player:Joe Ross
 Recovering from Tommy John surgery
 Right elbow sprain
 Right shoulder inflammation
-Right shoulder inflammation
+Player:Zac Rosscup
 Left calf strain
 Left middle finger inflammation
 Left middle finger blister
-Left middle finger blister
 Left shoulder inflammation
-Left shoulder inflammation
+Player:Darin Ruf
 Right knee laceration
 Left oblique strain
+Player:Cameron Rupp
 Oblique strain
+Player:Chris Rusin
 Mid-back strain
 Left plantar fascitis
 Right intercostal muscle strain
 Right oblique strain
 Left shoulder strain
+Player:Blake Rutherford
 Foot contusion
-Right forearm strain
-Right forearm strain
+Player:Casey Sadler
 Right forearm strain
 Right knee contusion
+Player:Tyler Saladino
 Sprained left ankle
 Back spasms
 Herniated disk in his back
+Player:Fernando Salas
 Right shoulder inflamation
-Right groin strain
+Player:Danny Salazar
 Right groin strain
 Right shoulder rehab
 Right shoulder rotator cuff tendonitis
-Right shoulder rotator cuff tendonitis
 Right elbow inflammation
 Right shoulder soreness
-Right elbow inflammation
 Right arm strain
 Right arm stiffness
+Player:Jeff Samardzija
 Right shoulder impingement
-Right shoulder inflammation
 Right shoulder inflammation
 Right shoulder tightness
 Pectoral strain
+Player:Anibal Sanchez
 Left hamstring strain
 Right hamstring strain
-Left hamstring strain
-Left hamstring strain
 Right Rotator Cuff Inflamattion
 Right pectoral strain
 Laceration on his right middle finger
 Right shoulder stiffness
 Right shoulder sprain
 Right shoulder strain
+Player:Edgar Santana
 Right elbow UCL reconstruction surgery
-Upper thoracic back pain and discomfort
+Player:Hector Santiago
 Upper thoracic back pain and discomfort
 Left shoulder strain
+Player:Tony Santillan
 Right shoulder injury
-Left hamstring strain
+Player:Wynston Sawyer
 Left hamstring strain
 Left hamate fracture
 Right hamstring injury
+Player:Scott Schebler
 Right oblique strain
 Sprained AC joint in right shoulder
 Right ulnar nerve contusion
 Left shoulder strain
+Player:Max Scherzer
 Mild rhomboid strain
 Mid-back strain
 Neck inflammation
+Player:Brian Schlitter
 Right shoulder inflammation
 Right forearm strain
 Right shoulder impingement
+Player:Robby Scott
 Sprained right ankle
+Player:Luis Severino
 Tommy John surgery
-Right shoulder rotator cuff inflammation and Grade 2 lat strain
 Right shoulder rotator cuff inflammation and Grade 2 lat strain
 Right middle finger injury
 Oblique injury
+Player:Ryan Sherriff
 Right great toe fracture
+Player:Braden Shipley
 Right elbow inflammation
+Player:Magneuris Sierra
 Right hamstring strain
+Player:Tony Sipp
 Strained left oblique
 Right oblique soreness
 Right calf soreness
-Left UCL sprain
+Player:Eric Skoglund
 Left UCL sprain
 Right elbow injury
+Player:Matt Skole
 Hamstring injury
+Player:Aaron Slegers
 Right shoulder inflammation
 Right biceps tendinits
-Right forearm strain
+Player:Burch Smith
 Right forearm strain
 Recovering from April 2015 Tommy John surgery
+Player:Drew Smith
 Tommy John surgery
-Tommy John surgery
+Player:Caleb Smith
 Left hip inflammation
-Left shoulder tightness
 Left shoulder tightness
 Viral infection
 Right hamstring injury
 Left Hand injury
+Player:Josh Smith
 Smith on the 10-day injured list
 Smith from the 7-day injured list
 Smith on the 7-day injured list retroactive to June 26, 2019
+Player:Drew Smyly
 Left index finger strain
 Left mid-arm nerve tightness
 Recovery from Tommy John surgery
-Left arm flexor strain
 Left arm flexor strain
 Torn left labrum
 Left shoulder soreness
 Left shoulder tendinitis
 Blister on the middle finger of his left hand
+Player:Travis Snider
 Discomfort in left big toe
+Player:Brandon Snyder
 Plantar fasciitis
 Right elbow ulnar neuritis
+Player:Chad Sobotka
 Left abdomen strain
 Strained right forearm
+Player:Yangervis Solarte
 Right oblique
 Strained left oblique
 Right hamstring strain
 Knee injury
+Player:Joakim Soria
 Right quadriceps strain
 Left oblique strain
-Left oblique strain
-Recovering from March 2012 Tommy John surgery
-Recovering from March 2012 Tommy John surgery
 Recovering from March 2012 Tommy John surgery
 Sore right shoulder
-Right shoulder inflammation
+Player:Mike Soroka
 Right shoulder inflammation
 Right shoulder strain
+Player:Elliot Soto
 Hamstring injury
+Player:Steven Souza
 From the 10-day injured list
 On the 10-day injured list retroactive to August 17, 2020
 From the 60-day injured list
@@ -3595,328 +3984,338 @@ From the 10-day injured list to the 60-day injured list
 On the 10-day injured list
 From the 10-day disabled list
 On the 10-day disabled list
-From the 10-day disabled list
-On the 10-day disabled list
 From the 60-day disabled list
 On the 60-day disabled list
 From the 15-day disabled list
 On the 15-day disabled list retroactive to June 15, 2016
-From the 15-day disabled list
 On the 15-day disabled list
-From the 15-day disabled list
 On the 15-day disabled list retroactive to July 6, 2015
-From the 15-day disabled list
-On the 15-day disabled list
+Player:Glenn Sparkman
 Right forearm strain
 Fractured right thumb
-Fractured right thumb
+Player:Jeffrey Springs
 Left biceps tendinitis
-Left biceps tendinitis
+Player:Jacob Stallings
 Cervical neck strain
+Player:Eric Stamets
 Back strain
 Lacerated finger
 Right heel contusion
+Player:Ryne Stanek
 Right hip soreness
+Player:Giancarlo Stanton
 Left hamstring strain
-Right knee sprain
 Right knee sprain
 Left biceps strain
 Left groin strain
 Broken left hand
 Right hamstring strain
+Player:Cody Stashak
 Lower back inflammation
 Right oblique strain
+Player:Drew Steckenrider
 Right triceps tendonitis
-Right elbow inflammation
 Right elbow inflammation
 Sprained right ankle
 Right elbow tendinitis
+Player:Robert Stephenson
 Mid-back strain
 Cervical strain
 Right shoulder tendinitis
 Right shoulder contusion
 Strained right wrist
 Strained left hamstring
+Player:Tyler Stephenson
 Sprained right thumb
 Left wrist sprain
 Sprained left wrist
-Left knee tendinitis
-Left knee tendinitis
+Player:Kohl Stewart
 Left knee tendinitis
 Right biceps tendonitis
+Player:Robert Stock
 Right bicep strain
+Player:Troy Stokes
 From the 60-day injured list
 On the 60-day injured list
 From the 7-day injured list
 On the 7-day injured list retroactive to April 26, 2019
-From the 7-day injured list
 On the 7-day injured list
+Player:Matt Strahm
 Right knee inflammation
 Left rib strain
 Torn left patella tendon
 Left knee inflammation
-Left knee inflammation
+Player:Dee Strange-Gordon
 Strained left quad
 Right wrist contusion
 Right great toe fracture
 Dislocated left thumb
 Torn right thumb ligament
 Bruised right shoulder
+Player:Andrew Stevenson
 Back spasms
+Player:Chris Stratton
 Right side inflammation
 Right side discomfort
-Right lat strain
+Player:Hunter Strickland
 Right lat strain
 Broken right hand
 Right hand fracture
-Broken right hand
 Right elbow injury
+Player:Marcus Stroman
 Left calf muscle tear
 Right middle finger blister
 Right shoulder fatigue
 Right knee surgery
+Player:Pedro Strop
 Right groin strain
 Left neck tightness
 Left hamstring strain
 Left meniscus tear
 Left groin strain
 Lower back strain
+Player:Ross Stripling
 Right biceps tendinitis
 Lower back inflammation
 Right first toe inflammation
 April 2014 Tommy John surgery
+Player:Daniel Stumpf
 Left elbow strain
 Ulnar nerve irritation
+Player:Jesus Sucre
 Sprained right ankle
+Player:Andrew Susac
 Left forearm
 Trapezius injury
 Right wrist sprain
 Right thumb sprain
 Shoulder impingement
 Finger injury
+Player:Brent Suter
 Tommy John surgery
-Torn UCL in left elbow
 Torn UCL in left elbow
 Left forearm tightness
 Left rotator cuff strain
+Player:Erik Swanson
 Right forearm strain
-Right oblique strain
+Player:Blake Swihart
 Right oblique strain
 Right hamstring strain
 Left ankle inflammation
 Left finger contusion
 Left ankle sprain
-Left ankle sprain
 Sprained left foot
 Strained hip flexor
+Player:Jameson Taillon
 Tommy John surgery
-Right elbow flexor tendon strain
 Right elbow flexor tendon strain
 Groin discomfort
 Right shoulder fatigue
+Player:Domingo Tapia
 Right biceps contusion
 Right elbow discomfort
-Lucie Mets activated RHP Domingo Tapia from the 7-day disabled list
-Lucie Mets placed RHP Domingo Tapia on the 7-day disabled list
+Player:Stephen Tarpley
 Right oblique strain
 Left elbow impingement
+Player:Dillon Tate
 Right finger sprain
 Right elbow contusion
 Quad injury
+Player:Blake Taylor
 Left elbow soreness
-Lucie Mets activated LHP Blake Taylor from the 7-day disabled list
-Lucie Mets placed LHP Blake Taylor on the 7-day disabled list
+Player:Michael Taylor
 Taylor on the 10-day injured list retroactive to March 25, 2019
 Taylor from the 10-day injured list
 Taylor on the 10-day disabled list
+Player:Ruben Tejada
 Left quadriceps strain
 Strained right quadriceps
-Right elbow impingement
+Player:Ryan Tepera
 Right elbow impingement
 Right elbow soreness
 Right elbow inflammation
-Right elbow inflammation
+Player:Trayce Thompson
 Lower back irritation
-Lower back irritation
-Right elbow sprain
+Player:Tyler Thornburg
 Right elbow sprain
 Right hip impingement
 Right shoulder thoracic outlet surgery
 Right shoulder impingement
-Right shoulder impingement
 Sore right elbow
-Sore right elbow
+Player:Trent Thornton
 Right elbow inflammation
-Right elbow inflammation
-Right elbow inflammation
-Right elbow inflammation
+Player:Lewis Thorpe
 Left elbow UCL repair
+Player:Yasmany Tomas
 Right groin tendinitis
-Right groin tendinitis
+Player:Luis Torrens
 Back spasms
+Player:Devon Travis
 Recovery from left knee surgery
-Right knee bone bruise
 Right knee bone bruise
 Recovering from September 2015 left shoulder surgery
 Left shoulder strain
-Left shoulder strain
 Left shoulder inflammation
+Player:Jose Trevino
 Left wrist impingement
+Player:Andrew Triggs
 Right radial nerve irritation
 Right arm nerve irritation
-Right arm nerve irritation
-Strained left hip
 Strained left hip
 Left shin contusion
 Left foot injury
 Lower back injury
+Player:Chadwick Tromp
 Right shoulder strain
 Right rotator cuff strain
+Player:Nick Tropeano
 Right shoulder injury
 Right shoulder inflammation
-Right shoulder inflammation
-Right shoulder inflammation
-Right shoulder inflammation
-Right elbow UCL injury
-Right elbow UCL injury
 Right elbow UCL injury
 Right rotator cuff tendinitis
+Player:Mark Trumbo
 Recovery from right knee surgery
-Right knee inflammation
 Right knee inflammation
 Right quad strain
 Right rib cage strain
 Stress fracture in left foot
+Player:Sam Tuivailala
 Right Achilles rupture
 Recovering from Achilles surgery
 Strained right Achilles
-Strained right Achilles
 Left knee strain
+Player:Cole Tucker
 Left hand fracture
+Player:Spencer Turnbull
 Upper back strain
 Right shoulder fatigue
+Player:Duane Underwood
 On the 7-day disabled list
-On the 7-day disabled list
-Lower back strain
+Player:Jose Urena
 Lower back strain
 Right shoulder impingement
 Left knee contusion
+Player:Josh VanMeter
 Fractured left fibula
-Low back strain
+Player:Hector Velazquez
 Low back strain
 Lower back strain
+Player:Jason Vargas
 Hamstring strain
 Strained right calf, retroactive to 6/20
 Non-displaced fracture of hamate in right hand
 Recovering from August 2015 Tommy John surgery
 Left ulnar collateral ligament tear
-Left ulnar collateral ligament tear
-Left flexor strain
 Left flexor strain
 Appendectomy
 Blood clot left armpit
-Right oblique strain
+Player:Pat Venditte
 Right oblique strain
 May 2012 right shoulder surgery
-Right pectoralis strain
+Player:Nick Vincent
 Right pectoralis strain
 Right groin strain
 Mid-back strain
 Right shoulder fatigue
-Right shoulder inflammation
-Right shoulder inflammation
-Right shoulder inflammation
-Right shoulder inflammation
+Player:Arodys Vizcaino
 Right shoulder inflammation
 Right index finger strain
-Right shoulder inflammation
 Strained oblique
 Recovering from March 2012 Tommy John surgery
-Right shoulder strain
+Player:Stephen Vogt
 Right shoulder strain
 Left knee sprain
 Right ankle sprain
+Player:Edinson Volquez
 Right oblique strain
-Right elbow sprain
 Right elbow sprain
 Left knee tendinitis
 Right thumb blister
 Tendinitis in his right elbow
 Back Spasms
+Player:Michael Wacha
 Right shoulder inflammation
 Left knee patellar tendinitis
 Left oblique strain
-Left oblique strain
-Right shoulder inflammation
 Stress reaction in right shoulder
-Stress reaction in right shoulder
+Player:Jacob Waguespack
 Left back strain
 Right Shoulder Strain
-Torn ACL in right knee
+Player:Bobby Wahl
 Torn ACL in right knee
 Right hamstring strain
-Right hamstring strain
 Strained right shoulder
+Player:Marcus Walden
 Strained right shoulder
-Strained right shoulder
+Player:Mitch Walding
 Right shoulder labrum tear
 Ear fracture
+Player:Taijuan Walker
 Recovery from Tommy John surgery
 Tommy John surgery
 Right forearm inflammation
 Right index finger blister
 Right foot tendinitis
 Right shoulder impingement
+Player:Chad Wallach
 Broken left hand
+Player:Tony Watson
 Left wrist fracture
+Player:Luke Weaver
 Right forearm tightness
-Right forearm tightness
+Player:Jacob Webb
 Right shoulder strain
 Right elbow impingement
+Player:Ryan Weber
 Right biceps strain
-Right biceps strain
-Right elbow strain
 Right elbow strain
 Strained right elbow
+Player:Jordan Weems
 Right latissimus dorsi strain
+Player:Zack Wheeler
 Right shoulder fatigue
 Streaa reaction in right arm
-Streaa reaction in right arm
 Biceps tendinitis
-Biceps tendinitis
-Recovering from March 2015 Tommy John surgery
-Recovering from March 2015 Tommy John surgery
-Recovering from March 2015 Tommy John surgery
 Recovering from March 2015 Tommy John surgery
 Right middle fingernail avulsion
+Player:Brad Wieck
 Right hamstring strain
-Right hamstring strain
+Player:Aaron Wilkerson
 Left foot contusion
+Player:Mason Williams
 Recovering from August 2015 right shoulder surgery
 Right shoulder inflammation
-Right shoulder inflammation
+Player:Taylor Williams
 Right elbow soreness
+Player:Trey Wingenter
 Right ulnar collateral ligament tear
 Right shoulder strain
+Player:Justin Wilson
 Left elbow soreness
-Left elbow soreness
+Player:Dan Winkler
 Elbow surgery
-Elbow surgery
-Right elbow fracture
 Right elbow fracture
 Recovering from June 2014 Tommy John surgery
+Player:Nick Wittgren
 Right middle finger contusion
 Right elbow strain
+Player:Hunter Wood
 Right shoulder soreness
+Player:Stephen Woods
 From the 7-day injured list
 On the 7-day injured list
+Player:Brandon Woodruff
 Strained left oblique
+Player:Mike Wright
 Left calf strain
+Player:Austin Wynns
 Left oblique strain
-Right shin stress reaction
+Player:Gabriel Ynoa
 Right shin stress reaction
 Left ankle contusion
+Player:Kyle Zimmer
 Right elbow neuritis
+Player:Jordan Zimmermann
 Right forearm strain
 Right cervical spasm
 Right elbow UCL sprain
@@ -3924,102 +4323,107 @@ Right shoulder impingement
 Right lat tightness
 Right neck strain
 Right elbow discomfort
+Player:Ben Zobrist
 Back tightness
 Left wrist inflammation
 Medial meniscus tear in his left knee
 Dislocated left thumb
+Player:John Brebbia
 Right ulnar collateral ligament tear
 Right forearm tightness
-Left hand Carpal Tunnel syndrome
+Player:Brett Cecil
 Left hand Carpal Tunnel syndrome
 Right foot inflammation
 Left shoulder strain
 Left triceps strain
 Left groin strain
 Sore left elbow
-Sore left elbow
+Player:Tony Cingrani
 Left shoulder impingement
-Left shoulder impingement
-Left shoulder strain
 Left shoulder strain
 Left shoulder inflammation
 Strained right oblique
 Strained left shoulder
-Left shoulder strain
 Left shoulder tendinitis
 Right lower back strain
+Player:Austin Dean
 Right elbow strain
 (Right Groin Strain
 Nasal fracture
 Sprained left hand
+Player:John Gant
 Right groin tightness
 Left oblique strain
-Right shoulder impingement
-Right shoulder impingement
-Right shoulder impingement
+Player:Luke Gregerson
 Right shoulder impingement
 Left hamstring strain
 Left oblique strain
 Strained left oblique
 Strained right shoulder
+Player:Ryan Helsley
 Right shoulder impingement
 Biceps tendinitis
+Player:Jordan Hicks
 Right elbow
 Torn UCL in right elbow
-Torn UCL in right elbow
+Player:Rob Kaminsky
 Left index finger blister
+Player:Russell Martin
 Low back inflammation
 Strained oblique
 Left shoulder nerve irratation
 Strained left hamstring
 Right hip labral tear
+Player:Carlos Martinez
 Left oblique strain
 Right shoulder cuff strain
 Right shoulder strain
 Right oblique strain
 Right latissimus strain
-Right shoulder strain
+Player:Jake McGee
 Left knee sprain
 Mid-back strain
 Left knee inflammation
 Torn meniscus in his left knee
 Recovering from December 2014 left elbow surgery
+Player:Miles Mikolas
 Right forearm strain
-Right forearm strain
-Right elbow effusion
+Player:Jimmy Nelson
 Right elbow effusion
 Right shoulder injury
 Right shoulder inflammation
-Right shoulder inflammation
 Right shoulder impingement
 Head contusion
+Player:Luke Raley
 Left ankle strain
-Right shoulder impingement
+Player:Edubray Ramos
 Right shoulder impingement
 Shoulder siffness
 Right index finger blister
 Right patella tendon strain
-Right shoulder impingement
 Blister on right index finger
+Player:Alex Reyes
 Right latissimus strain
 Right lat strain
 Right elbow injury
 Right elbow
-Left elbow pain
+Player:Ricardo Sanchez
 Left elbow pain
 Right calf strain
+Player:Corey Seager
 Left hamstring strain
 Right UCL surgery
 Right UCL sprain
 Hamstring injury
+Player:Lane Thomas
 Right wrist fracture
-Right wrist fracture
+Player:Julio Urias
 Shoulder surgery
 Eye surgery
+Player:Alex Wood
 Shoulder inflammation
 Back injury
 Left adductor tendonitis
-Left SC joint inflammation
 Left SC joint inflammation
 Soreness in left triceps
 Soreness in his left triceps

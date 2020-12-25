@@ -112,6 +112,7 @@ class PerformDataFix extends Command
         $players = $this->player->getAllPlayers();
         foreach ($players as $player):
             if ($player->mlb_link):
+                $injuries = [];
                 $player_html = @file_get_contents('https://www.mlb.com' . $player->mlb_link);
                 $DOM = new \DomDocument();
                 // Ignore errors due to Html5
@@ -120,26 +121,34 @@ class PerformDataFix extends Command
                 $xp = new \DOMXpath($DOM);
                 $rows = $xp->query("//table[@class='transactions-table collapsed']//tr");
 
-                // TODO create player id / unique injury array 
                 foreach($rows as $row):
                     $cols = $xp->query( 'td', $row);
                     foreach($cols as $col):
                         if (strpos($col->textContent, 'injured') !== false || strpos($col->textContent, 'disabled') !== false):
-                            if (strpos($col->textContent, 'St. Louis Cardinals') !== false):
+                            if (strpos($col->textContent, 'St. Louis Cardinals') !== false || strpos($col->textContent, 'St. Lucie') !== false):
                                 $idx = 2;
                             else:
                                 $idx = 1;
                             endif;
                             $text = explode('.', $col->textContent);
                             if (isset($text[$idx])):
-                                $text = trim($text[$idx]);
+                                $text = ucfirst(trim($text[$idx]));
                                 if (!empty($text) && strlen($text) > 10):
-                                    $lines .= ucfirst($text) . "\n";
+                                    if (!in_array($text, $injuries)):
+                                        $injuries[] = $text;
+                                    endif;
                                 endif;
                             endif;
                         endif;
                     endforeach;
                 endforeach;
+
+                if (!empty($injuries)):
+                    $lines .= 'Player:' . $player->first_name . ' ' . $player->last_name . "\n";
+                    foreach($injuries as $injury):
+                        $lines .= $injury;
+                    endforeach;
+                endif;
             endif;
 
         endforeach;
