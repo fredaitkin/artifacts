@@ -44,6 +44,22 @@ class FunFactsController extends Controller
      */
     public function index()
     {
+        $file = fopen(storage_path("app/public/injuries.txt"), "r");
+        $injuries = [];
+        while(!feof($file)):
+            $line = fgets($file);
+            if (!empty($line)):
+                if (strpos($line, ':') !== false):
+                    $line = explode(':', $line);
+                    $key = trim($line[1]);
+                    $injuries[$key] = [];
+                else:
+                    $injuries[$key][] = trim($line);
+                endif;
+            endif;
+        endwhile;
+        fclose($file);
+
         // Set fun facts to view
         return view(
             'fun_facts',
@@ -51,6 +67,7 @@ class FunFactsController extends Controller
                 'world_series_winners'  => $this->team->getWorldSeriesWinners(),
                 'ml_teams'              => $this->mlt->getTeams(['id', 'team'], [['team', 'ASC']]),
                 'player_cities'         => $this->player->getPlayerCityCount(),
+                'player_injuries'       => $injuries,
             ]
         );
     }

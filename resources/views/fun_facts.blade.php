@@ -19,6 +19,10 @@
                 <a class="nav-link" id="cities-tab" data-toggle="tab" href="#cities" role="tab" aria-controls="cities"
               aria-selected="true">Player Cities</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" id="injuries-tab" data-toggle="tab" href="#injuries" role="tab" aria-controls="injuries"
+              aria-selected="true">Player Injuries</a>
+           </li>
         </ul>
 
         <div class="tab-content" id="statsTabsContent">
@@ -68,6 +72,22 @@
                         </li>
                     @endforeach 
                 </ul>
+            </div>
+
+            <div class="tab-pane fade" id="injuries" role="tabpanel" aria-labelledby="injuries-tab">
+                <div class="ml-3 mt-3 mb-2">
+                    <div>
+                        @foreach ($player_injuries as $player => $injuries)
+                            <h6>{{ $player }}</h6>
+                            <ul>
+                                @foreach ($injuries as $injury)
+                                    <li>{{ $injury }}</li>
+                                @endforeach
+                            </ul>
+                        @endforeach
+                    </div>
+                </div>
+
             </div>
 
         </div>

@@ -108,6 +108,8 @@ class PerformDataFix extends Command
      */
     private function playerInjuries()
     {
+        // TODO delete is not currently working
+        Storage::delete('public/injuries.txt');
         $lines = '';
         $players = $this->player->getAllPlayers();
         foreach ($players as $player):
@@ -125,14 +127,10 @@ class PerformDataFix extends Command
                     $cols = $xp->query( 'td', $row);
                     foreach($cols as $col):
                         if (strpos($col->textContent, 'injured') !== false || strpos($col->textContent, 'disabled') !== false):
-                            if (strpos($col->textContent, 'St. Louis Cardinals') !== false || strpos($col->textContent, 'St. Lucie') !== false):
-                                $idx = 2;
-                            else:
-                                $idx = 1;
-                            endif;
+                            $idx = $this->getIndex($col->textContent);
                             $text = explode('.', $col->textContent);
                             if (isset($text[$idx])):
-                                $text = ucfirst(trim($text[$idx]));
+                                $text = $this->cleanUpText($text[$idx]);
                                 if (!empty($text) && strlen($text) > 10):
                                     if (!in_array($text, $injuries)):
                                         $injuries[] = $text;
@@ -146,12 +144,37 @@ class PerformDataFix extends Command
                 if (!empty($injuries)):
                     $lines .= 'Player:' . $player->first_name . ' ' . $player->last_name . "\n";
                     foreach($injuries as $injury):
-                        $lines .= $injury;
+                        $lines .= $injury . "\n";
                     endforeach;
                 endif;
             endif;
 
         endforeach;
         Storage::put('public/injuries.txt', $lines);
+    }
+
+    /**
+     * The actual injury will normally be the second sentence, indicated by a
+     * period, except when a team or a name has a period.
+     **/
+    private function getIndex($text) {
+        // St. Louis Cardinals, St. Lucie Mets, Jackie Bradley Jr., Lourdes Gurriel Jr.
+        $special_cases = ['St. L', 'Jr.'];
+        foreach($special_cases as $special_case):
+            if (strpos($text, $special_case) !== false):
+                return 2;
+            endif;
+        endforeach;
+        return 1;
+    }
+
+    /**
+     * The format of the transactions are not always standard, try to standardize where possible
+     **/
+    private function cleanUpText($text) {
+        $convertedMonths = [' january ', ' february ', ' march ', ' april ', ' may ', ' june ', ' july ', ' august ', ' september ', ' october ', '  november ', ' december '];
+        $correctMonths = [' January ', ' February ', ' March ', ' April ', ' May ', ' June ', ' July ', ' August ', ' September ', ' October ', '  November ', ' December '];
+        $text = ucfirst(strtolower(trim($text)));
+        return str_replace($convertedMonths, $correctMonths, $text);
     }
 }
