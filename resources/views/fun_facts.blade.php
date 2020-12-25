@@ -77,6 +77,14 @@
             <div class="tab-pane fade" id="injuries" role="tabpanel" aria-labelledby="injuries-tab">
                 <div class="ml-3 mt-3 mb-2">
                     <div>
+
+                        <h6>Common Injuries</h6>
+                        <ul>
+                            @foreach ($common_injuries as $injury => $count)
+                                <li>{{ $injury }} : {{ $count }}</li>
+                            @endforeach
+                        </ul>
+
                         @foreach ($player_injuries as $player => $injuries)
                             <h6>{{ $player }}</h6>
                             <ul>

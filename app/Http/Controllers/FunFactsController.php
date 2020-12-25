@@ -45,6 +45,7 @@ class FunFactsController extends Controller
     public function index()
     {
         $file = fopen(storage_path("app/public/injuries.txt"), "r");
+        $common = [];
         $injuries = [];
         while(!feof($file)):
             $line = fgets($file);
@@ -55,10 +56,18 @@ class FunFactsController extends Controller
                     $injuries[$key] = [];
                 else:
                     $injuries[$key][] = trim($line);
+                    if (isset($common[$line])):
+                        $common[$line] += 1;
+                    else:
+                        $common[$line] = 1;
+
+                    endif;
                 endif;
             endif;
         endwhile;
         fclose($file);
+        arsort($common);
+        $common_injuries = array_slice($common, 0, 25);
 
         // Set fun facts to view
         return view(
@@ -67,6 +76,7 @@ class FunFactsController extends Controller
                 'world_series_winners'  => $this->team->getWorldSeriesWinners(),
                 'ml_teams'              => $this->mlt->getTeams(['id', 'team'], [['team', 'ASC']]),
                 'player_cities'         => $this->player->getPlayerCityCount(),
+                'common_injuries'       => $common_injuries,
                 'player_injuries'       => $injuries,
             ]
         );
