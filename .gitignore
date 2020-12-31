@@ -4,3 +4,5 @@ node_modules/*
 .gitignore
 /public/dist/
 states.sql
+public/img/Baseball_files/
+public/img/Baseball.htm

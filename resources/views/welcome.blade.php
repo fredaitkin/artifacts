@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Artifacts</title>
+        <title>Baseball</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -21,7 +21,7 @@
                 margin: 0;
             }
             body {
-                background: url({{ asset('img/Statistics.png') }});
+                background: url({{ asset('img/baseball.jpg') }});
                 background-size: cover;
             }
 
@@ -50,8 +50,13 @@
             }
 
             .title {
+                position: absolute;
+                right: 5%;
+                top: 30%;
                 font-size: 84px;
                 color: white;
+                font-style: italic;
+                font-weight: bold;
             }
 
             .links > a {
@@ -64,12 +69,9 @@
                 text-transform: uppercase;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
-    <body background='storage/nightswimming.jpg'>
+    <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -96,11 +98,9 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Artifacts
+                <div class="title">
+                    Baseball
                 </div>
-            </div>
         </div>
     </body>
 </html>
