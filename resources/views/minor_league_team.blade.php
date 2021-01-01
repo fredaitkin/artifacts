@@ -4,7 +4,12 @@
 
     <div class="panel-body artifacts-submit-form-div">
 
-        <h2 class="col-sm-4">@if (!empty($team->team)) {{ $team->team }} @else Add Team @endif</h2>
+        @if (!empty($team->team))
+            <h2 class="col-sm-4">{{ $team->team }}</h2>
+            <img class="img-thumbnail mb-2" src="{{ asset('storage/minor_league_teams/regular/' . $team->id . '.png') }}" alt="team_photo">
+        @else
+            <h2 class="col-sm-4">Add Team</h2>
+        @endif
 
         @include('common.errors')
 
