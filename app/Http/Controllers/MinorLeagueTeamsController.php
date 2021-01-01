@@ -6,10 +6,13 @@ use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface as MinorLeague
 use Artifacts\Baseball\Player\PlayerInterface as Player;
 use Artifacts\Baseball\Teams\TeamsInterface as Team;
 use Artifacts\Rules\IsTeam;
+use Artifacts\Traits\StoreImageTrait;
 use Illuminate\Http\Request;
 
 class MinorLeagueTeamsController extends Controller
 {
+
+    use StoreImageTrait;
 
     /**
      * The Player Interface
@@ -125,7 +128,16 @@ class MinorLeagueTeamsController extends Controller
             $team['previous_teams'] = serialize($previous_teams);
         endif;
 
-        $this->mlt->updateCreate(['id' => $request->id ?? null], $team);
+        $updated_team = $this->mlt->updateCreate(['id' => $request->id ?? null], $team);
+
+        // Only save logo if save if successful
+        if ($request->hasFile('logo')):
+            $image      = $request->file('logo');
+            $file_name  = $updated_team->id . '.' . $image->extension();
+            $this->storeImage($image, $file_name, 'minor_league_teams/regular/');
+            $this->storeImage($image, $file_name, 'minor_league_teams/smalls/', [40, 40]);
+            $this->storeImage($image, $file_name, 'minor_league_teams/thumbnails/', [20, 20]);
+        endif;
 
         return redirect('/minor-league-teams');
     }

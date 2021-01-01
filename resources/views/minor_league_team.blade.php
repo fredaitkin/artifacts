@@ -121,6 +121,13 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="logo" class="control-label">Logo</label>
+                    <input type="file" name="logo" id="logo" class="form-control">
+                </div>
+            </div>
+
              <div class="form-group row">
                 <div class="col-sm-4">
                     @if (!empty($team->id))
