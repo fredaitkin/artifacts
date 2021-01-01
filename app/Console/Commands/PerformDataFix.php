@@ -3,9 +3,10 @@
 namespace Artifacts\Console\Commands;
 
 use Artifacts\Baseball\Player\PlayerInterface;
+use DomDocument;
+use DOMXpath;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-
 use Storage;
 
 class PerformDataFix extends Command
@@ -108,7 +109,6 @@ class PerformDataFix extends Command
      */
     private function playerInjuries()
     {
-        // TODO delete is not currently working
         Storage::delete('public/injuries.txt');
         $lines = '';
         $players = $this->player->getAllPlayers();
@@ -116,11 +116,11 @@ class PerformDataFix extends Command
             if ($player->mlb_link):
                 $injuries = [];
                 $player_html = @file_get_contents('https://www.mlb.com' . $player->mlb_link);
-                $DOM = new \DomDocument();
+                $DOM = new DomDocument;
                 // Ignore errors due to Html5
                 @$DOM->loadHTML($player_html);
                 $tables = $DOM->getElementsByTagName('table');
-                $xp = new \DOMXpath($DOM);
+                $xp = new DOMXpath($DOM);
                 $rows = $xp->query("//table[@class='transactions-table collapsed']//tr");
 
                 foreach($rows as $row):
@@ -131,8 +131,8 @@ class PerformDataFix extends Command
                             $text = explode('.', $col->textContent);
                             if (isset($text[$idx])):
                                 $text = $this->cleanUpText($text[$idx]);
-                                if (!empty($text) && strlen($text) > 10):
-                                    if (!in_array($text, $injuries)):
+                                if (! empty($text) && strlen($text) > 10):
+                                    if (! in_array($text, $injuries)):
                                         $injuries[] = $text;
                                     endif;
                                 endif;
@@ -141,7 +141,7 @@ class PerformDataFix extends Command
                     endforeach;
                 endforeach;
 
-                if (!empty($injuries)):
+                if (! empty($injuries)):
                     $lines .= 'Player:' . $player->first_name . ' ' . $player->last_name . "\n";
                     foreach($injuries as $injury):
                         $lines .= $injury . "\n";

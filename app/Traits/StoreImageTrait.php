@@ -17,7 +17,7 @@ trait StoreImageTrait {
      */
     public function storeImage( \Illuminate\Http\UploadedFile $image, $name, $directory, $resize = [] ) {
         $img = Image::make($image->getRealPath());
-        if (!empty($resize)):
+        if (! empty($resize)):
             $img->resize($resize[0], $resize[1], function ($constraint) {
                 $constraint->aspectRatio();
             });

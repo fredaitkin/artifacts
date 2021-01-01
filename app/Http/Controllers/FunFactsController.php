@@ -47,9 +47,9 @@ class FunFactsController extends Controller
         $file = fopen(storage_path("app/public/injuries.txt"), "r");
         $common = [];
         $injuries = [];
-        while(!feof($file)):
+        while(! feof($file)):
             $line = fgets($file);
-            if (!empty($line)):
+            if (! empty($line)):
                 if (strpos($line, ':') !== false):
                     $line = explode(':', $line);
                     $key = trim($line[1]);
