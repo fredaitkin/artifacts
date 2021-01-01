@@ -107,7 +107,7 @@
             <div class="form-group row">
                 <div class="col-sm-4">
                     <label for="logo" class="control-label">Logo</label>
-                    <input type="text" name="logo" class="form-control" value="@if  (old('logo')){{ old('logo') }}@elseif (!empty($team->logo)){{ $team->logo }}@endif">
+                    <input type="file" name="logo" id="logo" class="form-control">
                 </div>
             </div>
 

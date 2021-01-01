@@ -5,6 +5,8 @@ namespace Artifacts\Http\Controllers;
 use Artifacts\Baseball\Teams\TeamsInterface as Team;
 use Artifacts\Rules\IsTeam;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
+use Storage;
 
 class TeamsController extends Controller
 {
@@ -98,21 +100,57 @@ class TeamsController extends Controller
         $team['ground']         = $request->ground;
         $team['founded']        = $request->founded;
         $team['closed']         = $request->closed;
-        // TODO Change to file field
-        $team['logo']           = $request->logo;
         $team['other_names']    = $request->other_names;
         // TODO make these fields foreign keys to a team table
         $team['relocated_to']   = $request->relocated_to;
         $team['relocated_from'] = $request->relocated_from;
+
+        if ($request->hasFile('logo')):
+            $image          = $request->file('logo');
+            $file_name      = $request->team . '.' . $image->extension();
+            $team['logo']   = $file_name;
+        endif;
 
         if (! empty($request->titles)):
             $titles = explode(',', $request->titles);
             $team['titles'] = serialize($titles);
         endif;
 
-        $this->team->updateCreate(['team' => $request->team ?? null], $team);
+        $updatedTeam = $this->team->updateCreate(['team' => $request->team ?? null], $team);
+
+        // Only save logo if save if successful
+        if (isset($file_name)):
+            $this->createTeamImages($image, $file_name);
+        endif;
 
         return redirect('/teams');
+    }
+
+    /**
+     * Create team photos
+     *
+     * @param string $file_name
+     */
+    private function createTeamImages(\Illuminate\Http\UploadedFile $image, string $file_name)
+    {
+        // Thumb size photo
+        $img = Image::make($image->getRealPath());
+        $img->resize(20, 20, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->stream();
+        Storage::disk('public')->put('teams/thumbnails/' . $file_name, $img);
+        // Reduced size photo
+        $img = Image::make($image->getRealPath());
+        $img->resize(40, 40, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->stream();
+        Storage::disk('public')->put('teams/smalls/' . $file_name, $img);
+        // Regular photo
+        $img = Image::make($image->getRealPath());
+        $img->stream();
+        Storage::disk('public')->put('teams/regular/' . $file_name, $img);
     }
 
 }

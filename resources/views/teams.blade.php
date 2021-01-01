@@ -20,6 +20,7 @@
         <table class="table table-striped artifacts-table">
             <thead>
                 <tr>
+                    <th>Logo</th>
                     <th scope='col'>@sortablelink('name')</th>
                     <th scope='col'>@sortablelink('league')</th>
                     <th scope='col'>@sortablelink('division')</th>
@@ -36,6 +37,7 @@
             <tbody>
                 @foreach ($teams as $team)
                     <tr>
+                        <td><img class="img-thumbnail" src="{{ asset('storage/teams/smalls/' . $team->logo) }}" alt="team_photo"></td>
                         <td class="table-text">
                              @if (Auth::user()->id === 1)
                                 <a href="/team/{{ $team->team }}">{{ $team->name }}</a>
