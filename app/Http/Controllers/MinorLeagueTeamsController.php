@@ -128,15 +128,17 @@ class MinorLeagueTeamsController extends Controller
             $team['previous_teams'] = serialize($previous_teams);
         endif;
 
-        $updated_team = $this->mlt->updateCreate(['id' => $request->id ?? null], $team);
+        $updatedTeam = $this->mlt->updateCreate(['id' => $request->id ?? null], $team);
 
         // Only save logo if save if successful
         if ($request->hasFile('logo')):
             $image      = $request->file('logo');
-            $file_name  = $updated_team->id . '.' . $image->extension();
+            $file_name  = $updatedTeam->id . '.' . $image->extension();
             $this->storeImage($image, $file_name, 'minor_league_teams/regular/');
             $this->storeImage($image, $file_name, 'minor_league_teams/smalls/', [40, 40]);
             $this->storeImage($image, $file_name, 'minor_league_teams/thumbnails/', [20, 20]);
+            $updatedTeam->logo = $file_name;
+            $updatedTeam->save();
         endif;
 
         return redirect('/minor-league-teams');

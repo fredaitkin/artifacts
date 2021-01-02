@@ -40,7 +40,7 @@
             <tbody>
                 @foreach ($ml_teams as $ml_team)
                     <tr>
-                        <td><img class="img-thumbnail" src="{{ asset('storage/minor_league_teams/smalls/' . $ml_team->id . '.png') }}" alt="team_photo"></td>
+                        <td><img src="{{ asset('storage/minor_league_teams/smalls/' . $ml_team->logo) }}" alt="team_photo"></td>
                         <td class="table-text">
                              @if (Auth::user()->id === 1)
                                 <a href="/minor-league-team/{{ $ml_team->id }}">{{ $ml_team->team }}</a>

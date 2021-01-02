@@ -37,7 +37,7 @@
             <tbody>
                 @foreach ($teams as $team)
                     <tr>
-                        <td><img class="img-thumbnail" src="{{ asset('storage/teams/smalls/' . $team->logo) }}" alt="team_photo"></td>
+                        <td><img src="{{ asset('storage/teams/smalls/' . $team->logo) }}" alt="team_photo"></td>
                         <td class="table-text">
                              @if (Auth::user()->id === 1)
                                 <a href="/team/{{ $team->team }}">{{ $team->name }}</a>
