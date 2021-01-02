@@ -4,7 +4,7 @@
 
     <div class="panel-body artifacts-submit-form-div">
 
-        <h2 class="col-sm-4">@if (!empty($team->name)) {{ $team->team }} @else Add Team @endif</h2>
+        <h2 class="col-sm-4">@if (!empty($team->name)) {{ $team->name }} @else Add Team @endif</h2>
 
         @include('common.errors')
 
@@ -18,6 +18,8 @@
                         <input type="text" name="name" class="form-control" value="@if (old('name')){{ old('team') }}@elseif (!empty($team->name)){{ $team->name }}@endif">
                     </div>
                 </div>
+            @else
+                <input type="hidden" name="name" class="form-control" value="{{ $team->name }}">
             @endif
 
             <div class="form-group row">
@@ -53,9 +55,16 @@
                     <label for="country" class="control-label">Country</label>
                     <select class="form-control" name="country">
                         @foreach ($countries as $country)
-                            <option value="{{ $country }}"  @if (old('country') && old('country') == $class) selected @elseif (!empty($team->country) && ($team->country == $country)) selected @endif>{{ $country }}</option>
+                            <option value="{{ $country }}"  @if (old('country') && old('country') == $country) selected @elseif (!empty($team->country) && ($team->country == $country)) selected @endif>{{ $country }}</option>
                         @endforeach
                     </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="logo" class="control-label">Logo</label>
+                    <input type="file" name="logo" id="logo" class="form-control">
                 </div>
             </div>
 

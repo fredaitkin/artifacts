@@ -3,10 +3,13 @@
 namespace Artifacts\Http\Controllers;
 
 use Artifacts\Baseball\OtherTeams\OtherTeamsInterface as OtherTeam;
+use Artifacts\Traits\StoreImageTrait;
 use Illuminate\Http\Request;
 
 class OtherTeamsController extends Controller
 {
+
+    use StoreImageTrait;
 
     /**
      * The Minor League Teams interface
@@ -27,7 +30,11 @@ class OtherTeamsController extends Controller
      */
     public function index(Request $request)
     {
-        return view('other_teams', ['teams' => $this->team->getTeams()]);
+        if (empty($request->q)):
+            return view('other_teams', ['teams' => $this->team->getTeams()]);
+        else:
+            return $this->search($request->q);
+        endif;
     }
 
     /**
@@ -79,9 +86,39 @@ class OtherTeamsController extends Controller
         $team['founded']        = $request->founded;
         $team['defunct']        = $request->defunct;
 
-        $this->team->updateCreate(['id' => $request->id ?? null], $team);
+        $team = $this->team->updateCreate(['id' => $request->id ?? null], $team);
+
+        // Only save logo if save if successful
+        if ($request->hasFile('logo')):
+            $image      = $request->file('logo');
+            $file_name  = $team->id . '.' . $image->extension();
+            $this->storeImage($image, $file_name, 'other_teams/regular/');
+            $this->storeImage($image, $file_name, 'other_teams/smalls/', [40, 40]);
+            $this->storeImage($image, $file_name, 'other_teams/thumbnails/', [20, 20]);
+            $team->logo = $file_name;
+            $team->save();
+        endif;
 
         return redirect('/other-teams');
+    }
+
+    /**
+     * Search for team/s.
+     *
+     * @param  string  $q
+     * @return Response
+     */
+    private function search(string $q)
+    {
+        $teams = [];
+        if ($q != ""):
+          $teams = $this->team->search($q);
+        endif;
+        if (count($teams) > 0):
+            return view('other_teams', ['teams' => $teams, 'q' => $q]);
+        else:
+            return view('other_teams', ['teams' => $teams, 'q' => $q])->withMessage('No teams found. Try to search again!');
+        endif;
     }
 
 }

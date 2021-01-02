@@ -6,9 +6,25 @@
 
         <h5 class="col-sm-3">Other Teams</h5>
 
+        <form action="/other-teams" role="search">
+            {{ csrf_field() }}
+            <div class="input-group col-sm-6">
+                <input type="text" class="form-control" name="q"
+                    placeholder="Search teams" value="@if (isset($q)){{ $q }} @endif"> <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search">Search</span>
+                    </button>
+                </span>
+                @if (Auth::user()->id === 1)
+                    <a href="{{ url('/other-team') }}" class="btn btn-xs btn-info pull-right">Add</a>
+                @endif
+            </div>
+        </form>
+
         <table class="table table-striped artifacts-table">
             <thead>
                 <tr>
+                    <th>Logo</th>
                     <th scope='col'>@sortablelink('team')</th>
                     <th scope='col'>@sortablelink('league')</th>
                     <th scope='col'>@sortablelink('founded')</th>
@@ -19,6 +35,7 @@
             <tbody>
                 @foreach ($teams as $team)
                     <tr>
+                        <td><img src="{{ asset('storage/other_teams/smalls/' . $team->logo) }}" alt="team_photo"></td>
                         <td class="table-text">
                              @if (Auth::user()->id === 1)
                                 <a href="/other-team/{{ $team->id }}">{{ $team->name }}</a>

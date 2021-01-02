@@ -70,4 +70,21 @@ class OtherTeamsMySQL extends Model implements OtherTeamsInterface
         return OtherTeamsMySQL::updateOrCreate($keys, $fields);
     }
 
+    /**
+     * Search
+     *
+     * @param string $q
+     * @return array
+     */
+    public function search(string $q)
+    {
+        return OtherTeamsMySQL::select('other_teams.*')
+            ->where('name', 'LIKE', '%' . $q . '%')
+            ->orWhere('city', 'LIKE', '%' . $q . '%')
+            ->orWhere('country', 'LIKE', '%' . $q . '%')
+            ->paginate()
+            ->appends(['q' => $q])
+            ->setPath('');
+    }
+
 }
