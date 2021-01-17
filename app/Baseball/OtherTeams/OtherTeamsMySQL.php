@@ -20,6 +20,7 @@ class OtherTeamsMySQL extends Model implements OtherTeamsInterface
         'league',
         'country',
         'founded',
+        'player_count',
     ];
 
     protected $table = 'other_teams';
@@ -32,6 +33,11 @@ class OtherTeamsMySQL extends Model implements OtherTeamsInterface
      * @var int
      */
     protected $perPage = 10;
+
+    public function getPlayerCountAttribute()
+    {
+        return count($this->players);
+    }
 
     public function getTeams($fields = null, $order_by = null)
     {
@@ -70,6 +76,22 @@ class OtherTeamsMySQL extends Model implements OtherTeamsInterface
         return OtherTeamsMySQL::updateOrCreate($keys, $fields);
     }
 
+    /**
+    * Sort null founded years to the bottom
+    */
+    public function playerCountSortable($query, $direction)
+    {
+        return $query->join('player_other_teams', 'other_teams.id', '=', 'player_other_teams.other_teams_id')
+            ->groupBy('other_teams_id')
+            ->orderBy('player_count', $direction)
+            ->select('other_teams.*')
+            ->selectRaw('COUNT(player_other_teams.player_id) AS player_count');
+    }
+
+    public function players()
+    {
+        return OtherTeamsMySQL::belongsToMany('Artifacts\Baseball\Player\PlayerMySQL', 'player_other_teams', 'other_teams_id', 'player_id');
+    }
     /**
      * Search
      *
