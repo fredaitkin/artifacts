@@ -246,7 +246,11 @@ class PlayerController extends Controller
             $player->mlb_link = explode('/', $player->mlb_link)[2];
         endif;
         if (isset($request->view)):
-            return view('player_view', ['player' => $player, 'team' => $teams[$player->team]]);
+            return view('player_view', [
+                'player'    => $player,
+                'team'      => $teams[$player->team],
+                'api_key'   => config('app')['google_maps_api_key'],
+            ]);
         else:
             return view('player', [
                 'title'                     => '',

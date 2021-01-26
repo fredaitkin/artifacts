@@ -6,28 +6,33 @@
 
         <div class="row">
 
-            <h2 class="col-sm-3">{{ $player->first_name }} {{ $player->last_name }}</h2>
-
-            @if (!empty($player->photo))
-                <div>
-                    <img class="img-thumbnail" src="{{ asset('storage/images/regular/' . $player->regular_photo) }}" alt="player_photo">
+            <div class="col-sm-3">
+                <h2>{{ $player->first_name }} {{ $player->last_name }}</h2>
+            </div>
+           <div class="col-lg-4">
+                    @if (!empty($player->photo))
+                        <div>
+                            <img class="img-thumbnail" src="{{ asset('storage/images/regular/' . $player->regular_photo) }}" alt="player_photo">
+                        </div>
+                    @endif
+            </div>
+            <div class="col">
+                <div class="mt-5">
+                    {{ $player->city }},
+                    @if (!empty($player->state))
+                        {{ $player->state_display }}
+                    @else
+                        {{ $player->country }}
+                    @endif
+                    </br>
+                    {{ $player->age }}</br></br>
+                     @if (!empty($player->draft_position && $player->draft_position == 1 ))
+                        <h5 class="font-italic">1st Pick!</h5>
+                     @elseif (!empty($player->draft_round && $player->draft_round == 1 ))
+                        <h5 class="font-italic">1st Round Pick!</h5>
+                     @endif
                 </div>
-            @endif
- 
-            <div class="mt-5 ml-5">
-                {{ $player->city }},
-                @if (!empty($player->state))
-                    {{ $player->state_display }}
-                @else
-                    {{ $player->country }}
-                @endif
-                </br>
-                {{ $player->age }}</br></br>
-                 @if (!empty($player->draft_position && $player->draft_position == 1 ))
-                    <h5 class="font-italic">1st Pick!</h5>
-                 @elseif (!empty($player->draft_round && $player->draft_round == 1 ))
-                    <h5 class="font-italic">1st Round Pick!</h5>
-                 @endif
+                <div id="map"></div>
             </div>
         </div>
 
@@ -148,4 +153,11 @@
         </div>
 
     </div>
+@endsection
+
+@section('scripts')
+<!-- https://maps.googleapis.com/maps/api/geocode/json?address=Burnaby+Canada&key=AIzaSyCHfBWucm0EPlzSjlch8NUzDmq7agom4Fo -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="{{ asset('js/map.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ $api_key }}&callback=initMap&libraries=&v=weekly" defer></script>
 @endsection

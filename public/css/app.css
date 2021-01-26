@@ -11053,3 +11053,8 @@ body {
   line-height: 10px;
 }
 
+#map {
+  height: 200px;
+  width: 80%;
+}
+
