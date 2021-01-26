@@ -156,7 +156,6 @@
 @endsection
 
 @section('scripts')
-<!-- https://maps.googleapis.com/maps/api/geocode/json?address=Burnaby+Canada&key=AIzaSyCHfBWucm0EPlzSjlch8NUzDmq7agom4Fo -->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="{{ asset('js/map.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ $api_key }}&callback=initMap&libraries=&v=weekly" defer></script>
