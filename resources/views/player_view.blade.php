@@ -8,6 +8,7 @@
 
             <div class="col-sm-3">
                 <h2>{{ $player->first_name }} {{ $player->last_name }}</h2>
+
             </div>
            <div class="col-lg-4">
                     @if (!empty($player->photo))
@@ -24,6 +25,8 @@
                     @else
                         {{ $player->country }}
                     @endif
+                    <input type="hidden" id="latitude" value="{{ $player->latitude }}">
+                    <input type="hidden" id="longitude" value="{{ $player->longitude }}">
                     </br>
                     {{ $player->age }}</br></br>
                      @if (!empty($player->draft_position && $player->draft_position == 1 ))

@@ -1,8 +1,11 @@
 // Initialize and add the map
 function initMap() {
-  const home_town = { lat: 49.2488091, lng: -122.9805104 };
+  var latitude = document.getElementById("latitude").value;
+  var longitude = document.getElementById("longitude").value;
+  const home_town = { lat: parseFloat(latitude), lng: parseFloat(longitude)};
+
   const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
+    zoom: 6,
     center: home_town,
   });
   // The marker, positioned at home town
