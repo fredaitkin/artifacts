@@ -5,6 +5,7 @@ namespace Artifacts\Console\Commands;
 use Artifacts\Baseball\Player\PlayerInterface;
 use DomDocument;
 use DOMXpath;
+use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Storage;
@@ -19,7 +20,8 @@ class PerformDataFix extends Command
     protected $signature = 'db:perform-data-fix
                             {--serialize-prev-teams : Convert previous teams to serialized data}
                             {--pivot-prev-teams : Store previous teams in pivot table}
-                            {--player-injuries : Write list of player injuries to file}';
+                            {--player-injuries : Write list of player injuries to file}
+                            {--player-location : Set player location coordinates}';
 
     /**
      * The console command description.
@@ -65,6 +67,10 @@ class PerformDataFix extends Command
 
         if ($options['player-injuries']):
             $this->playerInjuries();
+        endif;
+
+        if ($options['player-location']):
+            $this->setPlayerLocationCoordinates();
         endif;
     }
 
@@ -176,5 +182,38 @@ class PerformDataFix extends Command
         $correctMonths = [' January ', ' February ', ' March ', ' April ', ' May ', ' June ', ' July ', ' August ', ' September ', ' October ', '  November ', ' December '];
         $text = ucfirst(strtolower(trim($text)));
         return str_replace($convertedMonths, $correctMonths, $text);
+    }
+
+    /**
+     * Set player location coordinates
+     *
+     * @return mixed
+     */
+    private function setPlayerLocationCoordinates()
+    {
+        // FIXME failed at 1225 
+        $players = $this->player->getAllPlayers();
+        foreach ($players as $player):
+            if (empty($player->location_coordinates)):
+                $address = $player->city . '+';
+                if (!empty($player->state)):
+                    $address .= $player->state . '+';
+                endif;
+                $address .= $player->country;
+                $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&key=' . config('app')['google_maps_api_key'];
+                $client = new Client();
+                $res = $client->get($url);
+                if ($res->getStatusCode() == 200):
+                    $body = json_decode($res->getBody());
+                    if (isset($body->results[0]->geometry)):
+                        $player['location_coordinates'] = serialize([
+                            'lat'   => $body->results[0]->geometry->location->lat,
+                            'long'  => $body->results[0]->geometry->location->lng,
+                        ]);
+                        $player->save();
+                    endif;
+                endif;
+            endif;
+        endforeach;
     }
 }
