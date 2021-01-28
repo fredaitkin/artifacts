@@ -245,6 +245,29 @@ class PlayerMySQL extends Model implements PlayerInterface
         return $photos['small'] ?? '';
     }
 
+
+    /**
+     * Get home town latitude
+     *
+     * @return string
+     */
+    public function getLatitudeAttribute()
+    {
+        $photos = @unserialize($this->location_coordinates);
+        return $photos['lat'] ?? '';
+    }
+
+    /**
+     * Get home town longitude
+     *
+     * @return string
+     */
+    public function getLongitudeAttribute()
+    {
+        $photos = @unserialize($this->location_coordinates);
+        return $photos['long'] ?? '';
+    }
+
     public function teams()
     {
         // TODO refactor into one function?
