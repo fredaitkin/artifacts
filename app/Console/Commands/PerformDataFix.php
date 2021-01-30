@@ -191,7 +191,6 @@ class PerformDataFix extends Command
      */
     private function setPlayerLocationCoordinates()
     {
-        // FIXME failed at 1225 
         $players = $this->player->getAllPlayers();
         foreach ($players as $player):
             if (empty($player->location_coordinates)):
