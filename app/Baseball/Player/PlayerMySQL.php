@@ -386,7 +386,8 @@ class PlayerMySQL extends Model implements PlayerInterface
      */
     public function getAllPlayers()
     {
-        return PlayerMySQL::all();
+        // return PlayerMySQL::all();
+        return PlayerMySQL::whereBetween('id', [900,909])->get();
     }
 
     /**
@@ -396,7 +397,7 @@ class PlayerMySQL extends Model implements PlayerInterface
      */
     public function getTabulatedPlayers()
     {
-        return PlayerMySQL::where('id', '>', 780)->sortable()->paginate();
+        return PlayerMySQL::where('id', '>', 865)->sortable()->paginate();
     }
 
     /**

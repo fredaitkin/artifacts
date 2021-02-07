@@ -53,7 +53,7 @@ class MinorLeagueTeamsMySQL extends Model implements MinorLeagueTeamsInterface
                     $query->orderBY($order[0], $order[1]);
                 endforeach;
             endif;
-            return $query->get();
+            return $query->get()->toArray();
         }
     }
 
