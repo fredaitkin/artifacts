@@ -288,7 +288,7 @@ class PerformDataFix extends Command
                 $this->minor_league_teams[trim(str_replace('etc', '', $team))] = $row['id'];
             endforeach;
         endforeach;
-        // var_dump($this->minor_league_teams);exit;
+
         $rows = $this->other_team->getTeams(['id', 'name']);
         $this->other_teams = [];
         foreach($rows as $row):
@@ -296,7 +296,7 @@ class PerformDataFix extends Command
         endforeach;
 
         $players = $this->player->getAllPlayers();
-        // $players = $this->player->getPlayersByIDs(['888']);
+        // $players = $this->player->getPlayersByIDs(['940']);
         foreach ($players as $player):
             if ($player->mlb_link):
                 $injuries = [];
@@ -309,11 +309,11 @@ class PerformDataFix extends Command
                 $rows = $xp->query("//table[@class='transactions-table collapsed']//tr");
 
                 $teams = [];
+                $mlt_added = [];
                 foreach($rows as $row):
                     $cols = $xp->query( 'td', $row);
 
                     foreach($cols as $col):
-                        // echo "\n *LINE " . $col->textContent . "\n";
                         $idx_assigned = strpos($col->textContent, 'assigned to');
                         if ($idx_assigned !== false):
                             $idx_from = strpos($col->textContent, 'from');
@@ -321,17 +321,14 @@ class PerformDataFix extends Command
                                 // Two teams in row - assigned to X from Y.
                                 $team = substr($col->textContent, $idx_assigned + 12, $idx_from - $idx_assigned - 13);
                                 $teams[] = trim($team);
-                                // echo ' *TEAM ' . $team . "\n";
                                 $idx_period = strpos($col->textContent, '.');
                                 $team = substr($col->textContent, $idx_from + 5, $idx_period - $idx_from - 5);
                                 $teams[] = trim($team);
-                                // echo ' *NEXT TEAM' . $team . "end\n";
                             else:
                                 // One team in row - assigned to X.
                                 $idx_period = strpos($col->textContent, '.');
                                 $team = substr($col->textContent, $idx_assigned + 12, $idx_period - $idx_assigned - 12);
                                 $teams[] = trim($team);
-                                // echo ' *SINGLE TEAM ' . $team . "\n";
                             endif;
                         else:
                             if (strpos($col->textContent, 'optioned') !== false):
@@ -339,45 +336,45 @@ class PerformDataFix extends Command
                                 $idx_period = strpos($col->textContent, '.');
                                 $team = substr($col->textContent, $idx_to + 4, $idx_period - $idx_to - 4);
                                 $teams[] = trim($team);
-                                // echo ' *OPTIONED TEAM' . $team . "end\n";
                             endif;
                             $idx_outright = strpos($col->textContent, 'outright to');
                             if ($idx_outright !== false):
                                 $idx_period = strpos($col->textContent, '.');
                                 $team = substr($col->textContent, $idx_outright + 12, $idx_period - $idx_outright - 12);
                                 $teams[] = trim($team);
-                                // echo ' *OUTRIGHT TEAM' . $team . "end\n";
                             endif;
                             $idx_rehab = strpos($col->textContent, 'rehab assignment to');
                             if ($idx_rehab !== false):
                                 $idx_period = strpos($col->textContent, '.');
                                 $team = substr($col->textContent, $idx_rehab + 20, $idx_period - $idx_rehab - 20);
                                 $teams[] = trim($team);
-                                // echo ' *REHAB TEAM' . $team . "end\n";
+                            endif;
+                            if (strpos($col->textContent, 'contract of') !== false):
+                                $idx_from = strpos($col->textContent, 'from');
+                                $idx_period = strpos($col->textContent, '.');
+                                $team = substr($col->textContent, $idx_from + 5, $idx_period - $idx_from - 5);
+                                $teams[] = trim($team);
                             endif;
                         endif;
                     endforeach;
                 endforeach;
                 // Reverse to chronological order
                 $teams = array_reverse($teams);
-                // var_dump($teams);
                 // Remove duplicates.
                 $teams = array_unique($teams);
-                // var_dump($teams);
-                // exit;
 
                 foreach($teams as $team):
                     if ($team):
                         if (in_array($team, $this->teams)):
-                            // echo "\nIGNORE: " . $team. "\n";
                         elseif (array_key_exists($team, $this->minor_league_teams)):
-                            $player->minor_teams()->attach(['mlt_id' => $this->minor_league_teams[$team]]);
-                            // echo "\nMINOR LEAGUE: " . $team . "\n";
+                            // Teams can come through with different names
+                            if (!in_array($this->minor_league_teams[$team], $mlt_added)):
+                                $player->minor_teams()->attach(['mlt_id' => $this->minor_league_teams[$team]]);
+                                $mlt_added[] = $this->minor_league_teams[$team];
+                            endif;
                         elseif (array_key_exists($team, $this->other_teams)):
                             $player->non_mlb_affiliated_teams()->attach(['other_teams_id' => $this->other_teams[$team]]);
-                            // echo "\nOTHER: " . $team . "\n";
                         else:
-                            // echo "\nNOT THERE OR APPLICABLE: " . $team . "\n";
                             Log::info($player->id . ' ' . $team);
                         endif;
                     endif;
