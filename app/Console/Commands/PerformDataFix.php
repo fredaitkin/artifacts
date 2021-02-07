@@ -2,12 +2,16 @@
 
 namespace Artifacts\Console\Commands;
 
-use Artifacts\Baseball\Player\PlayerInterface;
+use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface as MinorLeagueTeam;
+use Artifacts\Baseball\OtherTeams\OtherTeamsInterface as OtherTeam;
+use Artifacts\Baseball\Player\PlayerInterface as Player;
+use Artifacts\Baseball\Teams\TeamsInterface as Team;
 use DomDocument;
 use DOMXpath;
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Log;
 use Storage;
 
 class PerformDataFix extends Command
@@ -21,7 +25,8 @@ class PerformDataFix extends Command
                             {--serialize-prev-teams : Convert previous teams to serialized data}
                             {--pivot-prev-teams : Store previous teams in pivot table}
                             {--player-injuries : Write list of player injuries to file}
-                            {--player-location : Set player location coordinates}';
+                            {--player-location : Set player location coordinates}
+                            {--player-other-teams : Get player other teams}';
 
     /**
      * The console command description.
@@ -38,13 +43,58 @@ class PerformDataFix extends Command
     private $player;
 
     /**
+     * The Teams interface
+     *
+     * @var Artifacts\Baseball\Teams\TeamsInterface
+     */
+    private $team;
+
+    /**
+     * The Minor League Teams interface
+     *
+     * @var Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface
+     */
+    private $mlt;
+
+    /**
+     * The Other Teams interface
+     *
+     * @var Artifacts\Baseball\OtherTeams\OtherTeamsInterface
+     */
+    private $other_team;
+
+    /**
+     * Teams
+     *
+     * @var array
+     */
+    private $teams;
+
+    /**
+     * Minor League Teams
+     *
+     * @var array
+     */
+    private $minor_league_teams;
+
+    /**
+     * Other Teams
+     *
+     * @var array
+     */
+    private $other_teams;
+
+    /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(PlayerInterface $player)
+    public function __construct(Player $player, Team $team, MinorLeagueTeam $mlt, OtherTeam $other_team)
     {
-        $this->player = $player;
+        $this->player       = $player;
+        $this->team         = $team;
+        $this->mlt          = $mlt;
+        $this->other_team   = $other_team;
         parent::__construct();
     }
 
@@ -71,6 +121,10 @@ class PerformDataFix extends Command
 
         if ($options['player-location']):
             $this->setPlayerLocationCoordinates();
+        endif;
+
+        if ($options['player-other-teams']):
+            $this->playerOtherTeams();
         endif;
     }
 
@@ -215,4 +269,91 @@ class PerformDataFix extends Command
             endif;
         endforeach;
     }
+
+    /**
+     * Get player other teams.
+     *
+     * @return mixed
+     */
+    private function playerOtherTeams()
+    {
+        Log::info("Updating player minor league and other teams");
+        $this->teams = array_column($this->team->getTeams(['name']), 'name');
+        $rows = $this->mlt->getTeams(['id', 'team', 'other_names']);
+        $this->minor_league_teams = [];
+        foreach($rows as $row):
+            $this->minor_league_teams[$row['team']] = $row['id'];
+            $other = explode(',', $row['other_names']);
+            foreach($other as $team):
+                $this->minor_league_teams[trim(str_replace('etc', '', $team))] = $row['id'];
+            endforeach;
+        endforeach;
+        // var_dump($this->minor_league_teams);exit;
+        $rows = $this->other_team->getTeams(['id', 'name']);
+        $this->other_teams = [];
+        foreach($rows as $row):
+            $this->other_teams[$row['name']] = $row['id'];
+        endforeach;
+
+        // $players = $this->player->getAllPlayers();
+        $players = $this->player->getPlayersByIDs(['876']);
+        foreach ($players as $player):
+            if ($player->mlb_link):
+                $injuries = [];
+                $player_html = @file_get_contents('https://www.mlb.com' . $player->mlb_link);
+                $DOM = new DomDocument;
+                // Ignore errors due to Html5
+                @$DOM->loadHTML($player_html);
+                $tables = $DOM->getElementsByTagName('table');
+                $xp = new DOMXpath($DOM);
+                $rows = $xp->query("//table[@class='transactions-table collapsed']//tr");
+
+                $teams = [];
+                foreach($rows as $row):
+                    $cols = $xp->query( 'td', $row);
+
+                    foreach($cols as $col):
+                        $idx_assigned = strpos($col->textContent, 'assigned to');
+                        if ($idx_assigned !== false):
+                            echo "\n *LINE " . $col->textContent . "\n";
+                            $idx_from = strpos($col->textContent, 'from');
+                            if ($idx_from !== false):
+                                // Two teams in row - assigned to X from Y.
+                                $team = substr($col->textContent, $idx_assigned + 12, $idx_from - $idx_assigned - 13);
+                                $teams[] = $team;
+                                // echo ' *TEAM ' . $team . "\n";
+                                $idx_period = strpos($col->textContent, '.');
+                                $team = substr($col->textContent, $idx_from + 5, $idx_period - $idx_from - 5);
+                                $teams[] = $team;
+                                // echo ' *NEXT TEAM' . $team . "end\n";
+                            else:
+                                // One team in row - assigned to X.
+                                $idx_period = strpos($col->textContent, '.');
+                                $team = substr($col->textContent, $idx_assigned + 12, $idx_period - $idx_assigned - 12);
+                                $teams[] = $team;
+                                // echo ' *SINGLE TEAM ' . $team . "\n";
+                            endif;
+                        endif;
+                    endforeach;
+                endforeach;
+                $teams = array_unique($teams);
+                // var_dump($teams);
+                foreach($teams as $team):
+                    if (in_array($team, $this->teams)):
+                        echo "\nIGNORE: " . $team. "\n";
+                    elseif (array_key_exists($team, $this->minor_league_teams)):
+                        echo "\nMINOR LEAGUE: " . $team . "\n";
+                    elseif (array_key_exists($team, $this->other_teams)):
+                        echo "\nOTHER: " . $team . "\n";
+                    else:
+                        echo "\nNOT THERE OR APPLICABLE: " . $team . "\n";
+                        Log::info($player->id . ' ' . $team);
+                    endif;
+                endforeach;
+            endif;
+
+        endforeach;
+
+    }
+
 }
