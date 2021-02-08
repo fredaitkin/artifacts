@@ -387,7 +387,7 @@ class PlayerMySQL extends Model implements PlayerInterface
     public function getAllPlayers()
     {
         // return PlayerMySQL::all();
-        return PlayerMySQL::whereBetween('id', [1080,1099])->get();
+        return PlayerMySQL::whereBetween('id', [1500,1549])->get();
     }
 
     /**

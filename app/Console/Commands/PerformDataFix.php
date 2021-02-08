@@ -298,6 +298,7 @@ class PerformDataFix extends Command
         $players = $this->player->getAllPlayers();
         // $players = $this->player->getPlayersByIDs(['940']);
         foreach ($players as $player):
+            echo $player->id . ' ';
             if ($player->mlb_link):
                 $injuries = [];
                 $player_html = @file_get_contents('https://www.mlb.com' . $player->mlb_link);
