@@ -277,6 +277,10 @@ class PerformDataFix extends Command
      */
     private function playerOtherTeams()
     {
+        // TODO enable one player at a time
+        // TODO search for last period in sentence re people with . in their names or St.Lucie
+        // TODO transferred to Lancaster JetHawks.
+        // TODO loaned to Diablos Rojos del Mexico
         Log::info("Updating player minor league and other teams");
         $this->teams = array_column($this->team->getTeams(['name']), 'name');
         $rows = $this->mlt->getTeams(['id', 'team', 'other_names']);
@@ -296,7 +300,6 @@ class PerformDataFix extends Command
         endforeach;
 
         $players = $this->player->getAllPlayers();
-        // $players = $this->player->getPlayersByIDs(['940']);
         foreach ($players as $player):
             echo $player->id . ' ';
             if ($player->mlb_link):
