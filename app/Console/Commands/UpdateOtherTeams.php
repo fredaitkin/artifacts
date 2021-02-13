@@ -210,11 +210,9 @@ class UpdateOtherTeams extends Command
                             if ($idx_loaned !== false):
                                 $teams[] = $this->extractString($col->textContent, $idx_loaned, strrpos($col->textContent, 'from'), 9);
                             endif;
-                            $idx_loaned = strpos($col->textContent, 'transferred to');
-                            if ($idx_loaned !== false):
-                                $team = $this->extractString($col->textContent, $idx_loaned, strrpos($col->textContent, 'from'), 14);
-                                Log::info("Check me " . $team);
-                                // $teams[] = $this->extractString($col->textContent, $idx_loaned, strrpos($col->textContent, 'from'), 14);
+                            $idx_transferred = strpos($col->textContent, 'transferred to');
+                            if ($idx_transferred !== false):
+                                $teams[] = $this->extractString($col->textContent, $idx_transferred, strrpos($col->textContent, 'from'), 14);
                             endif;
                         endif;
                     endforeach;
