@@ -60,6 +60,7 @@ return [
         'Canada',
         'Dominican Republic',
         'Mexico',
+        'Venezuela',
     ],
 
 ];
