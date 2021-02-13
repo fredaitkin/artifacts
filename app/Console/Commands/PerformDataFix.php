@@ -26,7 +26,10 @@ class PerformDataFix extends Command
                             {--pivot-prev-teams : Store previous teams in pivot table}
                             {--player-injuries : Write list of player injuries to file}
                             {--player-location : Set player location coordinates}
-                            {--player-other-teams : Get player other teams}';
+                            {--player-other-teams : Get player other teams}
+                            {--starts-at= : Player ids starts at}
+                            {--ids= : Comma separated list of player ids}
+                            {--debug : Dump output}';
 
     /**
      * The console command description.
@@ -85,6 +88,20 @@ class PerformDataFix extends Command
     private $other_teams;
 
     /**
+     * Command options
+     *
+     * @var array
+     */
+    private $options;
+
+    /**
+     * Debug flag
+     *
+     * @var bool
+     */
+    private $debug = false;
+
+    /**
      * Create a new command instance.
      *
      * @return void
@@ -105,25 +122,29 @@ class PerformDataFix extends Command
      */
     public function handle()
     {
-        $options = $this->options();
+        $this->options = $this->options();
 
-        if ($options['serialize-prev-teams']):
+        if ($this->options['debug']) {
+            $this->debug = true;
+        }
+
+        if ($this->options['serialize-prev-teams']):
             echo "This has been run.\n";
         endif;
 
-        if ($options['pivot-prev-teams']):
+        if ($this->options['pivot-prev-teams']):
             echo "This has been run.\n";
         endif;
 
-        if ($options['player-injuries']):
+        if ($this->options['player-injuries']):
             $this->playerInjuries();
         endif;
 
-        if ($options['player-location']):
+        if ($this->options['player-location']):
             $this->setPlayerLocationCoordinates();
         endif;
 
-        if ($options['player-other-teams']):
+        if ($this->options['player-other-teams']):
             $this->playerOtherTeams();
         endif;
     }
@@ -277,10 +298,14 @@ class PerformDataFix extends Command
      */
     private function playerOtherTeams()
     {
-        // TODO enable one player at a time
-        // TODO search for last period in sentence re people with . in their names or St.Lucie
-        // TODO transferred to Lancaster JetHawks.
-        // TODO loaned to Diablos Rojos del Mexico
+        if (isset($this->options['ids'])):
+            $players = $this->player->getPlayersByIDs(explode(',', $this->options['ids']));
+        elseif (isset($this->options['starts-at'])):
+            $players = $this->player->getAllPlayers(['id' => ['operator' => '>=', 'value' => $this->options['starts-at']]]);
+        else:
+            $players = $this->player->getAllPlayers();
+        endif;
+
         Log::info("Updating player minor league and other teams");
         $this->teams = array_column($this->team->getTeams(['name']), 'name');
         $rows = $this->mlt->getTeams(['id', 'team', 'other_names']);
@@ -299,11 +324,8 @@ class PerformDataFix extends Command
             $this->other_teams[$row['name']] = $row['id'];
         endforeach;
 
-        $players = $this->player->getAllPlayers();
         foreach ($players as $player):
-            echo $player->id . ' ';
             if ($player->mlb_link):
-                $injuries = [];
                 $player_html = @file_get_contents('https://www.mlb.com' . $player->mlb_link);
                 $DOM = new DomDocument;
                 // Ignore errors due to Html5
@@ -311,6 +333,10 @@ class PerformDataFix extends Command
                 $tables = $DOM->getElementsByTagName('table');
                 $xp = new DOMXpath($DOM);
                 $rows = $xp->query("//table[@class='transactions-table collapsed']//tr");
+
+                if ($this->debug):
+                    echo $player->id . "\n";
+                endif;
 
                 $teams = [];
                 $mlt_added = [];
@@ -320,52 +346,54 @@ class PerformDataFix extends Command
                     foreach($cols as $col):
                         $idx_assigned = strpos($col->textContent, 'assigned to');
                         if ($idx_assigned !== false):
-                            $idx_from = strpos($col->textContent, 'from');
+                            $idx_from = strpos($col->textContent, ' from');
                             if ($idx_from !== false):
                                 // Two teams in row - assigned to X from Y.
-                                $team = substr($col->textContent, $idx_assigned + 12, $idx_from - $idx_assigned - 13);
-                                $teams[] = trim($team);
-                                $idx_period = strpos($col->textContent, '.');
-                                $team = substr($col->textContent, $idx_from + 5, $idx_period - $idx_from - 5);
-                                $teams[] = trim($team);
+                                $teams[] = $this->extractString($col->textContent, $idx_assigned, $idx_from, 12);
+                                // One team - assigned from.
+                                $teams[] = $this->extractString($col->textContent, $idx_from, strrpos($col->textContent, '.'), 5);
                             else:
-                                // One team in row - assigned to X.
-                                $idx_period = strpos($col->textContent, '.');
-                                $team = substr($col->textContent, $idx_assigned + 12, $idx_period - $idx_assigned - 12);
-                                $teams[] = trim($team);
+                                // One team - assigned to X.
+                                $teams[] = $this->extractString($col->textContent, $idx_assigned, strrpos($col->textContent, '.'), 12);
                             endif;
                         else:
                             if (strpos($col->textContent, 'optioned') !== false):
-                                $idx_to = strpos($col->textContent, ' to ');
-                                $idx_period = strpos($col->textContent, '.');
-                                $team = substr($col->textContent, $idx_to + 4, $idx_period - $idx_to - 4);
-                                $teams[] = trim($team);
+                                $teams[] = $this->extractString($col->textContent, strpos($col->textContent, ' to '), strrpos($col->textContent, '.'), 4);
                             endif;
                             $idx_outright = strpos($col->textContent, 'outright to');
                             if ($idx_outright !== false):
-                                $idx_period = strpos($col->textContent, '.');
-                                $team = substr($col->textContent, $idx_outright + 12, $idx_period - $idx_outright - 12);
-                                $teams[] = trim($team);
+                                $teams[] = $this->extractString($col->textContent, $idx_outright, strrpos($col->textContent, '.'), 12);
                             endif;
                             $idx_rehab = strpos($col->textContent, 'rehab assignment to');
                             if ($idx_rehab !== false):
-                                $idx_period = strpos($col->textContent, '.');
-                                $team = substr($col->textContent, $idx_rehab + 20, $idx_period - $idx_rehab - 20);
-                                $teams[] = trim($team);
+                                $teams[] = $this->extractString($col->textContent, $idx_rehab, strrpos($col->textContent, '.'), 20);
                             endif;
                             if (strpos($col->textContent, 'contract of') !== false):
-                                $idx_from = strpos($col->textContent, 'from');
-                                $idx_period = strpos($col->textContent, '.');
-                                $team = substr($col->textContent, $idx_from + 5, $idx_period - $idx_from - 5);
-                                $teams[] = trim($team);
+                                $teams[] = $this->extractString($col->textContent, strpos($col->textContent, 'from'), strrpos($col->textContent, '.'), 5);
+                            endif;
+                            $idx_loaned = strpos($col->textContent, 'loaned to');
+                            if ($idx_loaned !== false):
+                                $teams[] = $this->extractString($col->textContent, $idx_loaned, strrpos($col->textContent, 'from'), 9);
+                            endif;
+                            $idx_loaned = strpos($col->textContent, 'transferred to');
+                            if ($idx_loaned !== false):
+                                $team = $this->extractString($col->textContent, $idx_loaned, strrpos($col->textContent, 'from'), 14);
+                                Log::info("Check me " . $team);
+                                // $teams[] = $this->extractString($col->textContent, $idx_loaned, strrpos($col->textContent, 'from'), 14);
                             endif;
                         endif;
                     endforeach;
                 endforeach;
+
                 // Reverse to chronological order
                 $teams = array_reverse($teams);
                 // Remove duplicates.
                 $teams = array_unique($teams);
+
+                if ($this->debug):
+                    var_dump($teams);
+                    exit;
+                endif;
 
                 foreach($teams as $team):
                     if ($team):
@@ -383,11 +411,25 @@ class PerformDataFix extends Command
                         endif;
                     endif;
                 endforeach;
-                
+
             endif;
 
         endforeach;
 
+    }
+
+    /**
+     * Helper function to extract substring from a string
+     *
+     * @return mixed
+     */
+    private function extractString($text, $left_boundary, $right_boundary, $offset) {
+        $data = substr($text, $left_boundary + $offset, $right_boundary - $left_boundary - $offset);
+        $data = trim($data);
+        if ($this->debug):
+            echo "*" . $data . "*\n";
+        endif;
+        return $data;
     }
 
 }

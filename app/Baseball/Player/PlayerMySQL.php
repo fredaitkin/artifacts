@@ -384,9 +384,15 @@ class PlayerMySQL extends Model implements PlayerInterface
      *
      * @return array
      */
-    public function getAllPlayers()
+    public function getAllPlayers(array $where = null)
     {
-        return PlayerMySQL::all();
+        $query = PlayerMySQL::select('*');
+        if (isset($where)):
+            foreach ($where as $field => $constraints):
+                $query->where($field, $constraints['operator'], $constraints['value']);
+            endforeach;
+        endif;
+        return $query->get();
     }
 
     /**
