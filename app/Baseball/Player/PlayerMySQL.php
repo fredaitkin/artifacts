@@ -213,6 +213,23 @@ class PlayerMySQL extends Model implements PlayerInterface
         endforeach;
         return $teams;
     }
+
+    /**
+     * Get all the other teams as an array from the pivot tables
+     * @return array
+     */
+    public function getAllOtherTeams()
+    {
+        $teams = [];
+        foreach($this->non_mlb_affiliated_teams as $t):
+            $teams[] = $t->name;
+        endforeach;
+        foreach($this->minor_teams as $t):
+            $teams[] = $t->team;
+        endforeach;
+        return $teams;
+    }
+
     /**
      * Get player age from birthdate
      *

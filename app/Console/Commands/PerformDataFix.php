@@ -395,7 +395,12 @@ class PerformDataFix extends Command
                     exit;
                 endif;
 
-                foreach($teams as $team):
+                // Teams already set against the player.
+                $current_teams = $player->getAllOtherTeams();
+                // New teams to add.
+                $remaining_teams = array_diff($teams, $current_teams);
+
+                foreach($remaining_teams as $team):
                     if ($team):
                         if (in_array($team, $this->teams)):
                         elseif (array_key_exists($team, $this->minor_league_teams)):
