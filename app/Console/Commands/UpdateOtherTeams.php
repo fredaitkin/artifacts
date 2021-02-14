@@ -234,6 +234,7 @@ class UpdateOtherTeams extends Command
                     exit;
                 endif;
 
+                // TODO Add exceptions Estrellas de Oriente  and Adelaide Bite or Other Names from Other Teams
                 foreach($remaining_teams as $team):
                     if ($team):
                         if (in_array($team, $this->teams)):

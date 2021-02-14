@@ -19,6 +19,7 @@ return [
     'Lithuania',
     'Mexico',
     'Netherlands',
+    'New Zealand',
     'Nicaragua',
     'Panama',
     'Peru',
