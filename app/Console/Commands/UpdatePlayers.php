@@ -98,7 +98,6 @@ class UpdatePlayers extends Command
     {
         $this->player = $player;
         $this->mlt = $mlt;
-        $this->minor_league_teams = $this->mlt->getTeams();
         parent::__construct();
     }
 
@@ -109,6 +108,9 @@ class UpdatePlayers extends Command
      */
     public function handle()
     {
+
+        $this->minor_league_teams = $this->mlt->getTeams();
+
         $options = $this->options();
 
         if (isset($options['ids'])):
