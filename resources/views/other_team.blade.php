@@ -63,6 +63,13 @@
 
             <div class="form-group row">
                 <div class="col-sm-4">
+                    <label for="other_names" class="control-label">Other Names</label>
+                    <input type="text" name="other_names" class="form-control" value="@if (old('other_names')){{ old('other_names') }}@elseif (!empty($team->other_names)){{ $team->other_names }}@endif">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-4">
                     <label for="logo" class="control-label">Logo</label>
                     <input type="file" name="logo" id="logo" class="form-control">
                 </div>

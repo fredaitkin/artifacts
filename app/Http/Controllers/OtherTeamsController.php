@@ -85,6 +85,7 @@ class OtherTeamsController extends Controller
         $team['league']         = $request->league;
         $team['founded']        = $request->founded;
         $team['defunct']        = $request->defunct;
+        $team['other_names']    = $request->other_names;
 
         $team = $this->team->updateCreate(['id' => $request->id ?? null], $team);
 

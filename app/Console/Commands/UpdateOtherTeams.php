@@ -8,11 +8,8 @@ use Artifacts\Baseball\Player\PlayerInterface as Player;
 use Artifacts\Baseball\Teams\TeamsInterface as Team;
 use DomDocument;
 use DOMXpath;
-use GuzzleHttp\Client;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 use Log;
-use Storage;
 
 class UpdateOtherTeams extends Command
 {
@@ -153,10 +150,14 @@ class UpdateOtherTeams extends Command
             endforeach;
         endforeach;
 
-        $rows = $this->other_team->getTeams(['id', 'name']);
+        $rows = $this->other_team->getTeams(['id', 'name', 'other_names']);
         $this->other_teams = [];
         foreach($rows as $row):
             $this->other_teams[$row['name']] = $row['id'];
+            $other = explode(',', $row['other_names']);
+            foreach($other as $team):
+                $this->other_teams[trim(str_replace('etc', '', $team))] = $row['id'];
+            endforeach;
         endforeach;
 
         foreach ($players as $player):
@@ -240,7 +241,7 @@ class UpdateOtherTeams extends Command
                         if (in_array($team, $this->teams)):
                         elseif (array_key_exists($team, $this->minor_league_teams)):
                             // Teams can come through with different names
-                            if (!in_array($this->minor_league_teams[$team], $mlt_added)):
+                            if (! in_array($this->minor_league_teams[$team], $mlt_added)):
                                 $player->minor_teams()->attach(['mlt_id' => $this->minor_league_teams[$team]]);
                                 $mlt_added[] = $this->minor_league_teams[$team];
                             endif;

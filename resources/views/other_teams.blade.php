@@ -30,6 +30,7 @@
                     <th scope='col'>@sortablelink('founded')</th>
                     <th scope='col'>City</th>
                     <th scope='col'>@sortablelink('country')</th>
+                    <th scope='col'>Other Names</th>
                     <th scope='col'>@sortablelink('player_count', 'Players')</th>
                 </tr>
             </thead>
@@ -48,6 +49,7 @@
                         <td class="table-text">{{ $team->founded }}</td>
                         <td class="table-text">{{ $team->city }}</td>
                         <td class="table-text">{{ $team->country }}</td>
+                        <td class="table-text">{{ $team->other_names }}</td>
                         <td class="table-text">{{ $team->player_count }}</td>
                     </tr>
                 @endforeach
