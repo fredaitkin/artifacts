@@ -33,6 +33,7 @@ return [
         'South Atlantic',
         'Southern',
         'Texas',
+        'Triple-A East',
     ],
 
     'divisions' => [
@@ -43,6 +44,7 @@ return [
         'Central',
         'East',
         'Eastern',
+        'Midwest',
         'North',
         'Northern',
         'Northwest',
