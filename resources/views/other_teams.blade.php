@@ -37,7 +37,13 @@
             <tbody>
                 @foreach ($teams as $team)
                     <tr>
-                        <td><img src="{{ asset('storage/other_teams/smalls/' . $team->logo) }}" alt="team_photo"></td>
+                        <td>
+                            @if (!empty($team->logo))
+                                <img src="{{ asset('storage/other_teams/smalls/' . $team->logo) }}" alt="team_photo">
+                            @else
+                                <img src="{{ asset('img/team.png') }}" alt="team_photo" class="img-thumbnail w-25">
+                            @endif
+                        </td>
                         <td class="table-text">
                              @if (Auth::user()->id === 1)
                                 <a href="/other-team/{{ $team->id }}">{{ $team->name }}</a>

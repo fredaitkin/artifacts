@@ -34,6 +34,7 @@ return [
         'Southern',
         'Texas',
         'Triple-A East',
+        'Venezuelan Summer',
     ],
 
     'divisions' => [
