@@ -61,6 +61,14 @@ $(function() {
                     return;
                 }
                 response.json().then(function(data) {
+                    var current_teams = $("#minor_league_teams").val().split(',');
+                    $.each( current_teams, function( index, value ) {
+                      $.each( data, function( key, team ) {
+                        if (team != undefined && team.id == value) {
+                          data.splice(key, 1);
+                        }
+                      });
+                    });
                     items = data;
                 });
             }
@@ -75,7 +83,14 @@ $(function() {
     function extractLast( term ) {
       return split( term ).pop();
     }
-
+    function removeFromAvailableTeams( id ) {
+       $.each( items, function( key, team ) {
+          if (team.id == id) {
+            items.splice(key, 1);
+            return false;
+          }
+      });
+    }
     $( "#minor_league_teams_display" )
       .autocomplete({
         minLength: 0,
@@ -96,15 +111,17 @@ $(function() {
           // add placeholder to get the comma-and-space at the end
           terms.push( "" );
           this.value = terms.join( ", " );
-        
-            $("#minor_league_teams").val(function() {
-                if (this.value.length == 0) {
-                    return ui.item.id;
-                } else {
-                return this.value + ',' + ui.item.id;
-                }
-               
-            });
+          // Remove from future search
+          removeFromAvailableTeams(ui.item.id);
+
+          $("#minor_league_teams").val(function() {
+              if (this.value.length == 0) {
+                  return ui.item.id;
+              } else {
+              return this.value + ',' + ui.item.id;
+              }
+             
+          });
 
           return false;
         }
@@ -131,6 +148,14 @@ $(function() {
                     return;
                 }
                 response.json().then(function(data) {
+                    var current_teams = $("#other_teams").val().split(',');
+                    $.each( current_teams, function( index, value ) {
+                      $.each( data, function( key, team ) {
+                        if (team != undefined && team.id == value) {
+                          data.splice(key, 1);
+                        }
+                      });
+                    });
                     items = data;
                 });
             }
@@ -144,6 +169,14 @@ $(function() {
     }
     function extractLast( term ) {
       return split( term ).pop();
+    }
+    function removeFromAvailableTeams( id ) {
+       $.each( items, function( key, team ) {
+          if (team.id == id) {
+            items.splice(key, 1);
+            return false;
+          }
+      });
     }
 
     $( "#other_teams_display" )
@@ -166,6 +199,8 @@ $(function() {
           // add placeholder to get the comma-and-space at the end
           terms.push( "" );
           this.value = terms.join( ", " );
+          // Remove from future search
+          removeFromAvailableTeams(ui.item.id);
 
             $("#other_teams").val(function() {
                 if (this.value.length == 0) {
