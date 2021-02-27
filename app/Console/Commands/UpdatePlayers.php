@@ -4,6 +4,8 @@ namespace Artifacts\Console\Commands;
 
 use Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface;
 use Artifacts\Baseball\Player\PlayerInterface;
+use Artifacts\Baseball\Teams\TeamsInterface;
+use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use Intervention\Image\ImageManagerStatic as Image;
 use Log;
@@ -83,21 +85,37 @@ class UpdatePlayers extends Command
     private $player;
 
     /**
+     * The Teams Interface
+     *
+     * @var Artifacts\Baseball\Teams\TeamsInterface
+     */
+    private $team;
+
+    /**
      * The Minor League Teams Interface
+     *
+     * @var Artifacts\Baseball\MinorLeagueTeams\MinorLeagueTeamsInterface
+     */
+    private $mlt;
+
+    /**
+     * The Guzzle HTTP Client
      *
      * @var Artifacts\Baseball\Player\MinorLeagueTeams\MinorLeagueTeamsInterface
      */
-    private $mlt;
+    private $client;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(PlayerInterface $player, MinorLeagueTeamsInterface $mlt)
+    public function __construct(PlayerInterface $player, TeamsInterface $team, MinorLeagueTeamsInterface $mlt)
     {
         $this->player = $player;
+        $this->team = $team;
         $this->mlt = $mlt;
+        $this->client = new Client;
         parent::__construct();
     }
 
@@ -109,7 +127,8 @@ class UpdatePlayers extends Command
     public function handle()
     {
 
-        $this->minor_league_teams = $this->mlt->getTeams();
+        $this->minor_league_teams = $this->mlt->getTeams('*');
+        $this->teams = $this->team->getCurrentTeams();
 
         $options = $this->options();
 
@@ -194,9 +213,24 @@ class UpdatePlayers extends Command
             if ($player->status !== 'retired'):
 
                 // Get player page
-                $player_html = @file_get_contents('https://www.mlb.com' . $link);
+                $response = $this->client->get('https://www.mlb.com' . $link);
+                $player_html = $response->getBody()->getContents();
 
                 if ($player_html):
+
+                    // Update details if player has changed teams.
+                    $team = $this->getTeam($player_html);
+                    if ($player->team != $team):
+                        Log::info("Player " . $player->id . " has changed teams");
+                        $player->teams()->attach(['team' => $player->team]);
+                        $player->team = $team;
+                        $photo = $this->getPlayerPhoto($player->mlb_link, $player->first_name, $player->last_name);
+                        if ($photo):
+                            $player->photo = $photo;
+                        else:
+                            Log::info('Unable to retrieve player photo');
+                        endif;
+                    endif;
 
                    // Update player stats
                     $this->setStats($player_html, $player);
@@ -371,27 +405,9 @@ class UpdatePlayers extends Command
             $player->status = $status;
 
             // Get player photo
-            $photo = null;
-            $id = $this->getPlayerId($link);
-            $image_src = 'https://securea.mlb.com/mlb/images/players/head_shot/' . $id . '.jpg';
-            if (@file_get_contents($image_src)):
-
-                $file_name  = time() . '.' . $name[0] . '_' . $name[1] . '.' . 'jpeg';
-
-                // Reduced size photo
-                $img = Image::make($image_src);
-                $img->resize(120, 120, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-                $img->stream();
-                Storage::disk('public')->put('images/smalls' . '/' . $file_name, $img);
-
-                // Regular photo
-                $img = Image::make($image_src);
-                $img->stream();
-                Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
-
-                $player->photo = serialize(['regular' => $file_name, 'small' => $file_name]);
+            $photo = $this->getPlayerPhoto($link, $player->first_name, $player->last_name);
+            if ($photo):
+                $player->photo = $photo;
             else:
                 Log::info('Unable to retrieve player photo');
             endif;
@@ -400,6 +416,11 @@ class UpdatePlayers extends Command
         endif;
     }
 
+    /**
+     * Get player team
+     *
+     * @param string $player_html MLB player page
+     */
     private function getTeam(string $player_html)
     {
         $team = null;
@@ -408,7 +429,7 @@ class UpdatePlayers extends Command
         $team_str = trim(substr($player_html, $pos + 17, $endpos - $pos - 17));
         Log::info('Team ' . $team_str);
         if (strpos($team_str, 'html') === false):
-            $team = array_search($team_str, config('teams'));
+            $team = array_search($team_str, $this->teams);
             // If it is not a major league team, add to minor league team data source
             if (! $team && ! empty($team_str)):
                 if (! in_array($team_str, $this->minor_league_teams)):
@@ -418,5 +439,40 @@ class UpdatePlayers extends Command
             endif;
         endif;
         return $team;
+    }
+
+    /**
+     * Get player photo
+     *
+     * @param string $link MLB player link
+     * @param string $first_name Player first name
+     * @param string $llast_name Player last name
+     */
+    private function getPlayerPhoto($link, $first_name, $last_name)
+    {
+        // Get player photo
+        $photo = null;
+        $id = $this->getPlayerId($link);
+        $image_src = 'https://securea.mlb.com/mlb/images/players/head_shot/' . $id . '.jpg';
+        if (@file_get_contents($image_src)):
+
+            $file_name  = time() . '.' . $first_name . '_' . $last_name . '.' . 'jpeg';
+
+            // Reduced size photo
+            $img = Image::make($image_src);
+            $img->resize(120, 120, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->stream();
+            Storage::disk('public')->put('images/smalls' . '/' . $file_name, $img);
+
+            // Regular photo
+            $img = Image::make($image_src);
+            $img->stream();
+            Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
+
+            $photo = serialize(['regular' => $file_name, 'small' => $file_name]);
+        endif;
+        return $photo;
     }
 }
