@@ -48,7 +48,7 @@
                 <ul>
                     @foreach ($ml_teams as $team)
                         <li>
-                            {{ $team->team }}
+                            {{ $team['team'] }}
                         </li>
                     @endforeach 
                 </ul>
