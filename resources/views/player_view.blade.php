@@ -8,7 +8,7 @@
 
             <div class="col-sm-3">
                 <h2>{{ $player->first_name }} {{ $player->last_name }}</h2>
-
+                <h3>{{ $player->age }}</h3>
             </div>
            <div class="col-lg-4">
                     @if (!empty($player->photo))
@@ -18,7 +18,7 @@
                     @endif
             </div>
             <div class="col">
-                <div class="mt-5">
+                <div class="mt-5 pb-3">
                     {{ $player->city }},
                     @if (!empty($player->state))
                         {{ $player->state_display }}
@@ -27,15 +27,15 @@
                     @endif
                     <input type="hidden" id="latitude" value="{{ $player->latitude }}">
                     <input type="hidden" id="longitude" value="{{ $player->longitude }}">
-                    </br>
-                    {{ $player->age }}</br></br>
+                </div>
+                <div id="map"></div>
+                <div class="ml-5 pt-5">
                      @if (!empty($player->draft_position && $player->draft_position == 1 ))
                         <h5 class="font-italic">1st Pick!</h5>
                      @elseif (!empty($player->draft_round && $player->draft_round == 1 ))
                         <h5 class="font-italic">1st Round Pick!</h5>
                      @endif
-                </div>
-                <div id="map"></div>
+                 </div>
             </div>
         </div>
 
@@ -43,16 +43,13 @@
             <div class="col-sm-3"></div>
             <div class="mt-2">
                 <h4>{{ $team }}</h4>
+                <h6>{{ $player->position }}</h6>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-3"></div>
-            <div class="mt-2 w-25 border rounded p-2">
-                <div class="row">
-                    <div class="col-sm-5 font-weight-normal">Position</div>
-                    <div class="col-sm-3 text-right">{{ $player->position }}</div>
-                </div>
+            <div class="mt-2 w-33 border rounded p-2">
                 @if (!empty($player->draft_year))
                     <div class="row">
                         <div class="col-sm-5 font-weight-normal">Drafted</div>
@@ -81,7 +78,7 @@
         <div class="row">
             <div class="col-sm-3"></div>
             @if ($player->status != 'rookie')
-                <div class="mt-2 border rounded pt-2 px-2">
+                <div class="mt-2 w-33 border rounded pt-2 px-2">
                     @if (!empty($player->position))
                         @if ($player->position == 'P')
                             <table class="table stats-table">
