@@ -8,6 +8,7 @@ use Artifacts\Baseball\Teams\TeamsInterface;
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use Intervention\Image\ImageManagerStatic as Image;
+use Exception;
 use Log;
 use Storage;
 
@@ -212,33 +213,43 @@ class UpdatePlayers extends Command
 
             if ($player->status !== 'retired'):
 
-                // Get player page
-                $response = $this->client->get('https://www.mlb.com' . $link);
-                $player_html = $response->getBody()->getContents();
+                try {
+                    // Get player page
+                    $response = $this->client->get('https://www.mlb.com' . $link);
 
-                if ($player_html):
+                    $player_html = $response->getBody()->getContents();
 
-                    // Update details if player has changed teams.
-                    $team = $this->getTeam($player_html);
-                    if ($player->team != $team):
-                        Log::info("Player " . $player->id . " has changed teams");
-                        $player->teams()->attach(['team' => $player->team]);
-                        $player->team = $team;
-                        $photo = $this->getPlayerPhoto($player->mlb_link, $player->first_name, $player->last_name);
-                        if ($photo):
-                            $player->photo = $photo;
-                        else:
-                            Log::info('Unable to retrieve player photo');
+                    if ($player_html):
+                        echo $player->id . ' ';
+                        // Update details if player has changed teams.
+                        $team = $this->getTeam($player_html);
+                        if ($player->team != $team):
+                            if ($team):
+                                Log::info("Player " . $player->id . " " .  $player->first_name . " " . $player->last_name . " has changed teams");
+                                $player->teams()->attach(['team' => $player->team]);
+                                $player->team = $team;
+                                $photo = $this->getPlayerPhoto($player->mlb_link, $player->first_name, $player->last_name);
+                                if ($photo):
+                                    $player->photo = $photo;
+                                else:
+                                    Log::info('Unable to retrieve player photo');
+                                endif;
+                            else:
+                                Log::info('Issue extracting new team');
+                            endif;
                         endif;
+
+                        // Update player stats
+                        $this->setStats($player_html, $player);
+                        $player->save();
+
+                    else:
+                        Log::info('Error retrieving player page');
                     endif;
 
-                   // Update player stats
-                    $this->setStats($player_html, $player);
-                    $player->save();
-
-                else:
-                    Log::info('Error retrieving player page');
-                endif;
+                } catch(Exception $e) {
+                    Log::info('Error retrieving player page: ' . $e->getMessage());
+                }
             endif;
         endif;
 
@@ -453,26 +464,29 @@ class UpdatePlayers extends Command
         // Get player photo
         $photo = null;
         $id = $this->getPlayerId($link);
-        $image_src = 'https://securea.mlb.com/mlb/images/players/head_shot/' . $id . '.jpg';
-        if (@file_get_contents($image_src)):
+        try {
+            $image_src = 'https://securea.mlb.com/mlb/images/players/head_shot/' . $id . '.jpg';
+            if (@file_get_contents($image_src)):
+                $file_name  = time() . '.' . $first_name . '_' . $last_name . '.' . 'jpeg';
 
-            $file_name  = time() . '.' . $first_name . '_' . $last_name . '.' . 'jpeg';
+                // Reduced size photo
+                $img = Image::make($image_src);
+                $img->resize(120, 120, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $img->stream();
+                Storage::disk('public')->put('images/smalls' . '/' . $file_name, $img);
 
-            // Reduced size photo
-            $img = Image::make($image_src);
-            $img->resize(120, 120, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-            $img->stream();
-            Storage::disk('public')->put('images/smalls' . '/' . $file_name, $img);
+                // Regular photo
+                $img = Image::make($image_src);
+                $img->stream();
+                Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
 
-            // Regular photo
-            $img = Image::make($image_src);
-            $img->stream();
-            Storage::disk('public')->put('images/regular' . '/' . $file_name, $img);
-
-            $photo = serialize(['regular' => $file_name, 'small' => $file_name]);
-        endif;
+                $photo = serialize(['regular' => $file_name, 'small' => $file_name]);
+            endif;
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+        }
         return $photo;
     }
 }
