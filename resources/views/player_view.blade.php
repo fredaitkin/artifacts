@@ -8,7 +8,7 @@
 
             <div class="col-sm-3">
                 <h2>{{ $player->first_name }} {{ $player->last_name }}</h2>
-                <h3>{{ $player->age }}</h3>
+                <h4>Age: {{ $player->age }}</h4>
             </div>
            <div class="col-lg-4">
                     @if (!empty($player->photo))
