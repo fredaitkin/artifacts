@@ -46,7 +46,15 @@
 
                     </div>
                 </div>
-                @if (isset($player->mlb_link)) <a href="https://www.mlb.com/player/{{ $player->mlb_link }}">mlb</a>@endif
+                <div class="col">
+                    <label for="team" class="col-sm-8 control-label">@if (isset($player->mlb_link))<a href="https://www.mlb.com/player/{{ $player->mlb_link }}" target="_blank">MLB Page</a>@else MLB Page @endif</label>
+
+                    <div class="col-sm-12">
+                      <input type="text" name="mlb_link" id="mlb_link" class="form-control" value="@if (old('mlb_link')) {{ old('mlb_link') }}@elseif (!empty($player->mlb_link)){{ $player->mlb_link }}@endif">
+
+                    </div>
+                </div>
+
             </div>
 
             <div class="form-group row">

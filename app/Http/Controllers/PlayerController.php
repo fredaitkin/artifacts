@@ -151,6 +151,7 @@ class PlayerController extends Controller
         $player['strike_outs']      = $request->strike_outs;
         $player['whip']             = $request->whip;
         $player['status']           = $request->status;
+        $player['mlb_link']         = $request->mlb_link;
 
         if (! empty($request->minor_league_teams)):
             $player['minor_league_teams'] = serialize(explode(',', $request->minor_league_teams));
@@ -242,9 +243,6 @@ class PlayerController extends Controller
         $teams = ['' => 'Please Select'] + $this->team->getCurrentTeams();
         $states = ['' => 'Please Select'] + config('states');
         $positions = ['' => 'Please Select'] + config('positions');
-        if (isset($player->mlb_link[2])):
-            $player->mlb_link = explode('/', $player->mlb_link)[2];
-        endif;
         if (isset($request->view)):
             return view('player_view', [
                 'player'    => $player,

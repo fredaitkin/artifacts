@@ -189,7 +189,7 @@ class PerformDataFix extends Command
         foreach ($players as $player):
             if ($player->mlb_link):
                 $injuries = [];
-                $player_html = @file_get_contents('https://www.mlb.com' . $player->mlb_link);
+                $player_html = @file_get_contents('https://www.mlb.com/player/' . $player->mlb_link);
                 $DOM = new DomDocument;
                 // Ignore errors due to Html5
                 @$DOM->loadHTML($player_html);
