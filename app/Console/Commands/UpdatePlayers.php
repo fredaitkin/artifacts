@@ -215,7 +215,7 @@ class UpdatePlayers extends Command
 
                 try {
                     // Get player page
-                    $response = $this->client->get('https://www.mlb.com' . $link);
+                    $response = $this->client->get('https://www.mlb.com/player/' . $link);
 
                     $player_html = $response->getBody()->getContents();
 
@@ -235,7 +235,7 @@ class UpdatePlayers extends Command
                                     Log::info('Unable to retrieve player photo');
                                 endif;
                             else:
-                                Log::info('Issue extracting new team');
+                                Log::info('Currently not playing major league ball');
                             endif;
                         endif;
 
@@ -338,22 +338,12 @@ class UpdatePlayers extends Command
      * @param string $url Player link
      * @return mixed Id
      */
-    private function getPlayerId(string $link)
+    private function getPlayerMLBId(string $link)
     {
-        $id = null;
-
-        $player_name = explode('/', $link);
-
-        if (count($player_name) > 2 && strpos($player_name[2], '-') !== false):
-            // Extract last portion of link
-            $name = explode('-', $player_name[2]);
-            $count = count($name);
-            $id = $name[$count - 1];
-        else:
-            Log::info('Unexcepted link format');
-        endif;
-
-        return $id;
+        // Extract last portion of link
+        $name = explode('-', $link);
+        $count = count($name);
+        return $name[$count - 1];
     }
 
     /**
@@ -463,7 +453,7 @@ class UpdatePlayers extends Command
     {
         // Get player photo
         $photo = null;
-        $id = $this->getPlayerId($link);
+        $id = $this->getPlayerMLBId($link);
         try {
             $image_src = 'https://securea.mlb.com/mlb/images/players/head_shot/' . $id . '.jpg';
             if (@file_get_contents($image_src)):
